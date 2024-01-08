@@ -5,7 +5,7 @@ export const ObjectUtils = {
     return name && name?.length > 1 ? name[0].toUpperCase() + name.slice(1) : name?.[0].toUpperCase() ?? '';
   },
   getDtoValue: (data: IApiDto | JSONObject, name: string) => {
-    return data[name as keyof (IApiDto | JSONObject)];
+    return data?.[name as keyof (IApiDto | JSONObject)] ?? '';
   },
   getDtoString: (data: IApiDto | JSONObject, name: string) => {
     return ObjectUtils.getDtoValue(data, name) as string;

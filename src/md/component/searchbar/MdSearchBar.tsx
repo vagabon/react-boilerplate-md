@@ -3,7 +3,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { IconButton, InputAdornment } from '@mui/material';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { JSONObject, Primitif } from '../../../dto/api/ApiDto';
-import MdInputTextSimple from '../form/MdInputTextSimple';
+import MdInputTextSimple from '../form/text/MdInputTextSimple';
 
 export interface IMdSearchBarProps {
   search: Primitif;

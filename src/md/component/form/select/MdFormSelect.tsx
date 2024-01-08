@@ -18,7 +18,6 @@ export interface IMdFormSelectProps extends IFormPropsDto {
   callBack?: (value?: string | JSONObject) => void;
   disabled?: boolean;
   byId?: boolean;
-  error?: string;
 }
 
 const MdFormSelect: React.FC<IMdFormSelectProps> = (props: IMdFormSelectProps) => {
@@ -62,13 +61,13 @@ const MdFormSelect: React.FC<IMdFormSelectProps> = (props: IMdFormSelectProps) =
   return (
     <div style={{ width: '100%' }}>
       <FormControl fullWidth sx={{ marginBottom: '8px', marginTop: '16px' }} disabled={props.disabled}>
-        <InputLabel id={props.name + '-label'} error={props.error !== ''}>
+        <InputLabel id={props.name + '-label'} error={error !== ''}>
           {t(props.label)}
           {validationSchema['required'] ? ' *' : ''}
         </InputLabel>
         {values && values.length > 0 && (
           <Select
-            error={props.error !== ''}
+            error={error !== ''}
             labelId={props.name + '-label'}
             id={props.name}
             name={props.name}

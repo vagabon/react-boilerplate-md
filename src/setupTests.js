@@ -27,22 +27,17 @@ const mockedUsedNavigate = jest.fn();
 const mockeUsedLocation = {
   pathname: '/home',
 };
+const mockParams = { id: '1' };
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useNavigate: () => mockedUsedNavigate,
   useLocation: () => mockeUsedLocation,
-  useParams: () => ({ id: '1' }),
+  useParams: () => mockParams,
   Link: mockComponentWithCallBack('Link'),
 }));
 
-global.mockRouter = {
-  useNavigate: () => mockedUsedNavigate,
-  useLocation: () => mockeUsedLocation,
-  Link: mockComponentWithCallBack('Link'),
-};
-
-global.mockedUsedNavigate = mockedUsedNavigate;
+global.mockNavigate = mockedUsedNavigate;
 global.mockeUsedLocation = mockeUsedLocation;
 
 /********************************** MOCK i18n **********************************/
@@ -115,7 +110,11 @@ jest.mock('@mui/material', () => ({
     </div>
   ),
   ListItemAvatar: ({ children }) => <div data-testid='ListItemAvatar'>{children}</div>,
-  ListItemButton: ({ children }) => <div data-testid='ListItemButton'>{children}</div>,
+  ListItemButton: ({ children, onClick }) => (
+    <div data-testid='ListItemButton' onClick={onClick}>
+      {children}
+    </div>
+  ),
   ListItemIcon: ({ children }) => <div data-testid='ListItemIcon'>{children}</div>,
   ListItemText: ({ children }) => <div data-testid='ListItemText'>{children}</div>,
   MenuItem: ({ value, children }) => (
@@ -148,10 +147,16 @@ jest.mock('@mui/material', () => ({
   TableSortLabel: ({ children }) => <div data-testid='TableSortLabel'>{children}</div>,
   Tab: ({ children }) => <div data-testid='Tab'>{children}</div>,
   Tabs: ({ children }) => <div data-testid='Tabs'>{children}</div>,
-  TextField: ({ label, name, onChange, children }) => (
+  TextField: ({ label, name, onChange, onBlur, onKeyUp, onFocus, children }) => (
     <>
       <label>{label}</label>
-      <input data-testid='TextField' name={name} onChange={onChange}>
+      <input
+        data-testid='TextField'
+        name={name}
+        onChange={onChange}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        onKeyUp={() => onKeyUp({ key: 'Enter' })}>
         {children}
       </input>
     </>
@@ -163,6 +168,12 @@ jest.mock('@mui/material', () => ({
     return {};
   },
 }));
+
+jest.mock('@mui/material/Link', () => ({ href, children }) => (
+  <a data-testid='Link' href={href}>
+    {children}
+  </a>
+));
 
 jest.mock('@mui/material/Button', () => ({ children, onClick }) => (
   <button data-testid='Button' onClick={onClick}>

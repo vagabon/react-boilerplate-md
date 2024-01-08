@@ -1,19 +1,18 @@
 import { useCallback } from 'react';
-import { IApiDto, JSONObject } from '../../../dto/api/ApiDto';
-import { IFormPropsDto } from '../../../dto/form/FormDto';
-import { useFormError } from '../../hook/useFormError';
-import MdFormError from './MdFormError';
+import { IApiDto, JSONObject } from '../../../../dto/api/ApiDto';
+import { IFormPropsDto } from '../../../../dto/form/FormDto';
+import { useFormError } from '../../../hook/useFormError';
+import MdFormError from '../MdFormError';
 import MdInputTextSimple from './MdInputTextSimple';
 
 export type FormInputType = 'date' | 'text' | 'number' | 'password' | 'email';
 
 export interface IMdInputTextProps extends IFormPropsDto {
+  className?: string;
   label: string;
   name: string;
   type?: 'date' | 'text' | 'number' | 'password' | 'email';
   textarea?: number;
-  required?: boolean;
-  className?: string;
   fullWidth?: boolean;
 }
 
@@ -38,7 +37,7 @@ const MdInputText: React.FC<IMdInputTextProps> = (props: IMdInputTextProps) => {
         type={props.type}
         label={props.label}
         name={props.name}
-        value={props.state[props.name as keyof JSONObject]}
+        value={props.state?.[props.name as keyof JSONObject] ?? ''}
         required={props.validationSchema?.[props.name as keyof JSONObject]?.['required']}
         fullWidth={props.fullWidth}
         handleChange={props.handleChange}
@@ -55,7 +54,6 @@ const MdInputText: React.FC<IMdInputTextProps> = (props: IMdInputTextProps) => {
 MdInputText.defaultProps = {
   type: 'text',
   textarea: 0,
-  required: false,
   fullWidth: true,
   className: '',
 };
