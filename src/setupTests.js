@@ -74,8 +74,8 @@ jest.mock('@mui/material', () => ({
   Card: ({ children }) => <div data-testid='Card'>{children}</div>,
   CardActions: ({ children }) => <div data-testid='CardActions'>{children}</div>,
   CardContent: ({ children }) => <div data-testid='CardContent'>{children}</div>,
-  CardHeader: ({ title, children }) => (
-    <div data-testid='CardHeader'>
+  CardHeader: ({ title, onClick, children }) => (
+    <div data-testid='CardHeader' onClick={onClick}>
       {title}
       {children}
     </div>
@@ -117,8 +117,8 @@ jest.mock('@mui/material', () => ({
   ),
   ListItemIcon: ({ children }) => <div data-testid='ListItemIcon'>{children}</div>,
   ListItemText: ({ children }) => <div data-testid='ListItemText'>{children}</div>,
-  MenuItem: ({ value, children }) => (
-    <option data-testid='MenuItem' value={value}>
+  MenuItem: ({ value, onClick, children }) => (
+    <option data-testid='MenuItem' value={value} onClick={onClick}>
       {children}
     </option>
   ),
@@ -136,17 +136,35 @@ jest.mock('@mui/material', () => ({
     </>
   ),
   Snackbar: ({ children }) => <div data-testid='Snackbar'>{children}</div>,
-  Switch: ({ children }) => <div data-testid='Switch'>{children}</div>,
+  Switch: ({ name, checked, onChange, onBlur }) => (
+    <input data-testid='Switch' name={name} checked={checked} onChange={onChange} onBlur={onBlur} />
+  ),
   Table: ({ children }) => <div data-testid='Table'>{children}</div>,
   TableBody: ({ children }) => <div data-testid='TableBody'>{children}</div>,
   TableCell: ({ children }) => <div data-testid='TableCell'>{children}</div>,
   TableFooter: ({ children }) => <div data-testid='TableFooter'>{children}</div>,
   TableHead: ({ children }) => <div data-testid='TableHead'>{children}</div>,
-  TablePagination: ({ children }) => <div data-testid='TablePagination'>{children}</div>,
-  TableRow: ({ children }) => <div data-testid='TableRow'>{children}</div>,
-  TableSortLabel: ({ children }) => <div data-testid='TableSortLabel'>{children}</div>,
+  TablePagination: ({ onPageChange, onRowsPerPageChange, children }) => (
+    <div data-testid='TablePagination' onClick={onPageChange} onBlur={onRowsPerPageChange}>
+      {children}
+    </div>
+  ),
+  TableRow: ({ onClick, children }) => (
+    <div data-testid='TableRow' onClick={onClick}>
+      {children}
+    </div>
+  ),
+  TableSortLabel: ({ children, onClick }) => (
+    <div data-testid='TableSortLabel' onClick={onClick}>
+      {children}
+    </div>
+  ),
   Tab: ({ children }) => <div data-testid='Tab'>{children}</div>,
-  Tabs: ({ children }) => <div data-testid='Tabs'>{children}</div>,
+  Tabs: ({ children, onChange }) => (
+    <div data-testid='Tabs' onClick={onChange}>
+      {children}
+    </div>
+  ),
   TextField: ({ label, name, onChange, onBlur, onKeyUp, onFocus, children }) => (
     <>
       <label>{label}</label>
@@ -193,12 +211,24 @@ jest.mock('@mui/material/MenuItem', () => ({ children, onClick }) => (
   </button>
 ));
 
+jest.mock('@mui/x-date-pickers/DateTimePicker', () => ({ children, slotProps, onChange }) => (
+  <>
+    <input data-testid='DateTimePicker' onChange={(target) => onChange(target.value)} />
+    <div>
+      {slotProps}
+      {children}
+    </div>
+  </>
+));
+
 jest.mock('mui-markdown', () => ({
   MuiMarkdown: ({ children }) => <div data-testid='MuiMarkdown'>{children}</div>,
 }));
 
 jest.mock('@mui/x-date-pickers/DateTimePicker', () => ({
-  DateTimePicker: ({ children }) => <div data-testid='DateTimePicker'>{children}</div>,
+  DateTimePicker: ({ onChange }) => (
+    <input data-testid='DateTimePicker' onChange={(event) => onChange(event.target.value)} />
+  ),
 }));
 
 /***************************** AFTER EACH RESET MOCK *****************************/

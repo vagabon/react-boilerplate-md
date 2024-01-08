@@ -9,9 +9,15 @@ describe('MdMarkdown', () => {
 
     const summaryCallback = jest.fn();
     render(
-      <MdMarkdown content='content' summaryCallback={summaryCallback}>
-        {' '}
-      </MdMarkdown>,
+      <MdMarkdown
+        content={
+          <div>
+            <h3>H3</h3>
+            <h4>H4</h4>
+          </div>
+        }
+        summaryCallback={summaryCallback}
+      />,
     );
     jest.runAllTimers();
     expect(screen.getByTestId('MuiMarkdown')).toBeDefined();

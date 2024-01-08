@@ -1,6 +1,5 @@
 import { Card, CardActions, CardContent, CardHeader, CardMedia, Typography } from '@mui/material';
 import { ReactNode, useCallback } from 'react';
-import { Trans } from 'react-i18next';
 import { ID } from '../../../dto/api/ApiDto';
 import IconClickable from '../../../icon/component/IconClickable';
 import { useAppRouter } from '../../../router';
@@ -26,8 +25,8 @@ export interface IMdCardProps {
 
 const API_URL: string = WindowUtils.getEnv('API_URL');
 
-const MdCard: React.FC<IMdCardProps> = ({ title, url, urlUpdate, avatar, image, date, ...rest }: IMdCardProps) => {
-  const { t } = useAppTranslate();
+const MdCard: React.FC<IMdCardProps> = ({ title, url, urlUpdate, avatar, image, date, ...rest }) => {
+  const { t, Trans } = useAppTranslate();
   const { navigate } = useAppRouter();
   const { id } = useId(rest.id as string);
 

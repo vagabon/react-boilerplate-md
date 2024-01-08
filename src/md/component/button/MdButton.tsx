@@ -1,8 +1,8 @@
 import Button from '@mui/material/Button';
 import { MouseEvent, ReactNode, useCallback, useEffect, useState } from 'react';
-import { Trans } from 'react-i18next';
 import { IconColorType, useIcon } from '../../../icon/hook/useIcon';
 import { useAppRouter } from '../../../router';
+import { useAppTranslate } from '../../../translate';
 
 declare module '@mui/material/Button' {
   interface ButtonPropsColorOverrides {
@@ -37,6 +37,7 @@ export interface IMdButtonProps {
 
 const MdButton: React.FC<IMdButtonProps> = (props: IMdButtonProps) => {
   const { navigate } = useAppRouter();
+  const { Trans } = useAppTranslate();
   const [icon, setIcon] = useState<ReactNode | undefined>(undefined);
   const { getIcon } = useIcon();
 
@@ -59,7 +60,7 @@ const MdButton: React.FC<IMdButtonProps> = (props: IMdButtonProps) => {
 
   const showContent = useCallback(() => {
     return <>{icon ? <>{icon}</> : <Trans i18nKey={props.label}></Trans>}</>;
-  }, [icon, props.label]);
+  }, [icon, props.label, Trans]);
 
   return (
     <>

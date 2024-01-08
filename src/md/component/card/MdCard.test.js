@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import MdCard from './MdCard';
 
 describe('MdCard', () => {
@@ -12,8 +12,12 @@ describe('MdCard', () => {
         urlUpdate='urlUpdate'
         avatar='avatar'
         image='image'
-        className='classNamme'></MdCard>,
+        className='className'
+        buttonchildren={<></>}
+        callbackLeft={() => {}}></MdCard>,
     );
     expect(screen.getByTestId('Card')).toBeDefined();
+    fireEvent.click(screen.getByTestId('CardHeader'));
+    expect(mockNavigate).toBeCalled();
   });
 });

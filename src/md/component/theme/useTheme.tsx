@@ -41,7 +41,6 @@ export const useTheme = (palette: JSONObject) => {
 
   const showTheme = useCallback(
     (mode: ModeType) => {
-      console.log(mode);
       const suffixe = mode === 'dark' ? '-dark' : '';
       setTheme({
         palette: {

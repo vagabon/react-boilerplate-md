@@ -20,8 +20,8 @@ const MdMarkdown: React.FC<IMdMarkdownProps> = (props) => {
       interval.current && clearInterval(interval.current);
       const elements = div[0].getElementsByTagName('*');
       for (const element of elements) {
-        if (element.tagName.includes('H')) {
-          const number = parseInt(element.tagName.replace('H', ''));
+        if (element.tagName.includes('H') || element.tagName.includes('h')) {
+          const number = parseInt(element.tagName.replace('H', '').replace('h', ''));
           let tabs = '';
           for (let i = 3; i < number; i++) {
             tabs += '\t';

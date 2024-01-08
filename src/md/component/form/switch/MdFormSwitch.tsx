@@ -1,10 +1,11 @@
-import { Switch, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { useCallback, useEffect, useState } from 'react';
-import { Trans } from 'react-i18next';
-import { JSONObject } from '../../../dto/api/ApiDto';
-import { HandleChangeType, IFormPropsDto } from '../../../dto/form/FormDto';
-import { useFormError } from '../../hook/useFormError';
-import MdFormError from './MdFormError';
+import { JSONObject } from '../../../../dto/api/ApiDto';
+import { HandleChangeType, IFormPropsDto } from '../../../../dto/form/FormDto';
+import { useAppTranslate } from '../../../../translate';
+import { useFormError } from '../../../hook/useFormError';
+import MdFormError from '../MdFormError';
+import MdFormSwitchSimple from './MdFormSwitchSimple';
 
 export interface IMdFormSwitchProps extends IFormPropsDto {
   className?: string;
@@ -13,6 +14,7 @@ export interface IMdFormSwitchProps extends IFormPropsDto {
 }
 
 const MdFormSwitch: React.FC<IMdFormSwitchProps> = (props: IMdFormSwitchProps) => {
+  const { Trans } = useAppTranslate();
   const { error } = useFormError(props.name, props.errors, props.touched, props.errorMessage);
   const [checked, setChecked] = useState<boolean>(false);
 
@@ -33,13 +35,14 @@ const MdFormSwitch: React.FC<IMdFormSwitchProps> = (props: IMdFormSwitchProps) =
       <div>
         <Typography paragraph={true}>
           <Trans i18nKey={props.label} />
-          {props.validationSchema?.[props.name as keyof JSONObject]?.['required' as keyof JSONObject] ? ' *' : ''}
+          {props.validationSchema?.[props.name as keyof JSONObject]?.['required'] ? ' *' : ''}
         </Typography>
-        <Switch
+        <MdFormSwitchSimple
+          name={props.name}
           color='secondary'
           checked={checked}
-          onChange={handleChange(checked, props.handleChange)}
-          onBlur={props.handleBlur}
+          callbackChange={handleChange(checked, props.handleChange)}
+          callbackBlur={props.handleBlur}
         />
       </div>
 

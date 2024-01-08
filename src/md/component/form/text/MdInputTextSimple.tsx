@@ -18,6 +18,7 @@ export interface IMdInputTextSimpleProps {
   type?: 'date' | 'text' | 'number' | 'password' | 'email';
   textarea?: number;
   required?: boolean;
+  disabled?: boolean;
   className?: string;
   fullWidth?: boolean;
   error?: boolean;
@@ -27,7 +28,7 @@ export interface IMdInputTextSimpleProps {
   handleKeyEnter?: (target: { name: string; value: string }) => void;
 }
 
-const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = (props: IMdInputTextSimpleProps) => {
+const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = (props) => {
   const { t } = useAppTranslate();
   const { uref, key, defaultValue, readonly, handleFocus, handleBlur } = useFormValue(
     props.type ?? DEFAULT_TEXT,
@@ -74,6 +75,7 @@ const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = (props: IMdInputTex
           readOnly: readonly,
         }}
         multiline={(props.textarea ?? 0) > 0}
+        disabled={props.disabled}
         rows={props.textarea}></TextField>
     </div>
   );

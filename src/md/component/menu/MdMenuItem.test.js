@@ -13,6 +13,7 @@ test('renders learn react link', () => {
   expect(screen.getAllByRole('button')[0]).toBeDefined();
   fireEvent.click(screen.getByTestId('Menu'));
   jest.runAllTimers();
+  fireEvent.click(screen.getByTestId('Button'));
   fireEvent.click(screen.getByTestId('MenuItem'));
   jest.runAllTimers();
   expect(mockNavigate).toBeCalled();

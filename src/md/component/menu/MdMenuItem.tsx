@@ -29,7 +29,7 @@ const MdMenuItem: React.FC<IMdMenuItemProps> = (props: IMdMenuItemProps) => {
   }, []);
 
   const handleCloseWithUrl = useCallback(
-    (url: string) => {
+    (url: string) => () => {
       setAnchorEl(undefined);
       navigate(url);
     },
@@ -52,7 +52,7 @@ const MdMenuItem: React.FC<IMdMenuItemProps> = (props: IMdMenuItemProps) => {
       {props.childrens && (
         <Menu id='fade-menu' anchorEl={anchorEl} open={open} onClose={handleClose}>
           {props.childrens?.map((child: { title: string; link: string }) => (
-            <MenuItem key={child.title} onClick={() => handleCloseWithUrl(child.link)} sx={{ width: '100px' }}>
+            <MenuItem key={child.title} onClick={handleCloseWithUrl(child.link)} sx={{ width: '100px' }}>
               {child.title}
             </MenuItem>
           ))}

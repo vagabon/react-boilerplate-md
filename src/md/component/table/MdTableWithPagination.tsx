@@ -9,9 +9,9 @@ import {
   TableSortLabel,
 } from '@mui/material';
 import { Fragment, useCallback, useEffect, useState } from 'react';
-import { Trans } from 'react-i18next';
 import { JSONObject } from '../../../dto/api/ApiDto';
 import { useAppRouter } from '../../../router';
+import { useAppTranslate } from '../../../translate';
 import { UuidUtils } from '../../../utils/uuid/UuidUtils';
 
 export type TablePaginateCallbackType = (
@@ -40,6 +40,7 @@ export interface IMdTableWithPaginationProps {
 }
 
 const MdTableWithPagination: React.FC<IMdTableWithPaginationProps> = (props: IMdTableWithPaginationProps) => {
+  const { Trans } = useAppTranslate();
   const { navigate } = useAppRouter();
   const [datas, setDatas] = useState<JSONObject[]>([]);
 
@@ -80,7 +81,7 @@ const MdTableWithPagination: React.FC<IMdTableWithPaginationProps> = (props: IMd
   );
 
   const handleClick = useCallback(
-    (id: string) => {
+    (id: string) => () => {
       props.url && navigate(props.url + id);
     },
     [navigate, props.url],
@@ -136,7 +137,7 @@ const MdTableWithPagination: React.FC<IMdTableWithPaginationProps> = (props: IMd
                 datas.map((data: JSONObject) => (
                   <Fragment key={data['id' as keyof JSONObject]}>
                     {data && !data['empty' as keyof JSONObject] ? (
-                      <TableRow onClick={() => handleClick(data['id' as keyof JSONObject])}>
+                      <TableRow onClick={handleClick(data['id' as keyof JSONObject])}>
                         {props.cells?.map((cell: ITableDto) => (
                           <TableCell component='th' scope='row' key={cell.name}>
                             {showData(data, cell.name)}

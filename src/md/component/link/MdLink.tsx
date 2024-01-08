@@ -1,6 +1,6 @@
 import { TypographyOwnProps } from '@mui/material';
 import Link from '@mui/material/Link';
-import { Trans } from 'react-i18next';
+import { useAppTranslate } from '../../../translate';
 
 export interface IMdLinkProps {
   href: string;
@@ -12,6 +12,8 @@ export interface IMdLinkProps {
 }
 
 const MdLink: React.FC<IMdLinkProps> = ({ href, variant, label, color, target, ...rest }) => {
+  const { Trans } = useAppTranslate();
+
   return (
     <>
       {rest.show && (
