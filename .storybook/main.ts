@@ -22,6 +22,7 @@ const config = {
       ...config.resolve,
       alias: {
         ...config.resolve?.alias,
+        path: require.resolve('path-browserify'),
       },
     };
     config.build = {
