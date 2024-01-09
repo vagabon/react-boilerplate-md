@@ -24,12 +24,12 @@ const MdFormCheckboxSimple: React.FC<IMdFormCheckboxSimpleProps> = ({
 }) => {
   return (
     <Checkbox
+      {...rest}
       name={name}
-      defaultChecked={checked}
       onClick={callbackClick}
       onBlur={callbackBlur}
       disabled={disabled}
-      {...rest}
+      checked={checked}
     />
   );
 };

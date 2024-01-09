@@ -14,7 +14,6 @@ describe('MdInputDatepicker', () => {
       />,
     );
     expect(screen.getByTestId('DateTimePicker')).toBeDefined();
-    screen.debug();
     fireEvent.change(screen.getByTestId('DateTimePicker'), { target: { value: '2025-01-01T20:30:00' } });
     expect(callBack).toBeCalled();
   });
