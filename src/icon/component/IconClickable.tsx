@@ -23,7 +23,7 @@ const IconClickable: React.FC<IIconClickableProps> = ({ icon, color, disabled, c
 
   return (
     <IconButton edge='end' aria-label='delete' onClick={handleClickIcon} disabled={disabled}>
-      {getIcon(icon, color)}
+      {getIcon(icon, color, disabled)}
     </IconButton>
   );
 };

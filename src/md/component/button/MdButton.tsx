@@ -32,18 +32,19 @@ export interface IMdButtonProps {
   color?: ButtonColorType;
   size?: 'small' | 'medium' | 'large';
   variant?: 'text' | 'outlined' | 'contained';
+  disabled?: boolean;
   callback?: () => void;
 }
 
-const MdButton: React.FC<IMdButtonProps> = (props: IMdButtonProps) => {
+const MdButton: React.FC<IMdButtonProps> = (props) => {
   const { navigate } = useAppRouter();
   const { Trans } = useAppTranslate();
   const [icon, setIcon] = useState<ReactNode | undefined>(undefined);
   const { getIcon } = useIcon();
 
   useEffect(() => {
-    setIcon(getIcon(props.icon, props.iconColor));
-  }, [props.icon, props.iconColor, getIcon]);
+    setIcon(getIcon(props.icon, props.iconColor, props.disabled));
+  }, [props.icon, props.iconColor, props.disabled, getIcon]);
 
   const onClick = useCallback(
     (callback?: () => void) => (event: MouseEvent) => {
@@ -70,7 +71,8 @@ const MdButton: React.FC<IMdButtonProps> = (props: IMdButtonProps) => {
           variant={props.variant}
           onClick={onClick(props.callback)}
           startIcon={getIcon(props.startIcon)}
-          color={props.color ?? 'primary'}>
+          color={props.color ?? 'primary'}
+          disabled={props.disabled}>
           {showContent()}
         </Button>
       )}

@@ -55,8 +55,11 @@ export const ICONS = {
 };
 
 export const useIcon = () => {
-  const getIcon = useCallback((icon?: string, color?: IconColorType) => {
-    const colorOk: IconColorType = color ?? 'inherit';
+  const getIcon = useCallback((icon?: string, color?: IconColorType, disabled?: boolean) => {
+    let colorOk: IconColorType = color ?? 'inherit';
+    if (disabled) {
+      colorOk = 'disabled';
+    }
     let iconReact = undefined;
     Object.entries(ICONS).forEach(([key, data]) => {
       if (key === icon) {
