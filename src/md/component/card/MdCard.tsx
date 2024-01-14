@@ -1,5 +1,5 @@
 import { Card, CardActions, CardContent, CardHeader, CardMedia, Typography } from '@mui/material';
-import { ReactNode, useCallback } from 'react';
+import React, { ReactNode, useCallback } from 'react';
 import { ID } from '../../../dto/api/ApiDto';
 import IconClickable from '../../../icon/component/IconClickable';
 import { useAppRouter } from '../../../router';
@@ -12,7 +12,6 @@ import { useId } from '../../hook/useId';
 export interface IMdCardProps {
   id?: ID;
   title?: string;
-  callbackLeft?: () => void;
   date?: string;
   url?: string;
   urlUpdate?: string;
@@ -21,11 +20,24 @@ export interface IMdCardProps {
   className?: string;
   children?: ReactNode;
   buttonchildren?: ReactNode;
+  callback?: () => void;
+  callbackLeft?: () => void;
+  elementRigth?: () => React.JSX.Element;
 }
 
 const API_URL: string = WindowUtils.getEnv('API_URL');
 
-const MdCard: React.FC<IMdCardProps> = ({ title, url, urlUpdate, avatar, image, date, ...rest }) => {
+const MdCard: React.FC<IMdCardProps> = ({
+  title,
+  url,
+  urlUpdate,
+  avatar,
+  image,
+  date,
+  callbackLeft,
+  elementRigth,
+  ...rest
+}) => {
   const { t, Trans } = useAppTranslate();
   const { navigate } = useAppRouter();
   const { id } = useId(rest.id as string);
@@ -50,10 +62,11 @@ const MdCard: React.FC<IMdCardProps> = ({ title, url, urlUpdate, avatar, image, 
           action={urlUpdate && <IconClickable color='primary' icon='settings' callback={handleClick(urlUpdate)} />}
           title={
             <div className='flex flex-row' style={{ gap: '1rem' }}>
-              {rest.callbackLeft && <IconClickable icon='back' color='secondary' callback={rest.callbackLeft} />}
-              <Typography variant='h4' color='secondary'>
+              {callbackLeft && <IconClickable icon='back' color='secondary' callback={callbackLeft} />}
+              <Typography variant='h4' color='secondary' sx={{ flex: '1' }}>
                 <Trans i18nKey={I18nUtils.translate(t, title)} />
               </Typography>
+              {elementRigth?.()}
             </div>
           }
           subheader={date ? DateUtils.format(date, 'Le DD MMM YYYY à hhhmm') : ''}

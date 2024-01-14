@@ -13,6 +13,7 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import FolderIcon from '@mui/icons-material/Folder';
 import GoogleIcon from '@mui/icons-material/Google';
+import InfoIcon from '@mui/icons-material/Info';
 import MovieIcon from '@mui/icons-material/Movie';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import SearchIcon from '@mui/icons-material/Search';
@@ -52,6 +53,7 @@ export const ICONS = {
   close: { react: (color: IconColorType) => <CloseIcon color={color} /> },
   sun: { react: (color: IconColorType) => <Brightness5Icon color={color} /> },
   moon: { react: (color: IconColorType) => <Brightness4Icon color={color} /> },
+  info: { react: (color: IconColorType) => <InfoIcon color={color} /> },
 };
 
 export const useIcon = () => {

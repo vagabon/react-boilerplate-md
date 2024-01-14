@@ -1,6 +1,6 @@
 {
   "name": "@vagabond-inc/react-boilerplate-md",
-  "version": "0.0.15",
+  "version": "0.0.23",
   "description": "Boilerplate Material Design on React with MUI",
   "private": false,
   "type": "module",
@@ -8,7 +8,7 @@
     "lint": "eslint \"{src/**/*,*}.{js,ts,jsx,tsx}\"",
     "tsc": "tsc",
     "test": "jest  ",
-    "test:json": "npm run test -- --json --outputFile=src/jest-test-results.json",
+    "test:json": "npm run test -- --json --outputFile=src/jest-test-results.json --coverage",
     "coverage": "npm run test -- --coverage ",
     "format": "npm run lint && npm run tsc",
     "ci": "npm run format && npm run coverage -- --testResultsProcessor jest-sonar-reporter",
@@ -82,6 +82,13 @@
   "main": "dist/cjs/index.js",
   "types": "dist/types/index.d.ts",
   "module": "dist/esm/index.js",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js",
+      "types": "./dist/types/index.d.ts"
+    }
+  },
   "peerDependencies": {
     "@emotion/react": "~11.11.1",
     "@emotion/styled": "~11.11.0",

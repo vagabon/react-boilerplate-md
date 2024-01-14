@@ -21,13 +21,13 @@ const MdInputText: React.FC<IMdInputTextProps> = (props: IMdInputTextProps) => {
 
   const handleKeyEnter = useCallback(
     (callback?: (values: IApiDto) => void) => (target: { name: string; value: string }) => {
-      const state = {
-        ...props.state,
+      const values = {
+        ...props.values,
         [target.name]: target.value,
       };
-      !props.textarea && callback?.(state as IApiDto);
+      !props.textarea && callback?.(values as IApiDto);
     },
-    [props.state, props.textarea],
+    [props.values, props.textarea],
   );
 
   return (

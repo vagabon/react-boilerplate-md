@@ -16,7 +16,7 @@ const MdFormSwitchSimple: React.FC<IMdFormSwitchSimpleProps> = ({
   callbackChange,
   callbackBlur,
 }) => {
-  return <Switch color={color} name={name} defaultChecked={checked} onChange={callbackChange} onBlur={callbackBlur} />;
+  return <Switch color={color} name={name} checked={checked} onChange={callbackChange} onBlur={callbackBlur} />;
 };
 
 export default MdFormSwitchSimple;

@@ -1,3 +1,5 @@
+import { Theme } from '@emotion/react';
+import { SxProps } from '@mui/material';
 import Button from '@mui/material/Button';
 import { MouseEvent, ReactNode, useCallback, useEffect, useState } from 'react';
 import { IconColorType, useIcon } from '../../../icon/hook/useIcon';
@@ -33,6 +35,7 @@ export interface IMdButtonProps {
   size?: 'small' | 'medium' | 'large';
   variant?: 'text' | 'outlined' | 'contained';
   disabled?: boolean;
+  sx?: SxProps<Theme>;
   callback?: () => void;
 }
 
@@ -72,7 +75,8 @@ const MdButton: React.FC<IMdButtonProps> = (props) => {
           onClick={onClick(props.callback)}
           startIcon={getIcon(props.startIcon)}
           color={props.color ?? 'primary'}
-          disabled={props.disabled}>
+          disabled={props.disabled}
+          sx={props.sx}>
           {showContent()}
         </Button>
       )}

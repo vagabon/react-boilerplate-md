@@ -1,7 +1,7 @@
 import ClearIcon from '@mui/icons-material/Clear';
 import SearchIcon from '@mui/icons-material/Search';
 import { IconButton, InputAdornment } from '@mui/material';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { JSONObject, Primitif } from '../../../dto/api/ApiDto';
 import MdInputTextSimple from '../form/text/MdInputTextSimple';
 
@@ -12,7 +12,6 @@ export interface IMdSearchBarProps {
 
 const MdSearchBar: React.FC<IMdSearchBarProps> = (props) => {
   const [defaultValue, setDefaultValue] = useState<string>('');
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     setDefaultValue(props.search as string);
@@ -20,11 +19,7 @@ const MdSearchBar: React.FC<IMdSearchBarProps> = (props) => {
 
   const handleChange = useCallback(
     (callback: (value: string) => void) => (event: React.ChangeEvent<JSONObject>) => {
-      timeoutRef.current && clearInterval(timeoutRef.current);
-      timeoutRef.current = setTimeout(() => {
-        callback(event.target['value' as keyof JSONObject]);
-        timeoutRef.current && clearInterval(timeoutRef.current);
-      }, 500);
+      callback(event.target['value' as keyof JSONObject]);
     },
     [],
   );
@@ -37,11 +32,19 @@ const MdSearchBar: React.FC<IMdSearchBarProps> = (props) => {
     [],
   );
 
+  const handleKeyEnter = useCallback(
+    (callback: (value: string) => void) => (target: { name: string; value: string }) => {
+      callback(target['value' as keyof JSONObject]);
+    },
+    [],
+  );
+
   return (
     <section className='search-bar'>
       <MdInputTextSimple
         name='searching'
-        handleChange={handleChange(props.callBack)}
+        handleBlur={handleChange(props.callBack)}
+        handleKeyEnter={handleKeyEnter(props.callBack)}
         label='SEARCH'
         variant='outlined'
         placeholder='Search...'

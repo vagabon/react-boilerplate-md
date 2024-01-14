@@ -9,7 +9,7 @@ test('renders learn react link', () => {
   render(<MdSearchBar search='plouf' callBack={mockCallback} />);
 
   expect(screen.getByRole('textbox')).toBeDefined();
-  fireEvent.change(screen.getByTestId('TextField'), { target: { value: { test: 'test' } } });
+  fireEvent.blur(screen.getByTestId('TextField'), { target: { value: { test: 'test' } } });
   jest.runAllTimers();
   expect(mockCallback).toBeCalled();
 });
