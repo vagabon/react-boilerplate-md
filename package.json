@@ -1,6 +1,6 @@
 {
   "name": "@vagabond-inc/react-boilerplate-md",
-  "version": "0.0.24",
+  "version": "0.0.26",
   "description": "Boilerplate Material Design on React with MUI",
   "private": false,
   "type": "module",
@@ -147,7 +147,6 @@
     "ignorePatterns": [
       "src/index.ts",
       "dist/**",
-      "config.js",
       "**/*babel*",
       "**/*.stories.*",
       "**/*Store.*",

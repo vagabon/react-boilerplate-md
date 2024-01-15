@@ -262,5 +262,4 @@ global.setLocalStorage = (id, data) => {
 window.ENV = {
   API_URL: 'http://localhost:8090',
 };
-window.scrollTo = jest.fn();
 window.matchMedia = jest.fn().mockReturnValue({ matches: '' });
