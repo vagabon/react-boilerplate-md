@@ -7,7 +7,7 @@ React Boilerplate Material Design :
 - A boilerplate based on React 18 with Mui, i18n and react-router-dom
 - [storyBook](https://vagabond.synology.me/react-boilerplate-md)
 - Mui : [documentation](https://mui.com/material-ui/getting-started/overview/)
-- Npm : [@vagabond-inc/react-boilerplate-md](https://www.npmjs.com/package/@vagabond-ts/react-crud-mui)
+- Npm : [@vagabond-inc/react-boilerplate-md](https://www.npmjs.com/package/@vagabond-inc/react-boilerplate-md)
 - Github : [https://github.com/vagabon/react-boilerplate-md](https://github.com/vagabon/react-boilerplate-md)
 - Example : [Vagabond Blog & Tools](https://blog.vagabond.synology.me/)
 
