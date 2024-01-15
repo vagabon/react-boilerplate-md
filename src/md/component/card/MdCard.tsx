@@ -61,7 +61,7 @@ const MdCard: React.FC<IMdCardProps> = ({
           }
           action={urlUpdate && <IconClickable color='primary' icon='settings' callback={handleClick(urlUpdate)} />}
           title={
-            <div className='flex flex-row' style={{ gap: '1rem' }}>
+            <div className='flex flex-row'>
               {callbackLeft && <IconClickable icon='back' color='secondary' callback={callbackLeft} />}
               <Typography variant='h4' color='secondary' sx={{ flex: '1' }}>
                 <Trans i18nKey={I18nUtils.translate(t, title)} />

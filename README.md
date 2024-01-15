@@ -1,54 +1,59 @@
-# @vagabond-ts/react-crud-mui
-
-## Description
-
-REACT CRUD MUI :
-
-- v0.0.1
+@vagabond-inc/react-boilerplate-md
 
 ## Documentation
 
-Npm : [@vagabond-ts/react-crud-mui](https://www.npmjs.com/package/@vagabond-ts/react-crud-mui)
+React Boilerplate Material Design :
 
-Example : [LostArk Roster](https://lostark-roster.vagabond.synology.me/)
+- A boilerplate based on React 18 with Mui, i18n and react-router-dom
+- [storyBook](https://vagabond.synology.me/react-boilerplate-md)
+- Mui : [documentation](https://mui.com/material-ui/getting-started/overview/)
+- Npm : [@vagabond-inc/react-boilerplate-md](https://www.npmjs.com/package/@vagabond-ts/react-crud-mui)
+- Github : [https://github.com/vagabon/react-boilerplate-md](https://github.com/vagabon/react-boilerplate-md)
+- Example : [Vagabond Blog & Tools](https://blog.vagabond.synology.me/)
 
-## libs
+## Technical stack
 
-npm install @mui/material @emotion/react @emotion/styled
-npm install @fontsource/roboto
-npm install @mui/icons-material
+- Node >= 18.16.0, npm >= 9.5.1
 
-npm install axios
-npm install react-router-dom
-npm install @reduxjs/toolkit react-redux
-npm install react-i18next i18next i18next-browser-languagedetector
-npm install formik yup
-npm install sass
+- React :
 
-npm install --save-dev @testing-library/jest-dom @testing-library/react @testing-library/user-event
-npm install --save-dev @jest/globals ts-jest
-npm install redux-mock-store --save-dev
+  - react: ~18.2.0
+  - react-dom: ~18.2.0
 
-npm install -D jest-sonar-reporter sonarqube-scanner
+- i18n :
 
-npm install @react-oauth/google@latest
-npm i --save @greatsumini/react-facebook-login
+  - react-i18next: ~14.0.0
+  - i18next: ~23.7.11
+  - i18next-browser-languagedetector: ~7.2.0
 
-## MUI
+- Router-dom :
 
-https://mui.com/material-ui/getting-started/overview/
+  - react-router-dom: ~6.21.0
+
+- MUI :
+
+  - @mui/material: ~5.15.1
+  - @emotion/react: ~11.11.1
+  - @mui/icons-material: ~5.15.1
+  - @mui/x-date-pickers: ~6.18.5
+  - dayjs: ~1.11.10
+  - mui-markdown: ~1.1.11
+
+- Test :
+  - @babel/preset-env: ~7.23.3
+  - @babel/preset-react: ~7.23.3
+  - @babel/preset-typescript: ~7.23.3
+  - babel-jest: ~29.7.0
+  - jest: ~29.7.0
+  - jest-environment-jsdom: ~29.7.0
 
 ## Installation
-
-TODO
 
 ```
 npm install
 ```
 
 # Storybook
-
-TODO
 
 ```
 npm run storybook
@@ -87,7 +92,7 @@ npm run ci
 Génération du build :
 
 ```
-npm run build:lib
+npm run build
 ```
 
 - livrable : /dist
