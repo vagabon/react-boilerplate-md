@@ -2,8 +2,11 @@ import { DateUtils } from './DateUtils';
 
 describe('DateUtils - format', () => {
   test('Given DateUtils When format width a empty date Then the return is weird', () => {
-    const tested = DateUtils.format('', 'YYYY/MM/DD');
-    expect(tested).toBe('//');
+    let tested = DateUtils.format('', 'YYYY/MM/DD');
+    expect(tested).toBe('');
+
+    tested = DateUtils.format(undefined, 'YYYY/MM/DD');
+    expect(tested).toBe('');
   });
 
   test('Given DateUtils When format width a good date Then the date is format correctly', () => {

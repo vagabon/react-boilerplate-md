@@ -76,7 +76,7 @@ const MdFormSelect: React.FC<IMdFormSelectProps> = (props: IMdFormSelectProps) =
             label={props.label}
             onChange={handleChange}
             className='width100'>
-            <MenuItem value=''>Aucun</MenuItem>
+            <MenuItem value={props.byId ? '-1' : ''}>Aucun</MenuItem>
             {values &&
               values.length > 0 &&
               values.map((myValue) => (
