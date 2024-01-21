@@ -63,7 +63,7 @@ const MdCard: React.FC<IMdCardProps> = ({
           title={
             <div className='flex flex-row'>
               {callbackLeft && <IconClickable icon='back' color='secondary' callback={callbackLeft} />}
-              <Typography variant='h4' color='secondary' sx={{ flex: '1' }}>
+              <Typography variant='h1' color='secondary' sx={{ flex: '1' }}>
                 <Trans i18nKey={I18nUtils.translate(t, title)} />
               </Typography>
               {elementRigth?.()}
@@ -74,7 +74,7 @@ const MdCard: React.FC<IMdCardProps> = ({
       )}
       {image && (
         <CardMedia>
-          <img alt={'Image : ' + title} src={API_URL + '/download?fileName=' + image} width='100%' height='150px' />
+          <img alt={'Image : ' + title} src={API_URL + '/download?fileName=' + image} width='100%' height='200px' />
         </CardMedia>
       )}
       <CardContent>{rest.children}</CardContent>

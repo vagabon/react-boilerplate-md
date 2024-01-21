@@ -46,11 +46,7 @@ const MdFormSelect: React.FC<IMdFormSelectProps> = (props: IMdFormSelectProps) =
     (event: SelectChangeEvent<string | JSONObject | undefined>) => {
       event.preventDefault();
       let value: string | JSONObject | undefined = event.target.value;
-      if (value === '') {
-        value = undefined;
-      } else {
-        value = props.byId === true ? { id: value } : value;
-      }
+      value = props.byId === true ? { id: value } : value;
       event.target.value = value;
       props.handleChange(event);
       props.callBack?.(value);

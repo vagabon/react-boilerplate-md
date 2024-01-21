@@ -3,6 +3,7 @@ import { KeyboardEvent, useCallback } from 'react';
 import { IApiDto, JSONValue } from '../../../../dto/api/ApiDto';
 import { HandleBlurType, HandleChangeType } from '../../../../dto/form/FormDto';
 import { useAppTranslate } from '../../../../translate';
+import { I18nUtils } from '../../../../utils';
 import { ObjectUtils } from '../../../../utils/object/ObjectUtils';
 import { useFormValue } from '../../../hook/useFormValue';
 
@@ -59,7 +60,7 @@ const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = (props) => {
         margin='normal'
         label={t(props.label)}
         variant={props.variant}
-        placeholder={props.placeholder}
+        placeholder={I18nUtils.translate(t, props.placeholder ?? '')}
         size={props.size}
         name={props.name}
         defaultValue={defaultValue}

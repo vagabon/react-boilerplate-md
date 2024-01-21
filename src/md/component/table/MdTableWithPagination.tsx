@@ -105,9 +105,9 @@ const MdTableWithPagination: React.FC<IMdTableWithPaginationProps> = (props: IMd
 
   return (
     <div style={{ display: 'grid' }}>
-      <h3>
+      <h4>
         <Trans i18nKey='RESULTAT' /> : {props.count}
-      </h3>
+      </h4>
       <div style={{ overflow: 'auto' }}>
         <div>
           <Table size='small'>

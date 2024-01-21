@@ -47,7 +47,7 @@ const MdSearchBar: React.FC<IMdSearchBarProps> = (props) => {
         handleKeyEnter={handleKeyEnter(props.callBack)}
         label='SEARCH'
         variant='outlined'
-        placeholder='Search...'
+        placeholder='SEARCH...'
         size='small'
         value={defaultValue}
         inputProps={{

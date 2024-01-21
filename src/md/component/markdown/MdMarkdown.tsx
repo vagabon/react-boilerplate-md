@@ -23,7 +23,7 @@ const MdMarkdown: React.FC<IMdMarkdownProps> = (props) => {
         if (element.tagName.includes('H') || element.tagName.includes('h')) {
           const number = parseInt(element.tagName.replace('H', '').replace('h', ''));
           let tabs = '';
-          for (let i = 3; i < number; i++) {
+          for (let i = 1; i < number; i++) {
             tabs += '\t';
           }
           newSummary += tabs + '* [' + element.innerHTML + '](#' + element.id + ')\n';
