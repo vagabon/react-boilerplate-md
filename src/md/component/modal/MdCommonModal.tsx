@@ -23,7 +23,7 @@ const style = {
   pb: 3,
 };
 
-const MdCommonModal: React.FC<ICommonModalProps> = (props) => {
+const MdCommonModal: React.FC<ICommonModalProps> = ({ className = '', ...props }) => {
   const handleClose = useCallback(
     (callback: () => void) => (event: MouseEvent) => {
       event.stopPropagation();
@@ -39,7 +39,7 @@ const MdCommonModal: React.FC<ICommonModalProps> = (props) => {
 
   return (
     <Modal
-      className={props.className + ' modal'}
+      className={className + ' modal'}
       open={props.open ?? false}
       onClick={handleClick}
       onClose={handleClose(props.handleClose)}>

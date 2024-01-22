@@ -25,7 +25,7 @@ global.spyOn = (object, method, data) => {
 
 const mockedUsedNavigate = jest.fn();
 const mockeUsedLocation = {
-  pathname: '/home',
+  pathname: '/',
 };
 const mockParams = { id: '1' };
 

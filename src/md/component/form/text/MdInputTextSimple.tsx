@@ -29,7 +29,7 @@ export interface IMdInputTextSimpleProps {
   handleKeyEnter?: (target: { name: string; value: string }) => void;
 }
 
-const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = (props) => {
+const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = ({ className = '', ...props }) => {
   const { t } = useAppTranslate();
   const { uref, key, defaultValue, readonly, handleFocus, handleBlur } = useFormValue(
     props.type ?? DEFAULT_TEXT,
@@ -55,7 +55,7 @@ const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = (props) => {
         error={props.error}
         key={key}
         inputRef={uref}
-        className={props.className}
+        className={className}
         type={props.type}
         margin='normal'
         label={t(props.label)}

@@ -13,7 +13,7 @@ export interface IMdInputDatepickerProps extends IFormPropsDto {
   disabled?: boolean;
 }
 
-const MdInputDatepicker: React.FC<IMdInputDatepickerProps> = (props: IMdInputDatepickerProps) => {
+const MdInputDatepicker: React.FC<IMdInputDatepickerProps> = ({ className = '', ...props }) => {
   const { t } = useAppTranslate();
   const { error } = useFormError(props.name, props.errors, props.touched, props.errorMessage);
   const [value, setValue] = useState<Dayjs | string | undefined>();
@@ -35,7 +35,7 @@ const MdInputDatepicker: React.FC<IMdInputDatepickerProps> = (props: IMdInputDat
   );
 
   return (
-    <div style={{ width: '100%' }} className={props.className ?? ''}>
+    <div style={{ width: '100%' }} className={className}>
       <DateTimePicker
         slotProps={{
           textField: {

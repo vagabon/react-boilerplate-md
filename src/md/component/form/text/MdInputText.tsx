@@ -16,7 +16,7 @@ export interface IMdInputTextProps extends IFormPropsDto {
   fullWidth?: boolean;
 }
 
-const MdInputText: React.FC<IMdInputTextProps> = (props: IMdInputTextProps) => {
+const MdInputText: React.FC<IMdInputTextProps> = ({ className = '', ...props }) => {
   const { error } = useFormError(props.name, props.errors, props.touched, props.errorMessage);
 
   const handleKeyEnter = useCallback(
@@ -31,7 +31,7 @@ const MdInputText: React.FC<IMdInputTextProps> = (props: IMdInputTextProps) => {
   );
 
   return (
-    <div style={{ width: '100%' }} className={props.className}>
+    <div style={{ width: '100%' }} className={className}>
       <MdInputTextSimple
         error={error !== ''}
         type={props.type}

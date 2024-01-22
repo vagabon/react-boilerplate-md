@@ -13,7 +13,7 @@ export interface IMdFormSwitchProps extends IFormPropsDto {
   name: string;
 }
 
-const MdFormSwitch: React.FC<IMdFormSwitchProps> = (props: IMdFormSwitchProps) => {
+const MdFormSwitch: React.FC<IMdFormSwitchProps> = ({ className = '', ...props }) => {
   const { Trans } = useAppTranslate();
   const { error } = useFormError(props.name, props.errors, props.touched, props.errorMessage);
   const [checked, setChecked] = useState<boolean>(false);
@@ -31,7 +31,7 @@ const MdFormSwitch: React.FC<IMdFormSwitchProps> = (props: IMdFormSwitchProps) =
   );
 
   return (
-    <div className={'flex switch ' + props.className}>
+    <div className={'flex switch ' + className}>
       <div>
         <Typography paragraph={true}>
           <Trans i18nKey={props.label} />

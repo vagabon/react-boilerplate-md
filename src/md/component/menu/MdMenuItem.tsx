@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { Fragment, useCallback, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useAppRouter } from '../../../router';
 
 export interface IMdMenuItemProps {
@@ -18,6 +19,8 @@ const MdMenuItem: React.FC<IMdMenuItemProps> = (props: IMdMenuItemProps) => {
 
   const handleClick = useCallback(
     (event: React.MouseEvent<HTMLElement>) => {
+      event.stopPropagation();
+      event.preventDefault();
       setAnchorEl(event.currentTarget);
       !props.childrens && navigate(props.url);
     },
@@ -39,6 +42,7 @@ const MdMenuItem: React.FC<IMdMenuItemProps> = (props: IMdMenuItemProps) => {
   return (
     <Fragment>
       <Button
+        href={props.url}
         sx={{ minWidth: '100px' }}
         id='fade-button'
         aria-controls={open ? 'fade-menu' : undefined}
@@ -52,7 +56,13 @@ const MdMenuItem: React.FC<IMdMenuItemProps> = (props: IMdMenuItemProps) => {
       {props.childrens && (
         <Menu id='fade-menu' anchorEl={anchorEl} open={open} onClose={handleClose}>
           {props.childrens?.map((child: { title: string; link: string }) => (
-            <MenuItem key={child.title} onClick={handleCloseWithUrl(child.link)} sx={{ width: '100px' }}>
+            <MenuItem
+              component={Link}
+              to={child.link}
+              key={child.title}
+              color='secondary'
+              onClick={handleCloseWithUrl(child.link)}
+              sx={{ width: '100px', color: 'secondary.main' }}>
               {child.title}
             </MenuItem>
           ))}
