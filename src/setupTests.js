@@ -61,8 +61,9 @@ jest.mock('react-i18next', () => ({
 
 /* global jest */
 jest.mock('@mui/material', () => ({
-  Avatar: ({ children }) => <div data-testid='Avatar'>{children}</div>,
   Alert: ({ children }) => <div data-testid='Alert'>{children}</div>,
+  AlertTitle: ({ children }) => <div data-testid='AlertTitle'>{children}</div>,
+  Avatar: ({ children }) => <div data-testid='Avatar'>{children}</div>,
   Autocomplete: ({ name, value, onChange, onBlur, renderInput }) => (
     <>
       <input data-testid='Autocomplete' name={name} value={value} onClick={onChange} onBlur={onBlur} />
@@ -85,6 +86,7 @@ jest.mock('@mui/material', () => ({
     <input data-testid='Checkbox' name={name} checked={checked} onClick={onClick} onChange={onChange} onBlur={onBlur} />
   ),
   Chip: ({ label, onDelete }) => <input data-testid='Chip' value={label} onClick={onDelete} />,
+  Collapse: ({ children }) => <div data-testid='Collapse'>{children}</div>,
   Container: ({ children }) => <div data-testid='Container'>{children}</div>,
   CssBaseline: ({ children }) => <div data-testid='CssBaseline'>{children}</div>,
   Divider: ({ children }) => <div data-testid='Divider'>{children}</div>,

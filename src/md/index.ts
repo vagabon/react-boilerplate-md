@@ -1,3 +1,5 @@
+export { default as MdAlert } from './component/alert/MdAlert';
+export type { IMdAlertProps } from './component/alert/MdAlert';
 export { default as MdAvatar } from './component/avatar/MdAvatar';
 export type { IMdAvatarProps } from './component/avatar/MdAvatar';
 export { default as MdBox } from './component/box/MdBox';
@@ -12,6 +14,8 @@ export { default as MdCardMedia } from './component/card/media/MdCardMedia';
 export type { IMdCardMediaProps } from './component/card/media/MdCardMedia';
 export { default as MdChip } from './component/chip/MdChip';
 export type { IMdChipProps } from './component/chip/MdChip';
+export { default as MdCollapse } from './component/collapse/MdCollapse';
+export type { IMdCollapseProps } from './component/collapse/MdCollapse';
 export { default as MdContainer } from './component/container/MdContainer';
 export type { IMdContainerProps } from './component/container/MdContainer';
 export { default as MdDivider } from './component/divider/MdDivider';
