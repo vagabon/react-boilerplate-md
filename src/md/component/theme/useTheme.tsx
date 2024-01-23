@@ -46,7 +46,7 @@ export const useTheme = (palette: JSONObject) => {
         palette: {
           mode: mode,
           background: {
-            default: mode === 'dark' ? '#121212' : '#fcfcfc',
+            default: mode === 'dark' ? '#121212' : '#F2F2F2',
           },
           primary: {
             main: ObjectUtils.getDtoString(palette, 'primary' + suffixe),
