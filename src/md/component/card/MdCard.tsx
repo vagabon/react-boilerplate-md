@@ -51,6 +51,11 @@ const MdCard: React.FC<IMdCardProps> = ({
 
   return (
     <Card {...rest} id={id}>
+      {image && (
+        <CardMedia>
+          <img alt={'Image : ' + title} src={API_URL + '/download?fileName=' + image} width='100%' height='200px' />
+        </CardMedia>
+      )}
       {title && (
         <CardHeader
           onClick={handleClick(url)}
@@ -61,7 +66,7 @@ const MdCard: React.FC<IMdCardProps> = ({
           }
           action={urlUpdate && <IconClickable color='primary' icon='settings' callback={handleClick(urlUpdate)} />}
           title={
-            <div className='flex flex-row' style={{ alignItems: 'center' }}>
+            <div className='flex flex-row'>
               {callbackLeft && <IconClickable icon='back' color='secondary' callback={callbackLeft} />}
               <Typography variant='h1' color='secondary' sx={{ flex: '1' }}>
                 <Trans i18nKey={I18nUtils.translate(t, title)} />
@@ -71,11 +76,6 @@ const MdCard: React.FC<IMdCardProps> = ({
           }
           subheader={date ? DateUtils.format(date, 'Le DD MMM YYYY à hhhmm') : ''}
         />
-      )}
-      {image && (
-        <CardMedia>
-          <img alt={'Image : ' + title} src={API_URL + '/download?fileName=' + image} width='100%' height='200px' />
-        </CardMedia>
       )}
       <CardContent>{rest.children}</CardContent>
       {rest.buttonchildren && <CardActions className='justify-end'>{rest.buttonchildren}</CardActions>}
