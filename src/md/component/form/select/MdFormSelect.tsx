@@ -15,6 +15,7 @@ export interface IMdFormSelectProps extends IFormPropsDto {
   label: string;
   name: string;
   list: IApiDto[];
+  listLibelle?: string;
   callBack?: (value?: string | JSONObject) => void;
   disabled?: boolean;
   byId?: boolean;
@@ -30,10 +31,10 @@ const MdFormSelect: React.FC<IMdFormSelectProps> = (props: IMdFormSelectProps) =
   useEffect(() => {
     const values: IListDto[] = [];
     props.list.forEach((value) => {
-      value.id && values.push({ value: value.id, name: value['libelle' as keyof JSONObject] });
+      value.id && values.push({ value: value.id, name: value[(props.listLibelle ?? 'libelle') as keyof JSONObject] });
     });
     setValues(values);
-  }, [props.list]);
+  }, [props.list, props.listLibelle]);
 
   const propsValues = props.values?.[props.name as keyof JSONObject] ?? '';
   const validationSchema = props.validationSchema?.[props.name as keyof JSONObject] ?? {};

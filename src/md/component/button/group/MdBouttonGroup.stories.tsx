@@ -17,12 +17,7 @@ type Story = StoryObj<typeof MdBouttonGroup>;
 
 export const Primary: Story = {
   args: {
-    children: (
-      <>
-        <MdButton label='label' />
-        <MdButton label='label2' />{' '}
-      </>
-    ),
+    children: [<MdButton label='label' />, <MdButton label='label2' />],
   },
 };
 Primary.parameters = {

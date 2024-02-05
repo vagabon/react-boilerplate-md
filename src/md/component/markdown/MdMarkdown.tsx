@@ -46,11 +46,27 @@ const MdMarkdown: React.FC<IMdMarkdownProps> = (props) => {
         }
       }, 100);
     }
+    const iddd = document.getElementById(id);
+    const div = iddd?.getElementsByTagName('div');
+    const elements = div?.[0]?.getElementsByTagName('*') ?? [];
+    for (const element of elements) {
+      if (element.tagName.includes('PRE')) {
+        const content = (element as HTMLElement).innerText ?? '';
+        const div = document.createElement('button');
+        div.className = 'button-copy';
+        div.innerText = 'copy';
+        div.onclick = function () {
+          navigator.clipboard.writeText(content);
+        };
+        element.prepend(div);
+        console.log('pre find');
+      }
+    }
   }, [id, generateSummary, props]);
 
   return (
     <div id={id}>
-      <MuiMarkdown Highlight={Highlight} themes={themes} prismTheme={themes.github}>
+      <MuiMarkdown Highlight={Highlight} themes={themes} hideLineNumbers>
         {props.content}
       </MuiMarkdown>
     </div>
