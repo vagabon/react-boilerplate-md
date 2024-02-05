@@ -76,7 +76,7 @@ export { default as MdTableWithPagination } from './component/table/MdTableWithP
 export type {
   IMdTableWithPaginationProps,
   ITableDto,
-  TablePaginateCallbackType,
+  TablePaginateCallbackType
 } from './component/table/MdTableWithPagination';
 export { default as MdTabs } from './component/tabs/MdTabs';
 export type { IMdTabsProps, TabsType } from './component/tabs/MdTabs';
@@ -85,8 +85,11 @@ export { useTheme } from './component/theme/useTheme';
 export type { IPaletteDto, ITheme, ModeType } from './component/theme/useTheme';
 export { default as MdToolbar } from './component/toolbar/MdToolbar';
 export type { IMdToolbarProps } from './component/toolbar/MdToolbar';
+export { default as MdTreeView } from './component/treeview/MdTreeView';
+export type { IMdTreeViewDto, IMdTreeViewProps } from './component/treeview/MdTreeView';
 export { default as MdTypo } from './component/typo/MdTypo';
 export type { IMdTypoProps } from './component/typo/MdTypo';
 export { useFormError } from './hook/useFormError';
 export { useFormValue } from './hook/useFormValue';
 export { useId } from './hook/useId';
+
