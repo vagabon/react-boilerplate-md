@@ -59,7 +59,6 @@ const MdMarkdown: React.FC<IMdMarkdownProps> = (props) => {
           navigator.clipboard.writeText(content);
         };
         element.prepend(div);
-        console.log('pre find');
       }
     }
   }, [id, generateSummary, props]);
