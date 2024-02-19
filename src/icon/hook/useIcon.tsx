@@ -1,4 +1,6 @@
 import { ArrowBackIos } from '@mui/icons-material';
+import { useCallback } from 'react';
+
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AddIcon from '@mui/icons-material/Add';
@@ -14,12 +16,15 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import FolderIcon from '@mui/icons-material/Folder';
 import GoogleIcon from '@mui/icons-material/Google';
 import InfoIcon from '@mui/icons-material/Info';
+import MailIcon from '@mui/icons-material/Mail';
+import MenuIcon from '@mui/icons-material/Menu';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MovieIcon from '@mui/icons-material/Movie';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import SearchIcon from '@mui/icons-material/Search';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { useCallback } from 'react';
+import StarRateIcon from '@mui/icons-material/StarRate';
 
 export type IconColorType =
   | 'inherit'
@@ -54,6 +59,10 @@ export const ICONS = {
   sun: { react: (color: IconColorType) => <Brightness5Icon color={color} /> },
   moon: { react: (color: IconColorType) => <Brightness4Icon color={color} /> },
   info: { react: (color: IconColorType) => <InfoIcon color={color} /> },
+  menu: { react: (color: IconColorType) => <MenuIcon color={color} /> },
+  inbox: { react: (color: IconColorType) => <InboxIcon color={color} /> },
+  mail: { react: (color: IconColorType) => <MailIcon color={color} /> },
+  star: { react: (color: IconColorType) => <StarRateIcon color={color} /> },
 };
 
 export const useIcon = () => {

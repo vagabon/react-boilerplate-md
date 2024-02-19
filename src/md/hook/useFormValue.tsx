@@ -5,7 +5,7 @@ import { UuidUtils } from '../../utils/uuid/UuidUtils';
 
 export const useFormValue = (type: string, value: JSONValue) => {
   const [key, setKey] = useState<string>();
-  const [defaultValue, setDefaultValue] = useState<JSONValue>();
+  const [defaultValue, setDefaultValue] = useState<JSONValue>('');
   const [readonly, setReadonly] = useState(type === 'password');
   const uref = useRef<HTMLInputElement>();
   const isFocusRef = useRef<boolean>(false);

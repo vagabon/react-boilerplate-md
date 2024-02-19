@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { BrowserRouter, Link, Navigate, Route, Routes, useLocation, useNavigate, useParams } from 'react-router-dom';
 
 export const useAppRouter = () => {
@@ -5,5 +6,13 @@ export const useAppRouter = () => {
   const params = useParams();
   const location = useLocation();
 
-  return { params, navigate, location, useLocation, Link, Navigate, BrowserRouter, Route, Routes };
+  const handleNavigate = useCallback(
+    (link: string, callback?: () => void) => () => {
+      navigate(link);
+      callback?.();
+    },
+    [navigate],
+  );
+
+  return { params, navigate, location, useLocation, Link, Navigate, BrowserRouter, Route, Routes, handleNavigate };
 };
