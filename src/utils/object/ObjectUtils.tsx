@@ -10,4 +10,12 @@ export const ObjectUtils = {
   getDtoString: (data: IApiDto | JSONObject, name: string) => {
     return ObjectUtils.getDtoValue(data, name) as string;
   },
+  getRecursivValue: (data: JSONObject, name: string) => {
+    let value = data;
+    const splits = name.split('.');
+    splits.forEach((split) => {
+      value = value?.[split as keyof JSONObject] ?? '';
+    });
+    return value as string;
+  },
 };

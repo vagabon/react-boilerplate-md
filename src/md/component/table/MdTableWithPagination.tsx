@@ -12,6 +12,7 @@ import { Fragment, useCallback, useEffect, useState } from 'react';
 import { JSONObject } from '../../../dto/api/ApiDto';
 import { useAppRouter } from '../../../router';
 import { useAppTranslate } from '../../../translate';
+import { ObjectUtils } from '../../../utils';
 import { UuidUtils } from '../../../utils/uuid/UuidUtils';
 
 export type TablePaginateCallbackType = (
@@ -87,22 +88,6 @@ const MdTableWithPagination: React.FC<IMdTableWithPaginationProps> = (props: IMd
     [navigate, props.url],
   );
 
-  const showData = (data: JSONObject, name: string): string => {
-    let value: JSONObject | string = data;
-    const splits = name.split('.');
-    value = value[splits[0] as keyof JSONObject] ?? '';
-    if (Array.isArray(value) && splits[1] !== undefined) {
-      value = (value as Array<JSONObject>)
-        .map((val: JSONObject) => {
-          return val[splits[1] as keyof JSONObject];
-        })
-        .join(', ');
-    } else if (splits[1] !== undefined) {
-      value = value[splits[1] as keyof JSONObject];
-    }
-    return '' + value;
-  };
-
   return (
     <div style={{ display: 'grid' }}>
       <h4>
@@ -140,7 +125,7 @@ const MdTableWithPagination: React.FC<IMdTableWithPaginationProps> = (props: IMd
                       <TableRow onClick={handleClick(data['id' as keyof JSONObject])}>
                         {props.cells?.map((cell: ITableDto) => (
                           <TableCell component='th' scope='row' key={cell.name}>
-                            {showData(data, cell.name)}
+                            {ObjectUtils.getRecursivValue(data, cell.name)}
                           </TableCell>
                         ))}
                       </TableRow>
