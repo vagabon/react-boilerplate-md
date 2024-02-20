@@ -2,26 +2,35 @@ import { ArrowBackIos } from '@mui/icons-material';
 import { useCallback } from 'react';
 
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AddIcon from '@mui/icons-material/Add';
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import AdsClickIcon from '@mui/icons-material/AdsClick';
 import AlarmIcon from '@mui/icons-material/Alarm';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness5Icon from '@mui/icons-material/Brightness5';
 import CloseIcon from '@mui/icons-material/Close';
 import CreateIcon from '@mui/icons-material/Create';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import FolderIcon from '@mui/icons-material/Folder';
 import GoogleIcon from '@mui/icons-material/Google';
+import HomeIcon from '@mui/icons-material/Home';
 import InfoIcon from '@mui/icons-material/Info';
+import InsertLinkIcon from '@mui/icons-material/InsertLink';
+import LoginIcon from '@mui/icons-material/Login';
 import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MovieIcon from '@mui/icons-material/Movie';
+import PasswordIcon from '@mui/icons-material/Password';
+import PersonIcon from '@mui/icons-material/Person';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import PhotoCameraFrontIcon from '@mui/icons-material/PhotoCameraFront';
 import SearchIcon from '@mui/icons-material/Search';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -65,6 +74,15 @@ export const ICONS = {
   mail: { react: (color: IconColorType) => <MailIcon color={color} /> },
   star: { react: (color: IconColorType) => <StarRateIcon color={color} /> },
   click: { react: (color: IconColorType) => <AdsClickIcon color={color} /> },
+  camera: { react: (color: IconColorType) => <PhotoCameraFrontIcon color={color} /> },
+  dashboard: { react: (color: IconColorType) => <DashboardIcon color={color} /> },
+  link: { react: (color: IconColorType) => <InsertLinkIcon color={color} /> },
+  admin: { react: (color: IconColorType) => <AdminPanelSettingsIcon color={color} /> },
+  user: { react: (color: IconColorType) => <PersonIcon color={color} /> },
+  profile: { react: (color: IconColorType) => <AccountBoxIcon color={color} /> },
+  home: { react: (color: IconColorType) => <HomeIcon color={color} /> },
+  login: { react: (color: IconColorType) => <LoginIcon color={color} /> },
+  password: { react: (color: IconColorType) => <PasswordIcon color={color} /> },
 };
 
 export const useIcon = () => {

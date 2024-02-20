@@ -19,7 +19,7 @@ export interface IMdCardProps {
   image?: string;
   className?: string;
   children?: ReactNode;
-  actionNode?: ReactNode;
+  actions?: ReactNode;
   buttonchildren?: ReactNode;
   callback?: () => void;
   callbackLeft?: () => void;
@@ -68,7 +68,7 @@ const MdCard: React.FC<IMdCardProps> = ({
           action={
             <>
               {urlUpdate && <IconClickable color='primary' icon='settings' callback={handleClick(urlUpdate)} />}
-              {rest.actionNode}
+              {rest.actions && <>{rest.actions}</>}
             </>
           }
           title={
