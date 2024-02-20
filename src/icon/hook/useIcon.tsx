@@ -5,6 +5,7 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AddIcon from '@mui/icons-material/Add';
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
+import AdsClickIcon from '@mui/icons-material/AdsClick';
 import AlarmIcon from '@mui/icons-material/Alarm';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness5Icon from '@mui/icons-material/Brightness5';
@@ -63,6 +64,7 @@ export const ICONS = {
   inbox: { react: (color: IconColorType) => <InboxIcon color={color} /> },
   mail: { react: (color: IconColorType) => <MailIcon color={color} /> },
   star: { react: (color: IconColorType) => <StarRateIcon color={color} /> },
+  click: { react: (color: IconColorType) => <AdsClickIcon color={color} /> },
 };
 
 export const useIcon = () => {

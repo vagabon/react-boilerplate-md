@@ -19,6 +19,7 @@ export interface IMdCardProps {
   image?: string;
   className?: string;
   children?: ReactNode;
+  actionNode?: ReactNode;
   buttonchildren?: ReactNode;
   callback?: () => void;
   callbackLeft?: () => void;
@@ -64,7 +65,12 @@ const MdCard: React.FC<IMdCardProps> = ({
               <img alt={'Image : ' + title} src={API_URL + '/download?fileName=' + avatar} width='40px' height='40px' />
             )
           }
-          action={urlUpdate && <IconClickable color='primary' icon='settings' callback={handleClick(urlUpdate)} />}
+          action={
+            <>
+              {urlUpdate && <IconClickable color='primary' icon='settings' callback={handleClick(urlUpdate)} />}
+              {rest.actionNode}
+            </>
+          }
           title={
             <div className='flex flex-row' style={{ alignItems: 'baseline' }}>
               {callbackLeft && <IconClickable icon='back' color='secondary' callback={callbackLeft} />}
@@ -77,7 +83,7 @@ const MdCard: React.FC<IMdCardProps> = ({
           subheader={date ? DateUtils.format(date, 'Le DD MMM YYYY à hhhmm') : ''}
         />
       )}
-      <CardContent>{rest.children}</CardContent>
+      {rest.children && <CardContent>{rest.children}</CardContent>}
       {rest.buttonchildren && <CardActions className='justify-end'>{rest.buttonchildren}</CardActions>}
     </Card>
   );
