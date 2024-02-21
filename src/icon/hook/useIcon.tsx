@@ -9,8 +9,10 @@ import AddIcCallIcon from '@mui/icons-material/AddIcCall';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import AdsClickIcon from '@mui/icons-material/AdsClick';
 import AlarmIcon from '@mui/icons-material/Alarm';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness5Icon from '@mui/icons-material/Brightness5';
+import CachedIcon from '@mui/icons-material/Cached';
 import CloseIcon from '@mui/icons-material/Close';
 import CreateIcon from '@mui/icons-material/Create';
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -83,6 +85,8 @@ export const ICONS = {
   home: { react: (color: IconColorType) => <HomeIcon color={color} /> },
   login: { react: (color: IconColorType) => <LoginIcon color={color} /> },
   password: { react: (color: IconColorType) => <PasswordIcon color={color} /> },
+  refresh: { react: (color: IconColorType) => <CachedIcon color={color} /> },
+  bookmark: { react: (color: IconColorType) => <BookmarkIcon color={color} /> },
 };
 
 export const useIcon = () => {

@@ -25,6 +25,7 @@ export type ButtonColorType =
   | 'facebook';
 
 export interface IMdButtonProps {
+  className?: string;
   show?: boolean;
   label?: string;
   url?: string;
@@ -70,6 +71,7 @@ const MdButton: React.FC<IMdButtonProps> = (props) => {
     <>
       {props.show && (
         <Button
+          className={props.className ?? ''}
           size={props.size ?? 'small'}
           variant={props.variant}
           onClick={onClick(props.callback)}
