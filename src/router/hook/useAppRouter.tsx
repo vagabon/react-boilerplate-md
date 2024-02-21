@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import { BrowserRouter, Link, Navigate, Route, Routes, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { IApiDto } from '../../dto';
 
 export const useAppRouter = () => {
   const navigate = useNavigate();
@@ -14,5 +15,25 @@ export const useAppRouter = () => {
     [navigate],
   );
 
-  return { params, navigate, location, useLocation, Link, Navigate, BrowserRouter, Route, Routes, handleNavigate };
+  const handleNavigateWithId = useCallback(
+    (link: string, callback?: () => void) => (data: IApiDto) => {
+      navigate(link + data.id);
+      callback?.();
+    },
+    [navigate],
+  );
+
+  return {
+    params,
+    navigate,
+    location,
+    useLocation,
+    Link,
+    Navigate,
+    BrowserRouter,
+    Route,
+    Routes,
+    handleNavigate,
+    handleNavigateWithId,
+  };
 };
