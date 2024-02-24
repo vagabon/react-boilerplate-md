@@ -12,6 +12,7 @@ import { useId } from '../../hook/useId';
 export interface IMdCardProps {
   id?: ID;
   title?: string;
+  titleCount?: number;
   date?: string;
   url?: string;
   urlUpdate?: string;
@@ -30,6 +31,7 @@ const API_URL: string = WindowUtils.getEnv('API_URL');
 
 const MdCard: React.FC<IMdCardProps> = ({
   title,
+  titleCount,
   url,
   urlUpdate,
   avatar,
@@ -76,6 +78,7 @@ const MdCard: React.FC<IMdCardProps> = ({
               {callbackLeft && <IconClickable icon='back' color='secondary' callback={callbackLeft} />}
               <Typography variant='h1' color='secondary' sx={{ flex: '1' }}>
                 <Trans i18nKey={I18nUtils.translate(t, title)} />
+                {titleCount !== undefined && <> ({titleCount})</>}
               </Typography>
               {elementRigth?.()}
             </div>
