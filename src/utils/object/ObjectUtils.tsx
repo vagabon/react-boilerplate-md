@@ -1,4 +1,4 @@
-import { IApiDto, JSONObject } from '../../dto/api/ApiDto';
+import { IApiDto, ID, JSONObject } from '../../dto/api/ApiDto';
 
 export const ObjectUtils = {
   capitalize(name?: string) {
@@ -17,5 +17,22 @@ export const ObjectUtils = {
       value = value?.[split as keyof JSONObject] ?? '';
     });
     return value as string;
+  },
+  compareId: (id1: ID, id2: ID) => {
+    return parseInt(id1?.toString() ?? '') === parseInt(id2?.toString() ?? '');
+  },
+  addOrReplace: (entities: JSONObject[], field: string, field2: string, idToCheck: ID, newDatas: JSONObject[]) => {
+    let datas = [...entities];
+    const find = datas.find((data) => ObjectUtils.compareId(data[field as keyof JSONObject], idToCheck));
+    if (!find) {
+      datas.push({ [field]: idToCheck, [field2]: newDatas });
+    } else {
+      datas = datas.map((data) =>
+        ObjectUtils.compareId(data[field as keyof JSONObject], idToCheck)
+          ? { [field]: idToCheck, [field2]: newDatas }
+          : data,
+      );
+    }
+    return datas;
   },
 };

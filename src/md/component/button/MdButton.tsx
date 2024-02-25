@@ -43,8 +43,8 @@ export interface IMdButtonProps {
 const MdButton: React.FC<IMdButtonProps> = (props) => {
   const { navigate } = useAppRouter();
   const { Trans } = useAppTranslate();
-  const [icon, setIcon] = useState<ReactNode | undefined>(undefined);
   const { getIcon } = useIcon();
+  const [icon, setIcon] = useState<ReactNode | undefined>(getIcon(props.icon, props.iconColor, props.disabled));
 
   useEffect(() => {
     setIcon(getIcon(props.icon, props.iconColor, props.disabled));

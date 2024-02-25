@@ -1,5 +1,6 @@
 import { Checkbox, SxProps, Theme } from '@mui/material';
 import { SwitchBaseProps } from '@mui/material/internal/SwitchBase';
+import { MouseEvent } from 'react';
 import { HandleBlurType } from '../../../../dto';
 
 export interface IMdFormCheckboxSimpleProps {
@@ -22,11 +23,16 @@ const MdFormCheckboxSimple: React.FC<IMdFormCheckboxSimpleProps> = ({
   callbackBlur,
   ...rest
 }) => {
+  const handleClick = (callbackClick?: () => void) => (event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    callbackClick?.();
+  };
+
   return (
     <Checkbox
       {...rest}
       name={name}
-      onClick={callbackClick}
+      onClick={handleClick(callbackClick)}
       onBlur={callbackBlur}
       disabled={disabled}
       checked={checked}
