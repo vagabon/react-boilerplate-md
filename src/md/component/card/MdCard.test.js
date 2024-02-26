@@ -6,6 +6,7 @@ describe('MdCard', () => {
     render(
       <MdCard
         id={1}
+        icon='icon'
         title='title'
         date='date'
         url='url'

@@ -9,10 +9,15 @@ import AddIcCallIcon from '@mui/icons-material/AddIcCall';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import AdsClickIcon from '@mui/icons-material/AdsClick';
 import AlarmIcon from '@mui/icons-material/Alarm';
+import AnnouncementIcon from '@mui/icons-material/Announcement';
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+import ArticleIcon from '@mui/icons-material/Article';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness5Icon from '@mui/icons-material/Brightness5';
 import CachedIcon from '@mui/icons-material/Cached';
+import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
+import ChecklistIcon from '@mui/icons-material/Checklist';
 import CloseIcon from '@mui/icons-material/Close';
 import CreateIcon from '@mui/icons-material/Create';
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -29,6 +34,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MovieIcon from '@mui/icons-material/Movie';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 import PasswordIcon from '@mui/icons-material/Password';
 import PersonIcon from '@mui/icons-material/Person';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
@@ -87,6 +93,12 @@ export const ICONS = {
   password: { react: (color: IconColorType) => <PasswordIcon color={color} /> },
   refresh: { react: (color: IconColorType) => <CachedIcon color={color} /> },
   bookmark: { react: (color: IconColorType) => <BookmarkIcon color={color} /> },
+  gift: { react: (color: IconColorType) => <CardGiftcardIcon color={color} /> },
+  notification: { react: (color: IconColorType) => <NotificationsIcon color={color} /> },
+  right: { react: (color: IconColorType) => <ArrowCircleRightIcon color={color} /> },
+  news: { react: (color: IconColorType) => <AnnouncementIcon color={color} /> },
+  blog: { react: (color: IconColorType) => <ArticleIcon color={color} /> },
+  checklist: { react: (color: IconColorType) => <ChecklistIcon color={color} /> },
 };
 
 export const useIcon = () => {

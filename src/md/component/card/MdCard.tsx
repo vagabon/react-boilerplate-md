@@ -1,6 +1,7 @@
 import { Card, CardActions, CardContent, CardHeader, CardMedia, Typography } from '@mui/material';
 import React, { ReactNode, useCallback } from 'react';
 import { ID } from '../../../dto/api/ApiDto';
+import { useIcon } from '../../../icon';
 import IconClickable from '../../../icon/component/IconClickable';
 import { useAppRouter } from '../../../router';
 import { useAppTranslate } from '../../../translate';
@@ -11,6 +12,7 @@ import { useId } from '../../hook/useId';
 
 export interface IMdCardProps {
   id?: ID;
+  icon?: string;
   title?: string;
   titleCount?: number;
   date?: string;
@@ -30,6 +32,7 @@ export interface IMdCardProps {
 const API_URL: string = WindowUtils.getEnv('API_URL');
 
 const MdCard: React.FC<IMdCardProps> = ({
+  icon,
   title,
   titleCount,
   url,
@@ -44,6 +47,7 @@ const MdCard: React.FC<IMdCardProps> = ({
   const { t, Trans } = useAppTranslate();
   const { navigate } = useAppRouter();
   const { id } = useId(rest.id as string);
+  const { getIcon } = useIcon();
 
   const handleClick = useCallback(
     (customUrl?: string) => () => {
@@ -55,7 +59,7 @@ const MdCard: React.FC<IMdCardProps> = ({
   return (
     <Card {...rest} id={id}>
       {image && (
-        <CardMedia>
+        <CardMedia onClick={handleClick(url)}>
           <img alt={'Image : ' + title} src={API_URL + '/download?fileName=' + image} width='100%' height='200px' />
         </CardMedia>
       )}
@@ -76,6 +80,7 @@ const MdCard: React.FC<IMdCardProps> = ({
           title={
             <div className='flex flex-row' style={{ alignItems: 'baseline' }}>
               {callbackLeft && <IconClickable icon='back' color='secondary' callback={callbackLeft} />}
+              {icon && <>{getIcon(icon, 'secondary')}&nbsp;</>}
               <Typography variant='h1' color='secondary' sx={{ flex: '1' }}>
                 <Trans i18nKey={I18nUtils.translate(t, title)} />
                 {titleCount !== undefined && <> ({titleCount})</>}
