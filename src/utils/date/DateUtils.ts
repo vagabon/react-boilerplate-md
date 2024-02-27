@@ -14,9 +14,9 @@ const MONTHS = [
 ];
 
 export const DateUtils = {
-  format(date: string, format: string) {
+  format(date?: string, format: string = 'Le DD MMM YYYY à hhhmm') {
     let dateFormat = '';
-    if (date && date.length >= 19) {
+    if (date && date?.length >= 19) {
       const year: string = date.length >= 3 ? date.substring(0, 4) : '';
       const month: string = date.length >= 7 ? date.substring(5, 7) : '';
       const day: string = date.length >= 10 ? date.substring(8, 10) : '';
