@@ -14,14 +14,15 @@ interface IListDto {
 export interface IMdFormSelectProps extends IFormPropsDto {
   label: string;
   name: string;
-  list: IApiDto[];
+  defaultValue?: boolean;
+  list?: IApiDto[];
   listLibelle?: string;
   callBack?: (value?: string | JSONObject) => void;
   disabled?: boolean;
   byId?: boolean;
 }
 
-const MdFormSelect: React.FC<IMdFormSelectProps> = (props: IMdFormSelectProps) => {
+const MdFormSelect: React.FC<IMdFormSelectProps> = ({ defaultValue = true, ...props }) => {
   const { t } = useAppTranslate();
   const { error } = useFormError(props.name, props.errors, props.touched, props.errorMessage);
 
@@ -30,17 +31,18 @@ const MdFormSelect: React.FC<IMdFormSelectProps> = (props: IMdFormSelectProps) =
 
   useEffect(() => {
     const values: IListDto[] = [];
-    props.list.forEach((value) => {
-      value.id && values.push({ value: value.id, name: value[(props.listLibelle ?? 'libelle') as keyof JSONObject] });
+    props.list?.forEach((value) => {
+      value.id &&
+        values.push({ value: value.id, name: t(value[(props.listLibelle ?? 'libelle') as keyof JSONObject]) });
     });
     setValues(values);
-  }, [props.list, props.listLibelle]);
+  }, [props.list, props.listLibelle, t]);
 
   const propsValues = props.values?.[props.name as keyof JSONObject] ?? '';
   const validationSchema = props.validationSchema?.[props.name as keyof JSONObject] ?? {};
 
   useEffect(() => {
-    setValue(props.byId === true ? propsValues?.['id'] ?? '' : propsValues ?? '');
+    setValue(props.byId === true ? propsValues?.['id' as keyof JSONObject] ?? '' : propsValues ?? '');
   }, [propsValues, props.byId]);
 
   const handleChange = useCallback(
@@ -49,7 +51,7 @@ const MdFormSelect: React.FC<IMdFormSelectProps> = (props: IMdFormSelectProps) =
       let value: string | JSONObject | undefined = event.target.value;
       value = props.byId === true ? { id: value } : value;
       event.target.value = value;
-      props.handleChange(event);
+      props.handleChange?.(event);
       props.callBack?.(value);
     },
     [props],
@@ -60,7 +62,7 @@ const MdFormSelect: React.FC<IMdFormSelectProps> = (props: IMdFormSelectProps) =
       <FormControl fullWidth sx={{ marginBottom: '8px', marginTop: '16px' }} disabled={props.disabled}>
         <InputLabel id={props.name + '-label'} error={error !== ''}>
           {t(props.label)}
-          {validationSchema['required'] ? ' *' : ''}
+          {validationSchema?.['required' as keyof JSONObject] ? ' *' : ''}
         </InputLabel>
         {values && values.length > 0 && (
           <Select
@@ -69,11 +71,11 @@ const MdFormSelect: React.FC<IMdFormSelectProps> = (props: IMdFormSelectProps) =
             id={props.name}
             name={props.name}
             value={value ?? ''}
-            required={validationSchema['required']}
+            required={validationSchema?.['required' as keyof JSONObject]}
             label={props.label}
             onChange={handleChange}
             className='width100'>
-            <MenuItem value={props.byId ? '-1' : ''}>Aucun</MenuItem>
+            {defaultValue && <MenuItem value={props.byId ? '-1' : ''}>Aucun</MenuItem>}
             {values &&
               values.length > 0 &&
               values.map((myValue) => (

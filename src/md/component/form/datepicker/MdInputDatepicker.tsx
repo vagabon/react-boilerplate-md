@@ -19,17 +19,17 @@ const MdInputDatepicker: React.FC<IMdInputDatepickerProps> = ({ className = '', 
   const [value, setValue] = useState<Dayjs | string | undefined>();
 
   useEffect(() => {
-    const newValue = props.state[props.name as keyof JSONObject];
+    const newValue = props.state?.[props.name as keyof JSONObject] ?? '';
     newValue && setValue(dayjs(newValue));
   }, [props.state, props.name]);
 
   const handleChange = useCallback(
-    (callback: HandleChangeType) => (newValue?: string | null) => {
+    (callback?: HandleChangeType) => (newValue?: string | null) => {
       let newValueString: string = '';
       if (newValue) {
         newValueString = JSON.stringify(newValue).replaceAll('\\', '').replaceAll('"', '');
       }
-      callback({ target: { name: props.name, value: newValueString } });
+      callback?.({ target: { name: props.name, value: newValueString } });
     },
     [props.name],
   );
@@ -49,7 +49,7 @@ const MdInputDatepicker: React.FC<IMdInputDatepickerProps> = ({ className = '', 
         sx={{ width: '100%' }}
         label={t(props.label)}
         name={props.name}
-        onChange={handleChange(props.handleChange)}
+        onChange={handleChange?.(props.handleChange)}
         value={(value as string) ?? ''}
         disabled={props.disabled ?? false}
       />

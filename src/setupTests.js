@@ -42,10 +42,12 @@ global.mockeUsedLocation = mockeUsedLocation;
 
 /********************************** MOCK i18n **********************************/
 
+const mockT = (key) => key;
+
 /* global jest */
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({
-    t: (key) => key,
+    t: mockT,
     i18n: {
       changeLanguage: () => new Promise(() => jest.fn()),
     },

@@ -16,7 +16,7 @@ export const ObjectUtils = {
     splits.forEach((split) => {
       value = value?.[split as keyof JSONObject] ?? '';
     });
-    return value as string;
+    return value.toString();
   },
   compareId: (id1: ID, id2: ID) => {
     return parseInt(id1?.toString() ?? '') === parseInt(id2?.toString() ?? '');

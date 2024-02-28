@@ -17,15 +17,15 @@ const MdFormCheckbox: React.FC<IMdFormCheckboxProps> = (props: IMdFormCheckboxPr
   const { error } = useFormError(props.name, props.errors, props.touched, props.errorMessage);
 
   const handleChange = useCallback(
-    (callback: HandleChangeType) => () => {
-      const checkked = props.values[props.name as keyof JSONObject] !== true;
+    (callback?: HandleChangeType) => () => {
+      const checkked = props.values?.[props.name as keyof JSONObject] !== true;
       const newEvent = {
         target: {
           name: props.name,
           value: checkked,
         },
       };
-      callback(newEvent);
+      callback?.(newEvent);
     },
     [props.name, props.values],
   );
@@ -37,8 +37,8 @@ const MdFormCheckbox: React.FC<IMdFormCheckboxProps> = (props: IMdFormCheckboxPr
       </Typography>
       <MdFormCheckboxSimple
         name={props.name}
-        checked={props.values[props.name as keyof JSONObject] === true}
-        callbackClick={handleChange(props.handleChange)}
+        checked={props.values?.[props.name as keyof JSONObject] === true}
+        callbackClick={handleChange?.(props.handleChange)}
         callbackBlur={props.handleBlur}
         inputProps={{ 'aria-label': 'controlled' }}
         sx={{ padding: '0px 2px' }}

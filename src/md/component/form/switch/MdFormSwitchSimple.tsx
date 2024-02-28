@@ -5,8 +5,8 @@ export interface IMdFormSwitchSimpleProps {
   color?: 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning' | 'default';
   name: string;
   checked?: boolean;
-  callbackChange: () => void;
-  callbackBlur: HandleBlurType;
+  callbackChange?: () => void;
+  callbackBlur?: HandleBlurType;
 }
 
 const MdFormSwitchSimple: React.FC<IMdFormSwitchSimpleProps> = ({

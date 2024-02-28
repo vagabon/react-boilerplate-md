@@ -19,13 +19,13 @@ const MdFormSwitch: React.FC<IMdFormSwitchProps> = ({ className = '', ...props }
   const [checked, setChecked] = useState<boolean>(false);
 
   useEffect(() => {
-    setChecked(props.values[props.name as keyof JSONObject] === true);
+    setChecked(props.values?.[props.name as keyof JSONObject] === true);
   }, [props.name, props.values]);
 
   const handleChange = useCallback(
-    (oldValue: boolean, callback: HandleChangeType) => () => {
+    (oldValue: boolean, callback?: HandleChangeType) => () => {
       const newEvent = { target: { name: props.name, value: !oldValue } };
-      callback(newEvent);
+      callback?.(newEvent);
     },
     [props.name],
   );

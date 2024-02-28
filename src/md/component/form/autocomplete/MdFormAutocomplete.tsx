@@ -18,7 +18,7 @@ const MdFormAutocomplete: React.FC<IMdFormAutocompleteProps> = (props: IMdFormAu
       <FormControl fullWidth sx={{ marginBottom: '8px', marginTop: '16px' }}>
         <Autocomplete
           id={props.name}
-          value={props.values[props.name as keyof JSONObject] || ''}
+          value={props.values?.[props.name as keyof JSONObject] ?? ''}
           options={props.list}
           sx={{ width: '100%' }}
           onChange={props.handleChange}

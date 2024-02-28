@@ -1,7 +1,7 @@
 import { Card, CardActions, CardContent, CardHeader, CardMedia, Typography } from '@mui/material';
 import React, { ReactNode, useCallback } from 'react';
 import { ID } from '../../../dto/api/ApiDto';
-import { useIcon } from '../../../icon';
+import { IconColorType, useIcon } from '../../../icon';
 import IconClickable from '../../../icon/component/IconClickable';
 import { useAppRouter } from '../../../router';
 import { useAppTranslate } from '../../../translate';
@@ -12,6 +12,7 @@ import { useId } from '../../hook/useId';
 
 export interface IMdCardProps {
   id?: ID;
+  color?: IconColorType;
   icon?: string;
   title?: string;
   titleCount?: number;
@@ -32,6 +33,7 @@ export interface IMdCardProps {
 const API_URL: string = WindowUtils.getEnv('API_URL');
 
 const MdCard: React.FC<IMdCardProps> = ({
+  color = 'secondary',
   icon,
   title,
   titleCount,
@@ -80,8 +82,8 @@ const MdCard: React.FC<IMdCardProps> = ({
           title={
             <div className='flex flex-row' style={{ alignItems: 'baseline' }}>
               {callbackLeft && <IconClickable icon='back' color='secondary' callback={callbackLeft} />}
-              {icon && <>{getIcon(icon, 'secondary')}&nbsp;</>}
-              <Typography variant='h1' color='secondary' sx={{ flex: '1' }}>
+              {icon && <>{getIcon(icon, color)}&nbsp;</>}
+              <Typography variant='h1' color={color} sx={{ flex: '1' }}>
                 <Trans i18nKey={I18nUtils.translate(t, title)} />
                 {titleCount !== undefined && <> ({titleCount})</>}
               </Typography>

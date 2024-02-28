@@ -3,6 +3,7 @@ export type {
   HandleBlurType,
   HandleChangeType,
   IFormPropsDto,
+  IOrderDto,
   SetFieldValueType,
   ValidateFormType,
 } from './form/FormDto';

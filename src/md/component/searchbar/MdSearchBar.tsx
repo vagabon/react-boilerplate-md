@@ -2,16 +2,20 @@ import ClearIcon from '@mui/icons-material/Clear';
 import SearchIcon from '@mui/icons-material/Search';
 import { IconButton, InputAdornment } from '@mui/material';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { JSONObject, Primitif } from '../../../dto/api/ApiDto';
+import { IApiDto, JSONObject, Primitif } from '../../../dto/api/ApiDto';
 import { UuidUtils } from '../../../utils';
+import MdFormSelect from '../form/select/MdFormSelect';
 import MdInputTextSimple from '../form/text/MdInputTextSimple';
 
 export interface IMdSearchBarProps {
   search: Primitif;
+  order?: string;
+  orderList?: IApiDto[];
   callBack: (value: string) => void;
+  callBackOrder?: (value?: string | JSONObject) => void;
 }
 
-const MdSearchBar: React.FC<IMdSearchBarProps> = (props) => {
+const MdSearchBar: React.FC<IMdSearchBarProps> = ({ order, orderList, ...props }) => {
   const [defaultValue, setDefaultValue] = useState<string>('');
   const [key, setKey] = useState<string>(UuidUtils.createUUID());
   const lastValue = useRef<string>('');
@@ -46,7 +50,7 @@ const MdSearchBar: React.FC<IMdSearchBarProps> = (props) => {
   );
 
   return (
-    <section className='search-bar'>
+    <div className='search-bar'>
       <MdInputTextSimple
         key={key}
         name='searching'
@@ -72,7 +76,18 @@ const MdSearchBar: React.FC<IMdSearchBarProps> = (props) => {
           ),
         }}
       />
-    </section>
+      {order && (
+        <MdFormSelect
+          byId={false}
+          defaultValue={false}
+          label='ORDER.TITLE'
+          name='order'
+          callBack={props.callBackOrder}
+          list={orderList as IApiDto[]}
+          values={{ order }}
+        />
+      )}
+    </div>
   );
 };
 

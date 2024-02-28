@@ -22,15 +22,20 @@ export type SetFieldValueType = (
 export type ValidateFormType = (values?: JSONObject) => Promise<JSONValue>;
 
 export interface IFormPropsDto {
-  values: JSONObject;
-  state: JSONObject;
-  errors: JSONObject;
-  touched: JSONObject;
-  validationSchema: JSONObject;
-  handleChange: HandleChangeType;
-  handleBlur: HandleBlurType;
-  handleSubmit: (values: IApiDto) => void;
-  validateForm: ValidateFormType;
-  setFieldValue: SetFieldValueType;
-  errorMessage: string;
+  values?: JSONObject;
+  state?: JSONObject;
+  errors?: JSONObject;
+  touched?: JSONObject;
+  validationSchema?: JSONObject;
+  handleChange?: HandleChangeType;
+  handleBlur?: HandleBlurType;
+  handleSubmit?: (values: IApiDto) => void;
+  validateForm?: ValidateFormType;
+  setFieldValue?: SetFieldValueType;
+  errorMessage?: string;
+}
+
+export interface IOrderDto extends IApiDto {
+  libelle: string;
+  orderAsc?: boolean;
 }
