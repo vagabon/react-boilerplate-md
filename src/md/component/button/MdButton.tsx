@@ -30,11 +30,13 @@ export interface IMdButtonProps {
   label?: string;
   url?: string;
   startIcon?: string;
+  fullWidth?: boolean;
   icon?: string;
   iconColor?: IconColorType;
   color?: ButtonColorType;
   size?: 'small' | 'medium' | 'large';
   variant?: 'text' | 'outlined' | 'contained';
+  type?: 'submit';
   disabled?: boolean;
   sx?: SxProps<Theme>;
   callback?: () => void;
@@ -52,15 +54,17 @@ const MdButton: React.FC<IMdButtonProps> = (props) => {
 
   const onClick = useCallback(
     (callback?: () => void) => (event: MouseEvent) => {
-      event.stopPropagation();
-      event.preventDefault();
-      if (callback) {
-        callback();
-      } else if (props.url) {
-        navigate(props.url);
+      if (props.type !== 'submit') {
+        event.stopPropagation();
+        event.preventDefault();
+        if (callback) {
+          callback();
+        } else if (props.url) {
+          navigate(props.url);
+        }
       }
     },
-    [props.url, navigate],
+    [props.url, props.type, navigate],
   );
 
   const showContent = useCallback(() => {
@@ -74,6 +78,8 @@ const MdButton: React.FC<IMdButtonProps> = (props) => {
           className={props.className ?? ''}
           size={props.size ?? 'small'}
           variant={props.variant}
+          type={props.type ?? 'button'}
+          fullWidth={props.fullWidth}
           onClick={onClick(props.callback)}
           startIcon={getIcon(props.startIcon)}
           color={props.color ?? 'primary'}

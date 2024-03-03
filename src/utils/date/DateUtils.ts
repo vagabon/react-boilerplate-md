@@ -36,4 +36,23 @@ export const DateUtils = {
 
     return dateFormat;
   },
+
+  showEndDate(dateString: string) {
+    const givenDate = new Date(dateString ?? '');
+    const currentDate = new Date();
+    const differenceMs = givenDate.valueOf() - currentDate.valueOf();
+
+    // Convert milliseconds to days, hours, and minutes
+    const days = Math.floor(differenceMs / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((differenceMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((differenceMs % (1000 * 60 * 60)) / (1000 * 60));
+    return { days, hours, minutes };
+  },
+
+  isDateSupNow(dateString?: string) {
+    const givenDate = new Date(dateString ?? '');
+    const currentDate = new Date();
+    const differenceMs = givenDate.valueOf() - currentDate.valueOf();
+    return differenceMs > 0;
+  },
 };

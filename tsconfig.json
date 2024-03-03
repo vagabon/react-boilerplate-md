@@ -1,5 +1,5 @@
 {
-  "compilerOptions": { 
+  "compilerOptions": {
     "rootDir": "src",
     "target": "esnext",
     "module": "esnext",

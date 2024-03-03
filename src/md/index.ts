@@ -2,6 +2,8 @@ export { default as MdAlert } from './component/alert/MdAlert';
 export type { IMdAlertProps } from './component/alert/MdAlert';
 export { default as MdAvatar } from './component/avatar/MdAvatar';
 export type { IMdAvatarProps } from './component/avatar/MdAvatar';
+export { default as MdBackdrop } from './component/backdrop/MdBackdrop';
+export type { IMdBackdropProps } from './component/backdrop/MdBackdrop';
 export { default as MdBox } from './component/box/MdBox';
 export type { IMdBoxProps } from './component/box/MdBox';
 export { default as MdButton } from './component/button/MdButton';
@@ -76,7 +78,7 @@ export { default as MdTableWithPagination } from './component/table/MdTableWithP
 export type {
   IMdTableWithPaginationProps,
   ITableDto,
-  TablePaginateCallbackType
+  TablePaginateCallbackType,
 } from './component/table/MdTableWithPagination';
 export { default as MdTabs } from './component/tabs/MdTabs';
 export type { IMdTabsProps, TabsType } from './component/tabs/MdTabs';
@@ -92,4 +94,3 @@ export type { IMdTypoProps } from './component/typo/MdTypo';
 export { useFormError } from './hook/useFormError';
 export { useFormValue } from './hook/useFormValue';
 export { useId } from './hook/useId';
-

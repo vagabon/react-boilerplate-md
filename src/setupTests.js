@@ -72,6 +72,7 @@ jest.mock('@mui/material', () => ({
       {renderInput()}
     </>
   ),
+  Backdrop: ({ children }) => <div data-testid='Backdrop'>{children}</div>,
   Box: ({ children }) => <div data-testid='Box'>{children}</div>,
   ButtonGroup: ({ children }) => <div data-testid='ButtonGroup'>{children}</div>,
   Card: ({ children }) => <div data-testid='Card'>{children}</div>,
@@ -88,6 +89,7 @@ jest.mock('@mui/material', () => ({
     <input data-testid='Checkbox' name={name} checked={checked} onClick={onClick} onChange={onChange} onBlur={onBlur} />
   ),
   Chip: ({ label, onDelete }) => <input data-testid='Chip' value={label} onClick={onDelete} />,
+  CircularProgress: ({ children }) => <div data-testid='CircularProgress'>{children}</div>,
   Collapse: ({ children }) => <div data-testid='Collapse'>{children}</div>,
   Container: ({ children }) => <div data-testid='Container'>{children}</div>,
   CssBaseline: ({ children }) => <div data-testid='CssBaseline'>{children}</div>,

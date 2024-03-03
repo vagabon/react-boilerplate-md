@@ -1,5 +1,5 @@
 import { Card, CardActions, CardContent, CardHeader, CardMedia, Typography } from '@mui/material';
-import React, { ReactNode, useCallback } from 'react';
+import React, { CSSProperties, ReactNode, useCallback } from 'react';
 import { ID } from '../../../dto/api/ApiDto';
 import { IconColorType, useIcon } from '../../../icon';
 import IconClickable from '../../../icon/component/IconClickable';
@@ -25,6 +25,7 @@ export interface IMdCardProps {
   children?: ReactNode;
   actions?: ReactNode;
   buttonchildren?: ReactNode;
+  style?: CSSProperties;
   callback?: () => void;
   callbackLeft?: () => void;
   elementRigth?: () => React.JSX.Element;
