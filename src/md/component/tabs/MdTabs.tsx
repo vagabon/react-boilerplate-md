@@ -5,6 +5,7 @@ import { useAppTranslate } from '../../../translate';
 export type TabsType = {
   name: string;
   label: string;
+  after?: string;
 };
 
 export interface IMdTabsProps {
@@ -45,10 +46,10 @@ const MdTabs: React.FC<IMdTabsProps> = ({
       indicatorColor={indicatorColor ?? 'secondary'}
       textColor={color ?? 'secondary'}
       aria-label={label ?? ''}
-      variant={variant ?? 'scrollable'}
-      scrollButtons={scrollButtons ?? 'auto'}>
+      variant={variant ?? 'fullWidth'}
+      scrollButtons={scrollButtons ?? false}>
       {tabs.map((tab) => (
-        <Tab key={tab.name} value={tab.name} label={t(tab.label)} />
+        <Tab key={tab.name} value={tab.name} label={t(tab.label) + (tab.after ? ' (' + tab.after + ')' : '')} />
       ))}
     </Tabs>
   );

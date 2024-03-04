@@ -7,9 +7,9 @@ export interface IMdListItemTextProps {
   secondary?: React.JSX.Element;
 }
 const MdListItemText: React.FC<IMdListItemTextProps> = ({ label, color, secondary }) => {
-  const { t } = useAppTranslate();
+  const { Trans } = useAppTranslate();
 
-  return <ListItemText className={color} primary={t(label)} secondary={secondary} />;
+  return <ListItemText className={color} primary={<Trans i18nKey={label} />} secondary={secondary} />;
 };
 
 export default MdListItemText;
