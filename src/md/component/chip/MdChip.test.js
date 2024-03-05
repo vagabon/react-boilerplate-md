@@ -7,4 +7,9 @@ describe('MdChip', () => {
     render(<MdChip label='label' icon='icon' callbackDelete={callbackDelete}></MdChip>);
     expect(screen.getByTestId('Chip')).toBeDefined();
   });
+
+  test('Given MdChip when its mount then ButtonGroup is shown', () => {
+    render(<MdChip label='label'></MdChip>);
+    expect(screen.getByTestId('Chip')).toBeDefined();
+  });
 });
