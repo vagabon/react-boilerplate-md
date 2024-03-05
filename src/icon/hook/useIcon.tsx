@@ -1,5 +1,6 @@
 import { ArrowBackIos } from '@mui/icons-material';
 import { useCallback } from 'react';
+import { IListDto } from '../../utils';
 
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
@@ -111,10 +112,40 @@ export const useIcon = () => {
     Object.entries(ICONS).forEach(([key, data]) => {
       if (key === icon) {
         iconReact = data.react(colorOk);
+        return;
       }
     });
     return iconReact;
   }, []);
 
-  return { getIcon };
+  const getIconListDto = useCallback((): IListDto[] => {
+    const removes = [
+      'add',
+      'back',
+      'click',
+      'close',
+      'delete',
+      'exit',
+      'inbox',
+      'login',
+      'menu',
+      'moon',
+      'notification',
+      'password',
+      'personAdd',
+      'refresh',
+      'right',
+      'sun',
+      'user',
+    ];
+
+    return Object.entries(ICONS)
+      .sort((a, b) => a[0].localeCompare(b[0]))
+      .filter((icon) => !removes.includes(icon[0]))
+      .map(([key]) => {
+        return { id: key, libelle: key, icon: key };
+      });
+  }, []);
+
+  return { getIcon, getIconListDto };
 };

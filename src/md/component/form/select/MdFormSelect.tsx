@@ -1,7 +1,16 @@
-import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
+import {
+  FormControl,
+  InputLabel,
+  ListItemIcon,
+  ListItemText,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+} from '@mui/material';
 import { useCallback, useEffect, useState } from 'react';
 import { IApiDto, JSONObject } from '../../../../dto/api/ApiDto';
 import { IFormPropsDto } from '../../../../dto/form/FormDto';
+import { useIcon } from '../../../../icon';
 import { useAppTranslate } from '../../../../translate';
 import { useFormError } from '../../../hook/useFormError';
 import MdFormError from '../MdFormError';
@@ -9,6 +18,7 @@ import MdFormError from '../MdFormError';
 interface IListDto {
   value: string | number;
   name: string;
+  icon?: string;
 }
 
 export interface IMdFormSelectProps extends IFormPropsDto {
@@ -24,6 +34,7 @@ export interface IMdFormSelectProps extends IFormPropsDto {
 
 const MdFormSelect: React.FC<IMdFormSelectProps> = ({ defaultValue = true, ...props }) => {
   const { t } = useAppTranslate();
+  const { getIcon } = useIcon();
   const { error } = useFormError(props.name, props.errors, props.touched, props.errorMessage);
 
   const [value, setValue] = useState<string>('');
@@ -33,7 +44,11 @@ const MdFormSelect: React.FC<IMdFormSelectProps> = ({ defaultValue = true, ...pr
     const values: IListDto[] = [];
     props.list?.forEach((value) => {
       value.id &&
-        values.push({ value: value.id, name: t(value[(props.listLibelle ?? 'libelle') as keyof JSONObject]) });
+        values.push({
+          value: value.id,
+          name: t(value[(props.listLibelle ?? 'libelle') as keyof JSONObject]),
+          icon: value['icon' as keyof JSONObject],
+        });
     });
     setValues(values);
   }, [props.list, props.listLibelle, t]);
@@ -80,7 +95,8 @@ const MdFormSelect: React.FC<IMdFormSelectProps> = ({ defaultValue = true, ...pr
               values.length > 0 &&
               values.map((myValue) => (
                 <MenuItem key={myValue.name + myValue.value} value={myValue.value}>
-                  {myValue.name}
+                  {myValue.icon && <ListItemIcon>{getIcon(myValue.icon)}</ListItemIcon>}
+                  <ListItemText primary={myValue.name} />
                 </MenuItem>
               ))}
           </Select>

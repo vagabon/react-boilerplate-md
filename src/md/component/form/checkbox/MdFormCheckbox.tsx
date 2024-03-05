@@ -31,8 +31,8 @@ const MdFormCheckbox: React.FC<IMdFormCheckboxProps> = (props: IMdFormCheckboxPr
   );
 
   return (
-    <div className='flex flex-row align-center'>
-      <Typography paragraph={true} style={{ flex: '1', margin: '20px 7px' }}>
+    <div className='flex flex-row align-center' style={{ height: '50px' }}>
+      <Typography paragraph={true} style={{ flex: '1' }}>
         {props.label && t(props.label)}
       </Typography>
       <MdFormCheckboxSimple
