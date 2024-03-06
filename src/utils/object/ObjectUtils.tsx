@@ -21,18 +21,20 @@ export const ObjectUtils = {
   compareId: (id1: ID, id2: ID) => {
     return parseInt(id1?.toString() ?? '') === parseInt(id2?.toString() ?? '');
   },
-  addOrReplace: (entities: JSONObject[], field: string, field2: string, idToCheck: ID, newDatas: JSONObject[]) => {
-    let datas = [...entities];
-    const find = datas.find((data) => ObjectUtils.compareId(data[field as keyof JSONObject], idToCheck));
+  addOrReplace: <T,>(entities: T, field: string, field2: string, payload: T): T => {
+    let datas = [...(entities as JSONObject[])];
+    const find = datas.find((data) =>
+      ObjectUtils.compareId(data[field as keyof JSONObject], payload[field as keyof JSONObject]),
+    );
     if (!find) {
-      datas.push({ [field]: idToCheck, [field2]: newDatas });
+      datas.push({ [field]: payload[field as keyof JSONObject], [field2]: payload[field2 as keyof JSONObject] });
     } else {
       datas = datas.map((data) =>
-        ObjectUtils.compareId(data[field as keyof JSONObject], idToCheck)
-          ? { [field]: idToCheck, [field2]: newDatas }
+        ObjectUtils.compareId(data[field as keyof JSONObject], payload[field as keyof JSONObject])
+          ? { [field]: payload[field as keyof JSONObject], [field2]: payload[field2 as keyof JSONObject] }
           : data,
       );
     }
-    return datas;
+    return datas as T;
   },
 };

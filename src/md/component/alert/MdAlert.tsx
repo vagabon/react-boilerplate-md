@@ -11,11 +11,12 @@ export interface IMdAlertProps {
   icon?: string;
   action?: ReactNode;
   sx?: SxProps<Theme>;
+  callback?: () => void;
 }
 
-const MdAlert: React.FC<IMdAlertProps> = ({ title, label, ...rest }) => {
+const MdAlert: React.FC<IMdAlertProps> = ({ title, label, callback, ...rest }) => {
   return (
-    <Alert {...rest}>
+    <Alert {...rest} onClick={callback}>
       {title && (
         <AlertTitle>
           <Trans i18nKey={title} />

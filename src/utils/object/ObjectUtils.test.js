@@ -41,8 +41,7 @@ describe('ObjectUtils', () => {
       ],
       'id',
       'field2',
-      1,
-      [{ id: 1, field: 'test2' }],
+      { id: 1, field2: [{ id: 1, field: 'test2' }] },
     );
     expect(tested.length).toBe(2);
   });
