@@ -21,7 +21,7 @@ export const ObjectUtils = {
   compareId: (id1: ID, id2: ID) => {
     return parseInt(id1?.toString() ?? '') === parseInt(id2?.toString() ?? '');
   },
-  addOrReplace: <T,>(entities: T, field: string, field2: string, payload: T): T => {
+  addOrReplace: <T,>(entities: T[], field: string, field2: string, payload: T): T[] => {
     let datas = [...(entities as JSONObject[])];
     const find = datas.find((data) =>
       ObjectUtils.compareId(data[field as keyof JSONObject], payload[field as keyof JSONObject]),
@@ -35,6 +35,6 @@ export const ObjectUtils = {
           : data,
       );
     }
-    return datas as T;
+    return datas as T[];
   },
 };
