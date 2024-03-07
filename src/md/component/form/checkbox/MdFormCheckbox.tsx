@@ -30,9 +30,13 @@ const MdFormCheckbox: React.FC<IMdFormCheckboxProps> = (props: IMdFormCheckboxPr
     [props.name, props.values],
   );
 
+  const handleClicklabel = useCallback(() => {
+    handleChange?.(props.handleChange)();
+  }, [props]);
+
   return (
     <div className='flex flex-row align-center' style={{ height: '50px' }}>
-      <Typography paragraph={true} style={{ flex: '1' }}>
+      <Typography paragraph={true} style={{ flex: '1', cursor: 'pointer' }} onClick={handleClicklabel}>
         {props.label && t(props.label)}
       </Typography>
       <MdFormCheckboxSimple
