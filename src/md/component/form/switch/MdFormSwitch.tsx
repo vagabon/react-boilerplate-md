@@ -24,7 +24,6 @@ const MdFormSwitch: React.FC<IMdFormSwitchProps> = ({ className = '', ...props }
 
   const handleChange = useCallback(
     (oldValue: boolean, callback?: HandleChangeType) => () => {
-      console.log('aaaaaa');
       const newEvent = { target: { name: props.name, value: !oldValue } };
       callback?.(newEvent);
     },

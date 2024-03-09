@@ -15,11 +15,11 @@ export interface IMdTypoProps {
 }
 
 const MdTypo: React.FC<IMdTypoProps> = ({ label, paragraph, variant, color, align, noWrap, sx, children }) => {
-  const { t } = useAppTranslate();
+  const { Trans } = useAppTranslate();
 
   return (
     <Typography paragraph={paragraph} variant={variant} color={color} align={align} noWrap={noWrap} sx={sx}>
-      {t(label ?? '')}
+      <Trans i18nKey={label} />
       {children}
     </Typography>
   );

@@ -18,6 +18,7 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness5Icon from '@mui/icons-material/Brightness5';
 import CachedIcon from '@mui/icons-material/Cached';
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
+import CheckIcon from '@mui/icons-material/Check';
 import ChecklistIcon from '@mui/icons-material/Checklist';
 import CloseIcon from '@mui/icons-material/Close';
 import CreateIcon from '@mui/icons-material/Create';
@@ -27,6 +28,7 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import FolderIcon from '@mui/icons-material/Folder';
 import GoogleIcon from '@mui/icons-material/Google';
+import HelpIcon from '@mui/icons-material/Help';
 import HomeIcon from '@mui/icons-material/Home';
 import InfoIcon from '@mui/icons-material/Info';
 import InsertLinkIcon from '@mui/icons-material/InsertLink';
@@ -100,6 +102,8 @@ export const ICONS = {
   news: { react: (color: IconColorType) => <AnnouncementIcon color={color} /> },
   blog: { react: (color: IconColorType) => <ArticleIcon color={color} /> },
   checklist: { react: (color: IconColorType) => <ChecklistIcon color={color} /> },
+  help: { react: (color: IconColorType) => <HelpIcon color={color} /> },
+  check: { react: (color: IconColorType) => <CheckIcon color={color} /> },
 };
 
 export const useIcon = () => {

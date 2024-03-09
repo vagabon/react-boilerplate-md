@@ -32,7 +32,7 @@ const MdFormCheckbox: React.FC<IMdFormCheckboxProps> = (props: IMdFormCheckboxPr
 
   const handleClicklabel = useCallback(() => {
     handleChange?.(props.handleChange)();
-  }, [props]);
+  }, [props, handleChange]);
 
   return (
     <div className='flex flex-row align-center' style={{ height: '50px' }}>

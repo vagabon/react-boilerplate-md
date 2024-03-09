@@ -64,6 +64,8 @@ export { default as MdListItemIcon } from './component/list/MdListItemIcon';
 export type { IMdListItemIconProps } from './component/list/MdListItemIcon';
 export { default as MdListItemText } from './component/list/MdListItemText';
 export type { IMdListItemTextProps } from './component/list/MdListItemText';
+export { default as MdListSimple } from './component/list/MdListSimple';
+export type { IListSimpleDto, IMdListSimpleProps } from './component/list/MdListSimple';
 export { default as MdMarkdown } from './component/markdown/MdMarkdown';
 export type { IMdMarkdownProps } from './component/markdown/MdMarkdown';
 export { default as MdMenuItem } from './component/menu/MdMenuItem';
