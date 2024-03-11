@@ -1,5 +1,15 @@
 import { useCallback } from 'react';
-import { BrowserRouter, Link, Navigate, Route, Routes, useLocation, useNavigate, useParams } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Link,
+  Navigate,
+  Route,
+  Routes,
+  ScrollRestoration,
+  useLocation,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 import { IApiDto } from '../../dto';
 
 export const useAppRouter = () => {
@@ -33,6 +43,7 @@ export const useAppRouter = () => {
     BrowserRouter,
     Route,
     Routes,
+    ScrollRestoration,
     handleNavigate,
     handleNavigateWithId,
   };

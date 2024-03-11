@@ -63,6 +63,9 @@ jest.mock('react-i18next', () => ({
 
 /* global jest */
 jest.mock('@mui/material', () => ({
+  Accordion: ({ children }) => <div data-testid='Accordion'>{children}</div>,
+  AccordionDetails: ({ children }) => <div data-testid='AccordionDetails'>{children}</div>,
+  AccordionSummary: ({ children }) => <div data-testid='AccordionSummary'>{children}</div>,
   Alert: ({ children }) => <div data-testid='Alert'>{children}</div>,
   AlertTitle: ({ children }) => <div data-testid='AlertTitle'>{children}</div>,
   Avatar: ({ children }) => <div data-testid='Avatar'>{children}</div>,

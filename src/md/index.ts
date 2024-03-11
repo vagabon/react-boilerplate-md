@@ -1,3 +1,5 @@
+export { default as MdAccordion } from './component/accordion/MdAccordion';
+export type { IMdAccordionProps } from './component/accordion/MdAccordion';
 export { default as MdAlert } from './component/alert/MdAlert';
 export type { IMdAlertProps } from './component/alert/MdAlert';
 export { default as MdAvatar } from './component/avatar/MdAvatar';
