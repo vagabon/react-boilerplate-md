@@ -2,7 +2,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 import { useAppTranslate } from '../../../translate';
 import { useId } from '../../hook/useId';
-import MdMarkdown from '../markdown/MdMarkdown';
 
 export interface IMdAccordionProps {
   title: string;
@@ -20,7 +19,7 @@ const MdAccordion: React.FC<IMdAccordionProps> = ({ title, description, expanded
         <Trans i18nKey={title} />
       </AccordionSummary>
       <AccordionDetails>
-        <MdMarkdown content={description} />
+        <Trans i18nKey={description} />
       </AccordionDetails>
     </Accordion>
   );
