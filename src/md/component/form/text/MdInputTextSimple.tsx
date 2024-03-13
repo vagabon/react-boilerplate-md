@@ -12,6 +12,7 @@ const DEFAULT_TEXT = 'text';
 export interface IMdInputTextSimpleProps {
   label: string;
   value: JSONValue;
+  newValue?: JSONValue;
   name: string;
   variant?: TextFieldVariants;
   placeholder?: string;
@@ -34,6 +35,7 @@ const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = ({ className = '', 
   const { uref, key, defaultValue, readonly, handleFocus, handleBlur } = useFormValue(
     props.type ?? DEFAULT_TEXT,
     props.value,
+    props.newValue,
   );
 
   const handleKeyUp = useCallback(

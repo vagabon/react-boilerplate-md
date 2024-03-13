@@ -3,7 +3,7 @@ import { JSONObject, JSONValue } from '../../dto/api/ApiDto';
 import { HandleBlurType } from '../../dto/form/FormDto';
 import { UuidUtils } from '../../utils/uuid/UuidUtils';
 
-export const useFormValue = (type: string, value: JSONValue) => {
+export const useFormValue = (type: string, value: JSONValue, newValue?: JSONValue) => {
   const [key, setKey] = useState<string>();
   const [defaultValue, setDefaultValue] = useState<JSONValue>('');
   const [readonly, setReadonly] = useState(type === 'password');
@@ -19,6 +19,13 @@ export const useFormValue = (type: string, value: JSONValue) => {
       }, 100);
     }
   }, [value]);
+
+  useEffect(() => {
+    if (newValue && isFocusRef.current === false) {
+      setKey(UuidUtils.createUUID());
+      setDefaultValue(newValue);
+    }
+  }, [newValue]);
 
   const handleFocus = useCallback(() => {
     isFocusRef.current = true;

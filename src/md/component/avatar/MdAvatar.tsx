@@ -4,7 +4,7 @@ import { useAppRouter } from '../../../router';
 import { ObjectUtils } from '../../../utils/object/ObjectUtils';
 import { WindowUtils } from '../../../utils/window/WindowUtils';
 
-const API_URL: string = WindowUtils.getEnv('API_URL');
+const API_URL = WindowUtils.getEnv('API_URL') as string;
 
 export interface IMdAvatarProps {
   name: string;

@@ -10,6 +10,7 @@ import MdFormCheckboxSimple from './MdFormCheckboxSimple';
 export interface IMdFormCheckboxProps extends IFormPropsDto {
   label?: string;
   name: string;
+  disabled?: boolean;
 }
 
 const MdFormCheckbox: React.FC<IMdFormCheckboxProps> = (props: IMdFormCheckboxProps) => {
@@ -46,6 +47,7 @@ const MdFormCheckbox: React.FC<IMdFormCheckboxProps> = (props: IMdFormCheckboxPr
         callbackBlur={props.handleBlur}
         inputProps={{ 'aria-label': 'controlled' }}
         sx={{ padding: '0px 2px' }}
+        disabled={props.disabled}
       />
 
       <MdFormError error={error} />

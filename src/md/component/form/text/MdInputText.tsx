@@ -38,6 +38,7 @@ const MdInputText: React.FC<IMdInputTextProps> = ({ className = '', ...props }) 
         label={props.label}
         name={props.name}
         value={props.state?.[props.name as keyof JSONObject] ?? ''}
+        newValue={props.values?.[props.name as keyof JSONObject] ?? ''}
         required={props.validationSchema?.[props.name as keyof JSONObject]?.['required']}
         disabled={props.validationSchema?.[props.name as keyof JSONObject]?.['disabled']}
         fullWidth={props.fullWidth}

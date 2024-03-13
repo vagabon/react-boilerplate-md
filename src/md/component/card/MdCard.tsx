@@ -31,7 +31,7 @@ export interface IMdCardProps {
   elementRigth?: () => React.JSX.Element;
 }
 
-const API_URL: string = WindowUtils.getEnv('API_URL');
+const API_URL = WindowUtils.getEnv('API_URL') as string;
 
 const MdCard: React.FC<IMdCardProps> = ({
   color = 'secondary',

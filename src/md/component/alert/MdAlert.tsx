@@ -4,6 +4,7 @@ import { ReactNode } from 'react';
 import { Trans } from 'react-i18next';
 
 export interface IMdAlertProps {
+  className?: string;
   severity: AlertColor;
   color?: AlertColor;
   title?: string;

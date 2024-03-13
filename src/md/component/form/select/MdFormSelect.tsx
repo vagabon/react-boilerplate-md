@@ -43,10 +43,11 @@ const MdFormSelect: React.FC<IMdFormSelectProps> = ({ defaultValue = true, ...pr
   useEffect(() => {
     const values: IListDto[] = [];
     props.list?.forEach((value) => {
+      const libelle = value[(props.listLibelle ?? 'libelle') as keyof JSONObject] as string;
       value.id &&
         values.push({
           value: value.id,
-          name: t(value[(props.listLibelle ?? 'libelle') as keyof JSONObject]),
+          name: libelle?.startsWith('http') ? libelle : t(libelle),
           icon: value['icon' as keyof JSONObject],
         });
     });
