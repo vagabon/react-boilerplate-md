@@ -78,12 +78,10 @@ export { default as MdSearchBar } from './component/searchbar/MdSearchBar';
 export type { IMdSearchBarProps } from './component/searchbar/MdSearchBar';
 export { default as MdSnackbar } from './component/snackbar/MdSnackbar';
 export type { IMdSnackbarProps } from './component/snackbar/MdSnackbar';
+export { default as MdTable } from './component/table/MdTable';
+export type { IMdTableProps, ITableDto, TablePaginateCallbackType } from './component/table/MdTable';
 export { default as MdTableWithPagination } from './component/table/MdTableWithPagination';
-export type {
-  IMdTableWithPaginationProps,
-  ITableDto,
-  TablePaginateCallbackType,
-} from './component/table/MdTableWithPagination';
+export type { IMdTableWithPaginationProps } from './component/table/MdTableWithPagination';
 export { default as MdTabs } from './component/tabs/MdTabs';
 export type { IMdTabsProps, TabsType } from './component/tabs/MdTabs';
 export { default as MdThemeProvider } from './component/theme/MdThemeProvider';

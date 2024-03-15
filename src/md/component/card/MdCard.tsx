@@ -1,4 +1,5 @@
 import { Card, CardActions, CardContent, CardHeader, CardMedia, Typography } from '@mui/material';
+import { Variant } from '@mui/material/styles/createTypography';
 import React, { CSSProperties, ReactNode, useCallback } from 'react';
 import { ID } from '../../../dto/api/ApiDto';
 import { IconColorType, useIcon } from '../../../icon';
@@ -15,6 +16,7 @@ export interface IMdCardProps {
   color?: IconColorType;
   icon?: string;
   title?: string;
+  titleVariant?: Variant;
   titleCount?: number;
   date?: string;
   url?: string;
@@ -37,6 +39,7 @@ const MdCard: React.FC<IMdCardProps> = ({
   color = 'secondary',
   icon,
   title,
+  titleVariant = 'h1',
   titleCount,
   url,
   urlUpdate,
@@ -84,7 +87,7 @@ const MdCard: React.FC<IMdCardProps> = ({
             <div className='flex flex-row' style={{ alignItems: 'baseline' }}>
               {callbackLeft && <IconClickable icon='back' color='secondary' callback={callbackLeft} />}
               {icon && <>{getIcon(icon, color)}&nbsp;</>}
-              <Typography variant='h1' color={color} sx={{ flex: '1' }}>
+              <Typography variant={titleVariant} color={color} sx={{ flex: '1' }}>
                 <Trans i18nKey={I18nUtils.translate(t, title)} />
                 {titleCount !== undefined && <> ({titleCount})</>}
               </Typography>

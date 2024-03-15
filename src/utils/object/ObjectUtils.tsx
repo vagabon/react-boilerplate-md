@@ -1,4 +1,5 @@
 import { IApiDto, ID, JSONObject } from '../../dto/api/ApiDto';
+import { DateUtils } from '../date/DateUtils';
 
 export const ObjectUtils = {
   capitalize(name?: string) {
@@ -10,13 +11,13 @@ export const ObjectUtils = {
   getDtoString: (data: IApiDto | JSONObject, name: string) => {
     return ObjectUtils.getDtoValue(data, name) as string;
   },
-  getRecursivValue: (data: JSONObject, name: string) => {
+  getRecursivValue: (data: JSONObject, name: string, isDate: boolean = false) => {
     let value = data;
     const splits = name.split('.');
     splits.forEach((split) => {
       value = value?.[split as keyof JSONObject] ?? '';
     });
-    return String(value);
+    return isDate ? DateUtils.format(value as string, 'DD-MM-YYYY hhhmm') : String(value);
   },
   compareId: (id1: ID, id2: ID) => {
     return parseInt(id1?.toString() ?? '') === parseInt(id2?.toString() ?? '');
