@@ -8,7 +8,6 @@ import { useAppRouter } from '../../../router';
 import { useAppTranslate } from '../../../translate';
 import { DateUtils } from '../../../utils/date/DateUtils';
 import { I18nUtils } from '../../../utils/i18n/I18nUtils';
-import { WindowUtils } from '../../../utils/window/WindowUtils';
 import { useId } from '../../hook/useId';
 
 export interface IMdCardProps {
@@ -32,8 +31,6 @@ export interface IMdCardProps {
   callbackLeft?: () => void;
   elementRigth?: () => React.JSX.Element;
 }
-
-const API_URL = WindowUtils.getEnv('API_URL') as string;
 
 const MdCard: React.FC<IMdCardProps> = ({
   color = 'secondary',
@@ -66,17 +63,13 @@ const MdCard: React.FC<IMdCardProps> = ({
     <Card {...rest} id={id}>
       {image && (
         <CardMedia onClick={handleClick(url)}>
-          <img alt={'Image : ' + title} src={API_URL + '/download?fileName=' + image} width='100%' height='200px' />
+          <img alt={'Image : ' + title} src={image} width='100%' height='200px' />
         </CardMedia>
       )}
       {title && (
         <CardHeader
           onClick={handleClick(url)}
-          avatar={
-            avatar && (
-              <img alt={'Image : ' + title} src={API_URL + '/download?fileName=' + avatar} width='40px' height='40px' />
-            )
-          }
+          avatar={avatar && <img alt={'Image : ' + title} src={avatar} width='40px' height='40px' />}
           action={
             <>
               {urlUpdate && <IconClickable color='primary' icon='settings' callback={handleClick(urlUpdate)} />}

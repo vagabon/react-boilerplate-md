@@ -2,9 +2,6 @@ import { Avatar, IconButton, SxProps, Theme } from '@mui/material';
 import { MouseEvent, useCallback } from 'react';
 import { useAppRouter } from '../../../router';
 import { ObjectUtils } from '../../../utils/object/ObjectUtils';
-import { WindowUtils } from '../../../utils/window/WindowUtils';
-
-const API_URL = WindowUtils.getEnv('API_URL') as string;
 
 export interface IMdAvatarProps {
   name: string;
@@ -28,17 +25,10 @@ const MdAvatar: React.FC<IMdAvatarProps> = ({ name, image, disabled, url, sx, ca
     [url, navigate, callback],
   );
 
-  const getImage = useCallback((image: string) => {
-    if (!image.includes('http://') && !image.startsWith('https://')) {
-      return API_URL + '/download?fileName=' + image;
-    }
-    return image;
-  }, []);
-
   return (
     <IconButton edge='end' aria-label='delete' onClick={handleClick} disabled={disabled}>
-      {image && image !== '' && image.includes('/') ? (
-        <Avatar alt={name} src={getImage(image)} sx={sx} />
+      {image && image !== null && image !== '' && image.includes('/') ? (
+        <Avatar alt={name} src={image} sx={sx} />
       ) : (
         <Avatar color='secondary' sx={sx}>
           {ObjectUtils.capitalize(name)[0]}
