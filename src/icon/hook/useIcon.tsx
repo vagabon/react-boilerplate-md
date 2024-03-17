@@ -116,7 +116,6 @@ export const useIcon = () => {
     Object.entries(ICONS).forEach(([key, data]) => {
       if (key === icon) {
         iconReact = data.react(colorOk);
-        return;
       }
     });
     return iconReact;
