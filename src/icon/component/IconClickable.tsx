@@ -3,13 +3,14 @@ import { MouseEvent, useCallback } from 'react';
 import { IconColorType, useIcon } from '../hook/useIcon';
 
 export interface IIconClickableProps {
+  className?: string;
   icon: string;
   color?: IconColorType;
   disabled?: boolean;
   callback?: () => void;
 }
 
-const IconClickable: React.FC<IIconClickableProps> = ({ icon, color, disabled, callback }) => {
+const IconClickable: React.FC<IIconClickableProps> = ({ className, icon, color, disabled, callback }) => {
   const { getIcon } = useIcon();
 
   const handleClickIcon = useCallback(
@@ -22,7 +23,7 @@ const IconClickable: React.FC<IIconClickableProps> = ({ icon, color, disabled, c
   );
 
   return (
-    <IconButton edge='end' aria-label='delete' onClick={handleClickIcon} disabled={disabled}>
+    <IconButton className={className} edge='end' aria-label='delete' onClick={handleClickIcon} disabled={disabled}>
       {getIcon(icon, color, disabled)}
     </IconButton>
   );
