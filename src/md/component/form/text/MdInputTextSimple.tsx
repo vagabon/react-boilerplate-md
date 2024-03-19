@@ -1,10 +1,9 @@
-import { InputProps, TextField, TextFieldVariants } from '@mui/material';
-import { KeyboardEvent, useCallback } from 'react';
-import { IApiDto, JSONValue } from '../../../../dto/api/ApiDto';
+import { IconButton, InputProps, TextField, TextFieldVariants } from '@mui/material';
+import { ClearIcon } from '@mui/x-date-pickers';
+import { JSONValue } from '../../../../dto/api/ApiDto';
 import { HandleBlurType, HandleChangeType } from '../../../../dto/form/FormDto';
 import { useAppTranslate } from '../../../../translate';
 import { I18nUtils } from '../../../../utils';
-import { ObjectUtils } from '../../../../utils/object/ObjectUtils';
 import { useFormValue } from '../../../hook/useFormValue';
 
 const DEFAULT_TEXT = 'text';
@@ -28,32 +27,28 @@ export interface IMdInputTextSimpleProps {
   handleChange?: HandleChangeType;
   handleBlur?: HandleBlurType;
   handleKeyEnter?: (target: { name: string; value: string }) => void;
+  callbackReset?: () => void;
 }
 
-const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = ({ className = '', ...props }) => {
+const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = ({ className = '', callbackReset, ...props }) => {
   const { t } = useAppTranslate();
-  const { uref, key, defaultValue, readonly, handleFocus, handleBlur } = useFormValue(
-    props.type ?? DEFAULT_TEXT,
-    props.value,
-    props.newValue,
-  );
-
-  const handleKeyUp = useCallback(
-    (callbackEnter?: (target: { name: string; value: string }) => void) => (event: KeyboardEvent<HTMLDivElement>) => {
-      if (event.key === 'Enter') {
-        const target = {
-          name: ObjectUtils.getDtoString(event.target as IApiDto, 'name'),
-          value: ObjectUtils.getDtoString(event.target as IApiDto, 'value'),
-        };
-        callbackEnter?.(target);
-      }
-    },
-    [],
-  );
+  const {
+    uref,
+    key,
+    liveValue,
+    defaultValue,
+    readonly,
+    handleFocus,
+    handleChange,
+    handleBlur,
+    handleKeyUp,
+    handleReset,
+  } = useFormValue(props.type ?? DEFAULT_TEXT, props.value, props.newValue);
 
   return (
     <div style={{ width: '100%' }}>
       <TextField
+        autoFocus
         error={props.error}
         key={key}
         inputRef={uref}
@@ -69,11 +64,18 @@ const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = ({ className = '', 
         required={props.required}
         fullWidth={props.fullWidth}
         onFocus={handleFocus}
-        onChange={props.handleChange}
+        onChange={handleChange(props.handleChange)}
         onBlur={handleBlur(props.handleBlur)}
         onKeyUp={handleKeyUp(props.handleKeyEnter)}
         InputProps={{
           ...props.inputProps,
+          endAdornment: callbackReset && (
+            <IconButton
+              sx={{ visibility: liveValue !== '' ? 'visible' : 'hidden' }}
+              onMouseDown={handleReset(callbackReset)}>
+              <ClearIcon />
+            </IconButton>
+          ),
           autoComplete: 'off',
           readOnly: readonly,
         }}

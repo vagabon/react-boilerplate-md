@@ -96,3 +96,5 @@ export type { IMdTypoProps } from './component/typo/MdTypo';
 export { useFormError } from './hook/useFormError';
 export { useFormValue } from './hook/useFormValue';
 export { useId } from './hook/useId';
+export { useTab } from './hook/useTab';
+export type { TabTtype } from './hook/useTab';

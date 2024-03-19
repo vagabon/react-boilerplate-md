@@ -1,9 +1,7 @@
-import ClearIcon from '@mui/icons-material/Clear';
 import SearchIcon from '@mui/icons-material/Search';
-import { IconButton, InputAdornment } from '@mui/material';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { InputAdornment } from '@mui/material';
+import { ChangeEvent, useCallback, useRef } from 'react';
 import { IApiDto, JSONObject, Primitif } from '../../../dto/api/ApiDto';
-import { UuidUtils } from '../../../utils';
 import MdFormSelect from '../form/select/MdFormSelect';
 import MdInputTextSimple from '../form/text/MdInputTextSimple';
 
@@ -16,16 +14,9 @@ export interface IMdSearchBarProps {
 }
 
 const MdSearchBar: React.FC<IMdSearchBarProps> = ({ order, orderList, ...props }) => {
-  const [defaultValue, setDefaultValue] = useState<string>('');
-  const [key, setKey] = useState<string>(UuidUtils.createUUID());
-  const lastValue = useRef<string>('');
+  const lastValue = useRef<Primitif>(props.search);
 
-  useEffect(() => {
-    setDefaultValue(props.search as string);
-    setKey(UuidUtils.createUUID());
-  }, [props.search]);
-
-  const handleChange = useCallback(
+  const handleBlur = useCallback(
     (callback: (value: string) => void) => (event: React.ChangeEvent<JSONObject>) => {
       const value = event.target['value' as keyof JSONObject];
       lastValue.current !== value && callback(value);
@@ -36,7 +27,6 @@ const MdSearchBar: React.FC<IMdSearchBarProps> = ({ order, orderList, ...props }
 
   const handleReset = useCallback(
     (callback: (value: string) => void) => () => {
-      setDefaultValue('');
       callback('');
     },
     [],
@@ -44,35 +34,28 @@ const MdSearchBar: React.FC<IMdSearchBarProps> = ({ order, orderList, ...props }
 
   const handleKeyEnter = useCallback(
     (callback: (value: string) => void) => (target: { name: string; value: string }) => {
-      handleChange(callback)({ target } as unknown as React.ChangeEvent<JSONObject>);
+      handleBlur(callback)({ target } as unknown as ChangeEvent<JSONObject>);
     },
-    [handleChange],
+    [handleBlur],
   );
 
   return (
     <div className='search-bar'>
       <MdInputTextSimple
-        key={key}
         name='searching'
-        handleBlur={handleChange(props.callBack)}
+        handleBlur={handleBlur(props.callBack)}
         handleKeyEnter={handleKeyEnter(props.callBack)}
+        callbackReset={handleReset(props.callBack)}
         label='SEARCH'
         variant='outlined'
         placeholder='SEARCH...'
         size='small'
-        value={defaultValue}
+        value={props.search}
         inputProps={{
           startAdornment: (
             <InputAdornment position='start'>
               <SearchIcon sx={{ fontSize: 20 }} />
             </InputAdornment>
-          ),
-          endAdornment: (
-            <IconButton
-              sx={{ visibility: defaultValue !== '' ? 'visible' : 'hidden' }}
-              onClick={handleReset(props.callBack)}>
-              <ClearIcon />
-            </IconButton>
           ),
         }}
       />
