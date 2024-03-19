@@ -68,6 +68,7 @@ export const useFormValue = (type: string, value: JSONValue, newValue?: JSONValu
     (callback?: () => void) => (event: MouseEvent<HTMLButtonElement>) => {
       event.stopPropagation();
       event.preventDefault();
+      isFocusRef.current = false;
       setKey(UuidUtils.createUUID());
       setDefaultValue('');
       setLiveValue('');
