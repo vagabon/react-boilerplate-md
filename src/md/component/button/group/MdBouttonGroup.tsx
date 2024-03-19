@@ -1,6 +1,6 @@
 import { Theme } from '@emotion/react';
 import { ButtonGroup, SxProps } from '@mui/material';
-import { Children, Fragment, ReactElement, ReactNode, cloneElement, useCallback } from 'react';
+import React, { Children, Fragment, ReactElement, ReactNode, cloneElement, useCallback } from 'react';
 import { UuidUtils } from '../../../../utils';
 
 export interface IMdBouttonGroupProps {
@@ -16,7 +16,7 @@ const MdBouttonGroup: React.FC<IMdBouttonGroupProps> = ({ className = '', varian
     (children: ReactNode) => (
       <>
         {Children.toArray(children).map((child) => {
-          const key = (child as JSX.Element).props?.id || UuidUtils.createUUID();
+          const key = (child as React.JSX.Element).props?.id || UuidUtils.createUUID();
           return <Fragment key={'test-' + key}>{cloneElement(child as ReactElement, { variant, size })}</Fragment>;
         })}
       </>
