@@ -48,7 +48,6 @@ const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = ({ className = '', 
   return (
     <div style={{ width: '100%' }}>
       <TextField
-        autoFocus
         error={props.error}
         key={key}
         inputRef={uref}
