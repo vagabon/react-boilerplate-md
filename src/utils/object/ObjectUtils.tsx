@@ -15,7 +15,11 @@ export const ObjectUtils = {
     let value = data;
     const splits = name.split('.');
     splits.forEach((split) => {
-      value = value?.[split as keyof JSONObject] ?? '';
+      if (Array.isArray(value)) {
+        value = (value as JSONObject[])?.map((data) => data[split as keyof JSONObject]).join(',') as JSONObject;
+      } else {
+        value = value?.[split as keyof JSONObject] ?? '';
+      }
     });
     return isDate ? DateUtils.format(value as string, 'DD-MM-YYYY hhhmm') : String(value);
   },
