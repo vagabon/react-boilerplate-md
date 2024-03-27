@@ -25,7 +25,7 @@ export interface IMdTableProps {
   datas: JSONObject[];
   sortBy?: string;
   rowsPerPage?: number;
-  forceIt: boolean;
+  showEmpty?: boolean;
   sortByOrder?: 'asc' | 'desc';
   callBack?: TablePaginateCallbackType;
   children?: ReactNode;
@@ -36,6 +36,7 @@ const MdTable: React.FC<IMdTableProps> = ({
   sortBy = 'id',
   rowsPerPage = 10,
   sortByOrder = 'asc',
+  showEmpty = false,
   callBack,
   children,
   ...rest
@@ -49,11 +50,11 @@ const MdTable: React.FC<IMdTableProps> = ({
       if (rest.datas[i]) {
         newDatas.push(rest.datas[i]);
       } else {
-        rest.forceIt && newDatas.push({ empty: true, id: UuidUtils.createUUID() });
+        showEmpty && newDatas.push({ empty: true, id: UuidUtils.createUUID() });
       }
     }
     setDatas(newDatas);
-  }, [rest.forceIt, rest.datas, rowsPerPage]);
+  }, [showEmpty, rest.datas, rowsPerPage]);
 
   const createSortHandle = useCallback(
     (property: string, callBack?: TablePaginateCallbackType) => (): void => {
