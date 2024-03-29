@@ -16,7 +16,7 @@ export interface IMdInputDatepickerProps extends IFormPropsDto {
 const MdInputDatepicker: React.FC<IMdInputDatepickerProps> = ({ className = '', ...props }) => {
   const { t } = useAppTranslate();
   const { error } = useFormError(props.name, props.errors, props.touched, props.errorMessage);
-  const [value, setValue] = useState<Dayjs | string | undefined>();
+  const [value, setValue] = useState<Dayjs | undefined>();
 
   useEffect(() => {
     const newValue = props.state?.[props.name as keyof JSONObject] ?? '';
@@ -24,7 +24,7 @@ const MdInputDatepicker: React.FC<IMdInputDatepickerProps> = ({ className = '', 
   }, [props.state, props.name]);
 
   const handleChange = useCallback(
-    (callback?: HandleChangeType) => (newValue?: string | null) => {
+    (callback?: HandleChangeType) => (newValue?: Dayjs | null) => {
       let newValueString: string = '';
       if (newValue) {
         newValueString = JSON.stringify(newValue).replaceAll('\\', '').replaceAll('"', '');
@@ -50,7 +50,7 @@ const MdInputDatepicker: React.FC<IMdInputDatepickerProps> = ({ className = '', 
         label={t(props.label)}
         name={props.name}
         onChange={handleChange?.(props.handleChange)}
-        value={(value as string) ?? ''}
+        value={value}
         disabled={props.disabled ?? false}
       />
     </div>

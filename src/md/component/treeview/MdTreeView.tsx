@@ -1,6 +1,6 @@
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { TreeItem, TreeView } from '@mui/x-tree-view';
+import { SimpleTreeView, TreeItem } from '@mui/x-tree-view';
 import { useCallback, useEffect, useState } from 'react';
 
 export interface IMdTreeViewDto {
@@ -32,7 +32,7 @@ const MdTreeView: React.FC<IMdTreeViewProps> = ({ defaultExpanded, tree, callbac
   const renderTree = ({ id, label, childrens }: IMdTreeViewDto) => (
     <TreeItem
       key={id}
-      nodeId={id.toString()}
+      itemId={id.toString()}
       label={label}
       onClick={handleClick(id, { id, label, childrens }, callback)}>
       {Array.isArray(childrens) ? childrens.map((node) => renderTree(node)) : <></>}
@@ -40,15 +40,14 @@ const MdTreeView: React.FC<IMdTreeViewProps> = ({ defaultExpanded, tree, callbac
   );
 
   return (
-    <TreeView
+    <SimpleTreeView
       aria-label='file system navigator'
-      defaultCollapseIcon={<ExpandMoreIcon />}
-      defaultExpandIcon={<ChevronRightIcon />}
-      defaultExpanded={expendeds}
-      defaultSelected={expendeds[expendeds.length - 1]}
+      slots={{ collapseIcon: ExpandMoreIcon, expandIcon: ChevronRightIcon }}
+      defaultExpandedItems={expendeds}
+      defaultSelectedItems={expendeds[expendeds.length - 1]}
       sx={{ overflow: 'auto' }}>
       {tree?.map((node) => renderTree(node))}
-    </TreeView>
+    </SimpleTreeView>
   );
 };
 
