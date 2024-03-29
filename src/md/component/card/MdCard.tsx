@@ -77,7 +77,7 @@ const MdCard: React.FC<IMdCardProps> = ({
             </>
           }
           title={
-            <div className='flex flex-row' style={{ alignItems: 'baseline' }}>
+            <div className='flex flex-row' style={{ alignItems: 'center' }}>
               {callbackLeft && <IconClickable icon='back' color='secondary' callback={callbackLeft} />}
               {icon && <>{getIcon(icon, color)}&nbsp;</>}
               <Typography variant={titleVariant} color={color} sx={{ flex: '1' }}>

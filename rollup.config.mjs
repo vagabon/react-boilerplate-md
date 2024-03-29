@@ -34,20 +34,7 @@ export default [
       if (warning.code === 'THIS_IS_UNDEFINED') return;
       warn(warning);
     },
-    plugins: [
-      external(),
-      resolve(),
-      commonjs(),
-      typescript({
-        compilerOptions: {
-          baseUrl: '.',
-        },
-      }),
-      postcss(),
-      json(),
-      scss(),
-      terser(),
-    ],
+    plugins: [external(), resolve(), commonjs(), typescript(), postcss(), json(), scss(), terser()],
   },
   {
     input: 'dist/types/index.d.ts',

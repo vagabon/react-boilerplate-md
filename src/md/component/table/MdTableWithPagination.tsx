@@ -36,19 +36,19 @@ const MdTableWithPagination: React.FC<IMdTableWithPaginationProps> = (props: IMd
       <div style={{ overflow: 'auto' }}>
         <MdTable {...props}>
           <TableFooter>
-            <TableRow>
-              <TablePagination
-                rowsPerPageOptions={[5, 10, 20, 50]}
-                count={props.count}
-                rowsPerPage={props.rowsPerPage ?? 10}
-                page={props.page}
-                onPageChange={handleChangePage(props.callBack)}
-                onRowsPerPageChange={handleChangeRowsPerPage(props.callBack)}
-              />
-            </TableRow>
+            <TableRow></TableRow>
           </TableFooter>
         </MdTable>
       </div>
+      <TablePagination
+        component='div'
+        rowsPerPageOptions={[5, 10, 20, 50]}
+        count={props.count}
+        rowsPerPage={props.rowsPerPage ?? 10}
+        page={props.page}
+        onPageChange={handleChangePage(props.callBack)}
+        onRowsPerPageChange={handleChangeRowsPerPage(props.callBack)}
+      />
     </div>
   );
 };

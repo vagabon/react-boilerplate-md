@@ -35,7 +35,7 @@ const defaultMode = () => {
   return storageMode as ModeType;
 };
 
-export const useTheme = (palette: JSONObject) => {
+export const useTheme = (palette: JSONObject, newTheme: ModeType) => {
   const [mode, setMode] = useState<ModeType>(defaultMode());
   const [theme, setTheme] = useState<ITheme>();
 
@@ -78,6 +78,10 @@ export const useTheme = (palette: JSONObject) => {
   useEffect(() => {
     showTheme(mode);
   }, [showTheme, mode]);
+
+  useEffect(() => {
+    setMode(newTheme);
+  }, [newTheme]);
 
   const switchTheme = useCallback(
     (newMode: ModeType) => () => {

@@ -101,7 +101,11 @@ const MdTable: React.FC<IMdTableProps> = ({
                 {data && !data['empty' as keyof JSONObject] ? (
                   <TableRow onClick={handleClick(data['id' as keyof JSONObject])}>
                     {cells?.map((cell: ITableDto) => (
-                      <TableCell component='th' scope='row' key={cell.name}>
+                      <TableCell
+                        component='th'
+                        scope='row'
+                        key={cell.name}
+                        title={ObjectUtils.getRecursivValue(data, cell.name, cell.date)}>
                         {ObjectUtils.getRecursivValue(data, cell.name, cell.date)}
                       </TableCell>
                     ))}

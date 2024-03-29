@@ -6,6 +6,7 @@ import MdFormSelect from '../form/select/MdFormSelect';
 import MdInputTextSimple from '../form/text/MdInputTextSimple';
 
 export interface IMdSearchBarProps {
+  className?: string;
   search: Primitif;
   order?: string;
   orderList?: IApiDto[];
@@ -13,7 +14,7 @@ export interface IMdSearchBarProps {
   callBackOrder?: (value?: string | JSONObject) => void;
 }
 
-const MdSearchBar: React.FC<IMdSearchBarProps> = ({ order, orderList, ...props }) => {
+const MdSearchBar: React.FC<IMdSearchBarProps> = ({ className = '', order, orderList, ...props }) => {
   const handleBlur = useCallback(
     (callback: (value: string) => void) => (event: React.ChangeEvent<JSONObject>) => {
       const value = event.target['value' as keyof JSONObject];
@@ -37,7 +38,7 @@ const MdSearchBar: React.FC<IMdSearchBarProps> = ({ order, orderList, ...props }
   );
 
   return (
-    <div className='search-bar'>
+    <div className={'search-bar ' + className}>
       <MdInputTextSimple
         name='searching'
         handleBlur={handleBlur(props.callBack)}
