@@ -18,6 +18,7 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness5Icon from '@mui/icons-material/Brightness5';
 import CachedIcon from '@mui/icons-material/Cached';
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
+import ChatIcon from '@mui/icons-material/Chat';
 import CheckIcon from '@mui/icons-material/Check';
 import ChecklistIcon from '@mui/icons-material/Checklist';
 import CloseIcon from '@mui/icons-material/Close';
@@ -30,6 +31,7 @@ import FolderIcon from '@mui/icons-material/Folder';
 import GoogleIcon from '@mui/icons-material/Google';
 import HelpIcon from '@mui/icons-material/Help';
 import HomeIcon from '@mui/icons-material/Home';
+import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
 import InfoIcon from '@mui/icons-material/Info';
 import InsertLinkIcon from '@mui/icons-material/InsertLink';
 import LoginIcon from '@mui/icons-material/Login';
@@ -42,9 +44,13 @@ import PasswordIcon from '@mui/icons-material/Password';
 import PersonIcon from '@mui/icons-material/Person';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import PhotoCameraFrontIcon from '@mui/icons-material/PhotoCameraFront';
+import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing';
+import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import SearchIcon from '@mui/icons-material/Search';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import SmartToyIcon from '@mui/icons-material/SmartToy';
+import SmsIcon from '@mui/icons-material/Sms';
 import StarRateIcon from '@mui/icons-material/StarRate';
 
 export type IconColorType =
@@ -104,6 +110,12 @@ export const ICONS = {
   checklist: { react: (color: IconColorType) => <ChecklistIcon color={color} /> },
   help: { react: (color: IconColorType) => <HelpIcon color={color} /> },
   check: { react: (color: IconColorType) => <CheckIcon color={color} /> },
+  chat: { react: (color: IconColorType) => <ChatIcon color={color} /> },
+  sms: { react: (color: IconColorType) => <SmsIcon color={color} /> },
+  faq: { react: (color: IconColorType) => <QuestionAnswerIcon color={color} /> },
+  toy: { react: (color: IconColorType) => <SmartToyIcon color={color} /> },
+  construction: { react: (color: IconColorType) => <PrecisionManufacturingIcon color={color} /> },
+  wait: { react: (color: IconColorType) => <HourglassEmptyIcon color={color} /> },
 };
 
 export const useIcon = () => {
