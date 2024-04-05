@@ -10,6 +10,7 @@ export interface IMdChipProps {
   label: string;
   icon?: string;
   size?: 'small' | 'medium';
+  title?: string;
   variant?: 'filled' | 'outlined';
   callbackDelete?: (id: ID) => void;
 }
@@ -19,6 +20,7 @@ const MdChip: React.FC<IMdChipProps> = ({
   label,
   icon,
   size,
+  title,
   color,
   variant,
   callbackDelete = () => {},
@@ -35,6 +37,7 @@ const MdChip: React.FC<IMdChipProps> = ({
       variant={variant}
       onDelete={icon ? callbackDelete : undefined}
       deleteIcon={icon ? getIcon(icon) : undefined}
+      title={title && I18nUtils.translate(t, title)}
     />
   );
 };

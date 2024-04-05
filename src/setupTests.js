@@ -9,13 +9,12 @@ global.mockComponent =
   };
 global.mockComponentWithCallBack =
   (name) =>
-  ({ onClick, children }) =>
-    (
-      <>
-        <input data-testid={name} onClick={onClick} />
-        {children}
-      </>
-    );
+  ({ onClick, children }) => (
+    <>
+      <input data-testid={name} onClick={onClick} />
+      {children}
+    </>
+  );
 
 global.spyOn = (object, method, data) => {
   return jest.spyOn(object, method).mockReturnValue(Promise.resolve(data));
@@ -75,6 +74,7 @@ jest.mock('@mui/material', () => ({
       {renderInput()}
     </>
   ),
+  Badge: ({ children }) => <div data-testid='Badge'>{children}</div>,
   Backdrop: ({ children }) => <div data-testid='Backdrop'>{children}</div>,
   Box: ({ children }) => <div data-testid='Box'>{children}</div>,
   ButtonGroup: ({ children }) => <div data-testid='ButtonGroup'>{children}</div>,

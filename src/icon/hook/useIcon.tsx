@@ -22,6 +22,7 @@ import ChatIcon from '@mui/icons-material/Chat';
 import CheckIcon from '@mui/icons-material/Check';
 import ChecklistIcon from '@mui/icons-material/Checklist';
 import CloseIcon from '@mui/icons-material/Close';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import CreateIcon from '@mui/icons-material/Create';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -37,6 +38,7 @@ import InsertLinkIcon from '@mui/icons-material/InsertLink';
 import LoginIcon from '@mui/icons-material/Login';
 import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
+import MessageIcon from '@mui/icons-material/Message';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MovieIcon from '@mui/icons-material/Movie';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -116,6 +118,8 @@ export const ICONS = {
   toy: { react: (color: IconColorType) => <SmartToyIcon color={color} /> },
   construction: { react: (color: IconColorType) => <PrecisionManufacturingIcon color={color} /> },
   wait: { react: (color: IconColorType) => <HourglassEmptyIcon color={color} /> },
+  copy: { react: (color: IconColorType) => <ContentCopyIcon color={color} /> },
+  message: { react: (color: IconColorType) => <MessageIcon color={color} /> },
 };
 
 export const useIcon = () => {

@@ -6,6 +6,8 @@ export { default as MdAvatar } from './component/avatar/MdAvatar';
 export type { IMdAvatarProps } from './component/avatar/MdAvatar';
 export { default as MdBackdrop } from './component/backdrop/MdBackdrop';
 export type { IMdBackdropProps } from './component/backdrop/MdBackdrop';
+export { default as MdBadge } from './component/badge/MdBadge';
+export type { BadgeColorType, IMdBadgeProps } from './component/badge/MdBadge';
 export { default as MdBox } from './component/box/MdBox';
 export type { IMdBoxProps } from './component/box/MdBox';
 export { default as MdButton } from './component/button/MdButton';
