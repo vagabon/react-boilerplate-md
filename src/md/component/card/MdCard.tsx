@@ -23,13 +23,14 @@ export interface IMdCardProps {
   avatar?: string;
   image?: string;
   className?: string;
-  children?: ReactNode;
   actions?: ReactNode;
-  buttonchildren?: ReactNode;
+  subActions?: ReactNode;
   style?: CSSProperties;
   callback?: () => void;
   callbackLeft?: () => void;
   elementRigth?: () => React.JSX.Element;
+  buttonchildren?: ReactNode;
+  children?: ReactNode;
 }
 
 const MdCard: React.FC<IMdCardProps> = ({
@@ -90,6 +91,7 @@ const MdCard: React.FC<IMdCardProps> = ({
           subheader={date ? DateUtils.format(date, 'Le DD MMM YYYY à hhhmm') : ''}
         />
       )}
+      {rest.subActions && <div style={{ margin: '8px 16px' }}>{rest.subActions}</div>}
       {rest.children && <CardContent>{rest.children}</CardContent>}
       {rest.buttonchildren && <CardActions className='justify-end'>{rest.buttonchildren}</CardActions>}
     </Card>
