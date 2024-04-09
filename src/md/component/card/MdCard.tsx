@@ -24,7 +24,7 @@ export interface IMdCardProps {
   image?: string;
   className?: string;
   actions?: ReactNode;
-  subActions?: ReactNode;
+  subations?: ReactNode;
   style?: CSSProperties;
   callback?: () => void;
   callbackLeft?: () => void;
@@ -91,7 +91,7 @@ const MdCard: React.FC<IMdCardProps> = ({
           subheader={date ? DateUtils.format(date, 'Le DD MMM YYYY à hhhmm') : ''}
         />
       )}
-      {rest.subActions && <div style={{ margin: '8px 16px' }}>{rest.subActions}</div>}
+      {rest.subations && <div style={{ margin: '8px 16px' }}>{rest.subations}</div>}
       {rest.children && <CardContent>{rest.children}</CardContent>}
       {rest.buttonchildren && <CardActions className='justify-end'>{rest.buttonchildren}</CardActions>}
     </Card>
