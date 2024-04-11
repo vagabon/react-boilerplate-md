@@ -35,6 +35,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
 import InfoIcon from '@mui/icons-material/Info';
 import InsertLinkIcon from '@mui/icons-material/InsertLink';
+import KeyIcon from '@mui/icons-material/Key';
 import LoginIcon from '@mui/icons-material/Login';
 import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -48,6 +49,7 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import PhotoCameraFrontIcon from '@mui/icons-material/PhotoCameraFront';
 import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing';
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
+import ScreenSearchDesktopIcon from '@mui/icons-material/ScreenSearchDesktop';
 import SearchIcon from '@mui/icons-material/Search';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -84,6 +86,7 @@ export const ICONS = {
   facebook: { react: (color: IconColorType) => <FacebookIcon color={color} /> },
   personAdd: { react: (color: IconColorType) => <PersonAddIcon color={color} /> },
   search: { react: (color: IconColorType) => <SearchIcon color={color} /> },
+  searchBig: { react: (color: IconColorType) => <ScreenSearchDesktopIcon color={color} /> },
   close: { react: (color: IconColorType) => <CloseIcon color={color} /> },
   sun: { react: (color: IconColorType) => <Brightness5Icon color={color} /> },
   moon: { react: (color: IconColorType) => <Brightness4Icon color={color} /> },
@@ -120,6 +123,7 @@ export const ICONS = {
   wait: { react: (color: IconColorType) => <HourglassEmptyIcon color={color} /> },
   copy: { react: (color: IconColorType) => <ContentCopyIcon color={color} /> },
   message: { react: (color: IconColorType) => <MessageIcon color={color} /> },
+  key: { react: (color: IconColorType) => <KeyIcon color={color} /> },
 };
 
 export const useIcon = () => {

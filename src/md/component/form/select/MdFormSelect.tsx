@@ -75,7 +75,10 @@ const MdFormSelect: React.FC<IMdFormSelectProps> = ({ defaultValue = true, ...pr
 
   return (
     <div style={{ width: '100%' }}>
-      <FormControl fullWidth sx={{ marginBottom: '8px', marginTop: '16px' }} disabled={props.disabled}>
+      <FormControl
+        fullWidth
+        sx={{ marginBottom: '8px', marginTop: '16px' }}
+        disabled={props.disabled || props.validationSchema?.[props.name as keyof JSONObject]?.['disabled']}>
         <InputLabel id={props.name + '-label'} error={error !== ''}>
           {t(props.label)}
           {validationSchema?.['required' as keyof JSONObject] ? ' *' : ''}
@@ -90,7 +93,8 @@ const MdFormSelect: React.FC<IMdFormSelectProps> = ({ defaultValue = true, ...pr
             required={validationSchema?.['required' as keyof JSONObject]}
             label={props.label}
             onChange={handleChange}
-            className='width100'>
+            className='width100'
+            disabled={props.disabled || props.validationSchema?.[props.name as keyof JSONObject]?.['disabled']}>
             {defaultValue && <MenuItem value={props.byId ? '-1' : ''}>Aucun</MenuItem>}
             {values &&
               values.length > 0 &&
