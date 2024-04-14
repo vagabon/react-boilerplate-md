@@ -1,5 +1,5 @@
 import { Tab, Tabs } from '@mui/material';
-import { SyntheticEvent, useCallback } from 'react';
+import { SyntheticEvent, memo, useCallback } from 'react';
 import { useAppTranslate } from '../../../translate';
 
 export type TabsType = {
@@ -19,7 +19,7 @@ export interface IMdTabsProps {
   tabs: TabsType[];
 }
 
-const MdTabs: React.FC<IMdTabsProps> = ({
+const MdTabs: React.FC<IMdTabsProps> = memo(({
   value,
   callback,
   indicatorColor,
@@ -53,6 +53,6 @@ const MdTabs: React.FC<IMdTabsProps> = ({
       ))}
     </Tabs>
   );
-};
+});
 
 export default MdTabs;

@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import { useCallback, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 import { JSONObject } from '../../../../dto/api/ApiDto';
 import { HandleChangeType, IFormPropsDto } from '../../../../dto/form/FormDto';
 import { useAppTranslate } from '../../../../translate';
@@ -13,7 +13,7 @@ export interface IMdFormSwitchProps extends IFormPropsDto {
   name: string;
 }
 
-const MdFormSwitch: React.FC<IMdFormSwitchProps> = ({ className = '', ...props }) => {
+const MdFormSwitch: React.FC<IMdFormSwitchProps> = memo(({ className = '', ...props }) => {
   const { Trans } = useAppTranslate();
   const { error } = useFormError(props.name, props.errors, props.touched, props.errorMessage);
   const [checked, setChecked] = useState<boolean>(false);
@@ -49,6 +49,6 @@ const MdFormSwitch: React.FC<IMdFormSwitchProps> = ({ className = '', ...props }
       <MdFormError error={error} />
     </div>
   );
-};
+});
 
 export default MdFormSwitch;

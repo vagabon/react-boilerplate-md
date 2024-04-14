@@ -1,6 +1,6 @@
 import AddIcon from '@mui/icons-material/Add';
 import { Fab, PropTypes } from '@mui/material';
-import { SyntheticEvent, useCallback } from 'react';
+import { SyntheticEvent, memo, useCallback } from 'react';
 
 export interface IMdFabProps {
   size: 'medium' | 'small';
@@ -9,7 +9,7 @@ export interface IMdFabProps {
   callback?: () => void;
 }
 
-const MdFab: React.FC<IMdFabProps> = ({ size, color, label, callback }) => {
+const MdFab: React.FC<IMdFabProps> = memo(({ size, color, label, callback }) => {
   const handleClick = useCallback(
     (event: SyntheticEvent<Element, Event>) => {
       event.stopPropagation();
@@ -23,6 +23,6 @@ const MdFab: React.FC<IMdFabProps> = ({ size, color, label, callback }) => {
       <AddIcon />
     </Fab>
   );
-};
+});
 
 export default MdFab;

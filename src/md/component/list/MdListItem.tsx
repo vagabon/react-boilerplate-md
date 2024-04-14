@@ -1,5 +1,5 @@
 import { ListItem } from '@mui/material';
-import { ReactNode } from 'react';
+import { ReactNode, memo } from 'react';
 
 export interface IMdListItemProps {
   component?: React.ElementType;
@@ -8,7 +8,7 @@ export interface IMdListItemProps {
   isCursor?: boolean;
   children: ReactNode;
 }
-const MdListItem: React.FC<IMdListItemProps> = ({ component, disablePadding, callback, isCursor, children }) => {
+const MdListItem: React.FC<IMdListItemProps> = memo(({ component, disablePadding, callback, isCursor, children }) => {
   return (
     <ListItem
       component={component ?? 'div'}
@@ -18,6 +18,6 @@ const MdListItem: React.FC<IMdListItemProps> = ({ component, disablePadding, cal
       {children}
     </ListItem>
   );
-};
+});
 
 export default MdListItem;

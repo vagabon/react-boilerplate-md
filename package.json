@@ -1,6 +1,6 @@
 {
   "name": "@vagabond-inc/react-boilerplate-md",
-  "version": "1.0.16",
+  "version": "1.0.19",
   "description": "Boilerplate Material Design on React with MUI",
   "private": false,
   "type": "module",
@@ -128,6 +128,7 @@
     ],
     "rules": {
       "@typescript-eslint/no-unused-vars": "warn",
+      "react/display-name": "off",
       "react/prop-types": "off",
       "@typescript-eslint/triple-slash-reference": "off",
       "jsx-a11y/anchor-is-valid": "off",

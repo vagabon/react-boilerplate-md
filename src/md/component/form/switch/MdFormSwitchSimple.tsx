@@ -1,4 +1,5 @@
 import { Switch } from '@mui/material';
+import { memo } from 'react';
 import { HandleBlurType } from '../../../../dto/form/FormDto';
 
 export interface IMdFormSwitchSimpleProps {
@@ -9,14 +10,10 @@ export interface IMdFormSwitchSimpleProps {
   callbackBlur?: HandleBlurType;
 }
 
-const MdFormSwitchSimple: React.FC<IMdFormSwitchSimpleProps> = ({
-  name,
-  color,
-  checked,
-  callbackChange,
-  callbackBlur,
-}) => {
-  return <Switch color={color} name={name} checked={checked} onChange={callbackChange} onBlur={callbackBlur} />;
-};
+const MdFormSwitchSimple: React.FC<IMdFormSwitchSimpleProps> = memo(
+  ({ name, color, checked, callbackChange, callbackBlur }) => {
+    return <Switch color={color} name={name} checked={checked} onChange={callbackChange} onBlur={callbackBlur} />;
+  },
+);
 
 export default MdFormSwitchSimple;

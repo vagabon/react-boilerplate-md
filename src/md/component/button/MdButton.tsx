@@ -1,7 +1,7 @@
 import { Theme } from '@emotion/react';
 import { SxProps } from '@mui/material';
 import Button from '@mui/material/Button';
-import { MouseEvent, ReactNode, useCallback, useEffect, useState } from 'react';
+import { MouseEvent, ReactNode, memo, useCallback, useEffect, useState } from 'react';
 import { IconColorType, useIcon } from '../../../icon/hook/useIcon';
 import { useAppRouter } from '../../../router';
 import { useAppTranslate } from '../../../translate';
@@ -42,7 +42,7 @@ export interface IMdButtonProps {
   callback?: () => void;
 }
 
-const MdButton: React.FC<IMdButtonProps> = (props) => {
+const MdButton: React.FC<IMdButtonProps> = memo((props) => {
   const { navigate } = useAppRouter();
   const { Trans } = useAppTranslate();
   const { getIcon } = useIcon();
@@ -90,7 +90,7 @@ const MdButton: React.FC<IMdButtonProps> = (props) => {
       )}
     </>
   );
-};
+});
 
 MdButton.defaultProps = {
   show: true,

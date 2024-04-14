@@ -1,5 +1,6 @@
 import { IconButton, InputProps, TextField, TextFieldVariants } from '@mui/material';
 import { ClearIcon } from '@mui/x-date-pickers';
+import { memo } from 'react';
 import { JSONValue } from '../../../../dto/api/ApiDto';
 import { HandleBlurType, HandleChangeType } from '../../../../dto/form/FormDto';
 import { useAppTranslate } from '../../../../translate';
@@ -30,7 +31,7 @@ export interface IMdInputTextSimpleProps {
   callbackReset?: () => void;
 }
 
-const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = ({ className = '', callbackReset, ...props }) => {
+const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(({ className = '', callbackReset, ...props }) => {
   const { t } = useAppTranslate();
   const {
     uref,
@@ -83,7 +84,7 @@ const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = ({ className = '', 
         rows={props.textarea}></TextField>
     </div>
   );
-};
+});
 
 MdInputTextSimple.defaultProps = {
   type: DEFAULT_TEXT,

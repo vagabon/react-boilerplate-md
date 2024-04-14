@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import { useCallback } from 'react';
+import { memo, useCallback } from 'react';
 import { JSONObject } from '../../../../dto/api/ApiDto';
 import { HandleChangeType, IFormPropsDto } from '../../../../dto/form/FormDto';
 import { useAppTranslate } from '../../../../translate';
@@ -13,7 +13,7 @@ export interface IMdFormCheckboxProps extends IFormPropsDto {
   disabled?: boolean;
 }
 
-const MdFormCheckbox: React.FC<IMdFormCheckboxProps> = (props: IMdFormCheckboxProps) => {
+const MdFormCheckbox: React.FC<IMdFormCheckboxProps> = memo((props: IMdFormCheckboxProps) => {
   const { t } = useAppTranslate();
   const { error } = useFormError(props.name, props.errors, props.touched, props.errorMessage);
 
@@ -53,6 +53,6 @@ const MdFormCheckbox: React.FC<IMdFormCheckboxProps> = (props: IMdFormCheckboxPr
       <MdFormError error={error} />
     </div>
   );
-};
+});
 
 export default MdFormCheckbox;

@@ -1,5 +1,5 @@
 import { Avatar, IconButton, SxProps, Theme } from '@mui/material';
-import { MouseEvent, useCallback } from 'react';
+import { MouseEvent, memo, useCallback } from 'react';
 import { useAppRouter } from '../../../router';
 import { ObjectUtils } from '../../../utils/object/ObjectUtils';
 
@@ -12,7 +12,7 @@ export interface IMdAvatarProps {
   callback?: () => void;
 }
 
-const MdAvatar: React.FC<IMdAvatarProps> = ({ name, image, disabled, url, sx, callback }) => {
+const MdAvatar: React.FC<IMdAvatarProps> = memo(({ name, image, disabled, url, sx, callback }) => {
   const { navigate } = useAppRouter();
 
   const handleClick = useCallback(
@@ -36,6 +36,6 @@ const MdAvatar: React.FC<IMdAvatarProps> = ({ name, image, disabled, url, sx, ca
       )}
     </IconButton>
   );
-};
+});
 
 export default MdAvatar;

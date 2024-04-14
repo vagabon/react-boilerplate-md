@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+import { CSSProperties, memo } from 'react';
 import { useAppRouter } from '../../../router';
 import { useAppTranslate } from '../../../translate';
 
@@ -10,7 +10,7 @@ export interface IMdLinkProps {
   sx?: CSSProperties;
 }
 
-const MdLink: React.FC<IMdLinkProps> = ({ href, label, target, ...rest }) => {
+const MdLink: React.FC<IMdLinkProps> = memo(({ href, label, target, ...rest }) => {
   const { Trans } = useAppTranslate();
   const { Link } = useAppRouter();
 
@@ -23,7 +23,7 @@ const MdLink: React.FC<IMdLinkProps> = ({ href, label, target, ...rest }) => {
       )}
     </>
   );
-};
+});
 
 MdLink.defaultProps = {
   show: true,

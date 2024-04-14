@@ -1,5 +1,5 @@
 import { IconButton } from '@mui/material';
-import { MouseEvent, useCallback } from 'react';
+import { MouseEvent, memo, useCallback } from 'react';
 import { IconColorType, useIcon } from '../hook/useIcon';
 
 export interface IIconClickableProps {
@@ -10,7 +10,7 @@ export interface IIconClickableProps {
   callback?: () => void;
 }
 
-const IconClickable: React.FC<IIconClickableProps> = ({ className, icon, color, disabled, callback }) => {
+const IconClickable: React.FC<IIconClickableProps> = memo(({ className, icon, color, disabled, callback }) => {
   const { getIcon } = useIcon();
 
   const handleClickIcon = useCallback(
@@ -27,6 +27,6 @@ const IconClickable: React.FC<IIconClickableProps> = ({ className, icon, color, 
       {getIcon(icon, color, disabled)}
     </IconButton>
   );
-};
+});
 
 export default IconClickable;

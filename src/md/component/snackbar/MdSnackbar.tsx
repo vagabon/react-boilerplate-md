@@ -1,5 +1,5 @@
 import { Alert, AlertColor, Slide, SlideProps, Snackbar } from '@mui/material';
-import { useCallback, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 import { useAppTranslate } from '../../../translate';
 
 type TransitionProps = Omit<SlideProps, 'direction'>;
@@ -13,7 +13,7 @@ export interface IMdSnackbarProps {
   type: AlertColor;
 }
 
-const MdSnackbar: React.FC<IMdSnackbarProps> = ({ message, type }) => {
+const MdSnackbar: React.FC<IMdSnackbarProps> = memo(({ message, type }) => {
   const { Trans } = useAppTranslate();
   const [open, setOpen] = useState(false);
   const [transition, setTransition] = useState<React.ComponentType<TransitionProps> | undefined>(undefined);
@@ -40,6 +40,6 @@ const MdSnackbar: React.FC<IMdSnackbarProps> = ({ message, type }) => {
       </Alert>
     </Snackbar>
   );
-};
+});
 
 export default MdSnackbar;

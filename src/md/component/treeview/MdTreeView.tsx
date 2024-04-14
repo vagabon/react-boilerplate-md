@@ -1,7 +1,7 @@
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { SimpleTreeView, TreeItem } from '@mui/x-tree-view';
-import { useCallback, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 
 export interface IMdTreeViewDto {
   id: number;
@@ -15,7 +15,7 @@ export interface IMdTreeViewProps {
   callback: (id: number, tool: IMdTreeViewDto) => void;
 }
 
-const MdTreeView: React.FC<IMdTreeViewProps> = ({ defaultExpanded, tree, callback }) => {
+const MdTreeView: React.FC<IMdTreeViewProps> = memo(({ defaultExpanded, tree, callback }) => {
   const [expendeds, setExpendeds] = useState<string[]>(defaultExpanded?.split(',') ?? []);
 
   useEffect(() => {
@@ -49,6 +49,6 @@ const MdTreeView: React.FC<IMdTreeViewProps> = ({ defaultExpanded, tree, callbac
       {tree?.map((node) => renderTree(node))}
     </SimpleTreeView>
   );
-};
+});
 
 export default MdTreeView;

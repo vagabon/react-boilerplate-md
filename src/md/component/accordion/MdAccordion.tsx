@@ -1,5 +1,6 @@
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
+import { memo } from 'react';
 import { useAppTranslate } from '../../../translate';
 import { useId } from '../../hook/useId';
 
@@ -10,7 +11,7 @@ export interface IMdAccordionProps {
   disabled?: boolean;
 }
 
-const MdAccordion: React.FC<IMdAccordionProps> = ({ title, description, expanded, disabled }) => {
+const MdAccordion: React.FC<IMdAccordionProps> = memo(({ title, description, expanded, disabled }) => {
   const { id } = useId();
   const { Trans } = useAppTranslate();
   return (
@@ -23,6 +24,6 @@ const MdAccordion: React.FC<IMdAccordionProps> = ({ title, description, expanded
       </AccordionDetails>
     </Accordion>
   );
-};
+});
 
 export default MdAccordion;

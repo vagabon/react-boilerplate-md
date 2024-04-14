@@ -1,16 +1,19 @@
 import { MuiMarkdown } from 'mui-markdown';
 import { Highlight, themes } from 'prism-react-renderer';
-import { useCallback, useEffect, useRef } from 'react';
+import { memo, useCallback, useEffect, useRef } from 'react';
+import { useIcon } from '../../../icon';
 import { useId } from '../../hook/useId';
 
 export interface IMdMarkdownProps {
   content?: string;
   summaryCallback?: (summary: string) => void;
+  callbackCopy?: (message: string, type: 'success' | 'error') => void;
 }
 
-const MdMarkdown: React.FC<IMdMarkdownProps> = (props) => {
+const MdMarkdown: React.FC<IMdMarkdownProps> = memo(({ content, summaryCallback, callbackCopy }) => {
   const { id } = useId();
   const interval = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const { getIcon } = useIcon();
 
   const generateSummary = useCallback((idMarkdown: string) => {
     const iddd = document.getElementById(idMarkdown);
@@ -34,12 +37,12 @@ const MdMarkdown: React.FC<IMdMarkdownProps> = (props) => {
   }, []);
 
   useEffect(() => {
-    if (props.summaryCallback) {
+    if (summaryCallback) {
       interval.current && clearInterval(interval.current);
       let count = 0;
       interval.current = setInterval(() => {
         const newSummary = generateSummary(id);
-        props.summaryCallback?.(newSummary);
+        summaryCallback?.(newSummary);
         count++;
         if (count > 10) {
           interval.current && clearInterval(interval.current);
@@ -49,27 +52,33 @@ const MdMarkdown: React.FC<IMdMarkdownProps> = (props) => {
     const iddd = document.getElementById(id);
     const div = iddd?.getElementsByTagName('div');
     const elements = div?.[0]?.getElementsByTagName('*') ?? [];
+    const copyHtml = document.getElementById('copy-button')?.innerHTML ?? '';
     for (const element of elements) {
-      if (element.tagName.includes('PRE')) {
+      const buttonCoppyExist = element.getElementsByClassName('button-copy');
+      if (element.tagName.includes('PRE') && buttonCoppyExist.length === 0 && copyHtml !== '') {
         const content = (element as HTMLElement).innerText ?? '';
         const div = document.createElement('button');
         div.className = 'button-copy';
-        div.innerText = 'copy';
-        div.onclick = function () {
+        div.innerHTML = copyHtml;
+        div.onclick = () => {
           navigator.clipboard.writeText(content);
+          callbackCopy?.('TEXT_COPY', 'success');
         };
         element.prepend(div);
       }
     }
-  }, [id, generateSummary, props]);
+  }, [id, generateSummary, summaryCallback, callbackCopy, content]);
 
   return (
     <div id={id}>
       <MuiMarkdown Highlight={Highlight} themes={themes} hideLineNumbers>
-        {props.content}
+        {content}
       </MuiMarkdown>
+      <div id='copy-button' style={{ display: 'none' }}>
+        {getIcon('copy', 'secondary', true)}
+      </div>
     </div>
   );
-};
+});
 
 export default MdMarkdown;

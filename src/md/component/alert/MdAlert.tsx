@@ -1,6 +1,6 @@
 import { Theme } from '@emotion/react';
 import { Alert, AlertColor, AlertTitle, SxProps } from '@mui/material';
-import { ReactNode } from 'react';
+import { ReactNode, memo } from 'react';
 import { Trans } from 'react-i18next';
 
 export interface IMdAlertProps {
@@ -15,7 +15,7 @@ export interface IMdAlertProps {
   callback?: () => void;
 }
 
-const MdAlert: React.FC<IMdAlertProps> = ({ title, label, callback, ...rest }) => {
+const MdAlert: React.FC<IMdAlertProps> = memo(({ title, label, callback, ...rest }) => {
   return (
     <Alert {...rest} onClick={callback}>
       {title && (
@@ -26,6 +26,6 @@ const MdAlert: React.FC<IMdAlertProps> = ({ title, label, callback, ...rest }) =
       <Trans i18nKey={label} />
     </Alert>
   );
-};
+});
 
 export default MdAlert;

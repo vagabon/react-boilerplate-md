@@ -2,7 +2,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { Fragment, useCallback, useState } from 'react';
+import { Fragment, memo, useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppRouter } from '../../../router';
 
@@ -13,7 +13,7 @@ export interface IMdMenuItemProps {
   childrens: { title: string; link: string }[] | undefined;
 }
 
-const MdMenuItem: React.FC<IMdMenuItemProps> = (props: IMdMenuItemProps) => {
+const MdMenuItem: React.FC<IMdMenuItemProps> = memo((props: IMdMenuItemProps) => {
   const { navigate } = useAppRouter();
   const [anchorEl, setAnchorEl] = useState<Element>();
   const open = Boolean(anchorEl);
@@ -85,6 +85,6 @@ const MdMenuItem: React.FC<IMdMenuItemProps> = (props: IMdMenuItemProps) => {
       )}
     </Fragment>
   );
-};
+});
 
 export default MdMenuItem;

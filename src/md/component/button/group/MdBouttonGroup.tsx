@@ -1,6 +1,6 @@
 import { Theme } from '@emotion/react';
 import { ButtonGroup, SxProps } from '@mui/material';
-import React, { Children, Fragment, ReactElement, ReactNode, cloneElement, useCallback } from 'react';
+import React, { Children, Fragment, ReactElement, ReactNode, cloneElement, memo, useCallback } from 'react';
 import { UuidUtils } from '../../../../utils';
 
 export interface IMdBouttonGroupProps {
@@ -11,7 +11,7 @@ export interface IMdBouttonGroupProps {
   children: ReactNode;
 }
 
-const MdBouttonGroup: React.FC<IMdBouttonGroupProps> = ({ className = '', variant, size, sx, children }) => {
+const MdBouttonGroup: React.FC<IMdBouttonGroupProps> = memo(({ className = '', variant, size, sx, children }) => {
   const showButtons = useCallback(
     (children: ReactNode) => (
       <>
@@ -29,6 +29,6 @@ const MdBouttonGroup: React.FC<IMdBouttonGroupProps> = ({ className = '', varian
       {showButtons(children)}
     </ButtonGroup>
   );
-};
+});
 
 export default MdBouttonGroup;

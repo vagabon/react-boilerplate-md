@@ -1,4 +1,5 @@
 import { Autocomplete, FormControl, TextField } from '@mui/material';
+import { memo } from 'react';
 import { JSONObject } from '../../../../dto/api/ApiDto';
 import { IFormPropsDto } from '../../../../dto/form/FormDto';
 import { useFormError } from '../../../hook/useFormError';
@@ -10,7 +11,7 @@ export interface IMdFormAutocompleteProps extends IFormPropsDto {
   list: string[];
 }
 
-const MdFormAutocomplete: React.FC<IMdFormAutocompleteProps> = (props: IMdFormAutocompleteProps) => {
+const MdFormAutocomplete: React.FC<IMdFormAutocompleteProps> = memo((props: IMdFormAutocompleteProps) => {
   const { error } = useFormError(props.name, props.errors, props.touched, props.errorMessage);
 
   return (
@@ -30,7 +31,7 @@ const MdFormAutocomplete: React.FC<IMdFormAutocompleteProps> = (props: IMdFormAu
       <MdFormError error={error} />
     </div>
   );
-};
+});
 
 MdFormAutocomplete.defaultProps = {};
 

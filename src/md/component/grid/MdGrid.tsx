@@ -1,5 +1,5 @@
 import { Grid } from '@mui/material';
-import { CSSProperties, ReactNode } from 'react';
+import { CSSProperties, ReactNode, memo } from 'react';
 
 export interface IMdGridProps {
   children: ReactNode;
@@ -9,8 +9,8 @@ export interface IMdGridProps {
   style?: CSSProperties;
 }
 
-const MdGrid: React.FC<IMdGridProps> = ({ children, ...rest }) => {
+const MdGrid: React.FC<IMdGridProps> = memo(({ children, ...rest }) => {
   return <Grid {...rest}>{children}</Grid>;
-};
+});
 
 export default MdGrid;

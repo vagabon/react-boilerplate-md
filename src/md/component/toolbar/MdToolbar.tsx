@@ -1,5 +1,5 @@
 import { SxProps, Theme, Toolbar } from '@mui/material';
-import { ReactNode } from 'react';
+import { ReactNode, memo } from 'react';
 import { useId } from '../../hook/useId';
 
 export interface IMdToolbarProps {
@@ -8,7 +8,7 @@ export interface IMdToolbarProps {
   children?: ReactNode;
 }
 
-const MdToolbar: React.FC<IMdToolbarProps> = ({ sx, children, ...rest }) => {
+const MdToolbar: React.FC<IMdToolbarProps> = memo(({ sx, children, ...rest }) => {
   const { id } = useId(rest.id);
 
   return (
@@ -16,6 +16,6 @@ const MdToolbar: React.FC<IMdToolbarProps> = ({ sx, children, ...rest }) => {
       {children}
     </Toolbar>
   );
-};
+});
 
 export default MdToolbar;

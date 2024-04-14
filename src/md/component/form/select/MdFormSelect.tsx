@@ -7,7 +7,7 @@ import {
   Select,
   SelectChangeEvent,
 } from '@mui/material';
-import { useCallback, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 import { IApiDto, JSONObject } from '../../../../dto/api/ApiDto';
 import { IFormPropsDto } from '../../../../dto/form/FormDto';
 import { useIcon } from '../../../../icon';
@@ -32,7 +32,7 @@ export interface IMdFormSelectProps extends IFormPropsDto {
   byId?: boolean;
 }
 
-const MdFormSelect: React.FC<IMdFormSelectProps> = ({ defaultValue = true, ...props }) => {
+const MdFormSelect: React.FC<IMdFormSelectProps> = memo(({ defaultValue = true, ...props }) => {
   const { t } = useAppTranslate();
   const { getIcon } = useIcon();
   const { error } = useFormError(props.name, props.errors, props.touched, props.errorMessage);
@@ -111,7 +111,7 @@ const MdFormSelect: React.FC<IMdFormSelectProps> = ({ defaultValue = true, ...pr
       <MdFormError error={error} />
     </div>
   );
-};
+});
 
 MdFormSelect.defaultProps = {};
 

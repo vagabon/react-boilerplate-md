@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import { ChangeEvent, useCallback } from 'react';
+import { ChangeEvent, memo, useCallback } from 'react';
 import { JSONObject } from '../../../../dto/api/ApiDto';
 import { useAppTranslate } from '../../../../translate';
 import { useId } from '../../../hook/useId';
@@ -11,7 +11,7 @@ export interface IMdFormFileProps {
   handleChangeFile: (name: string, file: File) => void;
 }
 
-const MdFormFile: React.FC<IMdFormFileProps> = (props: IMdFormFileProps) => {
+const MdFormFile: React.FC<IMdFormFileProps> = memo((props: IMdFormFileProps) => {
   const { Trans } = useAppTranslate();
   const { id } = useId();
 
@@ -39,6 +39,6 @@ const MdFormFile: React.FC<IMdFormFileProps> = (props: IMdFormFileProps) => {
       <input name={props.name} accept='image/*' id={id} onChange={handleCapture(props.handleChangeFile)} type='file' />
     </Box>
   );
-};
+});
 
 export default MdFormFile;

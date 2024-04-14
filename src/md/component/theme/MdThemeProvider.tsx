@@ -1,5 +1,5 @@
 import { CssBaseline, Theme, ThemeProvider, createTheme } from '@mui/material';
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, memo, useEffect, useState } from 'react';
 import { ITheme } from './useTheme';
 
 interface IMdThemeProviderProps {
@@ -7,7 +7,7 @@ interface IMdThemeProviderProps {
   children: ReactNode;
 }
 
-const MdThemeProvider: React.FC<IMdThemeProviderProps> = ({ theme, children }) => {
+const MdThemeProvider: React.FC<IMdThemeProviderProps> = memo(({ theme, children }) => {
   const [muiTheme, setMuiTheme] = useState<Theme>();
 
   useEffect(() => {
@@ -26,6 +26,6 @@ const MdThemeProvider: React.FC<IMdThemeProviderProps> = ({ theme, children }) =
       )}
     </>
   );
-};
+});
 
 export default MdThemeProvider;

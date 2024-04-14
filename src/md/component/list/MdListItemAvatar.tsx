@@ -1,12 +1,12 @@
 import { ListItemAvatar } from '@mui/material';
-import { ReactNode } from 'react';
+import { ReactNode, memo } from 'react';
 
 export interface IMdListItemAvatarProps {
   children: ReactNode;
 }
 
-const MdListItemAvatar: React.FC<IMdListItemAvatarProps> = ({ children }) => {
+const MdListItemAvatar: React.FC<IMdListItemAvatarProps> = memo(({ children }) => {
   return <ListItemAvatar>{children}</ListItemAvatar>;
-};
+});
 
 export default MdListItemAvatar;

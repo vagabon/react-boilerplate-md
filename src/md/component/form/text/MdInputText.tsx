@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { memo, useCallback } from 'react';
 import { IApiDto, JSONObject } from '../../../../dto/api/ApiDto';
 import { IFormPropsDto } from '../../../../dto/form/FormDto';
 import { useFormError } from '../../../hook/useFormError';
@@ -16,7 +16,7 @@ export interface IMdInputTextProps extends IFormPropsDto {
   fullWidth?: boolean;
 }
 
-const MdInputText: React.FC<IMdInputTextProps> = ({ className = '', ...props }) => {
+const MdInputText: React.FC<IMdInputTextProps> = memo(({ className = '', ...props }) => {
   const { error } = useFormError(props.name, props.errors, props.touched, props.errorMessage);
 
   const handleKeyEnter = useCallback(
@@ -51,7 +51,7 @@ const MdInputText: React.FC<IMdInputTextProps> = ({ className = '', ...props }) 
       <MdFormError error={error} />
     </div>
   );
-};
+});
 
 MdInputText.defaultProps = {
   type: 'text',

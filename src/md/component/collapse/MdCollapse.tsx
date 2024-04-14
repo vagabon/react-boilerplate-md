@@ -1,6 +1,7 @@
 import { Theme } from '@emotion/react';
 import { Collapse, CollapseClasses, SxProps } from '@mui/material';
 import { TransitionProps } from '@mui/material/transitions';
+import { memo } from 'react';
 
 export interface IMdCollapseProps {
   children?: React.ReactNode;
@@ -15,13 +16,10 @@ export interface IMdCollapseProps {
   sx?: SxProps<Theme>;
 }
 
-const MdCollapse: React.FC<IMdCollapseProps> = ({
-  collapsedSize = '0px',
-  orientation = 'vertical',
-  timeout = 'auto',
-  ...props
-}) => {
-  return <Collapse {...props} collapsedSize={collapsedSize} orientation={orientation} timeout={timeout}></Collapse>;
-};
+const MdCollapse: React.FC<IMdCollapseProps> = memo(
+  ({ collapsedSize = '0px', orientation = 'vertical', timeout = 'auto', ...props }) => {
+    return <Collapse {...props} collapsedSize={collapsedSize} orientation={orientation} timeout={timeout}></Collapse>;
+  },
+);
 
 export default MdCollapse;
