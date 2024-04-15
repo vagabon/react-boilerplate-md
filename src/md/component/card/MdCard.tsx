@@ -92,7 +92,7 @@ const MdCard: React.FC<IMdCardProps> = memo(
             subheader={date ? DateUtils.format(date, 'Le DD MMM YYYY à hhhmm') : ''}
           />
         )}
-        {rest.subactions && <div style={{ margin: '8px 16px' }}>{rest.subactions}</div>}
+        {rest.subactions && <div className='card-subactions'>{rest.subactions}</div>}
         {rest.children && <CardContent>{rest.children}</CardContent>}
         {rest.buttonchildren && <CardActions className='justify-end'>{rest.buttonchildren}</CardActions>}
       </Card>

@@ -1,12 +1,18 @@
-import { Button, Menu, MenuItem } from '@mui/material';
+import { Button, Menu, MenuItem, SxProps, Theme } from '@mui/material';
 import React, { useCallback } from 'react';
+import { ButtonColorType } from '../button/MdButton';
 
 export interface IMdMenuProps {
+  className?: string;
   title: JSX.Element;
   elements: { name: string; element: JSX.Element }[];
+  size?: 'small' | 'medium' | 'large';
+  variant?: 'text' | 'outlined' | 'contained';
+  color?: ButtonColorType;
+  sx?: SxProps<Theme>;
 }
 
-const MdMenu: React.FC<IMdMenuProps> = ({ title, elements }) => {
+const MdMenu: React.FC<IMdMenuProps> = ({ title, elements, className, size, variant, color, sx }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -21,15 +27,18 @@ const MdMenu: React.FC<IMdMenuProps> = ({ title, elements }) => {
   return (
     <div>
       <Button
-        id='basic-button'
+        className={className ?? ''}
+        size={size ?? 'small'}
+        variant={variant}
+        color={color ?? 'primary'}
         aria-controls={open ? 'basic-menu' : undefined}
         aria-haspopup='true'
         aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}>
+        onClick={handleClick}
+        sx={sx}>
         {title}
       </Button>
       <Menu
-        id='basic-menu'
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}

@@ -52,6 +52,7 @@ import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import ScreenSearchDesktopIcon from '@mui/icons-material/ScreenSearchDesktop';
 import SearchIcon from '@mui/icons-material/Search';
 import SettingsIcon from '@mui/icons-material/Settings';
+import ShareIcon from '@mui/icons-material/Share';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import SmsIcon from '@mui/icons-material/Sms';
@@ -124,6 +125,7 @@ export const ICONS = {
   copy: { react: (color: IconColorType) => <ContentCopyIcon color={color} /> },
   message: { react: (color: IconColorType) => <MessageIcon color={color} /> },
   key: { react: (color: IconColorType) => <KeyIcon color={color} /> },
+  share: { react: (color: IconColorType) => <ShareIcon color={color} /> },
 };
 
 export const useIcon = () => {
