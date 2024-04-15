@@ -77,6 +77,7 @@ jest.mock('@mui/material', () => ({
   Badge: ({ children }) => <div data-testid='Badge'>{children}</div>,
   Backdrop: ({ children }) => <div data-testid='Backdrop'>{children}</div>,
   Box: ({ children }) => <div data-testid='Box'>{children}</div>,
+  Button: ({ children }) => <div data-testid='Button'>{children}</div>,
   ButtonGroup: ({ children }) => <div data-testid='ButtonGroup'>{children}</div>,
   Card: ({ children }) => <div data-testid='Card'>{children}</div>,
   CardActions: ({ children }) => <div data-testid='CardActions'>{children}</div>,
@@ -126,6 +127,11 @@ jest.mock('@mui/material', () => ({
   ),
   ListItemIcon: ({ children }) => <div data-testid='ListItemIcon'>{children}</div>,
   ListItemText: ({ children }) => <div data-testid='ListItemText'>{children}</div>,
+  Menu: ({ value, onClick, children }) => (
+    <div data-testid='Menu' value={value} onClick={onClick}>
+      {children}
+    </div>
+  ),
   MenuItem: ({ value, onClick, children }) => (
     <option data-testid='MenuItem' value={value} onClick={onClick}>
       {children}

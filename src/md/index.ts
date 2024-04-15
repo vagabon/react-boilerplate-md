@@ -72,6 +72,8 @@ export { default as MdListSimple } from './component/list/MdListSimple';
 export type { IListSimpleDto, IMdListSimpleProps } from './component/list/MdListSimple';
 export { default as MdMarkdown } from './component/markdown/MdMarkdown';
 export type { IMdMarkdownProps } from './component/markdown/MdMarkdown';
+export { default as MdMenu } from './component/menu/MdMenu';
+export type { IMdMenuProps } from './component/menu/MdMenu';
 export { default as MdMenuItem } from './component/menu/MdMenuItem';
 export type { IMdMenuItemProps } from './component/menu/MdMenuItem';
 export { default as MdCommonModal } from './component/modal/MdCommonModal';
