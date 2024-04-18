@@ -238,6 +238,7 @@ jest.mock('@mui/x-date-pickers/DateTimePicker', () => ({ children, slotProps, on
 
 jest.mock('mui-markdown', () => ({
   MuiMarkdown: ({ children }) => <div data-testid='MuiMarkdown'>{children}</div>,
+  getOverrides: jest.fn(),
 }));
 
 jest.mock('@mui/x-date-pickers/DateTimePicker', () => ({

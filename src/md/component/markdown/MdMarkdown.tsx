@@ -1,4 +1,4 @@
-import { MuiMarkdown } from 'mui-markdown';
+import { MuiMarkdown, getOverrides } from 'mui-markdown';
 import { Highlight, themes } from 'prism-react-renderer';
 import { memo, useCallback, useEffect, useRef } from 'react';
 import { useIcon } from '../../../icon';
@@ -23,7 +23,7 @@ const MdMarkdown: React.FC<IMdMarkdownProps> = memo(({ content, summaryCallback,
       interval.current && clearInterval(interval.current);
       const elements = div[0].getElementsByTagName('*');
       for (const element of elements) {
-        if (element.tagName.includes('H') || element.tagName.includes('h')) {
+        if (element.tagName.startsWith('H') || element.tagName.startsWith('h')) {
           const number = parseInt(element.tagName.replace('H', '').replace('h', ''));
           let tabs = '';
           for (let i = 1; i < number; i++) {
@@ -55,7 +55,11 @@ const MdMarkdown: React.FC<IMdMarkdownProps> = memo(({ content, summaryCallback,
     const copyHtml = document.getElementById('copy-button')?.innerHTML ?? '';
     for (const element of elements) {
       const buttonCoppyExist = element.getElementsByClassName('button-copy');
-      if (element.tagName.includes('PRE') && buttonCoppyExist.length === 0 && copyHtml !== '') {
+      if (
+        (element.tagName.startsWith('CODE') || element.tagName.startsWith('code')) &&
+        buttonCoppyExist.length === 0 &&
+        copyHtml !== ''
+      ) {
         const content = (element as HTMLElement).innerText ?? '';
         const div = document.createElement('button');
         div.className = 'button-copy';
@@ -71,7 +75,15 @@ const MdMarkdown: React.FC<IMdMarkdownProps> = memo(({ content, summaryCallback,
 
   return (
     <div id={id}>
-      <MuiMarkdown Highlight={Highlight} themes={themes} hideLineNumbers>
+      <MuiMarkdown
+        overrides={{
+          ...getOverrides({ Highlight, themes, hideLineNumbers: true }),
+          a: {
+            props: {
+              target: summaryCallback && '_blank',
+            },
+          },
+        }}>
         {content}
       </MuiMarkdown>
       <div id='copy-button' style={{ display: 'none' }}>
