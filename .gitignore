@@ -5,13 +5,13 @@
 /.pnp
 .pnp.js
 /storybook-static
+package-lock.json
 
 # testing
 /coverage
 /cypress/videos
 /cypress/screenshots
 .scannerwork
-package-lock.json
 
 # production
 /build
