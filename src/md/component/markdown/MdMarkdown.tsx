@@ -56,7 +56,10 @@ const MdMarkdown: React.FC<IMdMarkdownProps> = memo(({ content, summaryCallback,
     for (const element of elements) {
       const buttonCoppyExist = element.getElementsByClassName('button-copy');
       if (
-        (element.tagName.startsWith('CODE') || element.tagName.startsWith('code')) &&
+        (element.tagName.startsWith('CODE') ||
+          element.tagName.startsWith('code') ||
+          element.tagName.startsWith('PRE') ||
+          element.tagName.startsWith('pre')) &&
         buttonCoppyExist.length === 0 &&
         copyHtml !== ''
       ) {
