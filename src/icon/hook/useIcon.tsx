@@ -51,6 +51,7 @@ import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturi
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import ScreenSearchDesktopIcon from '@mui/icons-material/ScreenSearchDesktop';
 import SearchIcon from '@mui/icons-material/Search';
+import SendIcon from '@mui/icons-material/Send';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ShareIcon from '@mui/icons-material/Share';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -126,6 +127,7 @@ export const ICONS = {
   message: { react: (color: IconColorType) => <MessageIcon color={color} /> },
   key: { react: (color: IconColorType) => <KeyIcon color={color} /> },
   share: { react: (color: IconColorType) => <ShareIcon color={color} /> },
+  send: { react: (color: IconColorType) => <SendIcon color={color} /> },
 };
 
 export const useIcon = () => {
