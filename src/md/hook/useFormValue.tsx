@@ -24,7 +24,7 @@ export const useFormValue = (type: string, value: JSONValue, newValue?: JSONValu
   }, [value]);
 
   useEffect(() => {
-    if (newValue && isFocusRef.current === false) {
+    if ((newValue || newValue === '') && isFocusRef.current === false) {
       setKey(UuidUtils.createUUID());
       setDefaultValue(newValue);
     }
