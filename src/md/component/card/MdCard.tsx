@@ -28,7 +28,7 @@ export interface IMdCardProps {
   style?: CSSProperties;
   callback?: () => void;
   callbackLeft?: () => void;
-  elementRigth?: () => JSX.Element;
+  elementRigth?: () => React.JSX.Element;
   buttonchildren?: ReactNode;
   children?: ReactNode;
 }

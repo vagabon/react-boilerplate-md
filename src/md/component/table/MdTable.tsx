@@ -1,9 +1,9 @@
 import { Table, TableBody, TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material';
-import { Fragment, ReactNode, memo, useCallback, useEffect, useState } from 'react';
+import { Fragment, ReactNode, memo } from 'react';
 import { Trans } from 'react-i18next';
 import { JSONObject } from '../../../dto';
-import { useAppRouter } from '../../../router';
-import { ObjectUtils, UuidUtils } from '../../../utils';
+import { ObjectUtils } from '../../../utils';
+import { useTable } from '../../hook/useTable';
 
 export type TablePaginateCallbackType = (
   newPage: number,
@@ -33,33 +33,12 @@ export interface IMdTableProps {
 
 const MdTable: React.FC<IMdTableProps> = memo(
   ({ cells, sortBy = 'id', rowsPerPage = 10, sortByOrder = 'asc', showEmpty = false, callBack, children, ...rest }) => {
-    const { navigate } = useAppRouter();
-    const [datas, setDatas] = useState<JSONObject[]>([]);
-
-    useEffect(() => {
-      const newDatas: JSONObject[] = [];
-      for (let i = 0; i < rowsPerPage; i++) {
-        if (rest.datas[i]) {
-          newDatas.push(rest.datas[i]);
-        } else {
-          showEmpty && newDatas.push({ empty: true, id: UuidUtils.createUUID() });
-        }
-      }
-      setDatas(newDatas);
-    }, [showEmpty, rest.datas, rowsPerPage]);
-
-    const createSortHandle = useCallback(
-      (property: string, callBack?: TablePaginateCallbackType) => (): void => {
-        callBack?.(0, rowsPerPage, property, sortByOrder === 'asc' ? 'desc' : 'asc');
-      },
-      [rowsPerPage, sortByOrder],
-    );
-
-    const handleClick = useCallback(
-      (id: string) => () => {
-        rest.url && navigate(rest.url + id);
-      },
-      [navigate, rest.url],
+    const { datas, createSortHandle, handleClick } = useTable(
+      showEmpty,
+      rest.datas,
+      sortByOrder,
+      rowsPerPage,
+      rest.url,
     );
 
     return (

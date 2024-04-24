@@ -4,8 +4,8 @@ import { ButtonColorType } from '../button/MdButton';
 
 export interface IMdMenuProps {
   className?: string;
-  title: JSX.Element;
-  elements: { name: string; element: JSX.Element }[];
+  title: React.JSX.Element;
+  elements: { name: string; element: React.JSX.Element }[];
   size?: 'small' | 'medium' | 'large';
   variant?: 'text' | 'outlined' | 'contained';
   color?: ButtonColorType;
