@@ -5,7 +5,7 @@ import { useAppTranslate } from '../../../translate';
 export interface IMdListItemTextProps {
   color?: string;
   label: string;
-  secondary?: React.JSX.Element;
+  secondary?: JSX.Element;
 }
 const MdListItemText: React.FC<IMdListItemTextProps> = memo(({ label, color, secondary }) => {
   const { Trans } = useAppTranslate();

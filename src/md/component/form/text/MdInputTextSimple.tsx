@@ -78,7 +78,6 @@ const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(({ className =
           ),
           autoComplete: 'off',
           readOnly: readonly,
-          style: { resize: 'vertical' },
         }}
         multiline={(props.textarea ?? 0) > 0}
         disabled={props.disabled}

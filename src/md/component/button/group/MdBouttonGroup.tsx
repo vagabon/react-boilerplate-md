@@ -16,7 +16,7 @@ const MdBouttonGroup: React.FC<IMdBouttonGroupProps> = memo(({ className = '', v
     (children: ReactNode) => (
       <>
         {Children.toArray(children).map((child) => {
-          const key = (child as React.JSX.Element).props?.id || UuidUtils.createUUID();
+          const key = (child as JSX.Element).props?.id || UuidUtils.createUUID();
           return <Fragment key={'test-' + key}>{cloneElement(child as ReactElement, { variant, size })}</Fragment>;
         })}
       </>
