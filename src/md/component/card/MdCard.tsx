@@ -65,7 +65,7 @@ const MdCard: React.FC<IMdCardProps> = memo(
       <Card {...rest} id={id}>
         {image && (
           <CardMedia onClick={handleClick(url)}>
-            <img alt={'Image : ' + title} src={image} width='100%' height='300px' />
+            <img alt={'Image : ' + title} src={image} width='100%' />
           </CardMedia>
         )}
         {title && (

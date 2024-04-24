@@ -24,6 +24,11 @@ const style = {
 };
 
 const MdCommonModal: React.FC<ICommonModalProps> = memo(({ className = '', ...props }) => {
+  const handleClick = useCallback((event: MouseEvent) => {
+    event.stopPropagation();
+    event.preventDefault();
+  }, []);
+
   const handleClose = useCallback(
     (callback: () => void) => (event: MouseEvent) => {
       event.stopPropagation();
@@ -34,7 +39,11 @@ const MdCommonModal: React.FC<ICommonModalProps> = memo(({ className = '', ...pr
   );
 
   return (
-    <Modal className={className + ' modal'} open={props.open ?? false} onClose={handleClose(props.handleClose)}>
+    <Modal
+      className={className + ' modal'}
+      open={props.open ?? false}
+      onClick={handleClick}
+      onClose={handleClose(props.handleClose)}>
       <Box sx={{ ...style, position: 'relative' }}>
         <div style={{ position: 'absolute', top: '11px', right: '11px' }}>
           <IconClickable icon='close' callback={props.handleClose} />

@@ -12,6 +12,7 @@ export const useFormValue = (type: string, value: JSONValue, newValue?: JSONValu
   const [readonly, setReadonly] = useState(type === 'password');
   const uref = useRef<HTMLInputElement>();
   const isFocusRef = useRef<boolean>(false);
+  const [keyDown, setKeyDown] = useState<boolean>(false);
 
   useEffect(() => {
     setKey(UuidUtils.createUUID());
@@ -51,16 +52,24 @@ export const useFormValue = (type: string, value: JSONValue, newValue?: JSONValu
     [],
   );
 
+  const handleKeyDown = useCallback((event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'Control') {
+      setKeyDown(true);
+    }
+  }, []);
+
   const handleKeyUp = useCallback(
-    (callbackEnter?: (target: { name: string; value: string }) => void) => (event: KeyboardEvent<HTMLDivElement>) => {
-      if (event.key === 'Enter') {
-        const target = {
-          name: ObjectUtils.getDtoString(event.target as IApiDto, 'name'),
-          value: ObjectUtils.getDtoString(event.target as IApiDto, 'value'),
-        };
-        callbackEnter?.(target);
-      }
-    },
+    (isTextArea: boolean, keyDown: boolean, callbackEnter?: (target: { name: string; value: string }) => void) =>
+      (event: KeyboardEvent<HTMLDivElement>) => {
+        if (event.key === 'Enter') {
+          const target = {
+            name: ObjectUtils.getDtoString(event.target as IApiDto, 'name'),
+            value: ObjectUtils.getDtoString(event.target as IApiDto, 'value'),
+          };
+          ((isTextArea && keyDown) || !isTextArea) && callbackEnter?.(target);
+          setKeyDown(false);
+        }
+      },
     [],
   );
 
@@ -86,6 +95,8 @@ export const useFormValue = (type: string, value: JSONValue, newValue?: JSONValu
     handleFocus,
     handleChange,
     handleBlur,
+    keyDown,
+    handleKeyDown,
     handleKeyUp,
     handleReset,
   };

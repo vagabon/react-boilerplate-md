@@ -42,6 +42,8 @@ const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(({ className =
     handleFocus,
     handleChange,
     handleBlur,
+    keyDown,
+    handleKeyDown,
     handleKeyUp,
     handleReset,
   } = useFormValue(props.type ?? DEFAULT_TEXT, props.value, props.newValue);
@@ -66,7 +68,8 @@ const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(({ className =
         onFocus={handleFocus}
         onChange={handleChange(props.handleChange)}
         onBlur={handleBlur(props.handleBlur)}
-        onKeyUp={handleKeyUp(props.handleKeyEnter)}
+        onKeyDown={handleKeyDown}
+        onKeyUp={handleKeyUp((props.textarea ?? 0) > 0, keyDown, props.handleKeyEnter)}
         InputProps={{
           ...props.inputProps,
           endAdornment: callbackReset && (

@@ -1,32 +1,35 @@
 import { IconButton } from '@mui/material';
-import { MouseEvent, memo, useCallback } from 'react';
+import { MouseEvent, ReactNode, memo, useCallback } from 'react';
 import { IconColorType, useIcon } from '../hook/useIcon';
 
 export interface IIconClickableProps {
   className?: string;
-  icon: string;
+  icon?: string;
   color?: IconColorType;
   disabled?: boolean;
   callback?: () => void;
+  children?: ReactNode;
 }
 
-const IconClickable: React.FC<IIconClickableProps> = memo(({ className, icon, color, disabled, callback }) => {
-  const { getIcon } = useIcon();
+const IconClickable: React.FC<IIconClickableProps> = memo(
+  ({ className, icon, color, disabled, callback, children }) => {
+    const { getIcon } = useIcon();
 
-  const handleClickIcon = useCallback(
-    (event: MouseEvent | MouseEvent<HTMLButtonElement, MouseEvent>) => {
-      event.stopPropagation();
-      event.preventDefault();
-      callback?.();
-    },
-    [callback],
-  );
+    const handleClickIcon = useCallback(
+      (event: MouseEvent | MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        event.stopPropagation();
+        event.preventDefault();
+        callback?.();
+      },
+      [callback],
+    );
 
-  return (
-    <IconButton className={className} edge='end' aria-label='delete' onClick={handleClickIcon} disabled={disabled}>
-      {getIcon(icon, color, disabled)}
-    </IconButton>
-  );
-});
+    return (
+      <IconButton className={className} edge='end' aria-label='delete' onClick={handleClickIcon} disabled={disabled}>
+        {children ?? <>{getIcon(icon, color, disabled)}</>}
+      </IconButton>
+    );
+  },
+);
 
 export default IconClickable;

@@ -11,6 +11,7 @@ export interface IMdFormSwitchProps extends IFormPropsDto {
   className?: string;
   label: string;
   name: string;
+  disabled?: boolean;
 }
 
 const MdFormSwitch: React.FC<IMdFormSwitchProps> = memo(({ className = '', ...props }) => {
@@ -33,7 +34,10 @@ const MdFormSwitch: React.FC<IMdFormSwitchProps> = memo(({ className = '', ...pr
   return (
     <div className={'flex switch ' + className}>
       <div>
-        <Typography paragraph={true}>
+        <Typography
+          paragraph={true}
+          onClick={handleChange(checked, props.handleChange)}
+          style={{ cursor: 'pointer', userSelect: 'none' }}>
           <Trans i18nKey={props.label} />
           {props.validationSchema?.[props.name as keyof JSONObject]?.['required'] ? ' *' : ''}
         </Typography>
@@ -43,6 +47,7 @@ const MdFormSwitch: React.FC<IMdFormSwitchProps> = memo(({ className = '', ...pr
           checked={checked}
           callbackChange={handleChange(checked, props.handleChange)}
           callbackBlur={props.handleBlur}
+          disabled={props.disabled ?? props.validationSchema?.[props.name as keyof JSONObject]?.['disabled']}
         />
       </div>
 
