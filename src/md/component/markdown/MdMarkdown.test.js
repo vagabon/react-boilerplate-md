@@ -3,6 +3,10 @@ import MdMarkdown from './MdMarkdown';
 
 jest.useFakeTimers();
 
+String.prototype.replaceAll = function (match, replace) {
+  return this;
+};
+
 describe('MdMarkdown', () => {
   test('Given MdMarkdown When its mount Then MuiMarkdown is shown', () => {
     jest.spyOn(global, 'setInterval');

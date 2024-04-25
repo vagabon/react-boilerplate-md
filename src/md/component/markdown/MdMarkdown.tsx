@@ -3,6 +3,7 @@ import { Highlight, themes } from 'prism-react-renderer';
 import { memo, useCallback, useEffect, useRef } from 'react';
 import { useIcon } from '../../../icon';
 import { useId } from '../../hook/useId';
+import { MD_CODE, MD_LANGUAGES } from './MdMardownLanguages';
 
 export interface IMdMarkdownProps {
   content?: string;
@@ -55,12 +56,15 @@ const MdMarkdown: React.FC<IMdMarkdownProps> = memo(({ content, summaryCallback,
     const copyHtml = document.getElementById('copy-button')?.innerHTML ?? '';
     for (const element of elements) {
       const buttonCoppyExist = element.getElementsByClassName('button-copy');
+      const buttonCoppyParentExist = element.parentElement?.getElementsByClassName('button-copy');
       if (
         (element.tagName.startsWith('CODE') ||
           element.tagName.startsWith('code') ||
           element.tagName.startsWith('PRE') ||
           element.tagName.startsWith('pre')) &&
         buttonCoppyExist.length === 0 &&
+        (!element.tagName.startsWith('code') ||
+          (element.tagName.startsWith('code') && buttonCoppyParentExist?.length === 0)) &&
         copyHtml !== ''
       ) {
         const content = (element as HTMLElement).innerText ?? '';
@@ -76,6 +80,15 @@ const MdMarkdown: React.FC<IMdMarkdownProps> = memo(({ content, summaryCallback,
     }
   }, [id, generateSummary, summaryCallback, callbackCopy, content]);
 
+  const replaceCode = useCallback((content?: string) => {
+    let contentWithCode = String(content);
+    MD_LANGUAGES.forEach((language) => {
+      contentWithCode = contentWithCode.replaceAll(MD_CODE + language, '\n' + MD_CODE + 'js ');
+    });
+
+    return contentWithCode;
+  }, []);
+
   return (
     <div id={id}>
       <MuiMarkdown
@@ -87,7 +100,7 @@ const MdMarkdown: React.FC<IMdMarkdownProps> = memo(({ content, summaryCallback,
             },
           },
         }}>
-        {content}
+        {replaceCode(content)}
       </MuiMarkdown>
       <div id='copy-button' style={{ display: 'none' }}>
         {getIcon('copy', 'secondary', true)}
