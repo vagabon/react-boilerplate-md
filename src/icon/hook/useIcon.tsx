@@ -170,6 +170,18 @@ export const useIcon = () => {
       'right',
       'sun',
       'user',
+      'login',
+      'password',
+      'refresh',
+      'right',
+      'news',
+      'blog',
+      'wait',
+      'copy',
+      'send',
+      'download',
+      'upload',
+      'market',
     ];
 
     return Object.entries(ICONS)
