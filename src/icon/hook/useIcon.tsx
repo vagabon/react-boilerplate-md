@@ -27,6 +27,7 @@ import CreateIcon from '@mui/icons-material/Create';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DownloadIcon from '@mui/icons-material/Download';
+import EmailIcon from '@mui/icons-material/Email';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import FolderIcon from '@mui/icons-material/Folder';
@@ -42,6 +43,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import MessageIcon from '@mui/icons-material/Message';
+import ModelTrainingIcon from '@mui/icons-material/ModelTraining';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MovieIcon from '@mui/icons-material/Movie';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -134,6 +136,8 @@ export const ICONS = {
   download: { react: (color: IconColorType) => <DownloadIcon color={color} /> },
   upload: { react: (color: IconColorType) => <UploadIcon color={color} /> },
   market: { react: (color: IconColorType) => <LocalGroceryStoreIcon color={color} /> },
+  training: { react: (color: IconColorType) => <ModelTrainingIcon color={color} /> },
+  email: { react: (color: IconColorType) => <EmailIcon color={color} /> },
 };
 
 export const useIcon = () => {
