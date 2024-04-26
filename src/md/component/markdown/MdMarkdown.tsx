@@ -2,6 +2,7 @@ import { MuiMarkdown, getOverrides } from 'mui-markdown';
 import { Highlight, themes } from 'prism-react-renderer';
 import { memo, useCallback, useEffect, useRef } from 'react';
 import { useIcon } from '../../../icon';
+import { emptyCopyButton } from '../../../utils/markdown/MarkdownUtils';
 import { useId } from '../../hook/useId';
 import { MD_CODE, MD_LANGUAGES } from './MdMardownLanguages';
 
@@ -57,16 +58,7 @@ const MdMarkdown: React.FC<IMdMarkdownProps> = memo(({ content, summaryCallback,
     for (const element of elements) {
       const buttonCoppyExist = element.getElementsByClassName('button-copy');
       const buttonCoppyParentExist = element.parentElement?.getElementsByClassName('button-copy');
-      if (
-        (element.tagName.startsWith('CODE') ||
-          element.tagName.startsWith('code') ||
-          element.tagName.startsWith('PRE') ||
-          element.tagName.startsWith('pre')) &&
-        buttonCoppyExist.length === 0 &&
-        (!element.tagName.startsWith('code') ||
-          (element.tagName.startsWith('code') && buttonCoppyParentExist?.length === 0)) &&
-        copyHtml !== ''
-      ) {
+      if (emptyCopyButton(element.tagName, copyHtml, buttonCoppyExist, buttonCoppyParentExist)) {
         const content = (element as HTMLElement).innerText ?? '';
         const div = document.createElement('button');
         div.className = 'button-copy';
