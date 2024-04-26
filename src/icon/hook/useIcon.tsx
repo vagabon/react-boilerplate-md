@@ -26,6 +26,7 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import CreateIcon from '@mui/icons-material/Create';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import DeleteIcon from '@mui/icons-material/Delete';
+import DownloadIcon from '@mui/icons-material/Download';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import FolderIcon from '@mui/icons-material/Folder';
@@ -36,6 +37,7 @@ import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
 import InfoIcon from '@mui/icons-material/Info';
 import InsertLinkIcon from '@mui/icons-material/InsertLink';
 import KeyIcon from '@mui/icons-material/Key';
+import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import LoginIcon from '@mui/icons-material/Login';
 import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -58,6 +60,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import SmsIcon from '@mui/icons-material/Sms';
 import StarRateIcon from '@mui/icons-material/StarRate';
+import UploadIcon from '@mui/icons-material/Upload';
 
 export type IconColorType =
   | 'inherit'
@@ -128,6 +131,9 @@ export const ICONS = {
   key: { react: (color: IconColorType) => <KeyIcon color={color} /> },
   share: { react: (color: IconColorType) => <ShareIcon color={color} /> },
   send: { react: (color: IconColorType) => <SendIcon color={color} /> },
+  download: { react: (color: IconColorType) => <DownloadIcon color={color} /> },
+  upload: { react: (color: IconColorType) => <UploadIcon color={color} /> },
+  market: { react: (color: IconColorType) => <LocalGroceryStoreIcon color={color} /> },
 };
 
 export const useIcon = () => {
