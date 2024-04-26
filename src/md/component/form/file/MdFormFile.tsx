@@ -6,7 +6,7 @@ import { useId } from '../../../hook/useId';
 
 export interface IMdFormFileProps {
   name: string;
-  label: string;
+  label?: string;
   values?: JSONObject;
   accept?: string;
   handleChangeFile: (name: string, file: File) => void;
