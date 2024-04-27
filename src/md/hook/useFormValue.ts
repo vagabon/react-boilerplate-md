@@ -4,7 +4,7 @@ import { HandleBlurType, HandleChangeType } from '../../dto/form/FormDto';
 import { ObjectUtils } from '../../utils';
 import { UuidUtils } from '../../utils/uuid/UuidUtils';
 
-export const useFormValue = (type: string, value: JSONValue, newValue?: JSONValue) => {
+export const useFormValue = (type: string, value: JSONValue, newValue: JSONValue = '') => {
   const [key, setKey] = useState<string>();
   const [defaultValue, setDefaultValue] = useState<JSONValue>('');
   const [liveValue, setLiveValue] = useState(value);
@@ -25,9 +25,9 @@ export const useFormValue = (type: string, value: JSONValue, newValue?: JSONValu
   }, [value]);
 
   useEffect(() => {
-    if ((newValue || newValue === '') && isFocusRef.current === false) {
+    if ((newValue || newValue === '' || newValue === null) && isFocusRef.current === false) {
       setKey(UuidUtils.createUUID());
-      setDefaultValue(newValue);
+      setDefaultValue(newValue ?? '');
     }
   }, [newValue]);
 
