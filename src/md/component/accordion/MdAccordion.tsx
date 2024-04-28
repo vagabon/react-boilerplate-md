@@ -12,11 +12,11 @@ export interface IMdAccordionProps {
   disabled?: boolean;
 }
 
-const MdAccordion: React.FC<IMdAccordionProps> = memo(({ className, title, description, expanded, disabled }) => {
+const MdAccordion: React.FC<IMdAccordionProps> = memo(({ className = '', title, description, expanded, disabled }) => {
   const { id } = useId();
   const { Trans } = useAppTranslate();
   return (
-    <Accordion className={className ?? ''} defaultExpanded={expanded} disabled={disabled}>
+    <Accordion className={className} defaultExpanded={expanded} disabled={disabled}>
       <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls={id + '-content'} id={id + '-header'}>
         <Trans i18nKey={title} />
       </AccordionSummary>

@@ -12,12 +12,12 @@ export interface IMdFormAutocompleteProps extends IFormPropsDto {
   list: string[];
 }
 
-const MdFormAutocomplete: React.FC<IMdFormAutocompleteProps> = memo(({ ...rest }) => {
+const MdFormAutocomplete: React.FC<IMdFormAutocompleteProps> = memo(({ className = '', ...rest }) => {
   const { error } = useFormError(rest.name, rest.errors, rest.touched, rest.errorMessage);
 
   return (
     <div style={{ width: '100%' }}>
-      <FormControl className={rest.className ?? ''} fullWidth sx={{ marginBottom: '8px', marginTop: '16px' }}>
+      <FormControl className={className} fullWidth sx={{ marginBottom: '8px', marginTop: '16px' }}>
         <Autocomplete
           id={rest.name}
           value={rest.values?.[rest.name as keyof JSONObject] ?? ''}
@@ -33,7 +33,5 @@ const MdFormAutocomplete: React.FC<IMdFormAutocompleteProps> = memo(({ ...rest }
     </div>
   );
 });
-
-MdFormAutocomplete.defaultProps = {};
 
 export default MdFormAutocomplete;

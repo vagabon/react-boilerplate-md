@@ -31,70 +31,72 @@ export interface IMdInputTextSimpleProps {
   callbackReset?: () => void;
 }
 
-const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(({ className, callbackReset, ...rest }) => {
-  const { t } = useAppTranslate();
-  const {
-    uref,
-    key,
-    liveValue,
-    defaultValue,
-    readonly,
-    handleFocus,
-    handleChange,
-    handleBlur,
-    keyDown,
-    handleKeyDown,
-    handleKeyUp,
-    handleReset,
-  } = useFormValue(rest.type ?? DEFAULT_TEXT, rest.value, rest.newValue);
+const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(
+  ({
+    type = DEFAULT_TEXT,
+    textarea = 0,
+    required = false,
+    fullWidth = true,
+    className = '',
+    callbackReset,
+    ...rest
+  }) => {
+    const { t } = useAppTranslate();
+    const {
+      uref,
+      key,
+      liveValue,
+      defaultValue,
+      readonly,
+      handleFocus,
+      handleChange,
+      handleBlur,
+      keyDown,
+      handleKeyDown,
+      handleKeyUp,
+      handleReset,
+    } = useFormValue(type, rest.value, rest.newValue);
 
-  return (
-    <div style={{ width: '100%' }}>
-      <TextField
-        error={rest.error}
-        key={key}
-        inputRef={uref}
-        className={className ?? ''}
-        type={rest.type}
-        margin='normal'
-        label={t(rest.label)}
-        variant={rest.variant}
-        placeholder={I18nUtils.translate(t, rest.placeholder ?? '')}
-        size={rest.size}
-        name={rest.name}
-        defaultValue={defaultValue}
-        required={rest.required}
-        fullWidth={rest.fullWidth}
-        onFocus={handleFocus}
-        onChange={handleChange(rest.handleChange)}
-        onBlur={handleBlur(rest.handleBlur)}
-        onKeyDown={handleKeyDown}
-        onKeyUp={handleKeyUp((rest.textarea ?? 0) > 0, keyDown, rest.handleKeyEnter)}
-        InputProps={{
-          ...rest.inputProps,
-          endAdornment: callbackReset && (
-            <IconButton
-              sx={{ visibility: liveValue !== '' ? 'visible' : 'hidden' }}
-              onMouseDown={handleReset(callbackReset)}>
-              <ClearIcon />
-            </IconButton>
-          ),
-          autoComplete: 'off',
-          readOnly: readonly,
-        }}
-        multiline={(rest.textarea ?? 0) > 0}
-        disabled={rest.disabled}
-        minRows={rest.textarea}></TextField>
-    </div>
-  );
-});
-
-MdInputTextSimple.defaultProps = {
-  type: DEFAULT_TEXT,
-  textarea: 0,
-  required: false,
-  fullWidth: true,
-  className: '',
-};
+    return (
+      <div style={{ width: '100%' }}>
+        <TextField
+          error={rest.error}
+          key={key}
+          inputRef={uref}
+          className={className}
+          type={type}
+          margin='normal'
+          label={t(rest.label)}
+          variant={rest.variant}
+          placeholder={I18nUtils.translate(t, rest.placeholder ?? '')}
+          size={rest.size}
+          name={rest.name}
+          defaultValue={defaultValue}
+          required={required}
+          fullWidth={fullWidth}
+          onFocus={handleFocus}
+          onChange={handleChange(rest.handleChange)}
+          onBlur={handleBlur(rest.handleBlur)}
+          onKeyDown={handleKeyDown}
+          onKeyUp={handleKeyUp(textarea > 0, keyDown, rest.handleKeyEnter)}
+          InputProps={{
+            ...rest.inputProps,
+            endAdornment: callbackReset && (
+              <IconButton
+                sx={{ visibility: liveValue !== '' ? 'visible' : 'hidden' }}
+                onMouseDown={handleReset(callbackReset)}>
+                <ClearIcon />
+              </IconButton>
+            ),
+            autoComplete: 'off',
+            readOnly: readonly,
+          }}
+          multiline={(textarea ?? 0) > 0}
+          disabled={rest.disabled}
+          minRows={textarea}></TextField>
+      </div>
+    );
+  },
+);
 
 export default MdInputTextSimple;

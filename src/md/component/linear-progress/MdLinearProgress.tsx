@@ -5,8 +5,8 @@ export interface IMdLinearProgressProps {
   className?: string;
 }
 
-const MdLinearProgress: React.FC<IMdLinearProgressProps> = memo(({ className }) => {
-  return <LinearProgress className={className ?? ''} />;
+const MdLinearProgress: React.FC<IMdLinearProgressProps> = memo(({ className = '' }) => {
+  return <LinearProgress className={className} />;
 });
 
 export default MdLinearProgress;

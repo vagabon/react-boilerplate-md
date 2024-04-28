@@ -14,7 +14,7 @@ export interface IMdSnackbarProps {
   type: AlertColor;
 }
 
-const MdSnackbar: React.FC<IMdSnackbarProps> = memo(({ className, message, type }) => {
+const MdSnackbar: React.FC<IMdSnackbarProps> = memo(({ className = '', message, type }) => {
   const { Trans } = useAppTranslate();
   const [open, setOpen] = useState(false);
   const [transition, setTransition] = useState<React.ComponentType<TransitionProps> | undefined>(undefined);
@@ -30,7 +30,7 @@ const MdSnackbar: React.FC<IMdSnackbarProps> = memo(({ className, message, type 
 
   return (
     <Snackbar
-      className={className ?? ''}
+      className={className}
       anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
       open={open}
       onClose={handleClose}

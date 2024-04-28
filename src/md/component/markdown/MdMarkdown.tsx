@@ -13,7 +13,7 @@ export interface IMdMarkdownProps {
   callbackCopy?: (message: string, type: 'success' | 'error') => void;
 }
 
-const MdMarkdown: React.FC<IMdMarkdownProps> = memo(({ className, content, summaryCallback, callbackCopy }) => {
+const MdMarkdown: React.FC<IMdMarkdownProps> = memo(({ className = '', content, summaryCallback, callbackCopy }) => {
   const { id } = useId();
   const interval = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { getIcon } = useIcon();
@@ -83,7 +83,7 @@ const MdMarkdown: React.FC<IMdMarkdownProps> = memo(({ className, content, summa
   }, []);
 
   return (
-    <div id={id} className={className ?? ''}>
+    <div id={id} className={className}>
       <MuiMarkdown
         overrides={{
           ...getOverrides({ Highlight, themes, hideLineNumbers: true }),

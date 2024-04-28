@@ -21,7 +21,7 @@ export interface IMdTabsProps {
 }
 
 const MdTabs: React.FC<IMdTabsProps> = memo(
-  ({ className, value, callback, indicatorColor, color, label, variant, scrollButtons, tabs }) => {
+  ({ className = '', value, callback, indicatorColor, color, label, variant, scrollButtons, tabs }) => {
     const { t } = useAppTranslate();
 
     const handleChange = useCallback(
@@ -34,7 +34,7 @@ const MdTabs: React.FC<IMdTabsProps> = memo(
 
     return (
       <Tabs
-        className={className ?? ''}
+        className={className}
         value={value}
         onChange={handleChange}
         indicatorColor={indicatorColor ?? 'secondary'}

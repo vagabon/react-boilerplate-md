@@ -36,68 +36,71 @@ export interface IMdButtonProps {
   color?: ButtonColorType;
   size?: 'small' | 'medium' | 'large';
   variant?: 'text' | 'outlined' | 'contained';
-  type?: 'submit';
+  type?: 'submit' | 'button' | 'reset';
   disabled?: boolean;
   sx?: SxProps<Theme>;
   callback?: () => void;
 }
 
-const MdButton: React.FC<IMdButtonProps> = memo(({ ...rest }) => {
-  const { navigate } = useAppRouter();
-  const { Trans } = useAppTranslate();
-  const { getIcon } = useIcon();
-  const [icon, setIcon] = useState<ReactNode | undefined>(getIcon(rest.icon, rest.iconColor, rest.disabled));
+const MdButton: React.FC<IMdButtonProps> = memo(
+  ({
+    className = '',
+    show = true,
+    url = '#',
+    size = 'small',
+    label = '',
+    variant = 'contained',
+    type = 'button',
+    ...rest
+  }) => {
+    const { navigate } = useAppRouter();
+    const { Trans } = useAppTranslate();
+    const { getIcon } = useIcon();
+    const [icon, setIcon] = useState<ReactNode | undefined>(getIcon(rest.icon, rest.iconColor, rest.disabled));
 
-  useEffect(() => {
-    setIcon(getIcon(rest.icon, rest.iconColor, rest.disabled));
-  }, [rest.icon, rest.iconColor, rest.disabled, getIcon]);
+    useEffect(() => {
+      setIcon(getIcon(rest.icon, rest.iconColor, rest.disabled));
+    }, [rest.icon, rest.iconColor, rest.disabled, getIcon]);
 
-  const onClick = useCallback(
-    (callback?: () => void) => (event: MouseEvent) => {
-      if (rest.type !== 'submit') {
-        event.stopPropagation();
-        event.preventDefault();
-        if (callback) {
-          callback();
-        } else if (rest.url) {
-          navigate(rest.url);
+    const onClick = useCallback(
+      (callback?: () => void) => (event: MouseEvent) => {
+        if (type !== 'submit') {
+          event.stopPropagation();
+          event.preventDefault();
+          if (callback) {
+            callback();
+          } else if (url) {
+            navigate(url);
+          }
         }
-      }
-    },
-    [rest.url, rest.type, navigate],
-  );
+      },
+      [url, type, navigate],
+    );
 
-  const showContent = useCallback(() => {
-    return <>{icon ? <>{icon}</> : <Trans i18nKey={rest.label}></Trans>}</>;
-  }, [icon, rest.label, Trans]);
+    const showContent = useCallback(() => {
+      return <>{icon ? <>{icon}</> : <Trans i18nKey={label}></Trans>}</>;
+    }, [icon, label, Trans]);
 
-  return (
-    <>
-      {rest.show && (
-        <Button
-          className={rest.className ?? ''}
-          size={rest.size ?? 'small'}
-          variant={rest.variant}
-          type={rest.type ?? 'button'}
-          fullWidth={rest.fullWidth}
-          onClick={onClick(rest.callback)}
-          startIcon={getIcon(rest.startIcon)}
-          color={rest.color ?? 'primary'}
-          disabled={rest.disabled}
-          sx={rest.sx}>
-          {showContent()}
-        </Button>
-      )}
-    </>
-  );
-});
-
-MdButton.defaultProps = {
-  show: true,
-  url: '#',
-  size: 'small',
-  label: '',
-  variant: 'contained',
-};
+    return (
+      <>
+        {show && (
+          <Button
+            className={className}
+            size={size}
+            variant={variant}
+            type={type}
+            fullWidth={rest.fullWidth}
+            onClick={onClick(rest.callback)}
+            startIcon={getIcon(rest.startIcon)}
+            color={rest.color ?? 'primary'}
+            disabled={rest.disabled}
+            sx={rest.sx}>
+            {showContent()}
+          </Button>
+        )}
+      </>
+    );
+  },
+);
 
 export default MdButton;

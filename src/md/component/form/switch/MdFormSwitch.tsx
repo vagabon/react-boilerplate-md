@@ -14,7 +14,7 @@ export interface IMdFormSwitchProps extends IFormPropsDto {
   disabled?: boolean;
 }
 
-const MdFormSwitch: React.FC<IMdFormSwitchProps> = memo(({ className, ...rest }) => {
+const MdFormSwitch: React.FC<IMdFormSwitchProps> = memo(({ className = '', ...rest }) => {
   const { Trans } = useAppTranslate();
   const { error } = useFormError(rest.name, rest.errors, rest.touched, rest.errorMessage);
   const [checked, setChecked] = useState<boolean>(false);
@@ -32,7 +32,7 @@ const MdFormSwitch: React.FC<IMdFormSwitchProps> = memo(({ className, ...rest })
   );
 
   return (
-    <div className={'flex switch ' + (className ?? '')}>
+    <div className={'flex switch ' + className}>
       <div>
         <Typography
           paragraph={true}

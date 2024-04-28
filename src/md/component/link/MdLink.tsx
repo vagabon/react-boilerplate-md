@@ -11,23 +11,19 @@ export interface IMdLinkProps {
   sx?: CSSProperties;
 }
 
-const MdLink: React.FC<IMdLinkProps> = memo(({ href, className, label, target, ...rest }) => {
+const MdLink: React.FC<IMdLinkProps> = memo(({ href, className = '', label, target, show = true, ...rest }) => {
   const { Trans } = useAppTranslate();
   const { Link } = useAppRouter();
 
   return (
     <>
-      {rest.show && (
-        <Link to={href} target={target} className={className ?? ''} style={rest.sx}>
+      {show && (
+        <Link to={href} target={target} className={className} style={rest.sx}>
           <Trans i18nKey={label} />
         </Link>
       )}
     </>
   );
 });
-
-MdLink.defaultProps = {
-  show: true,
-};
 
 export default MdLink;

@@ -16,12 +16,12 @@ export interface IMdTypoProps {
 }
 
 const MdTypo: React.FC<IMdTypoProps> = memo(
-  ({ className, label, paragraph, variant, color, align, noWrap, sx, children }) => {
+  ({ className = '', label, paragraph, variant, color, align, noWrap, sx, children }) => {
     const { Trans } = useAppTranslate();
 
     return (
       <Typography
-        className={className ?? ''}
+        className={className}
         paragraph={paragraph}
         variant={variant}
         color={color}

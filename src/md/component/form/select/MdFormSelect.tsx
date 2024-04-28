@@ -33,7 +33,7 @@ export interface IMdFormSelectProps extends IFormPropsDto {
   byId?: boolean;
 }
 
-const MdFormSelect: React.FC<IMdFormSelectProps> = memo(({ defaultValue, ...rest }) => {
+const MdFormSelect: React.FC<IMdFormSelectProps> = memo(({ className = '', defaultValue = true, ...rest }) => {
   const { t } = useAppTranslate();
   const { getIcon } = useIcon();
   const { error } = useFormError(rest.name, rest.errors, rest.touched, rest.errorMessage);
@@ -77,7 +77,7 @@ const MdFormSelect: React.FC<IMdFormSelectProps> = memo(({ defaultValue, ...rest
   return (
     <div style={{ width: '100%' }}>
       <FormControl
-        className={rest.className ?? ''}
+        className={className}
         fullWidth
         sx={{ marginBottom: '8px', marginTop: '16px' }}
         disabled={rest.disabled ?? rest.validationSchema?.[rest.name as keyof JSONObject]?.['disabled']}>
@@ -114,9 +114,5 @@ const MdFormSelect: React.FC<IMdFormSelectProps> = memo(({ defaultValue, ...rest
     </div>
   );
 });
-
-MdFormSelect.defaultProps = {
-  defaultValue: true,
-};
 
 export default MdFormSelect;

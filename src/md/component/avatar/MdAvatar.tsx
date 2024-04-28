@@ -9,13 +9,13 @@ export interface IMdAvatarProps {
   sx?: SxProps<Theme>;
 }
 
-const MdAvatar: React.FC<IMdAvatarProps> = memo(({ className, name, image, sx }) => {
+const MdAvatar: React.FC<IMdAvatarProps> = memo(({ className = '', name, image, sx }) => {
   return (
     <>
       {image && image !== null && image !== '' && image.includes('/') ? (
-        <Avatar className={className ?? ''} alt={name} src={image} sx={sx} />
+        <Avatar className={className} alt={name} src={image} sx={sx} />
       ) : (
-        <Avatar className={className ?? ''} sx={sx}>
+        <Avatar className={className} sx={sx}>
           {ObjectUtils.capitalize(name)[0]}
         </Avatar>
       )}

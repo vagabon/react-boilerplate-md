@@ -16,7 +16,7 @@ export interface IMdTreeViewProps {
   callback: (id: number, tool: IMdTreeViewDto) => void;
 }
 
-const MdTreeView: React.FC<IMdTreeViewProps> = memo(({ className, defaultExpanded, tree, callback }) => {
+const MdTreeView: React.FC<IMdTreeViewProps> = memo(({ className = '', defaultExpanded, tree, callback }) => {
   const [expendeds, setExpendeds] = useState<string[]>(defaultExpanded?.split(',') ?? []);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const MdTreeView: React.FC<IMdTreeViewProps> = memo(({ className, defaultExpande
   const renderTree = ({ id, label, childrens }: IMdTreeViewDto) => (
     <TreeItem
       key={id}
-      className={className ?? ''}
+      className={className}
       itemId={id.toString()}
       label={label}
       onClick={handleClick(id, { id, label, childrens }, callback)}>

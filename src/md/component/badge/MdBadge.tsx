@@ -20,13 +20,13 @@ export interface IMdBadgeProps {
 }
 
 const MdBadge: React.FC<IMdBadgeProps> = memo(
-  ({ className, content, color, title, max, showZero, icon, iconColor, sx, children }) => {
+  ({ className = '', content, color, title, max, showZero, icon, iconColor, sx, children }) => {
     const { t } = useAppTranslate();
     const { getIcon } = useIcon();
 
     return (
       <Badge
-        className={className ?? ''}
+        className={className}
         badgeContent={content ?? 0}
         color={color ?? 'error'}
         sx={sx}
