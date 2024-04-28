@@ -8,33 +8,33 @@ export interface IMdTableWithPaginationProps extends IMdTableProps {
   page: number;
 }
 
-const MdTableWithPagination: React.FC<IMdTableWithPaginationProps> = memo((props: IMdTableWithPaginationProps) => {
+const MdTableWithPagination: React.FC<IMdTableWithPaginationProps> = memo(({ ...rest }) => {
   const { Trans } = useAppTranslate();
 
   const handleChangePage = useCallback(
     (callBack?: TablePaginateCallbackType) =>
       (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number): void => {
         event?.stopPropagation();
-        callBack?.(newPage, props.rowsPerPage, props.sortBy, props.sortByOrder);
+        callBack?.(newPage, rest.rowsPerPage, rest.sortBy, rest.sortByOrder);
       },
-    [props.rowsPerPage, props.sortBy, props.sortByOrder],
+    [rest.rowsPerPage, rest.sortBy, rest.sortByOrder],
   );
 
   const handleChangeRowsPerPage = useCallback(
     (callBack?: TablePaginateCallbackType) =>
       (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>): void => {
-        callBack?.(props.page, parseInt(event.target.value), props.sortBy, props.sortByOrder);
+        callBack?.(rest.page, parseInt(event.target.value), rest.sortBy, rest.sortByOrder);
       },
-    [props.page, props.sortBy, props.sortByOrder],
+    [rest.page, rest.sortBy, rest.sortByOrder],
   );
 
   return (
     <div style={{ display: 'grid' }}>
       <h4>
-        <Trans i18nKey='RESULTAT' /> : {props.count}
+        <Trans i18nKey='RESULTAT' /> : {rest.count}
       </h4>
       <div style={{ overflow: 'auto' }}>
-        <MdTable {...props}>
+        <MdTable {...rest}>
           <TableFooter>
             <TableRow></TableRow>
           </TableFooter>
@@ -43,11 +43,11 @@ const MdTableWithPagination: React.FC<IMdTableWithPaginationProps> = memo((props
       <TablePagination
         component='div'
         rowsPerPageOptions={[5, 10, 20, 50]}
-        count={props.count}
-        rowsPerPage={props.rowsPerPage ?? 10}
-        page={props.page}
-        onPageChange={handleChangePage(props.callBack)}
-        onRowsPerPageChange={handleChangeRowsPerPage(props.callBack)}
+        count={rest.count}
+        rowsPerPage={rest.rowsPerPage ?? 10}
+        page={rest.page}
+        onPageChange={handleChangePage(rest.callBack)}
+        onRowsPerPageChange={handleChangeRowsPerPage(rest.callBack)}
       />
     </div>
   );

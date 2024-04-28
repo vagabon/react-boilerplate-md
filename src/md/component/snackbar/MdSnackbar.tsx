@@ -4,16 +4,17 @@ import { useAppTranslate } from '../../../translate';
 
 type TransitionProps = Omit<SlideProps, 'direction'>;
 
-const TransitionRight = (props: TransitionProps) => {
-  return <Slide {...props} direction='left' />;
+const TransitionRight = (transitionProps: TransitionProps) => {
+  return <Slide {...transitionProps} direction='left' />;
 };
 
 export interface IMdSnackbarProps {
+  className?: string;
   message: string;
   type: AlertColor;
 }
 
-const MdSnackbar: React.FC<IMdSnackbarProps> = memo(({ message, type }) => {
+const MdSnackbar: React.FC<IMdSnackbarProps> = memo(({ className, message, type }) => {
   const { Trans } = useAppTranslate();
   const [open, setOpen] = useState(false);
   const [transition, setTransition] = useState<React.ComponentType<TransitionProps> | undefined>(undefined);
@@ -29,6 +30,7 @@ const MdSnackbar: React.FC<IMdSnackbarProps> = memo(({ message, type }) => {
 
   return (
     <Snackbar
+      className={className ?? ''}
       anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
       open={open}
       onClose={handleClose}

@@ -14,7 +14,7 @@ export interface IMdSearchBarProps {
   callBackOrder?: (value?: string | JSONObject) => void;
 }
 
-const MdSearchBar: React.FC<IMdSearchBarProps> = memo(({ className = '', order, orderList, ...props }) => {
+const MdSearchBar: React.FC<IMdSearchBarProps> = memo(({ className, order, orderList, ...rest }) => {
   const handleBlur = useCallback(
     (callback: (value: string) => void) => (event: React.ChangeEvent<JSONObject>) => {
       const value = event.target['value' as keyof JSONObject];
@@ -38,17 +38,17 @@ const MdSearchBar: React.FC<IMdSearchBarProps> = memo(({ className = '', order, 
   );
 
   return (
-    <div className={'search-bar ' + className}>
+    <div className={'search-bar ' + (className ?? '')}>
       <MdInputTextSimple
         name='searching'
-        handleBlur={handleBlur(props.callBack)}
-        handleKeyEnter={handleKeyEnter(props.callBack)}
-        callbackReset={handleReset(props.callBack)}
+        handleBlur={handleBlur(rest.callBack)}
+        handleKeyEnter={handleKeyEnter(rest.callBack)}
+        callbackReset={handleReset(rest.callBack)}
         label='SEARCH'
         variant='outlined'
         placeholder='SEARCH...'
         size='small'
-        value={props.search}
+        value={rest.search}
         inputProps={{
           startAdornment: (
             <InputAdornment position='start'>
@@ -63,7 +63,7 @@ const MdSearchBar: React.FC<IMdSearchBarProps> = memo(({ className = '', order, 
           defaultValue={false}
           label='ORDER.TITLE'
           name='order'
-          callBack={props.callBackOrder}
+          callBack={rest.callBackOrder}
           list={orderList as IApiDto[]}
           values={{ order }}
         />

@@ -35,10 +35,10 @@ export interface IMdCardProps {
 
 const MdCard: React.FC<IMdCardProps> = memo(
   ({
-    color = 'secondary',
+    color,
     icon,
     title,
-    titleVariant = 'h1',
+    titleVariant,
     titleCount,
     url,
     urlUpdate,
@@ -81,8 +81,8 @@ const MdCard: React.FC<IMdCardProps> = memo(
             title={
               <div className='flex flex-row' style={{ alignItems: 'center' }}>
                 {callbackLeft && <IconClickable icon='back' color='secondary' callback={callbackLeft} />}
-                {icon && <>{getIcon(icon, color)}&nbsp;</>}
-                <Typography variant={titleVariant} color={color} sx={{ flex: '1' }}>
+                {icon && <>{getIcon(icon, color ?? 'secondary')}&nbsp;</>}
+                <Typography variant={titleVariant ?? 'h1'} color={color ?? 'secondary'} sx={{ flex: '1' }}>
                   <Trans i18nKey={I18nUtils.translate(t, title)} />
                   {titleCount !== undefined && <> ({titleCount})</>}
                 </Typography>

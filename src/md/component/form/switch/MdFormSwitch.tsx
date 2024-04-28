@@ -14,40 +14,40 @@ export interface IMdFormSwitchProps extends IFormPropsDto {
   disabled?: boolean;
 }
 
-const MdFormSwitch: React.FC<IMdFormSwitchProps> = memo(({ className = '', ...props }) => {
+const MdFormSwitch: React.FC<IMdFormSwitchProps> = memo(({ className, ...rest }) => {
   const { Trans } = useAppTranslate();
-  const { error } = useFormError(props.name, props.errors, props.touched, props.errorMessage);
+  const { error } = useFormError(rest.name, rest.errors, rest.touched, rest.errorMessage);
   const [checked, setChecked] = useState<boolean>(false);
 
   useEffect(() => {
-    setChecked(props.values?.[props.name as keyof JSONObject] === true);
-  }, [props.name, props.values]);
+    setChecked(rest.values?.[rest.name as keyof JSONObject] === true);
+  }, [rest.name, rest.values]);
 
   const handleChange = useCallback(
     (oldValue: boolean, callback?: HandleChangeType) => () => {
-      const newEvent = { target: { name: props.name, value: !oldValue } };
+      const newEvent = { target: { name: rest.name, value: !oldValue } };
       callback?.(newEvent);
     },
-    [props.name],
+    [rest.name],
   );
 
   return (
-    <div className={'flex switch ' + className}>
+    <div className={'flex switch ' + (className ?? '')}>
       <div>
         <Typography
           paragraph={true}
-          onClick={handleChange(checked, props.handleChange)}
+          onClick={handleChange(checked, rest.handleChange)}
           style={{ cursor: 'pointer', userSelect: 'none' }}>
-          <Trans i18nKey={props.label} />
-          {props.validationSchema?.[props.name as keyof JSONObject]?.['required'] ? ' *' : ''}
+          <Trans i18nKey={rest.label} />
+          {rest.validationSchema?.[rest.name as keyof JSONObject]?.['required'] ? ' *' : ''}
         </Typography>
         <MdFormSwitchSimple
-          name={props.name}
+          name={rest.name}
           color='secondary'
           checked={checked}
-          callbackChange={handleChange(checked, props.handleChange)}
-          callbackBlur={props.handleBlur}
-          disabled={props.disabled ?? props.validationSchema?.[props.name as keyof JSONObject]?.['disabled']}
+          callbackChange={handleChange(checked, rest.handleChange)}
+          callbackBlur={rest.handleBlur}
+          disabled={rest.disabled ?? rest.validationSchema?.[rest.name as keyof JSONObject]?.['disabled']}
         />
       </div>
 

@@ -4,7 +4,6 @@ import { TransitionProps } from '@mui/material/transitions';
 import { memo } from 'react';
 
 export interface IMdCollapseProps {
-  children?: React.ReactNode;
   className?: string;
   classes?: Partial<CollapseClasses>;
   collapsedSize?: string | number;
@@ -14,12 +13,17 @@ export interface IMdCollapseProps {
   orientation?: 'horizontal' | 'vertical';
   timeout?: TransitionProps['timeout'] | 'auto';
   sx?: SxProps<Theme>;
+  children?: React.ReactNode;
 }
 
-const MdCollapse: React.FC<IMdCollapseProps> = memo(
-  ({ collapsedSize = '0px', orientation = 'vertical', timeout = 'auto', ...props }) => {
-    return <Collapse {...props} collapsedSize={collapsedSize} orientation={orientation} timeout={timeout}></Collapse>;
-  },
-);
+const MdCollapse: React.FC<IMdCollapseProps> = memo(({ collapsedSize, orientation, timeout, ...rest }) => {
+  return (
+    <Collapse
+      {...rest}
+      collapsedSize={collapsedSize ?? '0px'}
+      orientation={orientation ?? 'vertical'}
+      timeout={timeout ?? 'auto'}></Collapse>
+  );
+});
 
 export default MdCollapse;

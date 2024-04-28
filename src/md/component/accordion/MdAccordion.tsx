@@ -5,17 +5,18 @@ import { useAppTranslate } from '../../../translate';
 import { useId } from '../../hook/useId';
 
 export interface IMdAccordionProps {
+  className?: string;
   title: string;
   description: string;
   expanded?: boolean;
   disabled?: boolean;
 }
 
-const MdAccordion: React.FC<IMdAccordionProps> = memo(({ title, description, expanded, disabled }) => {
+const MdAccordion: React.FC<IMdAccordionProps> = memo(({ className, title, description, expanded, disabled }) => {
   const { id } = useId();
   const { Trans } = useAppTranslate();
   return (
-    <Accordion defaultExpanded={expanded} disabled={disabled}>
+    <Accordion className={className ?? ''} defaultExpanded={expanded} disabled={disabled}>
       <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls={id + '-content'} id={id + '-header'}>
         <Trans i18nKey={title} />
       </AccordionSummary>

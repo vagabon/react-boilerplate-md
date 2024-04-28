@@ -4,6 +4,7 @@ import { useId } from '../../hook/useId';
 
 export interface IMdToolbarProps {
   id?: string;
+  className?: string;
   sx?: SxProps<Theme>;
   children?: ReactNode;
 }
@@ -12,7 +13,7 @@ const MdToolbar: React.FC<IMdToolbarProps> = memo(({ sx, children, ...rest }) =>
   const { id } = useId(rest.id);
 
   return (
-    <Toolbar id={id} sx={sx}>
+    <Toolbar id={id} className={rest.className ?? ''} sx={sx}>
       {children}
     </Toolbar>
   );

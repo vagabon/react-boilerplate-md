@@ -8,46 +8,48 @@ import MdFormError from '../MdFormError';
 import MdFormCheckboxSimple from './MdFormCheckboxSimple';
 
 export interface IMdFormCheckboxProps extends IFormPropsDto {
+  className?: string;
   label?: string;
   name: string;
   disabled?: boolean;
 }
 
-const MdFormCheckbox: React.FC<IMdFormCheckboxProps> = memo((props: IMdFormCheckboxProps) => {
+const MdFormCheckbox: React.FC<IMdFormCheckboxProps> = memo(({ ...rest }) => {
   const { t } = useAppTranslate();
-  const { error } = useFormError(props.name, props.errors, props.touched, props.errorMessage);
+  const { error } = useFormError(rest.name, rest.errors, rest.touched, rest.errorMessage);
 
   const handleChange = useCallback(
     (callback?: HandleChangeType) => () => {
-      const checkked = props.values?.[props.name as keyof JSONObject] !== true;
+      const checkked = rest.values?.[rest.name as keyof JSONObject] !== true;
       const newEvent = {
         target: {
-          name: props.name,
+          name: rest.name,
           value: checkked,
         },
       };
       callback?.(newEvent);
     },
-    [props.name, props.values],
+    [rest.name, rest.values],
   );
 
   const handleClicklabel = useCallback(() => {
-    handleChange?.(props.handleChange)();
-  }, [props, handleChange]);
+    handleChange?.(rest.handleChange)();
+  }, [rest, handleChange]);
 
   return (
     <div className='flex flex-row align-center' style={{ height: '50px' }}>
       <Typography paragraph={true} style={{ flex: '1', cursor: 'pointer' }} onClick={handleClicklabel}>
-        {props.label && t(props.label)}
+        {rest.label && t(rest.label)}
       </Typography>
       <MdFormCheckboxSimple
-        name={props.name}
-        checked={props.values?.[props.name as keyof JSONObject] === true}
-        callbackClick={handleChange?.(props.handleChange)}
-        callbackBlur={props.handleBlur}
+        name={rest.name}
+        className={rest.className}
+        checked={rest.values?.[rest.name as keyof JSONObject] === true}
+        callbackClick={handleChange?.(rest.handleChange)}
+        callbackBlur={rest.handleBlur}
         inputProps={{ 'aria-label': 'controlled' }}
         sx={{ padding: '0px 2px' }}
-        disabled={props.disabled}
+        disabled={rest.disabled}
       />
 
       <MdFormError error={error} />

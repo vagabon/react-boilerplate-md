@@ -4,6 +4,7 @@ import { ReactNode, memo } from 'react';
 import { useAppTranslate } from '../../../translate';
 
 export interface IMdTypoProps {
+  className?: string;
   label?: string;
   paragraph?: boolean;
   variant?: Variant | 'inherit';
@@ -14,15 +15,24 @@ export interface IMdTypoProps {
   sx?: SxProps<Theme>;
 }
 
-const MdTypo: React.FC<IMdTypoProps> = memo(({ label, paragraph, variant, color, align, noWrap, sx, children }) => {
-  const { Trans } = useAppTranslate();
+const MdTypo: React.FC<IMdTypoProps> = memo(
+  ({ className, label, paragraph, variant, color, align, noWrap, sx, children }) => {
+    const { Trans } = useAppTranslate();
 
-  return (
-    <Typography paragraph={paragraph} variant={variant} color={color} align={align} noWrap={noWrap} sx={sx}>
-      <Trans i18nKey={label} />
-      {children}
-    </Typography>
-  );
-});
+    return (
+      <Typography
+        className={className ?? ''}
+        paragraph={paragraph}
+        variant={variant}
+        color={color}
+        align={align}
+        noWrap={noWrap}
+        sx={sx}>
+        <Trans i18nKey={label} />
+        {children}
+      </Typography>
+    );
+  },
+);
 
 export default MdTypo;

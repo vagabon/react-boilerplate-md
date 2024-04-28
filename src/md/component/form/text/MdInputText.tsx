@@ -16,36 +16,36 @@ export interface IMdInputTextProps extends IFormPropsDto {
   fullWidth?: boolean;
 }
 
-const MdInputText: React.FC<IMdInputTextProps> = memo(({ className = '', ...props }) => {
-  const { error } = useFormError(props.name, props.errors, props.touched, props.errorMessage);
+const MdInputText: React.FC<IMdInputTextProps> = memo(({ className, ...rest }) => {
+  const { error } = useFormError(rest.name, rest.errors, rest.touched, rest.errorMessage);
 
   const handleKeyEnter = useCallback(
     (callback?: (values: IApiDto) => void) => (target: { name: string; value: string }) => {
       const values = {
-        ...props.values,
+        ...rest.values,
         [target.name]: target.value,
       };
-      !props.textarea && callback?.(values as IApiDto);
+      !rest.textarea && callback?.(values as IApiDto);
     },
-    [props.values, props.textarea],
+    [rest.values, rest.textarea],
   );
 
   return (
-    <div style={{ width: '100%' }} className={className}>
+    <div style={{ width: '100%' }} className={className ?? ''}>
       <MdInputTextSimple
         error={error !== ''}
-        type={props.type}
-        label={props.label}
-        name={props.name}
-        value={props.state?.[props.name as keyof JSONObject] ?? ''}
-        newValue={props.values?.[props.name as keyof JSONObject] ?? ''}
-        required={props.validationSchema?.[props.name as keyof JSONObject]?.['required']}
-        disabled={props.validationSchema?.[props.name as keyof JSONObject]?.['disabled']}
-        fullWidth={props.fullWidth}
-        handleChange={props.handleChange}
-        handleBlur={props.handleBlur}
-        textarea={props.textarea}
-        handleKeyEnter={handleKeyEnter(props.handleSubmit)}
+        type={rest.type}
+        label={rest.label}
+        name={rest.name}
+        value={rest.state?.[rest.name as keyof JSONObject] ?? ''}
+        newValue={rest.values?.[rest.name as keyof JSONObject] ?? ''}
+        required={rest.validationSchema?.[rest.name as keyof JSONObject]?.['required']}
+        disabled={rest.validationSchema?.[rest.name as keyof JSONObject]?.['disabled']}
+        fullWidth={rest.fullWidth}
+        handleChange={rest.handleChange}
+        handleBlur={rest.handleBlur}
+        textarea={rest.textarea}
+        handleKeyEnter={handleKeyEnter(rest.handleSubmit)}
       />
 
       <MdFormError error={error} />

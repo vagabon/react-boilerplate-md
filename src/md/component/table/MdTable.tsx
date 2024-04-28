@@ -20,6 +20,7 @@ export interface ITableDto {
 }
 
 export interface IMdTableProps {
+  className?: string;
   url?: string;
   cells: ITableDto[];
   datas: JSONObject[];
@@ -32,18 +33,18 @@ export interface IMdTableProps {
 }
 
 const MdTable: React.FC<IMdTableProps> = memo(
-  ({ cells, sortBy = 'id', rowsPerPage = 10, sortByOrder = 'asc', showEmpty = false, callBack, children, ...rest }) => {
+  ({ cells, sortBy, rowsPerPage, sortByOrder, showEmpty, callBack, children, ...rest }) => {
     const { datas, createSortHandle, handleClick } = useTable(
       showEmpty,
       rest.datas,
-      sortByOrder,
-      rowsPerPage,
+      sortByOrder ?? 'id',
+      rowsPerPage ?? 10,
       rest.url,
     );
 
     return (
       <div>
-        <Table size='small'>
+        <Table className={rest.className ?? ''} size='small'>
           <TableHead>
             <TableRow>
               {cells?.map((cell: ITableDto) => (
@@ -98,5 +99,12 @@ const MdTable: React.FC<IMdTableProps> = memo(
     );
   },
 );
+
+MdTable.defaultProps = {
+  sortBy: 'id',
+  rowsPerPage: 10,
+  sortByOrder: 'asc',
+  showEmpty: false,
+};
 
 export default MdTable;

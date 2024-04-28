@@ -3,18 +3,21 @@ import { memo } from 'react';
 import { ObjectUtils } from '../../../utils/object/ObjectUtils';
 
 export interface IMdAvatarProps {
+  className?: string;
   name: string;
   image?: string;
   sx?: SxProps<Theme>;
 }
 
-const MdAvatar: React.FC<IMdAvatarProps> = memo(({ name, image, sx }) => {
+const MdAvatar: React.FC<IMdAvatarProps> = memo(({ className, name, image, sx }) => {
   return (
     <>
       {image && image !== null && image !== '' && image.includes('/') ? (
-        <Avatar alt={name} src={image} sx={sx} />
+        <Avatar className={className ?? ''} alt={name} src={image} sx={sx} />
       ) : (
-        <Avatar sx={sx}>{ObjectUtils.capitalize(name)[0]}</Avatar>
+        <Avatar className={className ?? ''} sx={sx}>
+          {ObjectUtils.capitalize(name)[0]}
+        </Avatar>
       )}
     </>
   );

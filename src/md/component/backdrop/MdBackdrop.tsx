@@ -1,15 +1,17 @@
-import { Theme } from '@emotion/react';
-import { Backdrop, CircularProgress, SxProps } from '@mui/material';
+import { Backdrop, CircularProgress } from '@mui/material';
 import { memo } from 'react';
 
 export interface IMdBackdropProps {
+  className?: string;
   open: boolean;
-  sx?: SxProps<Theme>;
 }
 
-const MdBackdrop: React.FC<IMdBackdropProps> = memo(({ open }) => {
+const MdBackdrop: React.FC<IMdBackdropProps> = memo(({ className, open }) => {
   return (
-    <Backdrop sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }} open={open}>
+    <Backdrop
+      className={className ?? ''}
+      sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      open={open}>
       <CircularProgress color='inherit' />
     </Backdrop>
   );

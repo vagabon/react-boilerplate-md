@@ -11,7 +11,7 @@ export interface IMdBouttonGroupProps {
   children: ReactNode;
 }
 
-const MdBouttonGroup: React.FC<IMdBouttonGroupProps> = memo(({ className = '', variant, size, sx, children }) => {
+const MdBouttonGroup: React.FC<IMdBouttonGroupProps> = memo(({ className, variant, size, sx, children }) => {
   const showButtons = useCallback(
     (children: ReactNode) => (
       <>
@@ -25,7 +25,7 @@ const MdBouttonGroup: React.FC<IMdBouttonGroupProps> = memo(({ className = '', v
   );
 
   return (
-    <ButtonGroup variant={variant ?? 'text'} size={size ?? 'large'} sx={sx} className={className}>
+    <ButtonGroup variant={variant ?? 'text'} size={size ?? 'large'} sx={sx} className={className ?? ''}>
       {showButtons(children)}
     </ButtonGroup>
   );

@@ -2,6 +2,7 @@ import { Grid } from '@mui/material';
 import { CSSProperties, ReactNode, memo } from 'react';
 
 export interface IMdGridProps {
+  className?: string;
   children: ReactNode;
   container?: boolean;
   item?: boolean;

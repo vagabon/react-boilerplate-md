@@ -13,15 +13,15 @@ export interface IMdInputDatepickerProps extends IFormPropsDto {
   disabled?: boolean;
 }
 
-const MdInputDatepicker: React.FC<IMdInputDatepickerProps> = memo(({ className = '', ...props }) => {
+const MdInputDatepicker: React.FC<IMdInputDatepickerProps> = memo(({ className, ...rest }) => {
   const { t } = useAppTranslate();
-  const { error } = useFormError(props.name, props.errors, props.touched, props.errorMessage);
+  const { error } = useFormError(rest.name, rest.errors, rest.touched, rest.errorMessage);
   const [value, setValue] = useState<Dayjs | undefined>();
 
   useEffect(() => {
-    const newValue = props.state?.[props.name as keyof JSONObject] ?? '';
+    const newValue = rest.state?.[rest.name as keyof JSONObject] ?? '';
     newValue && setValue(dayjs(newValue));
-  }, [props.state, props.name]);
+  }, [rest.state, rest.name]);
 
   const handleChange = useCallback(
     (callback?: HandleChangeType) => (newValue?: Dayjs | null) => {
@@ -29,13 +29,13 @@ const MdInputDatepicker: React.FC<IMdInputDatepickerProps> = memo(({ className =
       if (newValue) {
         newValueString = JSON.stringify(newValue).replaceAll('\\', '').replaceAll('"', '');
       }
-      callback?.({ target: { name: props.name, value: newValueString } });
+      callback?.({ target: { name: rest.name, value: newValueString } });
     },
-    [props.name],
+    [rest.name],
   );
 
   return (
-    <div style={{ width: '100%' }} className={className}>
+    <div style={{ width: '100%' }} className={className ?? ''}>
       <DateTimePicker
         slotProps={{
           textField: {
@@ -47,11 +47,11 @@ const MdInputDatepicker: React.FC<IMdInputDatepickerProps> = memo(({ className =
         format='DD/MM/YYYY HH:mm:ss'
         ampm={false}
         sx={{ width: '100%' }}
-        label={t(props.label)}
-        name={props.name}
-        onChange={handleChange?.(props.handleChange)}
+        label={t(rest.label)}
+        name={rest.name}
+        onChange={handleChange?.(rest.handleChange)}
         value={value}
-        disabled={props.disabled ?? false}
+        disabled={rest.disabled ?? false}
       />
     </div>
   );

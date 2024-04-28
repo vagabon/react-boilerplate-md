@@ -4,6 +4,7 @@ import { MouseEvent, memo } from 'react';
 import { HandleBlurType } from '../../../../dto';
 
 export interface IMdFormCheckboxSimpleProps {
+  className?: string;
   name: string;
   edge?: 'start' | 'end' | false;
   checked: boolean;

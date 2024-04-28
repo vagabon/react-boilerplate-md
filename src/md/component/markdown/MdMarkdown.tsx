@@ -7,12 +7,13 @@ import { useId } from '../../hook/useId';
 import { MD_CODE, MD_LANGUAGES } from './MdMardownLanguages';
 
 export interface IMdMarkdownProps {
+  className?: string;
   content?: string;
   summaryCallback?: (summary: string) => void;
   callbackCopy?: (message: string, type: 'success' | 'error') => void;
 }
 
-const MdMarkdown: React.FC<IMdMarkdownProps> = memo(({ content, summaryCallback, callbackCopy }) => {
+const MdMarkdown: React.FC<IMdMarkdownProps> = memo(({ className, content, summaryCallback, callbackCopy }) => {
   const { id } = useId();
   const interval = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { getIcon } = useIcon();
@@ -82,7 +83,7 @@ const MdMarkdown: React.FC<IMdMarkdownProps> = memo(({ content, summaryCallback,
   }, []);
 
   return (
-    <div id={id}>
+    <div id={id} className={className ?? ''}>
       <MuiMarkdown
         overrides={{
           ...getOverrides({ Highlight, themes, hideLineNumbers: true }),

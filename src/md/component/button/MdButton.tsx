@@ -42,49 +42,49 @@ export interface IMdButtonProps {
   callback?: () => void;
 }
 
-const MdButton: React.FC<IMdButtonProps> = memo((props) => {
+const MdButton: React.FC<IMdButtonProps> = memo(({ ...rest }) => {
   const { navigate } = useAppRouter();
   const { Trans } = useAppTranslate();
   const { getIcon } = useIcon();
-  const [icon, setIcon] = useState<ReactNode | undefined>(getIcon(props.icon, props.iconColor, props.disabled));
+  const [icon, setIcon] = useState<ReactNode | undefined>(getIcon(rest.icon, rest.iconColor, rest.disabled));
 
   useEffect(() => {
-    setIcon(getIcon(props.icon, props.iconColor, props.disabled));
-  }, [props.icon, props.iconColor, props.disabled, getIcon]);
+    setIcon(getIcon(rest.icon, rest.iconColor, rest.disabled));
+  }, [rest.icon, rest.iconColor, rest.disabled, getIcon]);
 
   const onClick = useCallback(
     (callback?: () => void) => (event: MouseEvent) => {
-      if (props.type !== 'submit') {
+      if (rest.type !== 'submit') {
         event.stopPropagation();
         event.preventDefault();
         if (callback) {
           callback();
-        } else if (props.url) {
-          navigate(props.url);
+        } else if (rest.url) {
+          navigate(rest.url);
         }
       }
     },
-    [props.url, props.type, navigate],
+    [rest.url, rest.type, navigate],
   );
 
   const showContent = useCallback(() => {
-    return <>{icon ? <>{icon}</> : <Trans i18nKey={props.label}></Trans>}</>;
-  }, [icon, props.label, Trans]);
+    return <>{icon ? <>{icon}</> : <Trans i18nKey={rest.label}></Trans>}</>;
+  }, [icon, rest.label, Trans]);
 
   return (
     <>
-      {props.show && (
+      {rest.show && (
         <Button
-          className={props.className ?? ''}
-          size={props.size ?? 'small'}
-          variant={props.variant}
-          type={props.type ?? 'button'}
-          fullWidth={props.fullWidth}
-          onClick={onClick(props.callback)}
-          startIcon={getIcon(props.startIcon)}
-          color={props.color ?? 'primary'}
-          disabled={props.disabled}
-          sx={props.sx}>
+          className={rest.className ?? ''}
+          size={rest.size ?? 'small'}
+          variant={rest.variant}
+          type={rest.type ?? 'button'}
+          fullWidth={rest.fullWidth}
+          onClick={onClick(rest.callback)}
+          startIcon={getIcon(rest.startIcon)}
+          color={rest.color ?? 'primary'}
+          disabled={rest.disabled}
+          sx={rest.sx}>
           {showContent()}
         </Button>
       )}

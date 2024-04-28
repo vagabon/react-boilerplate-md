@@ -22,6 +22,7 @@ interface IListDto {
 }
 
 export interface IMdFormSelectProps extends IFormPropsDto {
+  className?: string;
   label: string;
   name: string;
   defaultValue?: boolean;
@@ -32,18 +33,18 @@ export interface IMdFormSelectProps extends IFormPropsDto {
   byId?: boolean;
 }
 
-const MdFormSelect: React.FC<IMdFormSelectProps> = memo(({ defaultValue = true, ...props }) => {
+const MdFormSelect: React.FC<IMdFormSelectProps> = memo(({ defaultValue, ...rest }) => {
   const { t } = useAppTranslate();
   const { getIcon } = useIcon();
-  const { error } = useFormError(props.name, props.errors, props.touched, props.errorMessage);
+  const { error } = useFormError(rest.name, rest.errors, rest.touched, rest.errorMessage);
 
   const [value, setValue] = useState<string>('');
   const [values, setValues] = useState<IListDto[]>([]);
 
   useEffect(() => {
     const values: IListDto[] = [];
-    props.list?.forEach((value) => {
-      const libelle = value[(props.listLibelle ?? 'libelle') as keyof JSONObject] as string;
+    rest.list?.forEach((value) => {
+      const libelle = value[(rest.listLibelle ?? 'libelle') as keyof JSONObject] as string;
       value.id &&
         values.push({
           value: value.id,
@@ -52,50 +53,51 @@ const MdFormSelect: React.FC<IMdFormSelectProps> = memo(({ defaultValue = true, 
         });
     });
     setValues(values);
-  }, [props.list, props.listLibelle, t]);
+  }, [rest.list, rest.listLibelle, t]);
 
-  const propsValues = props.values?.[props.name as keyof JSONObject] ?? '';
-  const validationSchema = props.validationSchema?.[props.name as keyof JSONObject] ?? {};
+  const propsValues = rest.values?.[rest.name as keyof JSONObject] ?? '';
+  const validationSchema = rest.validationSchema?.[rest.name as keyof JSONObject] ?? {};
 
   useEffect(() => {
-    setValue(props.byId === true ? propsValues?.['id' as keyof JSONObject] ?? '' : propsValues ?? '');
-  }, [propsValues, props.byId]);
+    setValue(rest.byId === true ? propsValues?.['id' as keyof JSONObject] ?? '' : propsValues ?? '');
+  }, [propsValues, rest.byId]);
 
   const handleChange = useCallback(
     (event: SelectChangeEvent<string | JSONObject | undefined>) => {
       event.preventDefault();
       let value: string | JSONObject | undefined = event.target.value;
-      value = props.byId === true ? { id: value } : value;
+      value = rest.byId === true ? { id: value } : value;
       event.target.value = value;
-      props.handleChange?.(event);
-      props.callBack?.(value);
+      rest.handleChange?.(event);
+      rest.callBack?.(value);
     },
-    [props],
+    [rest],
   );
 
   return (
     <div style={{ width: '100%' }}>
       <FormControl
+        className={rest.className ?? ''}
         fullWidth
         sx={{ marginBottom: '8px', marginTop: '16px' }}
-        disabled={props.disabled ?? props.validationSchema?.[props.name as keyof JSONObject]?.['disabled']}>
-        <InputLabel id={props.name + '-label'} error={error !== ''}>
-          {t(props.label)}
+        disabled={rest.disabled ?? rest.validationSchema?.[rest.name as keyof JSONObject]?.['disabled']}>
+        <InputLabel id={rest.name + '-label'} error={error !== ''}>
+          {t(rest.label)}
           {validationSchema?.['required' as keyof JSONObject] ? ' *' : ''}
         </InputLabel>
         {values && values.length > 0 && (
           <Select
             error={error !== ''}
-            labelId={props.name + '-label'}
-            id={props.name}
-            name={props.name}
+            labelId={rest.name + '-label'}
+            id={rest.name}
+            name={rest.name}
             value={value ?? ''}
             required={validationSchema?.['required' as keyof JSONObject]}
-            label={props.label}
+            label={rest.label}
             onChange={handleChange}
             className='width100'
-            disabled={props.disabled ?? props.validationSchema?.[props.name as keyof JSONObject]?.['disabled']}>
-            {defaultValue && <MenuItem value={props.byId ? '-1' : ''}>Aucun</MenuItem>}
+            disabled={rest.disabled ?? rest.validationSchema?.[rest.name as keyof JSONObject]?.['disabled']}>
+            {defaultValue && <MenuItem value={rest.byId ? '-1' : ''}>Aucun</MenuItem>}
             {values &&
               values.length > 0 &&
               values.map((myValue) => (
@@ -113,6 +115,8 @@ const MdFormSelect: React.FC<IMdFormSelectProps> = memo(({ defaultValue = true, 
   );
 });
 
-MdFormSelect.defaultProps = {};
+MdFormSelect.defaultProps = {
+  defaultValue: true,
+};
 
 export default MdFormSelect;

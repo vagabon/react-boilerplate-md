@@ -31,7 +31,7 @@ export interface IMdInputTextSimpleProps {
   callbackReset?: () => void;
 }
 
-const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(({ className = '', callbackReset, ...props }) => {
+const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(({ className, callbackReset, ...rest }) => {
   const { t } = useAppTranslate();
   const {
     uref,
@@ -46,32 +46,32 @@ const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(({ className =
     handleKeyDown,
     handleKeyUp,
     handleReset,
-  } = useFormValue(props.type ?? DEFAULT_TEXT, props.value, props.newValue);
+  } = useFormValue(rest.type ?? DEFAULT_TEXT, rest.value, rest.newValue);
 
   return (
     <div style={{ width: '100%' }}>
       <TextField
-        error={props.error}
+        error={rest.error}
         key={key}
         inputRef={uref}
-        className={className}
-        type={props.type}
+        className={className ?? ''}
+        type={rest.type}
         margin='normal'
-        label={t(props.label)}
-        variant={props.variant}
-        placeholder={I18nUtils.translate(t, props.placeholder ?? '')}
-        size={props.size}
-        name={props.name}
+        label={t(rest.label)}
+        variant={rest.variant}
+        placeholder={I18nUtils.translate(t, rest.placeholder ?? '')}
+        size={rest.size}
+        name={rest.name}
         defaultValue={defaultValue}
-        required={props.required}
-        fullWidth={props.fullWidth}
+        required={rest.required}
+        fullWidth={rest.fullWidth}
         onFocus={handleFocus}
-        onChange={handleChange(props.handleChange)}
-        onBlur={handleBlur(props.handleBlur)}
+        onChange={handleChange(rest.handleChange)}
+        onBlur={handleBlur(rest.handleBlur)}
         onKeyDown={handleKeyDown}
-        onKeyUp={handleKeyUp((props.textarea ?? 0) > 0, keyDown, props.handleKeyEnter)}
+        onKeyUp={handleKeyUp((rest.textarea ?? 0) > 0, keyDown, rest.handleKeyEnter)}
         InputProps={{
-          ...props.inputProps,
+          ...rest.inputProps,
           endAdornment: callbackReset && (
             <IconButton
               sx={{ visibility: liveValue !== '' ? 'visible' : 'hidden' }}
@@ -82,9 +82,9 @@ const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(({ className =
           autoComplete: 'off',
           readOnly: readonly,
         }}
-        multiline={(props.textarea ?? 0) > 0}
-        disabled={props.disabled}
-        minRows={props.textarea}></TextField>
+        multiline={(rest.textarea ?? 0) > 0}
+        disabled={rest.disabled}
+        minRows={rest.textarea}></TextField>
     </div>
   );
 });

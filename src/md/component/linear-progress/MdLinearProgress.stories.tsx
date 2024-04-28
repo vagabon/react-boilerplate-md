@@ -15,9 +15,7 @@ export default meta;
 type Story = StoryObj<typeof MdLinearProgress>;
 
 export const Primary: Story = {
-  args: {
-    content: 'content',
-  },
+  args: {},
 };
 Primary.parameters = {
   jest: ['MdLinearProgress.test'],

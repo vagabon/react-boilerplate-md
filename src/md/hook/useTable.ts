@@ -5,7 +5,7 @@ import { UuidUtils } from '../../utils';
 import { TablePaginateCallbackType } from '../component/table/MdTable';
 
 export const useTable = (
-  showEmpty: boolean,
+  showEmpty: boolean | undefined,
   rowDatas: JSONObject[],
   sortByOrder: string,
   rowsPerPage: number,

@@ -11,7 +11,7 @@ export interface IMdFabProps {
   callback?: () => void;
 }
 
-const MdFab: React.FC<IMdFabProps> = memo(({ className, size, color, label, icon = 'add', callback }) => {
+const MdFab: React.FC<IMdFabProps> = memo(({ className, size, color, label, icon, callback }) => {
   const { getIcon } = useIcon();
 
   const handleClick = useCallback(
@@ -24,7 +24,7 @@ const MdFab: React.FC<IMdFabProps> = memo(({ className, size, color, label, icon
 
   return (
     <Fab className={className} size={size} color={color} aria-label={label} onClick={handleClick}>
-      {getIcon(icon)}
+      {getIcon(icon ?? 'add')}
     </Fab>
   );
 });

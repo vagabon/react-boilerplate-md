@@ -13,7 +13,7 @@ export interface IMdMenuItemProps {
   childrens: { title: string; link: string }[] | undefined;
 }
 
-const MdMenuItem: React.FC<IMdMenuItemProps> = memo((props: IMdMenuItemProps) => {
+const MdMenuItem: React.FC<IMdMenuItemProps> = memo(({ ...rest }) => {
   const { navigate } = useAppRouter();
   const [anchorEl, setAnchorEl] = useState<Element>();
   const open = Boolean(anchorEl);
@@ -23,9 +23,9 @@ const MdMenuItem: React.FC<IMdMenuItemProps> = memo((props: IMdMenuItemProps) =>
       event.stopPropagation();
       event.preventDefault();
       setAnchorEl(event.currentTarget);
-      !props.childrens && navigate(props.url);
+      !rest.childrens && navigate(rest.url);
     },
-    [navigate, props.childrens, props.url],
+    [navigate, rest.childrens, rest.url],
   );
 
   const handleClose = useCallback(() => {
@@ -43,33 +43,33 @@ const MdMenuItem: React.FC<IMdMenuItemProps> = memo((props: IMdMenuItemProps) =>
   const isCurrentLocation = useCallback(
     (url: string) => {
       if (url === '/') {
-        return props.currentLocation === '/';
+        return rest.currentLocation === '/';
       }
-      return props.currentLocation?.startsWith(url);
+      return rest.currentLocation?.startsWith(url);
     },
-    [props.currentLocation],
+    [rest.currentLocation],
   );
 
   return (
     <Fragment>
       <Button
-        variant={isCurrentLocation(props.url) ? 'outlined' : 'text'}
+        variant={isCurrentLocation(rest.url) ? 'outlined' : 'text'}
         className='selected'
         aria-selected={true}
-        href={props.url}
+        href={rest.url}
         sx={{ minWidth: '100px' }}
         id='fade-button'
         aria-controls={open ? 'fade-menu' : undefined}
         aria-haspopup='true'
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
-        endIcon={props.childrens && <KeyboardArrowDownIcon />}
+        endIcon={rest.childrens && <KeyboardArrowDownIcon />}
         color='secondary'>
-        {props.name}
+        {rest.name}
       </Button>
-      {props.childrens && (
+      {rest.childrens && (
         <Menu id='fade-menu' anchorEl={anchorEl} open={open} onClose={handleClose}>
-          {props.childrens?.map((child: { title: string; link: string }) => (
+          {rest.childrens?.map((child: { title: string; link: string }) => (
             <MenuItem
               component={Link}
               to={child.link}
