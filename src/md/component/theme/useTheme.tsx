@@ -6,6 +6,7 @@ import { ObjectUtils } from '../../../utils/object/ObjectUtils';
 interface ICustomPalette extends PaletteOptions {
   google: PaletteColorOptions;
   facebook: PaletteColorOptions;
+  gold: PaletteColorOptions;
 }
 
 interface ICustomTheme extends ThemeOptions {
@@ -22,6 +23,7 @@ export interface IPaletteDto {
   error: string;
   google: string;
   facebook: string;
+  gold: string;
 }
 
 export type ModeType = 'light' | 'dark';
@@ -68,6 +70,9 @@ export const useTheme = (palette: JSONObject, newTheme: ModeType) => {
           },
           facebook: {
             main: ObjectUtils.getDtoString(palette, 'facebook'),
+          },
+          gold: {
+            main: ObjectUtils.getDtoString(palette, 'gold'),
           },
         },
       });

@@ -10,6 +10,7 @@ declare module '@mui/material/Button' {
   interface ButtonPropsColorOverrides {
     google: true;
     facebook: true;
+    gold: true;
   }
 }
 
@@ -22,7 +23,8 @@ export type ButtonColorType =
   | 'info'
   | 'warning'
   | 'google'
-  | 'facebook';
+  | 'facebook'
+  | 'gold';
 
 export interface IMdButtonProps {
   className?: string;
