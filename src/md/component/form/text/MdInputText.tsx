@@ -14,6 +14,7 @@ export interface IMdInputTextProps extends IFormPropsDto {
   type?: 'date' | 'text' | 'number' | 'password' | 'email';
   textarea?: number;
   fullWidth?: boolean;
+  callbackCopy?: (message: string, type: 'success' | 'error') => void;
 }
 
 const MdInputText: React.FC<IMdInputTextProps> = memo(
@@ -47,6 +48,7 @@ const MdInputText: React.FC<IMdInputTextProps> = memo(
           handleBlur={rest.handleBlur}
           textarea={textarea}
           handleKeyEnter={handleKeyEnter(rest.handleSubmit)}
+          callbackCopy={rest.callbackCopy}
         />
 
         <MdFormError error={error} />

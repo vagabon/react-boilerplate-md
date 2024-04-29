@@ -1,8 +1,9 @@
 import { IconButton, InputProps, TextField, TextFieldVariants } from '@mui/material';
 import { ClearIcon } from '@mui/x-date-pickers';
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { JSONValue } from '../../../../dto/api/ApiDto';
 import { HandleBlurType, HandleChangeType } from '../../../../dto/form/FormDto';
+import { IconClickable } from '../../../../icon';
 import { useAppTranslate } from '../../../../translate';
 import { I18nUtils } from '../../../../utils';
 import { useFormValue } from '../../../hook/useFormValue';
@@ -29,6 +30,7 @@ export interface IMdInputTextSimpleProps {
   handleBlur?: HandleBlurType;
   handleKeyEnter?: (target: { name: string; value: string }) => void;
   callbackReset?: () => void;
+  callbackCopy?: (message: string, type: 'success' | 'error') => void;
 }
 
 const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(
@@ -39,6 +41,7 @@ const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(
     fullWidth = true,
     className = '',
     callbackReset,
+    callbackCopy,
     ...rest
   }) => {
     const { t } = useAppTranslate();
@@ -57,8 +60,16 @@ const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(
       handleReset,
     } = useFormValue(type, rest.value, rest.newValue);
 
+    const handleCopy = useCallback(() => {
+      navigator.clipboard.writeText('' + defaultValue);
+      callbackCopy?.('TEXT_COPY', 'success');
+    }, [defaultValue, callbackCopy]);
+
     return (
-      <div style={{ width: '100%' }}>
+      <div className='relative' style={{ width: '100%' }}>
+        {callbackCopy && defaultValue && (
+          <IconClickable className='input-copy-button' icon='copy' callback={handleCopy} />
+        )}
         <TextField
           error={rest.error}
           key={key}

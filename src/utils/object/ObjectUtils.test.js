@@ -25,7 +25,7 @@ describe('ObjectUtils', () => {
 
   test('Given ObjectUtils When compareId Then return true if same', () => {
     const tested = ObjectUtils.compareId(null, null);
-    expect(tested).toBe(false);
+    expect(tested).toBe(true);
   });
 
   test('Given ObjectUtils When addOrReplace on empty list Then return new list with one itm', () => {

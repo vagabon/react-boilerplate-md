@@ -24,6 +24,9 @@ export const ObjectUtils = {
     return isDate ? DateUtils.format(value as string, 'DD-MM-YYYY hhhmm') : String(value);
   },
   compareId: (id1: ID, id2: ID) => {
+    if (!Number.isInteger(id1 ?? '')) {
+      return id1?.toString() === id2?.toString();
+    }
     return parseInt(id1?.toString() ?? '') === parseInt(id2?.toString() ?? '');
   },
   addOrReplace: <T,>(entities: T[], field: string, field2: string, payload: T): T[] => {

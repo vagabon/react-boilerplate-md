@@ -44,7 +44,9 @@ const MdMenu: React.FC<IMdMenuProps> = ({ title, elements, className = '', size,
         onClose={handleClose}
         MenuListProps={{
           'aria-labelledby': 'basic-button',
-        }}>
+        }}
+        transformOrigin={{ horizontal: 'center', vertical: 'top' }}
+        anchorOrigin={{ horizontal: 'center', vertical: 'bottom' }}>
         {elements.map((element) => (
           <MenuItem key={element.name} onClick={handleClose}>
             {element.element}
