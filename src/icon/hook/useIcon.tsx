@@ -29,7 +29,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import DownloadIcon from '@mui/icons-material/Download';
 import EmailIcon from '@mui/icons-material/Email';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import ExpandIcon from '@mui/icons-material/Expand';
 import FacebookIcon from '@mui/icons-material/Facebook';
+import FitScreenIcon from '@mui/icons-material/FitScreen';
 import FolderIcon from '@mui/icons-material/Folder';
 import GoogleIcon from '@mui/icons-material/Google';
 import HelpIcon from '@mui/icons-material/Help';
@@ -62,8 +64,8 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import SmsIcon from '@mui/icons-material/Sms';
 import StarRateIcon from '@mui/icons-material/StarRate';
+import UnfoldLessIcon from '@mui/icons-material/UnfoldLess';
 import UploadIcon from '@mui/icons-material/Upload';
-
 export type IconColorType =
   | 'inherit'
   | 'action'
@@ -138,6 +140,9 @@ export const ICONS = {
   market: { react: (color: IconColorType) => <LocalGroceryStoreIcon color={color} /> },
   training: { react: (color: IconColorType) => <ModelTrainingIcon color={color} /> },
   email: { react: (color: IconColorType) => <EmailIcon color={color} /> },
+  fullscreen: { react: (color: IconColorType) => <FitScreenIcon color={color} /> },
+  expand: { react: (color: IconColorType) => <ExpandIcon color={color} /> },
+  reducer: { react: (color: IconColorType) => <UnfoldLessIcon color={color} /> },
 };
 
 export const useIcon = () => {

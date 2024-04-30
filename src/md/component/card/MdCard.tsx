@@ -70,6 +70,7 @@ const MdCard: React.FC<IMdCardProps> = memo(
         )}
         {title && (
           <CardHeader
+            className={url ? 'pointer' : ''}
             onClick={handleClick(url)}
             avatar={avatar && <img alt={'Image : ' + title} src={avatar} width='40px' height='40px' />}
             action={

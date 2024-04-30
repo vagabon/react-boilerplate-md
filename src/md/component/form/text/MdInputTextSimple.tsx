@@ -61,15 +61,13 @@ const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(
     } = useFormValue(type, rest.value, rest.newValue);
 
     const handleCopy = useCallback(() => {
-      navigator.clipboard.writeText('' + defaultValue);
+      navigator.clipboard.writeText('' + liveValue);
       callbackCopy?.('TEXT_COPY', 'success');
-    }, [defaultValue, callbackCopy]);
+    }, [liveValue, callbackCopy]);
 
     return (
       <div className='relative' style={{ width: '100%' }}>
-        {callbackCopy && defaultValue && (
-          <IconClickable className='input-copy-button' icon='copy' callback={handleCopy} />
-        )}
+        {callbackCopy && liveValue && <IconClickable className='input-copy-button' icon='copy' callback={handleCopy} />}
         <TextField
           error={rest.error}
           key={key}

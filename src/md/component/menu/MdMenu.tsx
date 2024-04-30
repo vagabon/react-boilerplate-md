@@ -5,7 +5,7 @@ import { ButtonColorType } from '../button/MdButton';
 export interface IMdMenuProps {
   className?: string;
   title: React.JSX.Element;
-  elements: { name: string; element: React.JSX.Element }[];
+  elements: { name: string; element: (handleClose: () => void) => React.JSX.Element }[];
   size?: 'small' | 'medium' | 'large';
   variant?: 'text' | 'outlined' | 'contained';
   color?: ButtonColorType;
@@ -25,7 +25,7 @@ const MdMenu: React.FC<IMdMenuProps> = ({ title, elements, className = '', size,
   }, []);
 
   return (
-    <div>
+    <>
       <Button
         className={className}
         size={size ?? 'small'}
@@ -49,11 +49,11 @@ const MdMenu: React.FC<IMdMenuProps> = ({ title, elements, className = '', size,
         anchorOrigin={{ horizontal: 'center', vertical: 'bottom' }}>
         {elements.map((element) => (
           <MenuItem key={element.name} onClick={handleClose}>
-            {element.element}
+            {element.element(handleClose)}
           </MenuItem>
         ))}
       </Menu>
-    </div>
+    </>
   );
 };
 

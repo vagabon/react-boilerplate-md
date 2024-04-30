@@ -17,7 +17,7 @@ type Story = StoryObj<typeof MdMenu>;
 export const Primary: Story = {
   args: {
     title: <>Dashboard</>,
-    elements: [{ name: 'test', element: <>test</> }],
+    elements: [{ name: 'test', element: () => <>test</> }],
   },
 };
 Primary.parameters = {
