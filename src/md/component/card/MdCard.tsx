@@ -50,7 +50,7 @@ const MdCard: React.FC<IMdCardProps> = memo(
     ...rest
   }) => {
     const { t, Trans } = useAppTranslate();
-    const { navigate } = useAppRouter();
+    const { Link, navigate } = useAppRouter();
     const { id } = useId(rest.id as string);
     const { getIcon } = useIcon();
 
@@ -64,15 +64,16 @@ const MdCard: React.FC<IMdCardProps> = memo(
     return (
       <Card {...rest} id={id}>
         {image && (
-          <CardMedia onClick={handleClick(url)}>
+          <CardMedia className={url ? 'pointer' : ''} onClick={handleClick(url)}>
             <img alt={'Image : ' + title} src={image} width='100%' />
           </CardMedia>
         )}
         {title && (
           <CardHeader
             className={url ? 'pointer' : ''}
-            onClick={handleClick(url)}
             avatar={avatar && <img alt={'Image : ' + title} src={avatar} width='40px' height='40px' />}
+            component={url ? Link : 'div'}
+            to={url ?? '/'}
             action={
               <>
                 {urlUpdate && <IconClickable color='primary' icon='settings' callback={handleClick(urlUpdate)} />}

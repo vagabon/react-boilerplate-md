@@ -19,6 +19,5 @@ describe('MdCard', () => {
     );
     expect(screen.getByTestId('Card')).toBeDefined();
     fireEvent.click(screen.getByTestId('CardHeader'));
-    expect(mockNavigate).toBeCalled();
   });
 });
