@@ -30,7 +30,7 @@ export type ModeType = 'light' | 'dark';
 
 const defaultMode = () => {
   let storageMode = localStorage.getItem('mode_theme');
-  if (!storageMode || (storageMode !== 'light' && storageMode !== 'dark')) {
+  if (storageMode !== 'light' && storageMode !== 'dark') {
     const darkBrowser = window.matchMedia('(prefers-color-scheme: dark)');
     storageMode = darkBrowser?.matches ? 'dark' : 'light';
   }

@@ -15,6 +15,7 @@ export interface IMdInputTextProps extends IFormPropsDto {
   textarea?: number;
   fullWidth?: boolean;
   callbackCopy?: (message: string, type: 'success' | 'error') => void;
+  changeValue?: (value: string) => string;
 }
 
 const MdInputText: React.FC<IMdInputTextProps> = memo(
@@ -39,8 +40,7 @@ const MdInputText: React.FC<IMdInputTextProps> = memo(
           type={type}
           label={rest.label}
           name={rest.name}
-          value={rest.state?.[rest.name as keyof JSONObject] ?? ''}
-          newValue={rest.values?.[rest.name as keyof JSONObject] ?? ''}
+          value={rest.values?.[rest.name as keyof JSONObject] ?? ''}
           required={rest.validationSchema?.[rest.name as keyof JSONObject]?.['required']}
           disabled={rest.validationSchema?.[rest.name as keyof JSONObject]?.['disabled']}
           fullWidth={fullWidth}
@@ -49,6 +49,7 @@ const MdInputText: React.FC<IMdInputTextProps> = memo(
           textarea={textarea}
           handleKeyEnter={handleKeyEnter(rest.handleSubmit)}
           callbackCopy={rest.callbackCopy}
+          changeValue={rest.changeValue}
         />
 
         <MdFormError error={error} />

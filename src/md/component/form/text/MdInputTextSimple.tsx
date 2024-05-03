@@ -13,7 +13,6 @@ const DEFAULT_TEXT = 'text';
 export interface IMdInputTextSimpleProps {
   label: string;
   value: JSONValue;
-  newValue?: JSONValue;
   name: string;
   variant?: TextFieldVariants;
   placeholder?: string;
@@ -31,6 +30,7 @@ export interface IMdInputTextSimpleProps {
   handleKeyEnter?: (target: { name: string; value: string }) => void;
   callbackReset?: () => void;
   callbackCopy?: (message: string, type: 'success' | 'error') => void;
+  changeValue?: (value: string) => string;
 }
 
 const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(
@@ -58,7 +58,7 @@ const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(
       handleKeyDown,
       handleKeyUp,
       handleReset,
-    } = useFormValue(type, rest.value, rest.newValue);
+    } = useFormValue(type, rest.value);
 
     const handleCopy = useCallback(() => {
       navigator.clipboard.writeText('' + liveValue);
@@ -85,7 +85,7 @@ const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(
           fullWidth={fullWidth}
           onFocus={handleFocus}
           onChange={handleChange(rest.handleChange)}
-          onBlur={handleBlur(rest.handleBlur)}
+          onBlur={handleBlur(rest.changeValue, rest.handleChange, rest.handleBlur)}
           onKeyDown={handleKeyDown}
           onKeyUp={handleKeyUp(textarea > 0, keyDown, rest.handleKeyEnter)}
           InputProps={{

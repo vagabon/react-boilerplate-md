@@ -4,7 +4,7 @@ import { HandleBlurType, HandleChangeType } from '../../dto/form/FormDto';
 import { ObjectUtils } from '../../utils';
 import { UuidUtils } from '../../utils/uuid/UuidUtils';
 
-export const useFormValue = (type: string, value: JSONValue, newValue: JSONValue = '') => {
+export const useFormValue = (type: string, value: JSONValue) => {
   const [key, setKey] = useState<string>();
   const [defaultValue, setDefaultValue] = useState<JSONValue>('');
   const [liveValue, setLiveValue] = useState(value);
@@ -15,21 +15,24 @@ export const useFormValue = (type: string, value: JSONValue, newValue: JSONValue
   const [keyDown, setKeyDown] = useState<boolean>(false);
 
   useEffect(() => {
-    setKey(UuidUtils.createUUID());
-    setDefaultValue(value);
-    if (isFocusRef.current === true) {
-      setTimeout(() => {
-        uref?.current?.focus();
-      }, 100);
+    if (!isFocusRef.current) {
+      setKey(UuidUtils.createUUID());
+      let newValue = value;
+      if (type === 'text') {
+        newValue = newValue ? String(newValue).trim() : '';
+      } else if (type === 'number' && !newValue) {
+        newValue = 0;
+      }
+      setDefaultValue(newValue);
     }
-  }, [value]);
+  }, [type, value]);
 
   useEffect(() => {
-    if ((newValue || newValue === '' || newValue === null) && isFocusRef.current === false) {
+    if (!isFocusRef.current) {
       setKey(UuidUtils.createUUID());
-      setDefaultValue(newValue ?? '');
+      setDefaultValue(liveValue);
     }
-  }, [newValue]);
+  }, [liveValue]);
 
   const handleFocus = useCallback(() => {
     isFocusRef.current = true;
@@ -38,17 +41,34 @@ export const useFormValue = (type: string, value: JSONValue, newValue: JSONValue
 
   const handleChange = useCallback(
     (callback?: HandleChangeType) => (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      setLiveValue(ObjectUtils.getDtoString(event.target, 'value'));
+      const value = ObjectUtils.getDtoString(event.target, 'value');
+      setLiveValue(value);
       callback?.(event);
     },
     [],
   );
 
   const handleBlur = useCallback(
-    (callback?: HandleBlurType) => (event: FocusEvent<JSONObject, Element>) => {
-      callback?.(event);
-      isFocusRef.current = false;
-    },
+    (changeValue?: (value: string) => string, callbackChange?: HandleChangeType, callback?: HandleBlurType) =>
+      (event: FocusEvent<JSONObject, Element>) => {
+        isFocusRef.current = false;
+        let value = ObjectUtils.getDtoString(event.target, 'value');
+        if (typeof value === 'string') {
+          changeValue && (value = changeValue(value));
+          value = value?.trim();
+        }
+        setLiveValue(value);
+        const newEvent = {
+          ...event,
+          target: {
+            ...event.target,
+            name: ObjectUtils.getDtoString(event.target, 'name'),
+            value,
+          },
+        };
+        callbackChange?.(newEvent);
+        callback?.(newEvent);
+      },
     [],
   );
 
