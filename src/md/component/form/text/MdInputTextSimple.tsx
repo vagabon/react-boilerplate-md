@@ -21,6 +21,7 @@ export interface IMdInputTextSimpleProps {
   textarea?: number;
   required?: boolean;
   disabled?: boolean;
+  isFocus?: boolean;
   className?: string;
   fullWidth?: boolean;
   error?: boolean;
@@ -58,7 +59,7 @@ const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(
       handleKeyDown,
       handleKeyUp,
       handleReset,
-    } = useFormValue(type, rest.value);
+    } = useFormValue(type, rest.value, rest.isFocus);
 
     const handleCopy = useCallback(() => {
       navigator.clipboard.writeText('' + liveValue);

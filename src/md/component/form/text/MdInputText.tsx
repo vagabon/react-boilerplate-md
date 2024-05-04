@@ -13,6 +13,7 @@ export interface IMdInputTextProps extends IFormPropsDto {
   name: string;
   type?: 'date' | 'text' | 'number' | 'password' | 'email';
   textarea?: number;
+  isFocus?: boolean;
   fullWidth?: boolean;
   callbackCopy?: (message: string, type: 'success' | 'error') => void;
   changeValue?: (value: string) => string;
@@ -40,6 +41,7 @@ const MdInputText: React.FC<IMdInputTextProps> = memo(
           type={type}
           label={rest.label}
           name={rest.name}
+          isFocus={rest.isFocus}
           value={rest.values?.[rest.name as keyof JSONObject] ?? ''}
           required={rest.validationSchema?.[rest.name as keyof JSONObject]?.['required']}
           disabled={rest.validationSchema?.[rest.name as keyof JSONObject]?.['disabled']}

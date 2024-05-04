@@ -4,7 +4,7 @@ import { HandleBlurType, HandleChangeType } from '../../dto/form/FormDto';
 import { ObjectUtils } from '../../utils';
 import { UuidUtils } from '../../utils/uuid/UuidUtils';
 
-export const useFormValue = (type: string, value: JSONValue) => {
+export const useFormValue = (type: string, value: JSONValue, isFocus?: boolean) => {
   const [key, setKey] = useState<string>();
   const [defaultValue, setDefaultValue] = useState<JSONValue>('');
   const [liveValue, setLiveValue] = useState(value);
@@ -13,6 +13,13 @@ export const useFormValue = (type: string, value: JSONValue) => {
   const uref = useRef<HTMLInputElement>();
   const isFocusRef = useRef<boolean>(false);
   const [keyDown, setKeyDown] = useState<boolean>(false);
+
+  useEffect(() => {
+    isFocusRef.current = isFocus === true;
+    if (isFocusRef.current) {
+      uref.current?.focus();
+    }
+  }, [isFocus]);
 
   useEffect(() => {
     if (!isFocusRef.current) {
@@ -82,6 +89,7 @@ export const useFormValue = (type: string, value: JSONValue) => {
     (isTextArea: boolean, keyDown: boolean, callbackEnter?: (target: { name: string; value: string }) => void) =>
       (event: KeyboardEvent<HTMLDivElement>) => {
         if (event.key === 'Enter') {
+          isFocusRef.current = false;
           const target = {
             name: ObjectUtils.getDtoString(event.target as IApiDto, 'name'),
             value: ObjectUtils.getDtoString(event.target as IApiDto, 'value'),
