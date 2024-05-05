@@ -39,7 +39,7 @@ const MdCommonModal: React.FC<ICommonModalProps> = memo(({ className = '', open 
   return (
     <Modal className={className + ' modal'} open={open} onClick={handleClick} onClose={handleClose(rest.handleClose)}>
       <Box sx={{ ...style, position: 'relative' }}>
-        <div style={{ position: 'absolute', top: '11px', right: '11px' }}>
+        <div style={{ position: 'absolute', top: '11px', right: '11px', zIndex: 3000 }}>
           <IconClickable icon='close' callback={rest.handleClose} />
         </div>
         {rest.children}

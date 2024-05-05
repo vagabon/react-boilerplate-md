@@ -1,7 +1,7 @@
 import { Table, TableBody, TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material';
-import { Fragment, ReactNode, memo } from 'react';
+import React, { Fragment, ReactNode, memo } from 'react';
 import { Trans } from 'react-i18next';
-import { JSONObject } from '../../../dto';
+import { IApiDto, JSONObject } from '../../../dto';
 import { ObjectUtils } from '../../../utils';
 import { useTable } from '../../hook/useTable';
 
@@ -17,6 +17,8 @@ export interface ITableDto {
   label: string;
   date?: boolean;
   order?: boolean;
+  width?: string;
+  react?: (data: IApiDto) => React.JSX.Element;
 }
 
 export interface IMdTableProps {
@@ -58,7 +60,7 @@ const MdTable: React.FC<IMdTableProps> = memo(
           <TableHead>
             <TableRow>
               {cells?.map((cell: ITableDto) => (
-                <TableCell key={cell.name}>
+                <TableCell key={cell.name} width={cell.width}>
                   <TableSortLabel
                     active={sortBy === cell.name}
                     direction={sortBy === cell.name ? sortByOrder : 'asc'}
@@ -88,7 +90,9 @@ const MdTable: React.FC<IMdTableProps> = memo(
                           scope='row'
                           key={cell.name}
                           title={ObjectUtils.getRecursivValue(data, cell.name, cell.date)}>
-                          {ObjectUtils.getRecursivValue(data, cell.name, cell.date)}
+                          {cell.react
+                            ? cell.react(data as IApiDto)
+                            : ObjectUtils.getRecursivValue(data, cell.name, cell.date)}
                         </TableCell>
                       ))}
                     </TableRow>
