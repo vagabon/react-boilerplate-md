@@ -1,6 +1,6 @@
 {
   "name": "@vagabond-inc/react-boilerplate-md",
-  "version": "1.0.61",
+  "version": "1.0.62",
   "description": "Boilerplate Material Design on React with MUI",
   "private": false,
   "type": "module",
