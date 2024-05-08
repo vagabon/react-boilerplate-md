@@ -6,7 +6,7 @@ export interface IMdLinearProgressProps {
 }
 
 const MdLinearProgress: React.FC<IMdLinearProgressProps> = memo(({ className = '' }) => {
-  return <LinearProgress className={className} />;
+  return <LinearProgress className={className} sx={{ position: 'absolute' }} />;
 });
 
 export default MdLinearProgress;

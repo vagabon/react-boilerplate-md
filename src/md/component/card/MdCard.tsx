@@ -65,13 +65,17 @@ const MdCard: React.FC<IMdCardProps> = memo(
       <Card {...rest} id={id}>
         {image && (
           <CardMedia className={url ? 'pointer' : ''} onClick={handleClick(url)}>
-            <img alt={'Image : ' + title} src={image} width='100%' />
+            <img title={'Image : ' + title} alt={'Image : ' + title} src={image} width='100%' />
           </CardMedia>
         )}
         {title && (
           <CardHeader
             className={url ? 'pointer' : ''}
-            avatar={avatar && <img alt={'Image : ' + title} src={avatar} width='40px' height='40px' />}
+            avatar={
+              avatar && (
+                <img title={'Image : ' + title} alt={'Image : ' + title} src={avatar} width='40px' height='40px' />
+              )
+            }
             component={url ? Link : 'div'}
             to={url ?? '/'}
             action={

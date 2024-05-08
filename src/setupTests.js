@@ -113,6 +113,11 @@ jest.mock('@mui/material', () => ({
   InputLabel: ({ children }) => <div data-testid='InputLabel'>{children}</div>,
   InputAdornment: ({ children }) => <div data-testid='InputAdornment'>{children}</div>,
   LinearProgress: ({ children }) => <div data-testid='LinearProgress'>{children}</div>,
+  Link: ({ href, label }) => (
+    <a href={href} data-testid='Link'>
+      {label}
+    </a>
+  ),
   List: ({ children }) => <div data-testid='List'>{children}</div>,
   ListItem: ({ onClick, children }) => (
     <div data-testid='ListItem' onClick={onClick}>
@@ -144,11 +149,10 @@ jest.mock('@mui/material', () => ({
       {children}
     </div>
   ),
-  Select: ({ name, onChange, children }) => (
-    <>
-      <input name={name} data-testid='Select' onChange={onChange}></input>
+  Select: ({ name, onChange, children, value }) => (
+    <select name={name} data-testid='Select' onChange={onChange} value={value}>
       {children}
-    </>
+    </select>
   ),
   Snackbar: ({ children }) => <div data-testid='Snackbar'>{children}</div>,
   Switch: ({ name, checked, onChange, onBlur }) => (
@@ -202,49 +206,21 @@ jest.mock('@mui/material', () => ({
   },
 }));
 
-jest.mock('@mui/material/Link', () => ({ href, children }) => (
-  <a data-testid='Link' href={href}>
-    {children}
-  </a>
-));
-
 jest.mock('@mui/material/Button', () => ({ children, onClick }) => (
   <button data-testid='Button' onClick={onClick}>
     {children}
   </button>
 ));
 
-jest.mock('@mui/material/Menu', () => ({ children, onClose }) => (
-  <button data-testid='Menu' onClick={onClose}>
-    {children}
-  </button>
-));
-
-jest.mock('@mui/material/MenuItem', () => ({ children, onClick }) => (
-  <button data-testid='MenuItem' onClick={onClick}>
-    {children}
-  </button>
-));
-
-jest.mock('@mui/x-date-pickers/DateTimePicker', () => ({ children, slotProps, onChange }) => (
-  <>
-    <input data-testid='DateTimePicker' onChange={(target) => onChange(target.value)} />
-    <div>
-      {slotProps}
-      {children}
-    </div>
-  </>
-));
-
-jest.mock('mui-markdown', () => ({
-  MuiMarkdown: ({ children }) => <div data-testid='MuiMarkdown'>{children}</div>,
-  getOverrides: jest.fn(),
-}));
-
 jest.mock('@mui/x-date-pickers/DateTimePicker', () => ({
   DateTimePicker: ({ onChange }) => (
     <input data-testid='DateTimePicker' onChange={(event) => onChange(event.target.value)} />
   ),
+}));
+
+jest.mock('mui-markdown', () => ({
+  MuiMarkdown: ({ children }) => <div data-testid='MuiMarkdown'>{children}</div>,
+  getOverrides: jest.fn(),
 }));
 
 /***************************** AFTER EACH RESET MOCK *****************************/

@@ -1,7 +1,7 @@
 import { Table, TableBody, TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material';
 import React, { Fragment, ReactNode, memo } from 'react';
-import { Trans } from 'react-i18next';
 import { IApiDto, JSONObject } from '../../../dto';
+import { useAppTranslate } from '../../../translate';
 import { ObjectUtils } from '../../../utils';
 import { useTable } from '../../hook/useTable';
 
@@ -46,6 +46,7 @@ const MdTable: React.FC<IMdTableProps> = memo(
     children,
     ...rest
   }) => {
+    const { Trans } = useAppTranslate();
     const { datas, createSortHandle, handleClick } = useTable(
       showEmpty,
       rest.datas,

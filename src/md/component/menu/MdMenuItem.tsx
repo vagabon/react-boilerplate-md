@@ -1,7 +1,6 @@
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { Menu, MenuItem } from '@mui/material';
 import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import { Fragment, memo, useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppRouter } from '../../../router';

@@ -3,7 +3,7 @@ import MdLink from './MdLink';
 
 describe('MdLink', () => {
   test('Given MdLink when its mount then Link is shown', () => {
-    render(<MdLink>children</MdLink>);
+    render(<MdLink href='url' label='label' />);
 
     expect(screen.getByTestId('Link')).toBeDefined();
   });
