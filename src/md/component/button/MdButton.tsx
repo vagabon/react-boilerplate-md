@@ -31,7 +31,7 @@ export interface IMdButtonProps {
   show?: boolean;
   label?: string;
   url?: string;
-  startIcon?: string;
+  startIcon?: string | React.JSX.Element;
   fullWidth?: boolean;
   icon?: string;
   iconColor?: IconColorType;
@@ -72,7 +72,7 @@ const MdButton: React.FC<IMdButtonProps> = memo(
           if (callback) {
             callback();
           } else if (url) {
-            navigate(url);
+            url.startsWith('http') ? window.open(url) : navigate(url);
           }
         }
       },
@@ -87,13 +87,14 @@ const MdButton: React.FC<IMdButtonProps> = memo(
       <>
         {show && (
           <Button
+            href={url}
             className={className}
             size={size}
             variant={variant}
             type={type}
             fullWidth={rest.fullWidth}
             onClick={onClick(rest.callback)}
-            startIcon={getIcon(rest.startIcon)}
+            startIcon={typeof rest.startIcon === 'string' ? getIcon(rest.startIcon) : rest.startIcon}
             color={rest.color ?? 'primary'}
             disabled={rest.disabled}
             sx={rest.sx}>

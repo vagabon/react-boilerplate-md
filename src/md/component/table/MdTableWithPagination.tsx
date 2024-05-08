@@ -30,9 +30,9 @@ const MdTableWithPagination: React.FC<IMdTableWithPaginationProps> = memo(({ ...
 
   return (
     <div style={{ display: 'grid' }}>
-      <h4>
+      <div style={{ margin: '5px 0px', fontSize: '1.2rem' }}>
         <Trans i18nKey='RESULTAT' /> : {rest.count}
-      </h4>
+      </div>
       <div style={{ overflow: 'auto' }}>
         <MdTable {...rest}>
           <TableFooter>
