@@ -14,7 +14,7 @@ export interface IMdLinkProps {
 }
 
 const MdLink: React.FC<IMdLinkProps> = memo(
-  ({ href, className = '', color = 'secondary', label, target, show = true, ...rest }) => {
+  ({ href, className = '', color = 'primary', label, target, show = true, ...rest }) => {
     const { t, Trans } = useAppTranslate();
     const { navigate } = useAppRouter();
 
