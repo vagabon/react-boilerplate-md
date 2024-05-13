@@ -1,6 +1,6 @@
 import { Fab, PropTypes } from '@mui/material';
 import { SyntheticEvent, memo, useCallback } from 'react';
-import { useIcon } from '../../../icon';
+import { useIcon } from '../../../icon/hook/useIcon';
 
 export interface IMdFabProps {
   className?: string;
@@ -11,7 +11,7 @@ export interface IMdFabProps {
   callback?: () => void;
 }
 
-const MdFab: React.FC<IMdFabProps> = memo(({ className, size, color, label, icon, callback }) => {
+export const MdFab: React.FC<IMdFabProps> = memo(({ className, size, color, label, icon, callback }) => {
   const { getIcon } = useIcon();
 
   const handleClick = useCallback(
@@ -28,5 +28,3 @@ const MdFab: React.FC<IMdFabProps> = memo(({ className, size, color, label, icon
     </Fab>
   );
 });
-
-export default MdFab;

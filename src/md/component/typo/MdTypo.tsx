@@ -1,7 +1,7 @@
 import { SxProps, Theme, Typography, TypographyOwnProps } from '@mui/material';
 import { Variant } from '@mui/material/styles/createTypography';
 import { ReactNode, memo } from 'react';
-import { useAppTranslate } from '../../../translate';
+import { useAppTranslate } from '../../../translate/hook/useAppTranslate';
 
 export interface IMdTypoProps {
   className?: string;
@@ -15,7 +15,7 @@ export interface IMdTypoProps {
   sx?: SxProps<Theme>;
 }
 
-const MdTypo: React.FC<IMdTypoProps> = memo(
+export const MdTypo: React.FC<IMdTypoProps> = memo(
   ({ className = '', label, paragraph, variant, color, align, noWrap, sx, children }) => {
     const { Trans } = useAppTranslate();
 
@@ -34,5 +34,3 @@ const MdTypo: React.FC<IMdTypoProps> = memo(
     );
   },
 );
-
-export default MdTypo;

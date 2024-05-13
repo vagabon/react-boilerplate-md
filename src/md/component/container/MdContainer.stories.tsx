@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../stories/Helpers';
 
-import MdContainer from './MdContainer';
+import { MdContainer } from './MdContainer';
 
 const meta: Meta<typeof MdContainer> = {
   title: 'mui/MdContainer',

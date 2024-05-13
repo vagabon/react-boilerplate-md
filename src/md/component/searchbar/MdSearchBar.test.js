@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import MdSearchBar from './MdSearchBar';
+import { MdSearchBar } from './MdSearchBar';
 
 jest.useFakeTimers();
 

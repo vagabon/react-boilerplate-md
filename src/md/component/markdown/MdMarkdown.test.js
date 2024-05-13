@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import MdMarkdown from './MdMarkdown';
+import { MdMarkdown } from './MdMarkdown';
 
 jest.useFakeTimers();
 

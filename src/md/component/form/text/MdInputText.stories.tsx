@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { withProvider, withTest } from '../../../../stories/Helpers';
-import MdInputText from './MdInputText';
+import { MdInputText } from './MdInputText';
 
 const meta: Meta<typeof MdInputText> = {
   title: 'mui/MdInputText',

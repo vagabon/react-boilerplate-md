@@ -1,6 +1,6 @@
 import { Tab, Tabs } from '@mui/material';
 import { SyntheticEvent, memo, useCallback } from 'react';
-import { useAppTranslate } from '../../../translate';
+import { useAppTranslate } from '../../../translate/hook/useAppTranslate';
 
 export type TabsType = {
   name: string;
@@ -20,7 +20,7 @@ export interface IMdTabsProps {
   tabs: TabsType[];
 }
 
-const MdTabs: React.FC<IMdTabsProps> = memo(
+export const MdTabs: React.FC<IMdTabsProps> = memo(
   ({ className = '', value, callback, indicatorColor, color, label, variant, scrollButtons, tabs }) => {
     const { t } = useAppTranslate();
 
@@ -49,5 +49,3 @@ const MdTabs: React.FC<IMdTabsProps> = memo(
     );
   },
 );
-
-export default MdTabs;

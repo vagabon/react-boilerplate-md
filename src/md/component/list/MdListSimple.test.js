@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import MdListSimple from './MdListSimple';
+import { MdListSimple } from './MdListSimple';
 
 describe('MdListSimple', () => {
   test('Given MdListSimple when its mount then List is shown', () => {

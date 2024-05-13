@@ -5,7 +5,7 @@ export interface IMdFormErrorProps {
   error: string;
 }
 
-const MdFormError: React.FC<IMdFormErrorProps> = memo(({ error }) => {
+export const MdFormError: React.FC<IMdFormErrorProps> = memo(({ error }) => {
   return (
     <>
       {error && (
@@ -16,5 +16,3 @@ const MdFormError: React.FC<IMdFormErrorProps> = memo(({ error }) => {
     </>
   );
 });
-
-export default MdFormError;

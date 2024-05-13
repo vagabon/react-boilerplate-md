@@ -1,8 +1,8 @@
 import { Chip } from '@mui/material';
 import { memo } from 'react';
 import { ID } from '../../../dto/api/ApiDto';
-import { useIcon } from '../../../icon';
-import { useAppTranslate } from '../../../translate';
+import { useIcon } from '../../../icon/hook/useIcon';
+import { useAppTranslate } from '../../../translate/hook/useAppTranslate';
 import { I18nUtils } from '../../../utils/i18n/I18nUtils';
 
 export interface IMdChipProps {
@@ -16,7 +16,7 @@ export interface IMdChipProps {
   callbackDelete?: (id: ID) => void;
 }
 
-const MdChip: React.FC<IMdChipProps> = memo(
+export const MdChip: React.FC<IMdChipProps> = memo(
   ({ className, label, icon, size, title, color, variant, callbackDelete = () => {} }) => {
     const { t } = useAppTranslate();
     const { getIcon } = useIcon();
@@ -35,5 +35,3 @@ const MdChip: React.FC<IMdChipProps> = memo(
     );
   },
 );
-
-export default MdChip;

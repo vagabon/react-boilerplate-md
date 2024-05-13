@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import MdFormSelect from './MdFormSelect';
+import { MdFormSelect } from './MdFormSelect';
 
 describe('MdFormSelect', () => {
   test('Given MdFormSelect when its mount then select is shown', () => {

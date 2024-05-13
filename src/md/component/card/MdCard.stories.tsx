@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../stories/Helpers';
 
-import MdCard from './MdCard';
+import { MdCard } from './MdCard';
 
 const meta: Meta<typeof MdCard> = {
   title: 'mui/MdCard',

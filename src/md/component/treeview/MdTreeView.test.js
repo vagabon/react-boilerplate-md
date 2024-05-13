@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import MdTreeView from './MdTreeView';
+import { MdTreeView } from './MdTreeView';
 
 describe('MdTreeView', () => {
   test('Given MdTreeView when its mount then Toolbar is shown', () => {

@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import MdMenuItem from './MdMenuItem';
+import { MdMenuItem } from './MdMenuItem';
 
 jest.useFakeTimers();
 

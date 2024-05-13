@@ -2,10 +2,10 @@ import { Typography } from '@mui/material';
 import { memo, useCallback, useEffect, useState } from 'react';
 import { JSONObject } from '../../../../dto/api/ApiDto';
 import { HandleChangeType, IFormPropsDto } from '../../../../dto/form/FormDto';
-import { useAppTranslate } from '../../../../translate';
+import { useAppTranslate } from '../../../../translate/hook/useAppTranslate';
 import { useFormError } from '../../../hook/useFormError';
-import MdFormError from '../MdFormError';
-import MdFormSwitchSimple from './MdFormSwitchSimple';
+import { MdFormError } from '../MdFormError';
+import { MdFormSwitchSimple } from './MdFormSwitchSimple';
 
 export interface IMdFormSwitchProps extends IFormPropsDto {
   className?: string;
@@ -14,7 +14,7 @@ export interface IMdFormSwitchProps extends IFormPropsDto {
   disabled?: boolean;
 }
 
-const MdFormSwitch: React.FC<IMdFormSwitchProps> = memo(({ className = '', ...rest }) => {
+export const MdFormSwitch: React.FC<IMdFormSwitchProps> = memo(({ className = '', ...rest }) => {
   const { Trans } = useAppTranslate();
   const { error } = useFormError(rest.name, rest.errors, rest.touched, rest.errorMessage);
   const [checked, setChecked] = useState<boolean>(false);
@@ -55,5 +55,3 @@ const MdFormSwitch: React.FC<IMdFormSwitchProps> = memo(({ className = '', ...re
     </div>
   );
 });
-
-export default MdFormSwitch;

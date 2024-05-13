@@ -1,7 +1,7 @@
 import { ChangeEvent, FocusEvent, KeyboardEvent, MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { IApiDto, JSONObject, JSONValue } from '../../dto/api/ApiDto';
 import { HandleBlurType, HandleChangeType } from '../../dto/form/FormDto';
-import { ObjectUtils } from '../../utils';
+import { ObjectUtils } from '../../utils/object/ObjectUtils';
 import { UuidUtils } from '../../utils/uuid/UuidUtils';
 
 export const useFormValue = (type: string, value: JSONValue, isFocus?: boolean) => {

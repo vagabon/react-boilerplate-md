@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../stories/Helpers';
 
-import MdBadge from './MdBadge';
+import { MdBadge } from './MdBadge';
 
 const meta: Meta<typeof MdBadge> = {
   title: 'mui/MdBadge',

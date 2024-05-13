@@ -1,6 +1,6 @@
 import { Fragment, memo } from 'react';
-import { useAppTranslate } from '../../../translate';
-import MdTypo from '../typo/MdTypo';
+import { useAppTranslate } from '../../../translate/hook/useAppTranslate';
+import { MdTypo } from '../typo/MdTypo';
 
 export interface IListSimpleDto {
   label: string;
@@ -12,7 +12,7 @@ export interface IMdListSimpleProps {
   items: IListSimpleDto[];
 }
 
-const MdListSimple: React.FC<IMdListSimpleProps> = memo(({ className, title, items }) => {
+export const MdListSimple: React.FC<IMdListSimpleProps> = memo(({ className, title, items }) => {
   const { t } = useAppTranslate();
 
   return (
@@ -30,5 +30,3 @@ const MdListSimple: React.FC<IMdListSimpleProps> = memo(({ className, title, ite
     </ul>
   );
 });
-
-export default MdListSimple;

@@ -5,8 +5,6 @@ export interface IMdListItemIconProps {
   children: ReactNode;
 }
 
-const MdListItemIcon: React.FC<IMdListItemIconProps> = memo(({ children }) => {
+export const MdListItemIcon: React.FC<IMdListItemIconProps> = memo(({ children }) => {
   return <ListItemIcon>{children}</ListItemIcon>;
 });
-
-export default MdListItemIcon;

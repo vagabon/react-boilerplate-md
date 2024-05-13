@@ -1,5 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react';
-import MdAvatar from './MdAvatar';
+import { render, screen } from '@testing-library/react';
+import { MdAvatar } from './MdAvatar';
 
 describe('MdAvatar', () => {
   test('Given MdAvatar when its mount then Avatar is shown', () => {

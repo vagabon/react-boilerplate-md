@@ -12,7 +12,7 @@ export interface IMdMenuProps {
   sx?: SxProps<Theme>;
 }
 
-const MdMenu: React.FC<IMdMenuProps> = ({ title, elements, className = '', size, variant, color, sx }) => {
+export const MdMenu: React.FC<IMdMenuProps> = ({ title, elements, className = '', size, variant, color, sx }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -56,5 +56,3 @@ const MdMenu: React.FC<IMdMenuProps> = ({ title, elements, className = '', size,
     </>
   );
 };
-
-export default MdMenu;

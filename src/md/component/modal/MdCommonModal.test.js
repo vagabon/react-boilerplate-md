@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import MdCommonModal from './MdCommonModal';
+import { MdCommonModal } from './MdCommonModal';
 
 describe('MdCommonModal', () => {
   test('Given MdCommonModal When its mount Then Modal is shown', () => {

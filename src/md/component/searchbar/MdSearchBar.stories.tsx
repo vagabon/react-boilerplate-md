@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../stories/Helpers';
 
-import MdSearchBar from './MdSearchBar';
+import { MdSearchBar } from './MdSearchBar';
 
 const meta: Meta<typeof MdSearchBar> = {
   title: 'mui/MdSearchBar',

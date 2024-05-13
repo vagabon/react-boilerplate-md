@@ -7,7 +7,7 @@ interface IMdThemeProviderProps {
   children: ReactNode;
 }
 
-const MdThemeProvider: React.FC<IMdThemeProviderProps> = memo(({ theme, children }) => {
+export const MdThemeProvider: React.FC<IMdThemeProviderProps> = memo(({ theme, children }) => {
   const [muiTheme, setMuiTheme] = useState<Theme>();
 
   useEffect(() => {
@@ -27,5 +27,3 @@ const MdThemeProvider: React.FC<IMdThemeProviderProps> = memo(({ theme, children
     </>
   );
 });
-
-export default MdThemeProvider;

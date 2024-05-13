@@ -1,45 +1,61 @@
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
+import multiEntry from '@rollup/plugin-multi-entry';
 import resolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
-import dts from 'rollup-plugin-dts';
+import { glob } from 'glob';
 import external from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 import scss from 'rollup-plugin-scss';
 
-const packageJson = require('./package.json');
+const inputFiles = glob.sync('src/**/*.ts*', { ignore: 'src/**/*.stories.tsx' });
 
 export default [
   {
-    input: 'src/index.ts',
+    input: inputFiles,
     output: [
       {
-        file: packageJson.main,
+        dir: 'dist',
         format: 'cjs',
+        exports: 'named',
         sourcemap: true,
-        name: 'react-ts-lib',
+        preserveModules: true,
+        preserveModulesRoot: 'src',
       },
       {
-        file: packageJson.module,
-        format: 'esm',
+        dir: 'dist',
+        format: 'es',
+        exports: 'named',
         sourcemap: true,
+        preserveModules: true,
+        preserveModulesRoot: 'src',
       },
     ],
     onwarn(warning, warn) {
       if (warning.message.includes('preferring built-in module')) return;
-      if (warning.message.includes('Module level directives cause errors when bundled')) return;
       if (warning.code === 'EVAL') return;
-      if (warning.code === 'MODULE_LEVEL_DIRECTIVE') return;
-      if (warning.code === 'THIS_IS_UNDEFINED') return;
       warn(warning);
     },
-    plugins: [external(), resolve(), commonjs(), typescript(), postcss(), json(), scss(), terser()],
-  },
-  {
-    input: 'dist/types/index.d.ts',
-    output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-    external: [/\.*css$/],
-    plugins: [dts.default()],
+    plugins: [
+      external(),
+      resolve(),
+      commonjs(),
+      typescript({
+        compilerOptions: {
+          module: 'esnext',
+          declaration: true,
+          declarationDir: 'dist',
+        },
+      }),
+      postcss(),
+      json(),
+      scss(),
+      terser(),
+      multiEntry({
+        entryFileName: '[name].js',
+      }),
+    ],
+    external: ['react', 'react-dom'],
   },
 ];

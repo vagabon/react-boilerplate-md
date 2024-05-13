@@ -9,7 +9,7 @@ export interface IMdAvatarProps {
   sx?: SxProps<Theme>;
 }
 
-const MdAvatar: React.FC<IMdAvatarProps> = memo(({ className = '', name, image, sx }) => {
+export const MdAvatar: React.FC<IMdAvatarProps> = memo(({ className = '', name, image, sx }) => {
   return (
     <>
       {image && image !== null && image !== '' && image.includes('/') ? (
@@ -22,5 +22,3 @@ const MdAvatar: React.FC<IMdAvatarProps> = memo(({ className = '', name, image, 
     </>
   );
 });
-
-export default MdAvatar;

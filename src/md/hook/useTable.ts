@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
-import { JSONObject } from '../../dto';
-import { useAppRouter } from '../../router';
-import { UuidUtils } from '../../utils';
+import { JSONObject } from '../../dto/api/ApiDto';
+import { useAppRouter } from '../../router/hook/useAppRouter';
+import { UuidUtils } from '../../utils/uuid/UuidUtils';
 import { TablePaginateCallbackType } from '../component/table/MdTable';
 
 export const useTable = (

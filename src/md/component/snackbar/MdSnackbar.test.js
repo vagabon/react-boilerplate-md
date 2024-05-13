@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import MdSnackbar from './MdSnackbar';
+import { MdSnackbar } from './MdSnackbar';
 
 describe('MdSnackbar', () => {
   test('Given MdSnackbar when its mount then Snackbar is shown', () => {

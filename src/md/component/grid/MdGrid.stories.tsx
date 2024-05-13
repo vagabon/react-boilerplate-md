@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../stories/Helpers';
 
-import MdGrid from './MdGrid';
+import { MdGrid } from './MdGrid';
 
 const meta: Meta<typeof MdGrid> = {
   title: 'mui/MdGrid',

@@ -10,8 +10,6 @@ export interface IMdGridProps {
   style?: CSSProperties;
 }
 
-const MdGrid: React.FC<IMdGridProps> = memo(({ children, ...rest }) => {
+export const MdGrid: React.FC<IMdGridProps> = memo(({ children, ...rest }) => {
   return <Grid {...rest}>{children}</Grid>;
 });
-
-export default MdGrid;

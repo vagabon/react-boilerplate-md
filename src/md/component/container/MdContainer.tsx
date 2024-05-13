@@ -7,12 +7,10 @@ export interface IMdContainerProps {
   children?: ReactNode;
 }
 
-const MdContainer: React.FC<IMdContainerProps> = memo(({ className = '', maxWidth, children }) => {
+export const MdContainer: React.FC<IMdContainerProps> = memo(({ className = '', maxWidth, children }) => {
   return (
     <Container className={className} maxWidth={maxWidth ?? 'lg'}>
       {children}
     </Container>
   );
 });
-
-export default MdContainer;

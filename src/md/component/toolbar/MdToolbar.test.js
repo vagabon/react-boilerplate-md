@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import MdToolbar from './MdToolbar';
+import { MdToolbar } from './MdToolbar';
 
 describe('MdToolbar', () => {
   test('Given MdToolbar when its mount then Toolbar is shown', () => {

@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import MdFormSwitch from './MdFormSwitch';
+import { MdFormSwitch } from './MdFormSwitch';
 
 describe('MdFormSwitch', () => {
   test('Given MdFormSwitch when its mount then Switch is shown', () => {

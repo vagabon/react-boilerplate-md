@@ -3,7 +3,7 @@ import dayjs, { Dayjs } from 'dayjs';
 import { memo, useCallback, useEffect, useState } from 'react';
 import { JSONObject } from '../../../../dto/api/ApiDto';
 import { HandleChangeType, IFormPropsDto } from '../../../../dto/form/FormDto';
-import { useAppTranslate } from '../../../../translate';
+import { useAppTranslate } from '../../../../translate/hook/useAppTranslate';
 import { useFormError } from '../../../hook/useFormError';
 
 export interface IMdInputDatepickerProps extends IFormPropsDto {
@@ -13,7 +13,7 @@ export interface IMdInputDatepickerProps extends IFormPropsDto {
   disabled?: boolean;
 }
 
-const MdInputDatepicker: React.FC<IMdInputDatepickerProps> = memo(({ className = '', ...rest }) => {
+export const MdInputDatepicker: React.FC<IMdInputDatepickerProps> = memo(({ className = '', ...rest }) => {
   const { t } = useAppTranslate();
   const { error } = useFormError(rest.name, rest.errors, rest.touched, rest.errorMessage);
   const [value, setValue] = useState<Dayjs | undefined>();
@@ -56,5 +56,3 @@ const MdInputDatepicker: React.FC<IMdInputDatepickerProps> = memo(({ className =
     </div>
   );
 });
-
-export default MdInputDatepicker;

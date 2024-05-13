@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../stories/Helpers';
 
-import MdTypo from './MdTypo';
+import { MdTypo } from './MdTypo';
 
 const meta: Meta<typeof MdTypo> = {
   title: 'mui/MdTypo',

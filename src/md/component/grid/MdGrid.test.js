@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import MdGrid from './MdGrid';
+import { MdGrid } from './MdGrid';
 
 describe('MdGrid', () => {
   test('Given MdGrid when its mount then Grid is shown', () => {

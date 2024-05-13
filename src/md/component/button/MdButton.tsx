@@ -3,8 +3,8 @@ import { SxProps } from '@mui/material';
 import Button from '@mui/material/Button';
 import { MouseEvent, ReactNode, memo, useCallback, useEffect, useState } from 'react';
 import { IconColorType, useIcon } from '../../../icon/hook/useIcon';
-import { useAppRouter } from '../../../router';
-import { useAppTranslate } from '../../../translate';
+import { useAppRouter } from '../../../router/hook/useAppRouter';
+import { useAppTranslate } from '../../../translate/hook/useAppTranslate';
 
 declare module '@mui/material/Button' {
   interface ButtonPropsColorOverrides {
@@ -44,7 +44,7 @@ export interface IMdButtonProps {
   callback?: () => void;
 }
 
-const MdButton: React.FC<IMdButtonProps> = memo(
+export const MdButton: React.FC<IMdButtonProps> = memo(
   ({
     className = '',
     show = true,
@@ -105,5 +105,3 @@ const MdButton: React.FC<IMdButtonProps> = memo(
     );
   },
 );
-
-export default MdButton;

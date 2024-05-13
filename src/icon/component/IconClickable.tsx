@@ -11,7 +11,7 @@ export interface IIconClickableProps {
   children?: ReactNode;
 }
 
-const IconClickable: React.FC<IIconClickableProps> = memo(
+export const IconClickable: React.FC<IIconClickableProps> = memo(
   ({ className, icon, color, disabled, callback, children }) => {
     const { getIcon } = useIcon();
 
@@ -31,5 +31,3 @@ const IconClickable: React.FC<IIconClickableProps> = memo(
     );
   },
 );
-
-export default IconClickable;

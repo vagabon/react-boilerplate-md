@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import MdBackdrop from './MdBackdrop';
+import { MdBackdrop } from './MdBackdrop';
 
 describe('MdBackdrop', () => {
   test('Given MdBackdrop when its mount then Alert is shown', () => {

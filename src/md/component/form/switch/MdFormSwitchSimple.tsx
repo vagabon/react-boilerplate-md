@@ -11,7 +11,7 @@ export interface IMdFormSwitchSimpleProps {
   callbackBlur?: HandleBlurType;
 }
 
-const MdFormSwitchSimple: React.FC<IMdFormSwitchSimpleProps> = memo(
+export const MdFormSwitchSimple: React.FC<IMdFormSwitchSimpleProps> = memo(
   ({ name, color, checked, disabled, callbackChange, callbackBlur }) => {
     return (
       <Switch
@@ -25,5 +25,3 @@ const MdFormSwitchSimple: React.FC<IMdFormSwitchSimpleProps> = memo(
     );
   },
 );
-
-export default MdFormSwitchSimple;

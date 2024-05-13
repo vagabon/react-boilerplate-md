@@ -1,5 +1,5 @@
 import { Namespace, TFunction } from 'i18next';
-import { JSONObject } from '../../dto';
+import { JSONObject } from '../../dto/api/ApiDto';
 
 export type I18nTranslate = TFunction<Namespace, string>;
 

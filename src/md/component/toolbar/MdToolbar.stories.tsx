@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../stories/Helpers';
 
-import MdToolbar from './MdToolbar';
+import { MdToolbar } from './MdToolbar';
 
 const meta: Meta<typeof MdToolbar> = {
   title: 'mui/MdToolbar',

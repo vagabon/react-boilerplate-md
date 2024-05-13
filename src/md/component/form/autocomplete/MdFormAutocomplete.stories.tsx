@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../../stories/Helpers';
 
-import MdFormAutocomplete from './MdFormAutocomplete';
+import { MdFormAutocomplete } from './MdFormAutocomplete';
 
 const meta: Meta<typeof MdFormAutocomplete> = {
   title: 'mui/MdFormAutocomplete',

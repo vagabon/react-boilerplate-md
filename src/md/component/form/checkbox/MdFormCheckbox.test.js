@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import MdFormCheckbox from './MdFormCheckbox';
+import { MdFormCheckbox } from './MdFormCheckbox';
 
 describe('MdFormCheckbox', () => {
   test('Given MdFormCheckbox when its mount then Checkbox is shown', () => {

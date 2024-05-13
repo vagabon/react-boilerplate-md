@@ -1,7 +1,7 @@
 import { Link } from '@mui/material';
 import { CSSProperties, MouseEvent, memo, useCallback } from 'react';
-import { useAppRouter } from '../../../router';
-import { useAppTranslate } from '../../../translate';
+import { useAppRouter } from '../../../router/hook/useAppRouter';
+import { useAppTranslate } from '../../../translate/hook/useAppTranslate';
 
 export interface IMdLinkProps {
   href: string;
@@ -13,7 +13,7 @@ export interface IMdLinkProps {
   sx?: CSSProperties;
 }
 
-const MdLink: React.FC<IMdLinkProps> = memo(
+export const MdLink: React.FC<IMdLinkProps> = memo(
   ({ href, className = '', color = 'primary', label, target, show = true, ...rest }) => {
     const { t, Trans } = useAppTranslate();
     const { navigate } = useAppRouter();
@@ -49,5 +49,3 @@ const MdLink: React.FC<IMdLinkProps> = memo(
     );
   },
 );
-
-export default MdLink;

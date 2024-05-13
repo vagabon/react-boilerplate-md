@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import IconClickable from './IconClickable';
+import { IconClickable } from './IconClickable';
 
 describe('IconClickable', () => {
   test('Given IconClickable when its mount then ', () => {

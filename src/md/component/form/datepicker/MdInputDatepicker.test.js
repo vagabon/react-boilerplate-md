@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import MdInputDatepicker from './MdInputDatepicker';
+import { MdInputDatepicker } from './MdInputDatepicker';
 
 describe('MdInputDatepicker', () => {
   test('Given MdInputDatepicker when its mount then select is shown', () => {

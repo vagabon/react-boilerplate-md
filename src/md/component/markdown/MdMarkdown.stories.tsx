@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../stories/Helpers';
 
-import MdMarkdown from './MdMarkdown';
+import { MdMarkdown } from './MdMarkdown';
 
 const meta: Meta<typeof MdMarkdown> = {
   title: 'mui/MdMarkdown',

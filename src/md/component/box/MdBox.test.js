@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import MdBox from './MdBox';
+import { MdBox } from './MdBox';
 
 describe('MdBox', () => {
   test('Given MdBox when its mount then Box is shown', () => {

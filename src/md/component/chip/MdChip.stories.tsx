@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../stories/Helpers';
 
-import MdChip from './MdChip';
+import { MdChip } from './MdChip';
 
 const meta: Meta<typeof MdChip> = {
   title: 'mui/MdChip',

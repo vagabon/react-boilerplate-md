@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../stories/Helpers';
 
-import MdAlert from './MdAlert';
+import { MdAlert } from './MdAlert';
 
 const meta: Meta<typeof MdAlert> = {
   title: 'mui/MdAlert',

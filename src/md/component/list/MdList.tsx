@@ -5,8 +5,7 @@ export interface IMdListProps {
   className?: string;
   children: ReactNode;
 }
-const MdList: React.FC<IMdListProps> = memo(({ className, children }) => {
+
+export const MdList: React.FC<IMdListProps> = memo(({ className, children }) => {
   return <List className={className ?? 'modal-list'}>{children}</List>;
 });
-
-export default MdList;

@@ -3,7 +3,7 @@ import { Menu, MenuItem } from '@mui/material';
 import Button from '@mui/material/Button';
 import { Fragment, memo, useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAppRouter } from '../../../router';
+import { useAppRouter } from '../../../router/hook/useAppRouter';
 
 export interface IMdMenuItemProps {
   name: string;
@@ -12,7 +12,7 @@ export interface IMdMenuItemProps {
   childrens: { title: string; link: string }[] | undefined;
 }
 
-const MdMenuItem: React.FC<IMdMenuItemProps> = memo(({ ...rest }) => {
+export const MdMenuItem: React.FC<IMdMenuItemProps> = memo(({ ...rest }) => {
   const { navigate } = useAppRouter();
   const [anchorEl, setAnchorEl] = useState<Element>();
   const open = Boolean(anchorEl);
@@ -85,5 +85,3 @@ const MdMenuItem: React.FC<IMdMenuItemProps> = memo(({ ...rest }) => {
     </Fragment>
   );
 });
-
-export default MdMenuItem;

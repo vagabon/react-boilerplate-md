@@ -1,10 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import MdList from './MdList';
-import MdListItem from './MdListItem';
-import MdListItemAvatar from './MdListItemAvatar';
-import MdListItemButton from './MdListItemButton';
-import MdListItemIcon from './MdListItemIcon';
-import MdListItemText from './MdListItemText';
+import { MdList } from './MdList';
+import { MdListItem } from './MdListItem';
+import { MdListItemAvatar } from './MdListItemAvatar';
+import { MdListItemButton } from './MdListItemButton';
+import { MdListItemIcon } from './MdListItemIcon';
+import { MdListItemText } from './MdListItemText';
 
 describe('MdList', () => {
   test('Given MdList when its mount then List is shown', () => {

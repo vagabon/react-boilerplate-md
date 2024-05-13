@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../stories/Helpers';
 
-import MdBox from './MdBox';
+import { MdBox } from './MdBox';
 
 const meta: Meta<typeof MdBox> = {
   title: 'mui/MdBox',

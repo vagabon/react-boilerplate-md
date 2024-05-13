@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../stories/Helpers';
 
-import MdLinearProgress from './MdLinearProgress';
+import { MdLinearProgress } from './MdLinearProgress';
 
 const meta: Meta<typeof MdLinearProgress> = {
   title: 'mui/MdLinearProgress',

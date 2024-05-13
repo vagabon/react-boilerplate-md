@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import MdTypo from './MdTypo';
+import { MdTypo } from './MdTypo';
 
 describe('MdTypo', () => {
   test('Given MdTypo when its mount then ButtonGroup is shown', () => {

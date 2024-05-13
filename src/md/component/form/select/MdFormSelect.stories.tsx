@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../../stories/Helpers';
 
 import { IListDto } from '../../../../utils/list/ListUtils';
-import MdFormSelect from './MdFormSelect';
+import { MdFormSelect } from './MdFormSelect';
 
 const meta: Meta<typeof MdFormSelect> = {
   title: 'mui/MdFormSelect',

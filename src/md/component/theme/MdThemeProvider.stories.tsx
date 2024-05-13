@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../stories/Helpers';
 
-import MdThemeProvider from './MdThemeProvider';
+import { MdThemeProvider } from './MdThemeProvider';
 
 const meta: Meta<typeof MdThemeProvider> = {
   title: 'mui/MdThemeProvider',

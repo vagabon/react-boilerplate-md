@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import MdCard from './MdCard';
+import { MdCard } from './MdCard';
 
 describe('MdCard', () => {
   test('Given MdCard when its mount then ButtonGroup is shown', () => {

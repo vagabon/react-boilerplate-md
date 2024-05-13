@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../stories/Helpers';
 
-import MdBackdrop from './MdBackdrop';
+import { MdBackdrop } from './MdBackdrop';
 
 const meta: Meta<typeof MdBackdrop> = {
   title: 'mui/MdBackdrop',

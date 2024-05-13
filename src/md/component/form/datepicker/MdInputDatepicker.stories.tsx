@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../../stories/Helpers';
 
-import MdInputDatepicker from './MdInputDatepicker';
+import { MdInputDatepicker } from './MdInputDatepicker';
 
 const meta: Meta<typeof MdInputDatepicker> = {
   title: 'mui/MdInputDatepicker',

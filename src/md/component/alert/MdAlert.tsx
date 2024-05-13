@@ -1,7 +1,7 @@
 import { Theme } from '@emotion/react';
 import { Alert, AlertColor, AlertTitle, SxProps } from '@mui/material';
 import { ReactNode, memo } from 'react';
-import { useAppTranslate } from '../../../translate';
+import { useAppTranslate } from '../../../translate/hook/useAppTranslate';
 
 export interface IMdAlertProps {
   className?: string;
@@ -15,7 +15,7 @@ export interface IMdAlertProps {
   callback?: () => void;
 }
 
-const MdAlert: React.FC<IMdAlertProps> = memo(({ title, label, callback, ...rest }) => {
+export const MdAlert: React.FC<IMdAlertProps> = memo(({ title, label, callback, ...rest }) => {
   const { Trans } = useAppTranslate();
 
   return (
@@ -29,5 +29,3 @@ const MdAlert: React.FC<IMdAlertProps> = memo(({ title, label, callback, ...rest
     </Alert>
   );
 });
-
-export default MdAlert;

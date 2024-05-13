@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../stories/Helpers';
 
-import MdDivider from './MdDivider';
+import { MdDivider } from './MdDivider';
 
 const meta: Meta<typeof MdDivider> = {
   title: 'mui/MdDivider',

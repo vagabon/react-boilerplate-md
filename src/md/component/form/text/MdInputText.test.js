@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import MdInputText from './MdInputText';
+import { MdInputText } from './MdInputText';
 
 describe('MdInputText', () => {
   test('Given MdInputText when its mount then Grid is shown', () => {

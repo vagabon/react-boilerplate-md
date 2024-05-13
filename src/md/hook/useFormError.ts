@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { JSONObject } from '../../dto';
+import { JSONObject } from '../../dto/api/ApiDto';
 
 export const useFormError = (name: string, errors?: JSONObject, touched?: JSONObject, errorMessage?: string) => {
   const [error, setError] = useState<string>('');

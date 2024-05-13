@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../../stories/Helpers';
 
-import MdFormSwitch from './MdFormSwitch';
+import { MdFormSwitch } from './MdFormSwitch';
 
 const meta: Meta<typeof MdFormSwitch> = {
   title: 'mui/MdFormSwitch',

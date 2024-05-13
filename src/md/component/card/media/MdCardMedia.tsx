@@ -5,8 +5,6 @@ export interface IMdCardMediaProps {
   children: ReactNode;
 }
 
-const MdCardMedia: React.FC<IMdCardMediaProps> = memo(({ children }) => {
+export const MdCardMedia: React.FC<IMdCardMediaProps> = memo(({ children }) => {
   return <CardMedia>{children}</CardMedia>;
 });
-
-export default MdCardMedia;

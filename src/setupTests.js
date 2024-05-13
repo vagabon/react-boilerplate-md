@@ -45,6 +45,7 @@ const mockT = (key) => key;
 
 /* global jest */
 jest.mock('react-i18next', () => ({
+  ...jest.requireActual('react-i18next'),
   useTranslation: () => ({
     t: mockT,
     i18n: {
@@ -62,6 +63,7 @@ jest.mock('react-i18next', () => ({
 
 /* global jest */
 jest.mock('@mui/material', () => ({
+  ...jest.requireActual('@mui/material'),
   Accordion: ({ children }) => <div data-testid='Accordion'>{children}</div>,
   AccordionDetails: ({ children }) => <div data-testid='AccordionDetails'>{children}</div>,
   AccordionSummary: ({ children }) => <div data-testid='AccordionSummary'>{children}</div>,
@@ -223,14 +225,6 @@ jest.mock('mui-markdown', () => ({
   getOverrides: jest.fn(),
 }));
 
-/***************************** AFTER EACH RESET MOCK *****************************/
-
-beforeEach(() => {});
-
-afterEach(() => {
-  jest.resetAllMocks();
-});
-
 /********************************** LOCAL STORAGE *********************************/
 
 const localStorageMock = (function () {
@@ -251,7 +245,12 @@ global.setLocalStorage = (id, data) => {
   window.localStorage.setItem(id, JSON.stringify(data));
 };
 
-window.ENV = {
-  API_URL: 'http://localhost:8090',
-};
+/***************************** AFTER EACH RESET MOCK *****************************/
+
+beforeEach(() => {});
+
+afterEach(() => {
+  jest.resetAllMocks();
+});
+
 window.matchMedia = jest.fn().mockReturnValue({ matches: '' });

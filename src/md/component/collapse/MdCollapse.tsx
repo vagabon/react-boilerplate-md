@@ -16,7 +16,7 @@ export interface IMdCollapseProps {
   children?: React.ReactNode;
 }
 
-const MdCollapse: React.FC<IMdCollapseProps> = memo(({ collapsedSize, orientation, timeout, ...rest }) => {
+export const MdCollapse: React.FC<IMdCollapseProps> = memo(({ collapsedSize, orientation, timeout, ...rest }) => {
   return (
     <Collapse
       {...rest}
@@ -25,5 +25,3 @@ const MdCollapse: React.FC<IMdCollapseProps> = memo(({ collapsedSize, orientatio
       timeout={timeout ?? 'auto'}></Collapse>
   );
 });
-
-export default MdCollapse;

@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import MdTableWithPagination from './MdTableWithPagination';
+import { MdTableWithPagination } from './MdTableWithPagination';
 
 describe('MdTableWithPagination', () => {
   test('Given MdTableWithPagination when its mount then Table is shown', () => {

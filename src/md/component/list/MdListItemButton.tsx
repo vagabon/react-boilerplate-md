@@ -5,8 +5,7 @@ export interface IMdListItemButtonProps {
   callback?: () => void;
   children: ReactNode;
 }
-const MdListItemButton: React.FC<IMdListItemButtonProps> = memo(({ callback, children }) => {
+
+export const MdListItemButton: React.FC<IMdListItemButtonProps> = memo(({ callback, children }) => {
   return <ListItemButton onClick={callback}>{children}</ListItemButton>;
 });
-
-export default MdListItemButton;

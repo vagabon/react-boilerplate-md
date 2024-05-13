@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import MdLink from './MdLink';
+import { MdLink } from './MdLink';
 
 describe('MdLink', () => {
   test('Given MdLink when its mount then Link is shown', () => {

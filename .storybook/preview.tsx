@@ -1,6 +1,5 @@
 import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import React from 'react';
-import '../src/i18n/i18n';
 
 const theme = createTheme();
 

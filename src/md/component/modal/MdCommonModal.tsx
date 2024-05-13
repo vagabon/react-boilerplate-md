@@ -1,6 +1,6 @@
 import { Box, Modal } from '@mui/material';
 import { MouseEvent, ReactNode, memo, useCallback } from 'react';
-import IconClickable from '../../../icon/component/IconClickable';
+import { IconClickable } from '../../../icon/component/IconClickable';
 
 export interface ICommonModalProps {
   className?: string;
@@ -22,7 +22,7 @@ const style = {
   pb: 3,
 };
 
-const MdCommonModal: React.FC<ICommonModalProps> = memo(({ className = '', open = false, ...rest }) => {
+export const MdCommonModal: React.FC<ICommonModalProps> = memo(({ className = '', open = false, ...rest }) => {
   const handleClick = useCallback((event: MouseEvent) => {
     event.stopPropagation();
   }, []);
@@ -47,5 +47,3 @@ const MdCommonModal: React.FC<ICommonModalProps> = memo(({ className = '', open 
     </Modal>
   );
 });
-
-export default MdCommonModal;

@@ -1,8 +1,8 @@
 import { Table, TableBody, TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material';
 import React, { Fragment, ReactNode, memo } from 'react';
-import { IApiDto, JSONObject } from '../../../dto';
-import { useAppTranslate } from '../../../translate';
-import { ObjectUtils } from '../../../utils';
+import { IApiDto, JSONObject } from '../../../dto/api/ApiDto';
+import { useAppTranslate } from '../../../translate/hook/useAppTranslate';
+import { ObjectUtils } from '../../../utils/object/ObjectUtils';
 import { useTable } from '../../hook/useTable';
 
 export type TablePaginateCallbackType = (
@@ -34,7 +34,7 @@ export interface IMdTableProps {
   children?: ReactNode;
 }
 
-const MdTable: React.FC<IMdTableProps> = memo(
+export const MdTable: React.FC<IMdTableProps> = memo(
   ({
     className = '',
     cells,
@@ -114,5 +114,3 @@ const MdTable: React.FC<IMdTableProps> = memo(
     );
   },
 );
-
-export default MdTable;

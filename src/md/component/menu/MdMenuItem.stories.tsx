@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../stories/Helpers';
 
-import MdMenuItem from './MdMenuItem';
+import { MdMenuItem } from './MdMenuItem';
 
 const meta: Meta<typeof MdMenuItem> = {
   title: 'mui/MdMenuItem',

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../stories/Helpers';
 
-import MdSnackbar from './MdSnackbar';
+import { MdSnackbar } from './MdSnackbar';
 
 const meta: Meta<typeof MdSnackbar> = {
   title: 'mui/MdSnackbar',

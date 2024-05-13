@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../../stories/Helpers';
 
-import MdButton from '../MdButton';
-import MdBouttonGroup from './MdBouttonGroup';
+import { MdButton } from '../MdButton';
+import { MdBouttonGroup } from './MdBouttonGroup';
 
 const meta: Meta<typeof MdBouttonGroup> = {
   title: 'mui/MdBouttonGroup',

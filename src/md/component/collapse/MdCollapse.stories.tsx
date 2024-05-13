@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../stories/Helpers';
 
-import MdCollapse from './MdCollapse';
+import { MdCollapse } from './MdCollapse';
 
 const meta: Meta<typeof MdCollapse> = {
   title: 'mui/MdCollapse',

@@ -3,7 +3,7 @@ import { memo } from 'react';
 import { JSONObject } from '../../../../dto/api/ApiDto';
 import { IFormPropsDto } from '../../../../dto/form/FormDto';
 import { useFormError } from '../../../hook/useFormError';
-import MdFormError from '../MdFormError';
+import { MdFormError } from '../MdFormError';
 
 export interface IMdFormAutocompleteProps extends IFormPropsDto {
   className?: string;
@@ -12,7 +12,7 @@ export interface IMdFormAutocompleteProps extends IFormPropsDto {
   list: string[];
 }
 
-const MdFormAutocomplete: React.FC<IMdFormAutocompleteProps> = memo(({ className = '', ...rest }) => {
+export const MdFormAutocomplete: React.FC<IMdFormAutocompleteProps> = memo(({ className = '', ...rest }) => {
   const { error } = useFormError(rest.name, rest.errors, rest.touched, rest.errorMessage);
 
   return (
@@ -33,5 +33,3 @@ const MdFormAutocomplete: React.FC<IMdFormAutocompleteProps> = memo(({ className
     </div>
   );
 });
-
-export default MdFormAutocomplete;

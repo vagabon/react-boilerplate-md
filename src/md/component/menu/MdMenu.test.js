@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import MdMenu from './MdMenu';
+import { MdMenu } from './MdMenu';
 
 jest.useFakeTimers();
 

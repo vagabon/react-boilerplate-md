@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import { ChangeEvent, memo, useCallback } from 'react';
 import { JSONObject } from '../../../../dto/api/ApiDto';
-import { useAppTranslate } from '../../../../translate';
+import { useAppTranslate } from '../../../../translate/hook/useAppTranslate';
 import { useId } from '../../../hook/useId';
 
 export interface IMdFormFileProps {
@@ -12,7 +12,7 @@ export interface IMdFormFileProps {
   handleChangeFile: (name: string, file: File) => void;
 }
 
-const MdFormFile: React.FC<IMdFormFileProps> = memo(({ accept, ...rest }) => {
+export const MdFormFile: React.FC<IMdFormFileProps> = memo(({ accept, ...rest }) => {
   const { Trans } = useAppTranslate();
   const { id } = useId();
 
@@ -49,5 +49,3 @@ const MdFormFile: React.FC<IMdFormFileProps> = memo(({ accept, ...rest }) => {
     </Box>
   );
 });
-
-export default MdFormFile;

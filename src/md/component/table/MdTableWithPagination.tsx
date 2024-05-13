@@ -1,14 +1,14 @@
 import { TableFooter, TablePagination, TableRow } from '@mui/material';
 import { memo, useCallback } from 'react';
-import { useAppTranslate } from '../../../translate';
-import MdTable, { IMdTableProps, TablePaginateCallbackType } from './MdTable';
+import { useAppTranslate } from '../../../translate/hook/useAppTranslate';
+import { IMdTableProps, MdTable, TablePaginateCallbackType } from './MdTable';
 
 export interface IMdTableWithPaginationProps extends IMdTableProps {
   count: number;
   page: number;
 }
 
-const MdTableWithPagination: React.FC<IMdTableWithPaginationProps> = memo(({ ...rest }) => {
+export const MdTableWithPagination: React.FC<IMdTableWithPaginationProps> = memo(({ ...rest }) => {
   const { Trans } = useAppTranslate();
 
   const handleChangePage = useCallback(
@@ -52,5 +52,3 @@ const MdTableWithPagination: React.FC<IMdTableWithPaginationProps> = memo(({ ...
     </div>
   );
 });
-
-export default MdTableWithPagination;

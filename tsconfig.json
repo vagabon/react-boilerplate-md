@@ -15,7 +15,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
-    "declarationDir": "dist/types",
+    "declarationDir": "dist",
     "resolveJsonModule": true,
     "emitDeclarationOnly": true,
     "noImplicitAny": true,

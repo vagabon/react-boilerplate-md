@@ -9,7 +9,8 @@ export interface IMdListItemProps {
   isCursor?: boolean;
   children: ReactNode;
 }
-const MdListItem: React.FC<IMdListItemProps> = memo(
+
+export const MdListItem: React.FC<IMdListItemProps> = memo(
   ({ className, component, disablePadding, callback, isCursor, children }) => {
     return (
       <ListItem
@@ -23,5 +24,3 @@ const MdListItem: React.FC<IMdListItemProps> = memo(
     );
   },
 );
-
-export default MdListItem;

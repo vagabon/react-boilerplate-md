@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../../stories/Helpers';
 
-import MdFormFile from './MdFormFile';
+import { MdFormFile } from './MdFormFile';
 
 const meta: Meta<typeof MdFormFile> = {
   title: 'mui/MdFormFile',

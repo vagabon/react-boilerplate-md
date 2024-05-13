@@ -2,8 +2,8 @@ import { memo, useCallback } from 'react';
 import { IApiDto, JSONObject } from '../../../../dto/api/ApiDto';
 import { IFormPropsDto } from '../../../../dto/form/FormDto';
 import { useFormError } from '../../../hook/useFormError';
-import MdFormError from '../MdFormError';
-import MdInputTextSimple from './MdInputTextSimple';
+import { MdFormError } from '../MdFormError';
+import { MdInputTextSimple } from './MdInputTextSimple';
 
 export type FormInputType = 'date' | 'text' | 'number' | 'password' | 'email';
 
@@ -19,7 +19,7 @@ export interface IMdInputTextProps extends IFormPropsDto {
   changeValue?: (value: string) => string;
 }
 
-const MdInputText: React.FC<IMdInputTextProps> = memo(
+export const MdInputText: React.FC<IMdInputTextProps> = memo(
   ({ type = 'text', textarea = 0, fullWidth = true, className = '', ...rest }) => {
     const { error } = useFormError(rest.name, rest.errors, rest.touched, rest.errorMessage);
 
@@ -59,5 +59,3 @@ const MdInputText: React.FC<IMdInputTextProps> = memo(
     );
   },
 );
-
-export default MdInputText;

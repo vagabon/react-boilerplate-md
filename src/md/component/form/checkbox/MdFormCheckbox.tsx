@@ -2,10 +2,10 @@ import { Typography } from '@mui/material';
 import { memo, useCallback } from 'react';
 import { JSONObject } from '../../../../dto/api/ApiDto';
 import { HandleChangeType, IFormPropsDto } from '../../../../dto/form/FormDto';
-import { useAppTranslate } from '../../../../translate';
+import { useAppTranslate } from '../../../../translate/hook/useAppTranslate';
 import { useFormError } from '../../../hook/useFormError';
-import MdFormError from '../MdFormError';
-import MdFormCheckboxSimple from './MdFormCheckboxSimple';
+import { MdFormError } from '../MdFormError';
+import { MdFormCheckboxSimple } from './MdFormCheckboxSimple';
 
 export interface IMdFormCheckboxProps extends IFormPropsDto {
   className?: string;
@@ -14,7 +14,7 @@ export interface IMdFormCheckboxProps extends IFormPropsDto {
   disabled?: boolean;
 }
 
-const MdFormCheckbox: React.FC<IMdFormCheckboxProps> = memo(({ ...rest }) => {
+export const MdFormCheckbox: React.FC<IMdFormCheckboxProps> = memo(({ ...rest }) => {
   const { t } = useAppTranslate();
   const { error } = useFormError(rest.name, rest.errors, rest.touched, rest.errorMessage);
 
@@ -56,5 +56,3 @@ const MdFormCheckbox: React.FC<IMdFormCheckboxProps> = memo(({ ...rest }) => {
     </div>
   );
 });
-
-export default MdFormCheckbox;

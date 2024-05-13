@@ -2,8 +2,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import { InputAdornment } from '@mui/material';
 import { ChangeEvent, memo, useCallback, useRef } from 'react';
 import { IApiDto, JSONObject, Primitif } from '../../../dto/api/ApiDto';
-import MdFormSelect from '../form/select/MdFormSelect';
-import MdInputTextSimple from '../form/text/MdInputTextSimple';
+import { MdFormSelect } from '../form/select/MdFormSelect';
+import { MdInputTextSimple } from '../form/text/MdInputTextSimple';
 
 export interface IMdSearchBarProps {
   className?: string;
@@ -14,7 +14,7 @@ export interface IMdSearchBarProps {
   callBackOrder?: (value?: string | JSONObject) => void;
 }
 
-const MdSearchBar: React.FC<IMdSearchBarProps> = memo(({ className = '', order, orderList, ...rest }) => {
+export const MdSearchBar: React.FC<IMdSearchBarProps> = memo(({ className = '', order, orderList, ...rest }) => {
   const lastSearch = useRef<string>('');
 
   const handleBlur = useCallback(
@@ -79,5 +79,3 @@ const MdSearchBar: React.FC<IMdSearchBarProps> = memo(({ className = '', order, 
     </div>
   );
 });
-
-export default MdSearchBar;

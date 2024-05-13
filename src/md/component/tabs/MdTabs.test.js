@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import MdTabs from './MdTabs';
+import { MdTabs } from './MdTabs';
 
 describe('MdTabs', () => {
   test('Given MdTabs when its mount then Tabs is shown', () => {

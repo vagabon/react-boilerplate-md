@@ -8,7 +8,7 @@ export interface IMdDividerProps {
   variant?: 'fullWidth' | 'inset' | 'middle';
 }
 
-const MdDivider: React.FC<IMdDividerProps> = memo(({ className, margin, component, variant }) => {
+export const MdDivider: React.FC<IMdDividerProps> = memo(({ className, margin, component, variant }) => {
   return (
     <Divider
       className={className + ' ' + (margin ? 'divider-margin' : '')}
@@ -17,5 +17,3 @@ const MdDivider: React.FC<IMdDividerProps> = memo(({ className, margin, componen
     />
   );
 });
-
-export default MdDivider;

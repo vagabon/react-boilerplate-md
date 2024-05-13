@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../stories/Helpers';
 
-import MdTreeView from './MdTreeView';
+import { MdTreeView } from './MdTreeView';
 
 const meta: Meta<typeof MdTreeView> = {
   title: 'mui/MdTreeView',

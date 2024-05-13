@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import MdContainer from './MdContainer';
+import { MdContainer } from './MdContainer';
 
 describe('MdContainer', () => {
   test('Given MdContainer when its mount then ButtonGroup is shown', () => {

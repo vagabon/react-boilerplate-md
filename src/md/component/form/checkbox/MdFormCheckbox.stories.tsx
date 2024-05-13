@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../../stories/Helpers';
 
-import MdFormCheckbox from './MdFormCheckbox';
+import { MdFormCheckbox } from './MdFormCheckbox';
 
 const meta: Meta<typeof MdFormCheckbox> = {
   title: 'mui/MdFormCheckbox',

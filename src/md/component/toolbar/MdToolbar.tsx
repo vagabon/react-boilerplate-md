@@ -9,7 +9,7 @@ export interface IMdToolbarProps {
   children?: ReactNode;
 }
 
-const MdToolbar: React.FC<IMdToolbarProps> = memo(({ className = '', sx, children, ...rest }) => {
+export const MdToolbar: React.FC<IMdToolbarProps> = memo(({ className = '', sx, children, ...rest }) => {
   const { id } = useId(rest.id);
 
   return (
@@ -18,5 +18,3 @@ const MdToolbar: React.FC<IMdToolbarProps> = memo(({ className = '', sx, childre
     </Toolbar>
   );
 });
-
-export default MdToolbar;

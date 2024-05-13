@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../stories/Helpers';
 
-import MdAvatar from './MdAvatar';
+import { MdAvatar } from './MdAvatar';
 
 const meta: Meta<typeof MdAvatar> = {
   title: 'mui/MdAvatar',

@@ -5,8 +5,6 @@ export interface IMdListItemAvatarProps {
   children: ReactNode;
 }
 
-const MdListItemAvatar: React.FC<IMdListItemAvatarProps> = memo(({ children }) => {
+export const MdListItemAvatar: React.FC<IMdListItemAvatarProps> = memo(({ children }) => {
   return <ListItemAvatar>{children}</ListItemAvatar>;
 });
-
-export default MdListItemAvatar;

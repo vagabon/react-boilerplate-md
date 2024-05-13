@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import MdButton from './MdButton';
+import { MdButton } from './MdButton';
 
 describe('MdButton', () => {
   test('Given MdButton when its mount then Button is shown', () => {

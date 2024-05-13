@@ -1,7 +1,7 @@
 import { Checkbox, SxProps, Theme } from '@mui/material';
 import { SwitchBaseProps } from '@mui/material/internal/SwitchBase';
 import { MouseEvent, memo } from 'react';
-import { HandleBlurType } from '../../../../dto';
+import { HandleBlurType } from '../../../../dto/form/FormDto';
 
 export interface IMdFormCheckboxSimpleProps {
   className?: string;
@@ -16,7 +16,7 @@ export interface IMdFormCheckboxSimpleProps {
   disableRipple?: boolean;
 }
 
-const MdFormCheckboxSimple: React.FC<IMdFormCheckboxSimpleProps> = memo(
+export const MdFormCheckboxSimple: React.FC<IMdFormCheckboxSimpleProps> = memo(
   ({ name, checked, disabled, callbackClick, callbackBlur, ...rest }) => {
     const handleClick = (callbackClick?: () => void) => (event: MouseEvent<HTMLButtonElement>) => {
       event.stopPropagation();
@@ -35,5 +35,3 @@ const MdFormCheckboxSimple: React.FC<IMdFormCheckboxSimpleProps> = memo(
     );
   },
 );
-
-export default MdFormCheckboxSimple;

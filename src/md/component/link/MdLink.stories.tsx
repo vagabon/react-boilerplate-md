@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../stories/Helpers';
 
-import MdLink from './MdLink';
+import { MdLink } from './MdLink';
 
 const meta: Meta<typeof MdLink> = {
   title: 'mui/MdLink',

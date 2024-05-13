@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../stories/Helpers';
 
-import MdList from './MdList';
-import MdListItem from './MdListItem';
-import MdListItemAvatar from './MdListItemAvatar';
-import MdListItemButton from './MdListItemButton';
-import MdListItemIcon from './MdListItemIcon';
-import MdListItemText from './MdListItemText';
+import { MdList } from './MdList';
+import { MdListItem } from './MdListItem';
+import { MdListItemAvatar } from './MdListItemAvatar';
+import { MdListItemButton } from './MdListItemButton';
+import { MdListItemIcon } from './MdListItemIcon';
+import { MdListItemText } from './MdListItemText';
 
 const meta: Meta<typeof MdList> = {
   title: 'mui/MdList',

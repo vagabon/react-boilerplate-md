@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import MdFormFile from './MdFormFile';
+import { MdFormFile } from './MdFormFile';
 
 describe('MdFormFile', () => {
   test('Given MdFormFile when its mount then Checkbox is shown', () => {

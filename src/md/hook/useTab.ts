@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
-import { Primitif } from '../../dto';
-import { useAppRouter } from '../../router';
+import { Primitif } from '../../dto/api/ApiDto';
+import { useAppRouter } from '../../router/hook/useAppRouter';
 
 export type TabTtype = { name: string; label: string };
 

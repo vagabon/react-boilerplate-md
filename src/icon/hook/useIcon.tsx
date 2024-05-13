@@ -1,6 +1,6 @@
 import { ArrowBackIos } from '@mui/icons-material';
 import { useCallback } from 'react';
-import { IListDto } from '../../utils';
+import { IListDto } from '../../utils/list/ListUtils';
 
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
@@ -66,6 +66,7 @@ import SmsIcon from '@mui/icons-material/Sms';
 import StarRateIcon from '@mui/icons-material/StarRate';
 import UnfoldLessIcon from '@mui/icons-material/UnfoldLess';
 import UploadIcon from '@mui/icons-material/Upload';
+
 export type IconColorType =
   | 'inherit'
   | 'action'

@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import MdFormAutocomplete from './MdFormAutocomplete';
+import { MdFormAutocomplete } from './MdFormAutocomplete';
 
 describe('MdFormAutocomplete', () => {
   test('Given MdFormAutocomplete when its mount then Autocomplete is shown', () => {

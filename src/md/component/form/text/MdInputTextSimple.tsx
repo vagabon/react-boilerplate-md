@@ -3,9 +3,9 @@ import { ClearIcon } from '@mui/x-date-pickers';
 import { memo, useCallback } from 'react';
 import { JSONValue } from '../../../../dto/api/ApiDto';
 import { HandleBlurType, HandleChangeType } from '../../../../dto/form/FormDto';
-import { IconClickable } from '../../../../icon';
-import { useAppTranslate } from '../../../../translate';
-import { I18nUtils } from '../../../../utils';
+import { IconClickable } from '../../../../icon/component/IconClickable';
+import { useAppTranslate } from '../../../../translate/hook/useAppTranslate';
+import { I18nUtils } from '../../../../utils/i18n/I18nUtils';
 import { useFormValue } from '../../../hook/useFormValue';
 
 const DEFAULT_TEXT = 'text';
@@ -34,7 +34,7 @@ export interface IMdInputTextSimpleProps {
   changeValue?: (value: string) => string;
 }
 
-const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(
+export const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(
   ({
     type = DEFAULT_TEXT,
     textarea = 0,
@@ -108,5 +108,3 @@ const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(
     );
   },
 );
-
-export default MdInputTextSimple;

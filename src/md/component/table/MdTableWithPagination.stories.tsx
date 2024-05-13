@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../stories/Helpers';
 
-import MdTableWithPagination from './MdTableWithPagination';
+import { MdTableWithPagination } from './MdTableWithPagination';
 
 const meta: Meta<typeof MdTableWithPagination> = {
   title: 'mui/MdTableWithPagination',

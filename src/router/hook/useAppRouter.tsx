@@ -10,7 +10,7 @@ import {
   useNavigate,
   useParams,
 } from 'react-router-dom';
-import { IApiDto } from '../../dto';
+import { IApiDto } from '../../dto/api/ApiDto';
 
 export const useAppRouter = () => {
   const navigate = useNavigate();
