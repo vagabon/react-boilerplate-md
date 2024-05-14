@@ -1,7 +1,7 @@
 import { SxProps, Theme, Typography, TypographyOwnProps } from '@mui/material';
-import { Variant } from '@mui/material/styles/createTypography';
 import { ReactNode, memo } from 'react';
 import { useAppTranslate } from '../../../translate/hook/useAppTranslate';
+import { Variant } from '../card/MdCard';
 
 export interface IMdTypoProps {
   className?: string;

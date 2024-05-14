@@ -1,8 +1,7 @@
 import { Theme } from '@emotion/react';
-import { SxProps } from '@mui/material';
-import Button from '@mui/material/Button';
+import { Button, SxProps } from '@mui/material';
 import { MouseEvent, ReactNode, memo, useCallback, useEffect, useState } from 'react';
-import { IconColorType, useIcon } from '../../../icon/hook/useIcon';
+import { useIcon } from '../../../icon/hook/useIcon';
 import { useAppRouter } from '../../../router/hook/useAppRouter';
 import { useAppTranslate } from '../../../translate/hook/useAppTranslate';
 
@@ -34,7 +33,7 @@ export interface IMdButtonProps {
   startIcon?: string | React.JSX.Element;
   fullWidth?: boolean;
   icon?: string;
-  iconColor?: IconColorType;
+  iconColor?: ButtonColorType;
   color?: ButtonColorType;
   size?: 'small' | 'medium' | 'large';
   variant?: 'text' | 'outlined' | 'contained';
@@ -48,7 +47,7 @@ export const MdButton: React.FC<IMdButtonProps> = memo(
   ({
     className = '',
     show = true,
-    url = '#',
+    url,
     size = 'small',
     label = '',
     variant = 'contained',
@@ -58,10 +57,10 @@ export const MdButton: React.FC<IMdButtonProps> = memo(
     const { navigate } = useAppRouter();
     const { Trans } = useAppTranslate();
     const { getIcon } = useIcon();
-    const [icon, setIcon] = useState<ReactNode | undefined>(getIcon(rest.icon, rest.iconColor, rest.disabled));
+    const [icon, setIcon] = useState<ReactNode | undefined>(getIcon(rest.icon, rest.iconColor));
 
     useEffect(() => {
-      setIcon(getIcon(rest.icon, rest.iconColor, rest.disabled));
+      setIcon(getIcon(rest.icon, rest.iconColor));
     }, [rest.icon, rest.iconColor, rest.disabled, getIcon]);
 
     const onClick = useCallback(
@@ -83,11 +82,17 @@ export const MdButton: React.FC<IMdButtonProps> = memo(
       return <>{icon ? <>{icon}</> : <Trans i18nKey={label}></Trans>}</>;
     }, [icon, label, Trans]);
 
+    const addHref = useCallback((url?: string) => {
+      let data = {};
+      url && (data = { href: url });
+      return data;
+    }, []);
+
     return (
       <>
         {show && (
           <Button
-            href={url}
+            {...addHref(url)}
             className={className}
             size={size}
             variant={variant}

@@ -1,11 +1,12 @@
 import { IconButton } from '@mui/material';
 import { MouseEvent, ReactNode, memo, useCallback } from 'react';
-import { IconColorType, useIcon } from '../hook/useIcon';
+import { ButtonColorType } from '../../md/component/button/MdButton';
+import { useIcon } from '../hook/useIcon';
 
 export interface IIconClickableProps {
   className?: string;
   icon?: string;
-  color?: IconColorType;
+  color?: ButtonColorType;
   disabled?: boolean;
   callback?: () => void;
   children?: ReactNode;
@@ -26,7 +27,7 @@ export const IconClickable: React.FC<IIconClickableProps> = memo(
 
     return (
       <IconButton className={className} edge='end' aria-label='delete' onClick={handleClickIcon} disabled={disabled}>
-        {children ?? <>{getIcon(icon, color, disabled)}</>}
+        {children ?? <>{getIcon(icon, color)}</>}
       </IconButton>
     );
   },

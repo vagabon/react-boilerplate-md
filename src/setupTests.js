@@ -79,7 +79,11 @@ jest.mock('@mui/material', () => ({
   Badge: ({ children }) => <div data-testid='Badge'>{children}</div>,
   Backdrop: ({ children }) => <div data-testid='Backdrop'>{children}</div>,
   Box: ({ children }) => <div data-testid='Box'>{children}</div>,
-  Button: ({ children }) => <div data-testid='Button'>{children}</div>,
+  Button: ({ children, onClick }) => (
+    <button data-testid='Button' onClick={onClick}>
+      {children}
+    </button>
+  ),
   ButtonGroup: ({ children }) => <div data-testid='ButtonGroup'>{children}</div>,
   Card: ({ children }) => <div data-testid='Card'>{children}</div>,
   CardActions: ({ children }) => <div data-testid='CardActions'>{children}</div>,
@@ -207,12 +211,6 @@ jest.mock('@mui/material', () => ({
     return {};
   },
 }));
-
-jest.mock('@mui/material/Button', () => ({ children, onClick }) => (
-  <button data-testid='Button' onClick={onClick}>
-    {children}
-  </button>
-));
 
 jest.mock('@mui/x-date-pickers/DateTimePicker', () => ({
   DateTimePicker: ({ onChange }) => (

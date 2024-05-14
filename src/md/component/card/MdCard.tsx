@@ -1,18 +1,33 @@
 import { Card, CardActions, CardContent, CardHeader, CardMedia, Typography } from '@mui/material';
-import { Variant } from '@mui/material/styles/createTypography';
 import React, { CSSProperties, ReactNode, memo, useCallback } from 'react';
 import { ID } from '../../../dto/api/ApiDto';
 import { IconClickable } from '../../../icon/component/IconClickable';
-import { IconColorType, useIcon } from '../../../icon/hook/useIcon';
+import { useIcon } from '../../../icon/hook/useIcon';
 import { useAppRouter } from '../../../router/hook/useAppRouter';
 import { useAppTranslate } from '../../../translate/hook/useAppTranslate';
 import { DateUtils } from '../../../utils/date/DateUtils';
 import { I18nUtils } from '../../../utils/i18n/I18nUtils';
 import { useId } from '../../hook/useId';
+import { ButtonColorType } from '../button/MdButton';
+
+export type Variant =
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+  | 'subtitle1'
+  | 'subtitle2'
+  | 'body1'
+  | 'body2'
+  | 'caption'
+  | 'button'
+  | 'overline';
 
 export interface IMdCardProps {
   id?: ID;
-  color?: IconColorType;
+  color?: ButtonColorType;
   icon?: string;
   title?: string;
   titleVariant?: Variant;

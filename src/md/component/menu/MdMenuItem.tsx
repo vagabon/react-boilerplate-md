@@ -1,7 +1,6 @@
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { Menu, MenuItem } from '@mui/material';
-import Button from '@mui/material/Button';
-import { Fragment, memo, useCallback, useState } from 'react';
+import { KeyboardArrowDown as KeyboardArrowDownIcon } from '@mui/icons-material';
+import { Button, Menu, MenuItem } from '@mui/material';
+import { memo, useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppRouter } from '../../../router/hook/useAppRouter';
 
@@ -50,7 +49,7 @@ export const MdMenuItem: React.FC<IMdMenuItemProps> = memo(({ ...rest }) => {
   );
 
   return (
-    <Fragment>
+    <>
       <Button
         variant={isCurrentLocation(rest.url) ? 'outlined' : 'text'}
         className='selected'
@@ -82,6 +81,6 @@ export const MdMenuItem: React.FC<IMdMenuItemProps> = memo(({ ...rest }) => {
           ))}
         </Menu>
       )}
-    </Fragment>
+    </>
   );
 });

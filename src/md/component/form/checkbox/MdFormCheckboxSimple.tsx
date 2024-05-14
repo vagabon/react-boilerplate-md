@@ -1,7 +1,7 @@
 import { Checkbox, SxProps, Theme } from '@mui/material';
-import { SwitchBaseProps } from '@mui/material/internal/SwitchBase';
 import { MouseEvent, memo } from 'react';
 import { HandleBlurType } from '../../../../dto/form/FormDto';
+import { SwitchBaseProps } from '@mui/material/internal/SwitchBase';
 
 export interface IMdFormCheckboxSimpleProps {
   className?: string;

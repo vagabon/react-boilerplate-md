@@ -1,4 +1,4 @@
-import SearchIcon from '@mui/icons-material/Search';
+import { Search as SearchIcon } from '@mui/icons-material';
 import { InputAdornment } from '@mui/material';
 import { ChangeEvent, memo, useCallback, useRef } from 'react';
 import { IApiDto, JSONObject, Primitif } from '../../../dto/api/ApiDto';

@@ -1,3 +1,4 @@
+import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import multiEntry from '@rollup/plugin-multi-entry';
@@ -40,6 +41,12 @@ export default [
     plugins: [
       external(),
       resolve(),
+      babel({
+        exclude: 'node_modules/**',
+        presets: ['@babel/env', '@babel/preset-react'],
+        babelHelpers: 'bundled',
+        plugins: [['babel-plugin-direct-import', { modules: ['@mui/material', '@mui/icons-material'] }]],
+      }),
       commonjs(),
       typescript({
         compilerOptions: {

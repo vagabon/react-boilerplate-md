@@ -1,8 +1,9 @@
 import { Badge, SxProps, Theme } from '@mui/material';
 import { ReactNode, memo } from 'react';
-import { IconColorType, useIcon } from '../../../icon/hook/useIcon';
+import { useIcon } from '../../../icon/hook/useIcon';
 import { useAppTranslate } from '../../../translate/hook/useAppTranslate';
 import { I18nUtils } from '../../../utils/i18n/I18nUtils';
+import { ButtonColorType } from '../button/MdButton';
 
 export type BadgeColorType = 'primary' | 'secondary' | 'default' | 'error' | 'info' | 'success' | 'warning';
 
@@ -14,7 +15,7 @@ export interface IMdBadgeProps {
   color?: BadgeColorType;
   showZero?: boolean;
   icon?: string;
-  iconColor?: IconColorType;
+  iconColor?: ButtonColorType;
   sx?: SxProps<Theme>;
   children?: ReactNode;
 }
