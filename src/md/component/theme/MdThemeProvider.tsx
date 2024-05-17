@@ -1,5 +1,5 @@
-import { CssBaseline, Theme, ThemeProvider, createTheme } from '@mui/material';
-import { ReactNode, memo, useEffect, useState } from 'react';
+import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+import { ReactNode, memo, useMemo } from 'react';
 import { ITheme } from './useTheme';
 
 interface IMdThemeProviderProps {
@@ -8,13 +8,7 @@ interface IMdThemeProviderProps {
 }
 
 export const MdThemeProvider: React.FC<IMdThemeProviderProps> = memo(({ theme, children }) => {
-  const [muiTheme, setMuiTheme] = useState<Theme>();
-
-  useEffect(() => {
-    if (theme) {
-      setMuiTheme(createTheme(theme));
-    }
-  }, [theme]);
+  const muiTheme = useMemo(() => createTheme(theme), [theme]);
 
   return (
     <>
