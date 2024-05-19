@@ -1,22 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../stories/Helpers';
 
-import { MdLinearProgress } from './MdLinearProgress';
+import { MdSkeleton } from './MdSkeleton';
 
-const meta: Meta<typeof MdLinearProgress> = {
-  title: 'mui/MdLinearProgress',
-  component: MdLinearProgress,
+const meta: Meta<typeof MdSkeleton> = {
+  title: 'mui/MdSkeleton',
+  component: MdSkeleton,
   tags: ['mui'],
   argTypes: {},
   decorators: [withTest, withProvider],
 };
 
 export default meta;
-type Story = StoryObj<typeof MdLinearProgress>;
+type Story = StoryObj<typeof MdSkeleton>;
 
 export const Primary: Story = {
-  args: {},
+  args: { width: '100%' },
 };
 Primary.parameters = {
-  jest: ['MdLinearProgress.test'],
+  jest: ['MdSkeleton.test'],
 };

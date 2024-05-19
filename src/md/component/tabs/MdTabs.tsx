@@ -1,6 +1,6 @@
 import { Tab, Tabs } from '@mui/material';
 import { SyntheticEvent, memo, useCallback } from 'react';
-import { useAppTranslate } from '../../../translate/hook/useAppTranslate';
+import { useTranslation } from 'react-i18next';
 
 export type TabsType = {
   name: string;
@@ -22,7 +22,7 @@ export interface IMdTabsProps {
 
 export const MdTabs: React.FC<IMdTabsProps> = memo(
   ({ className = '', value, callback, indicatorColor, color, label, variant, scrollButtons, tabs }) => {
-    const { t } = useAppTranslate();
+    const { t } = useTranslation();
 
     const handleChange = useCallback(
       (event: SyntheticEvent<Element, Event>, newValue: React.SetStateAction<string>) => {

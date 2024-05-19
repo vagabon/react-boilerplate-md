@@ -1,17 +1,16 @@
-import { Box, SxProps, Theme } from '@mui/material';
-import { ReactNode, memo } from 'react';
+import { Box, BoxProps } from '@mui/material';
+import { ReactNode, memo, useMemo } from 'react';
 import { UuidUtils } from '../../../utils/uuid/UuidUtils';
 
-export interface IMdBoxProps {
-  id?: string;
-  component?: React.ElementType;
-  sx?: SxProps<Theme>;
+export interface IMdBoxProps extends BoxProps {
   children: ReactNode;
 }
 
-export const MdBox: React.FC<IMdBoxProps> = memo(({ id, component, sx, children }) => {
+export const MdBox: React.FC<IMdBoxProps> = memo(({ id, children, ...rest }) => {
+  const newId = useMemo(() => id ?? UuidUtils.createUUID(), [id]);
+
   return (
-    <Box id={id ?? UuidUtils.createUUID()} component={component} sx={sx}>
+    <Box {...rest} id={newId}>
       {children}
     </Box>
   );

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../../stories/Helpers';
 
-import { IListDto } from '../../../../utils/list/ListUtils';
+import { IListDto } from '../../../../dto/list/ListDto';
 import { MdFormSelect } from './MdFormSelect';
 
 const meta: Meta<typeof MdFormSelect> = {

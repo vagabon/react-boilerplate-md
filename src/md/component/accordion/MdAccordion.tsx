@@ -1,30 +1,32 @@
 import { ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
-import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionProps, AccordionSummary } from '@mui/material';
 import { memo } from 'react';
-import { useAppTranslate } from '../../../translate/hook/useAppTranslate';
+import { Translate } from '../../../translate/component/Translate';
 import { useId } from '../../hook/useId';
 
-export interface IMdAccordionProps {
+export interface IMdAccordionProps extends Omit<AccordionProps, 'children'> {
   className?: string;
   title: string;
-  description: string;
+  description?: string;
   expanded?: boolean;
   disabled?: boolean;
+  children?: React.ReactNode;
 }
 
-export const MdAccordion: React.FC<IMdAccordionProps> = memo(
-  ({ className = '', title, description, expanded, disabled }) => {
-    const { id } = useId();
-    const { Trans } = useAppTranslate();
-    return (
-      <Accordion className={className} defaultExpanded={expanded} disabled={disabled}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls={id + '-content'} id={id + '-header'}>
-          <Trans i18nKey={title} />
-        </AccordionSummary>
+export const MdAccordion: React.FC<IMdAccordionProps> = memo(({ title, description, expanded, ...rest }) => {
+  const { id } = useId();
+
+  return (
+    <Accordion {...rest} defaultExpanded={expanded}>
+      <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls={id + '-content'} id={id + '-header'}>
+        <Translate i18nKey={title} />
+      </AccordionSummary>
+      {description && (
         <AccordionDetails>
-          <Trans i18nKey={description} />
+          <Translate i18nKey={description} />
         </AccordionDetails>
-      </Accordion>
-    );
-  },
-);
+      )}
+      {rest.children}
+    </Accordion>
+  );
+});

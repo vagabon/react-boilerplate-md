@@ -14,10 +14,6 @@ const meta: Meta<typeof MdGrid> = {
 export default meta;
 type Story = StoryObj<typeof MdGrid>;
 
-const callback = () => {
-  // DO NOTHING
-};
-
 export const Primary: Story = {
   args: {
     container: true,

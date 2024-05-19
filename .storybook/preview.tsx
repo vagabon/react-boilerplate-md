@@ -1,14 +1,15 @@
-import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+import { CssBaseline } from '@mui/material';
 import React from 'react';
+import '../src/assets/boilerplate.scss';
 import '../src/i18n/i18n';
-
-const theme = createTheme();
+import { MdThemeProvider } from '../src/md/component/theme/MdThemeProvider';
+import { DEFAULT_THEME } from '../src/md/conf/MdThemeConf';
 
 export const withMuiTheme = (Story, context) => (
-  <ThemeProvider theme={theme}>
+  <MdThemeProvider theme={DEFAULT_THEME}>
     <CssBaseline />
     <Story {...context} />
-  </ThemeProvider>
+  </MdThemeProvider>
 );
 
 export const decorators = [withMuiTheme];

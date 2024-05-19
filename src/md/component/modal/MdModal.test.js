@@ -1,10 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { MdCommonModal } from './MdCommonModal';
+import { MdModal } from './MdModal';
 
-describe('MdCommonModal', () => {
-  test('Given MdCommonModal When its mount Then Modal is shown', () => {
+describe('MdModal', () => {
+  test('Given MdModal When its mount Then Modal is shown', () => {
     const mockhandleClose = jest.fn();
-    render(<MdCommonModal handleClose={mockhandleClose}></MdCommonModal>);
+    render(<MdModal handleClose={mockhandleClose}></MdModal>);
     expect(screen.getByTestId('Modal')).toBeDefined();
     fireEvent.click(screen.getByTestId('ModalClick'));
     fireEvent.click(screen.getByTestId('ModalClose'));

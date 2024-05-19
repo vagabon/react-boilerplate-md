@@ -1,19 +1,12 @@
-import { Divider } from '@mui/material';
-import { ElementType, memo } from 'react';
+import { Divider, DividerProps } from '@mui/material';
+import { memo } from 'react';
 
-export interface IMdDividerProps {
-  className?: string;
+export interface IMdDividerProps extends DividerProps {
   margin?: boolean;
-  component?: ElementType;
-  variant?: 'fullWidth' | 'inset' | 'middle';
 }
 
-export const MdDivider: React.FC<IMdDividerProps> = memo(({ className, margin, component, variant }) => {
+export const MdDivider: React.FC<IMdDividerProps> = memo(({ className, margin, component, ...rest }) => {
   return (
-    <Divider
-      className={className + ' ' + (margin ? 'divider-margin' : '')}
-      component={component ?? 'div'}
-      variant={variant}
-    />
+    <Divider {...rest} className={className + ' ' + (margin ? 'divider-margin' : '')} component={component ?? 'div'} />
   );
 });

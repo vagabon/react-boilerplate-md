@@ -69,6 +69,7 @@ jest.mock('@mui/material', () => ({
   AccordionSummary: ({ children }) => <div data-testid='AccordionSummary'>{children}</div>,
   Alert: ({ children }) => <div data-testid='Alert'>{children}</div>,
   AlertTitle: ({ children }) => <div data-testid='AlertTitle'>{children}</div>,
+  AppBar: ({ children }) => <div data-testid='AppBar'>{children}</div>,
   Avatar: ({ children }) => <div data-testid='Avatar'>{children}</div>,
   Autocomplete: ({ name, value, onChange, onBlur, renderInput }) => (
     <>
@@ -118,9 +119,10 @@ jest.mock('@mui/material', () => ({
   ),
   InputLabel: ({ children }) => <div data-testid='InputLabel'>{children}</div>,
   InputAdornment: ({ children }) => <div data-testid='InputAdornment'>{children}</div>,
+  CircularProgress: ({ children }) => <div data-testid='CircularProgress'>{children}</div>,
   LinearProgress: ({ children }) => <div data-testid='LinearProgress'>{children}</div>,
-  Link: ({ href, label }) => (
-    <a href={href} data-testid='Link'>
+  Link: ({ href, label, onClick }) => (
+    <a href={href} data-testid='Link' onClick={onClick}>
       {label}
     </a>
   ),
@@ -160,6 +162,7 @@ jest.mock('@mui/material', () => ({
       {children}
     </select>
   ),
+  Skeleton: ({ children }) => <div data-testid='Skeleton'>{children}</div>,
   Snackbar: ({ children }) => <div data-testid='Snackbar'>{children}</div>,
   Switch: ({ name, checked, onChange, onBlur }) => (
     <input data-testid='Switch' name={name} checked={checked} onChange={onChange} onBlur={onBlur} />
@@ -206,6 +209,7 @@ jest.mock('@mui/material', () => ({
   ),
   ThemeProvider: ({ children }) => <div data-testid='ThemeProvider'>{children}</div>,
   Toolbar: ({ children }) => <div data-testid='Toolbar'>{children}</div>,
+  Tooltip: ({ children }) => <div data-testid='Tooltip'>{children}</div>,
   Typography: ({ children }) => <div data-testid='Typography'>{children}</div>,
   createTheme: () => {
     return {};

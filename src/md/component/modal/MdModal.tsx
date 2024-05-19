@@ -1,11 +1,11 @@
-import { Box, Modal } from '@mui/material';
-import { MouseEvent, ReactNode, memo, useCallback } from 'react';
+import { Modal, ModalProps } from '@mui/material';
+import { MouseEvent, memo, useCallback } from 'react';
 import { IconClickable } from '../../../icon/component/IconClickable';
+import { MdBox } from '../box/MdBox';
 
-export interface ICommonModalProps {
-  className?: string;
-  open?: boolean;
-  children?: ReactNode;
+// TODO: add storybook https://mui.com/material-ui/react-modal/
+
+export interface IModalProps extends ModalProps {
   handleClose: () => void;
 }
 
@@ -22,7 +22,7 @@ const style = {
   pb: 3,
 };
 
-export const MdCommonModal: React.FC<ICommonModalProps> = memo(({ className = '', open = false, ...rest }) => {
+export const MdModal: React.FC<IModalProps> = memo(({ className = '', ...rest }) => {
   const handleClick = useCallback((event: MouseEvent) => {
     event.stopPropagation();
   }, []);
@@ -37,13 +37,13 @@ export const MdCommonModal: React.FC<ICommonModalProps> = memo(({ className = ''
   );
 
   return (
-    <Modal className={className + ' modal'} open={open} onClick={handleClick} onClose={handleClose(rest.handleClose)}>
-      <Box sx={{ ...style, position: 'relative' }}>
+    <Modal {...rest} className={className + ' modal'} onClick={handleClick} onClose={handleClose(rest.handleClose)}>
+      <MdBox sx={{ ...style, position: 'relative' }}>
         <div style={{ position: 'absolute', top: '11px', right: '11px', zIndex: 3000 }}>
           <IconClickable icon='close' callback={rest.handleClose} />
         </div>
         {rest.children}
-      </Box>
+      </MdBox>
     </Modal>
   );
 });

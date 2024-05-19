@@ -1,7 +1,7 @@
 import { Table, TableBody, TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material';
 import React, { Fragment, ReactNode, memo } from 'react';
 import { IApiDto, JSONObject } from '../../../dto/api/ApiDto';
-import { useAppTranslate } from '../../../translate/hook/useAppTranslate';
+import { Translate } from '../../../translate/component/Translate';
 import { ObjectUtils } from '../../../utils/object/ObjectUtils';
 import { useTable } from '../../hook/useTable';
 
@@ -46,7 +46,6 @@ export const MdTable: React.FC<IMdTableProps> = memo(
     children,
     ...rest
   }) => {
-    const { Trans } = useAppTranslate();
     const { datas, createSortHandle, handleClick } = useTable(
       showEmpty,
       rest.datas,
@@ -67,7 +66,7 @@ export const MdTable: React.FC<IMdTableProps> = memo(
                     direction={sortBy === cell.name ? sortByOrder : 'asc'}
                     onClick={createSortHandle(cell.name, cell.order ? callBack : undefined)}
                     hideSortIcon={!cell.order}>
-                    <Trans i18nKey={cell.label} />
+                    <Translate i18nKey={cell.label} />
                   </TableSortLabel>
                 </TableCell>
               ))}
@@ -77,7 +76,7 @@ export const MdTable: React.FC<IMdTableProps> = memo(
             {datas?.length === 0 ? (
               <TableRow>
                 <TableCell component='th' scope='row' colSpan={cells?.length}>
-                  <Trans i18nKey='NO_RESULT' />
+                  <Translate i18nKey='NO_RESULT' />
                 </TableCell>
               </TableRow>
             ) : (

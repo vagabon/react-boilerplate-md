@@ -26,10 +26,8 @@ export const Primary: Story = {
   args: {
     label: 'label',
     url: 'url',
-    startIcon: undefined,
-    color: 'inherit',
-    size: 'small',
-    variant: 'contained',
+    startIcon: 'send',
+    endIcon: 'close',
     callback: () => {},
   },
 };

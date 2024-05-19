@@ -16,6 +16,11 @@ type Story = StoryObj<typeof MdBackdrop>;
 
 export const Primary: Story = {
   args: { open: true },
+  render: (args) => (
+    <div style={{ height: '200px' }}>
+      <MdBackdrop {...args} />,
+    </div>
+  ),
 };
 Primary.parameters = {
   jest: ['MdBackdrop.test'],

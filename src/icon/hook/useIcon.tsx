@@ -1,6 +1,5 @@
 import { useCallback } from 'react';
 import { ButtonColorType } from '../../md/component/button/MdButton';
-import { IListDto } from '../../utils/list/ListUtils';
 
 import {
   AccountBalance as AccountBalanceIcon,
@@ -69,12 +68,13 @@ import {
   UnfoldLess as UnfoldLessIcon,
   Upload as UploadIcon,
 } from '@mui/icons-material';
+import { IListDto } from '../../dto/list/ListDto';
 
 declare module '@mui/material/SvgIcon' {
   interface SvgIconPropsColorOverrides {
     google: true;
     facebook: true;
-    gold: true;
+    premium: true;
   }
 }
 
@@ -147,12 +147,11 @@ export const ICONS = {
 };
 
 export const useIcon = () => {
-  const getIcon = useCallback((icon?: string, color?: ButtonColorType) => {
-    const colorOk: ButtonColorType = color ?? 'inherit';
+  const getIcon = useCallback((icon?: string, color: ButtonColorType = 'inherit') => {
     let iconReact = undefined;
     Object.entries(ICONS).forEach(([key, data]) => {
       if (key === icon) {
-        iconReact = data.react(colorOk);
+        iconReact = data.react(color);
       }
     });
     return iconReact;

@@ -1,22 +1,19 @@
-import { Link } from '@mui/material';
-import { CSSProperties, MouseEvent, memo, useCallback } from 'react';
+import { Link, LinkProps } from '@mui/material';
+import { MouseEvent, memo, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAppRouter } from '../../../router/hook/useAppRouter';
-import { useAppTranslate } from '../../../translate/hook/useAppTranslate';
 
-export interface IMdLinkProps {
+export interface IMdLinkProps extends LinkProps {
   href: string;
-  className?: string;
   label?: string;
-  target?: string;
   show?: boolean;
   color?: string;
-  sx?: CSSProperties;
 }
 
 export const MdLink: React.FC<IMdLinkProps> = memo(
-  ({ href, className = '', color = 'primary', label, target, show = true, ...rest }) => {
-    const { t, Trans } = useAppTranslate();
+  ({ href, color = 'primary', label = '', show = true, children, ...rest }) => {
     const { navigate } = useAppRouter();
+    const { t } = useTranslation();
 
     const onClick = useCallback(
       (event: MouseEvent<HTMLAnchorElement>) => {
@@ -34,16 +31,19 @@ export const MdLink: React.FC<IMdLinkProps> = memo(
     return (
       <>
         {show && (
-          <Link
-            href={href}
-            target={target}
-            title={t(label ?? '')}
-            className={className}
-            color={color}
-            onClick={onClick}
-            style={rest.sx}>
-            <Trans i18nKey={label} />
-          </Link>
+          <>
+            {href ? (
+              <Link {...rest} href={href} title={t(label)} color={color} onClick={onClick}>
+                {t(label)}
+                {children}
+              </Link>
+            ) : (
+              <>
+                {t(label)}
+                <>{children}</>
+              </>
+            )}
+          </>
         )}
       </>
     );

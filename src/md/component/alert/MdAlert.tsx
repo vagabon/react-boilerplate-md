@@ -1,31 +1,24 @@
-import { Theme } from '@emotion/react';
-import { Alert, AlertColor, AlertTitle, SxProps } from '@mui/material';
+import { Alert, AlertProps, AlertTitle } from '@mui/material';
 import { ReactNode, memo } from 'react';
-import { useAppTranslate } from '../../../translate/hook/useAppTranslate';
+import { Translate } from '../../../translate/component/Translate';
 
-export interface IMdAlertProps {
-  className?: string;
-  severity: AlertColor;
-  color?: AlertColor;
+export interface IMdAlertProps extends AlertProps {
   title?: string;
   label: string;
-  icon?: string;
   action?: ReactNode;
-  sx?: SxProps<Theme>;
   callback?: () => void;
 }
 
-export const MdAlert: React.FC<IMdAlertProps> = memo(({ title, label, callback, ...rest }) => {
-  const { Trans } = useAppTranslate();
-
+export const MdAlert: React.FC<IMdAlertProps> = memo(({ title, label, callback, onClose, ...rest }) => {
   return (
-    <Alert {...rest} onClick={callback}>
+    <Alert {...rest} onClick={callback} onClose={onClose}>
       {title && (
         <AlertTitle>
-          <Trans i18nKey={title} />
+          <Translate i18nKey={title} />
         </AlertTitle>
       )}
-      <Trans i18nKey={label} />
+      <Translate i18nKey={label} />
+      {rest.children}
     </Alert>
   );
 });

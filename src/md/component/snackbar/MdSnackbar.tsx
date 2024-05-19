@@ -1,6 +1,6 @@
 import { Alert, AlertColor, Slide, SlideProps, Snackbar } from '@mui/material';
-import React, { memo, useCallback, useEffect, useState } from 'react';
-import { useAppTranslate } from '../../../translate/hook/useAppTranslate';
+import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
+import { MdTypo } from '../typo/MdTypo';
 
 type TransitionProps = Omit<SlideProps, 'direction'>;
 
@@ -15,14 +15,12 @@ export interface IMdSnackbarProps {
 }
 
 export const MdSnackbar: React.FC<IMdSnackbarProps> = memo(({ className = '', message, type }) => {
-  const { Trans } = useAppTranslate();
   const [open, setOpen] = useState(false);
-  const [transition, setTransition] = useState<React.ComponentType<TransitionProps> | undefined>(undefined);
+  const transition = useMemo(() => TransitionRight, []);
 
   useEffect(() => {
-    setTransition(() => TransitionRight);
     setOpen(message !== '');
-  }, [message, type]);
+  }, [message]);
 
   const handleClose = useCallback(() => {
     setOpen(false);
@@ -38,7 +36,7 @@ export const MdSnackbar: React.FC<IMdSnackbarProps> = memo(({ className = '', me
       TransitionComponent={transition}
       key={transition ? transition.name : ''}>
       <Alert onClose={handleClose} severity={type} sx={{ width: '100%' }}>
-        <Trans i18nKey={message} />
+        <MdTypo content={message} />
       </Alert>
     </Snackbar>
   );

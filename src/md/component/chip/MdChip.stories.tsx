@@ -16,6 +16,7 @@ type Story = StoryObj<typeof MdChip>;
 
 export const Primary: Story = {
   args: {
+    icon: 'send',
     label: 'label',
   },
 };

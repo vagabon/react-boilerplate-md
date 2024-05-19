@@ -8,10 +8,10 @@ import {
   SelectChangeEvent,
 } from '@mui/material';
 import { memo, useCallback, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { IApiDto, JSONObject } from '../../../../dto/api/ApiDto';
 import { IFormPropsDto } from '../../../../dto/form/FormDto';
 import { useIcon } from '../../../../icon/hook/useIcon';
-import { useAppTranslate } from '../../../../translate/hook/useAppTranslate';
 import { useFormError } from '../../../hook/useFormError';
 import { MdFormError } from '../MdFormError';
 
@@ -34,7 +34,7 @@ export interface IMdFormSelectProps extends IFormPropsDto {
 }
 
 export const MdFormSelect: React.FC<IMdFormSelectProps> = memo(({ className = '', defaultValue = true, ...rest }) => {
-  const { t } = useAppTranslate();
+  const { t } = useTranslation();
   const { getIcon } = useIcon();
   const { error } = useFormError(rest.name, rest.errors, rest.touched, rest.errorMessage);
 
@@ -53,7 +53,7 @@ export const MdFormSelect: React.FC<IMdFormSelectProps> = memo(({ className = ''
         });
     });
     setValues(values);
-  }, [rest.list, rest.listLibelle, t]);
+  }, [t, rest.list, rest.listLibelle]);
 
   const propsValues = rest.values?.[rest.name as keyof JSONObject] ?? '';
   const validationSchema = rest.validationSchema?.[rest.name as keyof JSONObject] ?? {};

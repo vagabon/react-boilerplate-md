@@ -16,13 +16,12 @@ type Story = StoryObj<typeof MdCard>;
 
 export const Primary: Story = {
   args: {
-    id: 1,
     title: 'title',
     date: '2023-11-11T12:31:20',
-    url: 'url',
     urlUpdate: 'urlUpdate',
     avatar: 'avatar',
-    image: 'image',
+    image:
+      'https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630',
     className: 'classNamme',
     children: 'Description',
   },

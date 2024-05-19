@@ -1,36 +1,35 @@
-import { Chip } from '@mui/material';
+import { Chip, ChipProps } from '@mui/material';
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ID } from '../../../dto/api/ApiDto';
 import { useIcon } from '../../../icon/hook/useIcon';
-import { useAppTranslate } from '../../../translate/hook/useAppTranslate';
-import { I18nUtils } from '../../../utils/i18n/I18nUtils';
+import { MdAvatar } from '../avatar/MdAvatar';
+import { ButtonColorType } from '../button/MdButton';
 
-export interface IMdChipProps {
-  className?: string;
-  color?: 'default' | 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning';
+export interface IMdChipProps extends Omit<ChipProps, 'icon' | 'avatar'> {
+  avatar?: string;
   label: string;
   icon?: string;
-  size?: 'small' | 'medium';
+  iconColor?: ButtonColorType;
   title?: string;
-  variant?: 'filled' | 'outlined';
   callbackDelete?: (id: ID) => void;
 }
 
 export const MdChip: React.FC<IMdChipProps> = memo(
-  ({ className, label, icon, size, title, color, variant, callbackDelete = () => {} }) => {
-    const { t } = useAppTranslate();
+  ({ label, avatar, icon, iconColor = 'inherit', title, callbackDelete, ...rest }) => {
+    const { t } = useTranslation();
     const { getIcon } = useIcon();
 
     return (
       <Chip
-        className={className}
-        label={I18nUtils.translate(t, label)}
-        color={color}
-        size={size}
-        variant={variant}
-        onDelete={icon ? callbackDelete : undefined}
-        deleteIcon={icon ? getIcon(icon) : undefined}
-        title={title && I18nUtils.translate(t, title)}
+        {...rest}
+        className={rest.className + (callbackDelete ? ' ' : ' reverse')}
+        avatar={avatar ? <MdAvatar name={avatar} image={avatar} /> : undefined}
+        label={t(label)}
+        title={title && t(title)}
+        icon={callbackDelete || icon ? getIcon(icon, iconColor) : undefined}
+        onDelete={callbackDelete ?? undefined}
+        deleteIcon={callbackDelete ? getIcon(icon) : undefined}
       />
     );
   },

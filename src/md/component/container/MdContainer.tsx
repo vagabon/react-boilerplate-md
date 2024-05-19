@@ -1,16 +1,8 @@
-import { Breakpoint, Container } from '@mui/material';
-import { ReactNode, memo } from 'react';
+import { Container, ContainerProps } from '@mui/material';
+import { memo } from 'react';
 
-export interface IMdContainerProps {
-  className?: string;
-  maxWidth?: Breakpoint | false;
-  children?: ReactNode;
-}
+export interface IMdContainerProps extends ContainerProps {}
 
-export const MdContainer: React.FC<IMdContainerProps> = memo(({ className = '', maxWidth, children }) => {
-  return (
-    <Container className={className} maxWidth={maxWidth ?? 'lg'}>
-      {children}
-    </Container>
-  );
+export const MdContainer: React.FC<IMdContainerProps> = memo(({ maxWidth = 'lg', ...rest }) => {
+  return <Container {...rest} maxWidth={maxWidth} />;
 });

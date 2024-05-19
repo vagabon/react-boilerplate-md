@@ -1,6 +1,6 @@
 import { TableFooter, TablePagination, TableRow } from '@mui/material';
 import { memo, useCallback } from 'react';
-import { useAppTranslate } from '../../../translate/hook/useAppTranslate';
+import { MdTypo } from '../typo/MdTypo';
 import { IMdTableProps, MdTable, TablePaginateCallbackType } from './MdTable';
 
 export interface IMdTableWithPaginationProps extends IMdTableProps {
@@ -9,8 +9,6 @@ export interface IMdTableWithPaginationProps extends IMdTableProps {
 }
 
 export const MdTableWithPagination: React.FC<IMdTableWithPaginationProps> = memo(({ ...rest }) => {
-  const { Trans } = useAppTranslate();
-
   const handleChangePage = useCallback(
     (callBack?: TablePaginateCallbackType) =>
       (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number): void => {
@@ -31,7 +29,7 @@ export const MdTableWithPagination: React.FC<IMdTableWithPaginationProps> = memo
   return (
     <div style={{ display: 'grid' }}>
       <div style={{ margin: '5px 0px', fontSize: '1.2rem' }}>
-        <Trans i18nKey='RESULTAT' /> : {rest.count}
+        <MdTypo content='RESULTAT' after={': ' + rest.count} />
       </div>
       <div style={{ overflow: 'auto' }}>
         <MdTable {...rest}>

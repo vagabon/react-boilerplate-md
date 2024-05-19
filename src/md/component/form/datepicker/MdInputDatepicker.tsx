@@ -1,9 +1,9 @@
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import dayjs, { Dayjs } from 'dayjs';
 import { memo, useCallback, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { JSONObject } from '../../../../dto/api/ApiDto';
 import { HandleChangeType, IFormPropsDto } from '../../../../dto/form/FormDto';
-import { useAppTranslate } from '../../../../translate/hook/useAppTranslate';
 import { useFormError } from '../../../hook/useFormError';
 
 export interface IMdInputDatepickerProps extends IFormPropsDto {
@@ -14,7 +14,7 @@ export interface IMdInputDatepickerProps extends IFormPropsDto {
 }
 
 export const MdInputDatepicker: React.FC<IMdInputDatepickerProps> = memo(({ className = '', ...rest }) => {
-  const { t } = useAppTranslate();
+  const { t } = useTranslation();
   const { error } = useFormError(rest.name, rest.errors, rest.touched, rest.errorMessage);
   const [value, setValue] = useState<Dayjs | undefined>();
 

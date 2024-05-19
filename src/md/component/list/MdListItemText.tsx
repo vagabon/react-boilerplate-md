@@ -1,6 +1,6 @@
 import { ListItemText } from '@mui/material';
 import { memo } from 'react';
-import { useAppTranslate } from '../../../translate/hook/useAppTranslate';
+import { Translate } from '../../../translate/component/Translate';
 
 export interface IMdListItemTextProps {
   color?: string;
@@ -9,7 +9,5 @@ export interface IMdListItemTextProps {
 }
 
 export const MdListItemText: React.FC<IMdListItemTextProps> = memo(({ label, color, secondary }) => {
-  const { Trans } = useAppTranslate();
-
-  return <ListItemText className={color} primary={<Trans i18nKey={label} />} secondary={secondary} />;
+  return <ListItemText className={color} primary={<Translate i18nKey={label} />} secondary={secondary} />;
 });

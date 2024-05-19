@@ -12,4 +12,5 @@ test('renders learn react link', () => {
   fireEvent.blur(screen.getByTestId('TextField'), { target: { value: { test: 'test' } } });
   jest.runAllTimers();
   expect(mockCallback).toBeCalled();
+  fireEvent.keyUp(screen.getByTestId('TextField'));
 });

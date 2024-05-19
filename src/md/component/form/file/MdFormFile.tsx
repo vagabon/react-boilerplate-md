@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import { ChangeEvent, memo, useCallback } from 'react';
 import { JSONObject } from '../../../../dto/api/ApiDto';
-import { useAppTranslate } from '../../../../translate/hook/useAppTranslate';
+import { Translate } from '../../../../translate/component/Translate';
 import { useId } from '../../../hook/useId';
 
 export interface IMdFormFileProps {
@@ -13,7 +13,6 @@ export interface IMdFormFileProps {
 }
 
 export const MdFormFile: React.FC<IMdFormFileProps> = memo(({ accept, ...rest }) => {
-  const { Trans } = useAppTranslate();
   const { id } = useId();
 
   const handleCapture = useCallback(
@@ -29,7 +28,7 @@ export const MdFormFile: React.FC<IMdFormFileProps> = memo(({ accept, ...rest })
       sx={{ width: '100%', margin: '5px 0', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
       {rest.label && (
         <label htmlFor={id} style={{ flex: '1' }}>
-          <Trans i18nKey={rest.label} />
+          <Translate i18nKey={rest.label} />
         </label>
       )}
       <div className='' style={{ maxWidth: '18%', margin: '0px 5px' }}>

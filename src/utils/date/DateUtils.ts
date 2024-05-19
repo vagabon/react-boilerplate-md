@@ -15,6 +15,7 @@ const MONTHS = [
 
 export const DateUtils = {
   format(date?: string, format: string = 'Le DD MMM YYYY à hhhmm') {
+    // TODO : use i18n for Le and à
     let dateFormat = '';
     if (date && date?.length >= 19) {
       const year: string = date.length >= 3 ? date.substring(0, 4) : '';

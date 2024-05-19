@@ -16,7 +16,7 @@ type Story = StoryObj<typeof MdTypo>;
 
 export const Primary: Story = {
   args: {
-    label: 'label',
+    content: 'label',
   },
 };
 Primary.parameters = {

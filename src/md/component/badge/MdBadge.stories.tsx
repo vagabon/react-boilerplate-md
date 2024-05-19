@@ -15,7 +15,7 @@ export default meta;
 type Story = StoryObj<typeof MdBadge>;
 
 export const Primary: Story = {
-  args: { showZero: true, content: 0, icon: 'settings', title: 'Settings' },
+  args: { showZero: true, icon: 'settings', title: 'Settings' },
 };
 Primary.parameters = {
   jest: ['MdBadge.test'],

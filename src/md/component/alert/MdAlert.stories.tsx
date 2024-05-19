@@ -15,7 +15,7 @@ export default meta;
 type Story = StoryObj<typeof MdAlert>;
 
 export const Primary: Story = {
-  args: { label: 'label' },
+  args: { label: 'label', callback: undefined },
 };
 Primary.parameters = {
   jest: ['MdAlert.test'],

@@ -1,10 +1,9 @@
 import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
-import { ReactNode, memo, useMemo } from 'react';
-import { ITheme } from './useTheme';
+import { PropsWithChildren, memo, useMemo } from 'react';
+import { ITheme } from '../../../theme/hook/useTheme';
 
-interface IMdThemeProviderProps {
+interface IMdThemeProviderProps extends PropsWithChildren {
   theme?: ITheme;
-  children: ReactNode;
 }
 
 export const MdThemeProvider: React.FC<IMdThemeProviderProps> = memo(({ theme, children }) => {
@@ -12,12 +11,10 @@ export const MdThemeProvider: React.FC<IMdThemeProviderProps> = memo(({ theme, c
 
   return (
     <>
-      {muiTheme && (
-        <ThemeProvider theme={muiTheme}>
-          <CssBaseline />
-          {children}
-        </ThemeProvider>
-      )}
+      <ThemeProvider theme={muiTheme}>
+        <CssBaseline />
+        {children}
+      </ThemeProvider>
     </>
   );
 });

@@ -1,40 +1,23 @@
-import { Badge, SxProps, Theme } from '@mui/material';
-import { ReactNode, memo } from 'react';
+import { Badge, BadgeProps } from '@mui/material';
+import { PropsWithChildren, memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useIcon } from '../../../icon/hook/useIcon';
-import { useAppTranslate } from '../../../translate/hook/useAppTranslate';
-import { I18nUtils } from '../../../utils/i18n/I18nUtils';
 import { ButtonColorType } from '../button/MdButton';
 
-export type BadgeColorType = 'primary' | 'secondary' | 'default' | 'error' | 'info' | 'success' | 'warning';
-
-export interface IMdBadgeProps {
-  className?: string;
-  content?: number;
-  max?: number;
+export interface IMdBadgeProps extends BadgeProps, PropsWithChildren {
   title?: string;
-  color?: BadgeColorType;
-  showZero?: boolean;
   icon?: string;
   iconColor?: ButtonColorType;
-  sx?: SxProps<Theme>;
-  children?: ReactNode;
 }
 
 export const MdBadge: React.FC<IMdBadgeProps> = memo(
-  ({ className = '', content, color, title, max, showZero, icon, iconColor, sx, children }) => {
-    const { t } = useAppTranslate();
+  ({ badgeContent = 0, title, icon, color = 'error', iconColor = 'primary', children, ...rest }) => {
+    const { t } = useTranslation();
     const { getIcon } = useIcon();
 
     return (
-      <Badge
-        className={className}
-        badgeContent={content ?? 0}
-        color={color ?? 'error'}
-        sx={sx}
-        showZero={showZero ?? false}
-        max={max}
-        title={title && I18nUtils.translate(t, title)}>
-        {icon && getIcon(icon, iconColor ?? 'primary')}
+      <Badge {...rest} color={color ?? 'error'} badgeContent={badgeContent} title={title && t(title)}>
+        {icon && getIcon(icon, iconColor)}
         {children}
       </Badge>
     );

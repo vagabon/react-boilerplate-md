@@ -53,8 +53,7 @@ export const MdMarkdown: React.FC<IMdMarkdownProps> = memo(
           }
         }, 100);
       }
-      const iddd = document.getElementById(id);
-      const div = iddd?.getElementsByTagName('div');
+      const div = document.getElementById(id)?.getElementsByTagName('div');
       const elements = div?.[0]?.getElementsByTagName('*') ?? [];
       const copyHtml = document.getElementById('copy-button')?.innerHTML ?? '';
       for (const element of elements) {
@@ -90,7 +89,7 @@ export const MdMarkdown: React.FC<IMdMarkdownProps> = memo(
             ...getOverrides({ Highlight, themes, hideLineNumbers: true }),
             a: {
               props: {
-                target: summaryCallback && '_blank',
+                target: summaryCallback && '_blank', // TODO : add props ?
               },
             },
           }}>
