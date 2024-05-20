@@ -6,7 +6,7 @@ import { MdBox } from '../box/MdBox';
 // TODO: add storybook https://mui.com/material-ui/react-modal/
 
 export interface IModalProps extends ModalProps {
-  handleClose: () => void;
+  callbackClose: () => void;
 }
 
 const style = {
@@ -22,7 +22,7 @@ const style = {
   pb: 3,
 };
 
-export const MdModal: React.FC<IModalProps> = memo(({ className = '', ...rest }) => {
+export const MdModal: React.FC<IModalProps> = memo(({ className = '', callbackClose, ...rest }) => {
   const handleClick = useCallback((event: MouseEvent) => {
     event.stopPropagation();
   }, []);
@@ -37,10 +37,10 @@ export const MdModal: React.FC<IModalProps> = memo(({ className = '', ...rest })
   );
 
   return (
-    <Modal {...rest} className={className + ' modal'} onClick={handleClick} onClose={handleClose(rest.handleClose)}>
+    <Modal {...rest} className={className + ' modal'} onClick={handleClick} onClose={handleClose(callbackClose)}>
       <MdBox sx={{ ...style, position: 'relative' }}>
         <div style={{ position: 'absolute', top: '11px', right: '11px', zIndex: 3000 }}>
-          <IconClickable icon='close' callback={rest.handleClose} />
+          <IconClickable icon='close' callback={callbackClose} />
         </div>
         {rest.children}
       </MdBox>

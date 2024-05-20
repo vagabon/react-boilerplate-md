@@ -1,8 +1,8 @@
 import { Button, ButtonProps } from '@mui/material';
-import { MouseEvent, memo, useCallback, useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useIcon } from '../../../icon/hook/useIcon';
-import { useAppRouter } from '../../../router/hook/useAppRouter';
+import { useButtonCallback } from './hook/useButtonCallback';
 
 declare module '@mui/material/Button' {
   interface ButtonPropsColorOverrides {
@@ -37,32 +37,11 @@ export interface IMdButtonProps extends ButtonProps {
 
 export const MdButton: React.FC<IMdButtonProps> = memo(
   ({ show = true, url, label = '', size = 'small', variant = 'contained', type = 'button', callback, ...rest }) => {
-    const { navigate } = useAppRouter();
     const { getIcon } = useIcon();
     const { t } = useTranslation();
+    const { handleClick, addHref } = useButtonCallback(type, url);
 
     const icon = useMemo(() => getIcon(rest.icon, rest.iconColor), [rest.icon, rest.iconColor, getIcon]);
-
-    const onClick = useCallback(
-      (callback?: () => void) => (event: MouseEvent) => {
-        if (type !== 'submit') {
-          event.stopPropagation();
-          event.preventDefault();
-          if (callback) {
-            callback();
-          } else if (url) {
-            url.startsWith('http') ? window.open(url) : navigate(url);
-          }
-        }
-      },
-      [url, type, navigate],
-    );
-
-    const addHref = useCallback((url?: string) => {
-      let data = {};
-      url && (data = { href: url });
-      return data;
-    }, []);
 
     return (
       <>
@@ -76,7 +55,7 @@ export const MdButton: React.FC<IMdButtonProps> = memo(
             startIcon={typeof rest.startIcon === 'string' ? getIcon(rest.startIcon, 'inherit') : rest.startIcon}
             endIcon={typeof rest.endIcon === 'string' ? getIcon(rest.endIcon) : rest.endIcon}
             color={rest.color ?? 'primary'}
-            onClick={onClick(callback)}>
+            onClick={handleClick(callback)}>
             {icon ? <>{icon}</> : <div key={localStorage.getItem('i18nextLng')}>{t(label)}</div>}
           </Button>
         )}

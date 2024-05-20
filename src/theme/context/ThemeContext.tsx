@@ -1,4 +1,4 @@
-import { PropsWithChildren, createContext, useContext, useEffect } from 'react';
+import { PropsWithChildren, createContext, useContext, useEffect, useMemo } from 'react';
 import { JSONObject } from '../../dto/api/ApiDto';
 import { MdThemeProvider } from '../../md/component/theme/MdThemeProvider';
 import { ModeType, useTheme } from '../hook/useTheme';
@@ -21,6 +21,8 @@ interface IThemeContextProviderProps extends PropsWithChildren {
 export const ThemeContextProvider: React.FC<IThemeContextProviderProps> = ({ palette, children }) => {
   const { mode, theme, switchTheme } = useTheme(palette);
 
+  const value = useMemo(() => ({ mode, switchTheme }), [mode, switchTheme]);
+
   useEffect(() => {
     document.body.classList.remove('mode-dark');
     document.body.classList.remove('mode-light');
@@ -28,7 +30,7 @@ export const ThemeContextProvider: React.FC<IThemeContextProviderProps> = ({ pal
   }, [mode]);
 
   return (
-    <ThemeContext.Provider value={{ mode, switchTheme }}>
+    <ThemeContext.Provider value={value}>
       <MdThemeProvider theme={theme}>{children}</MdThemeProvider>
     </ThemeContext.Provider>
   );

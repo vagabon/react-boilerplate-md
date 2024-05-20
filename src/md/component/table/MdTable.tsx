@@ -49,8 +49,8 @@ export const MdTable: React.FC<IMdTableProps> = memo(
     const { datas, createSortHandle, handleClick } = useTable(
       showEmpty,
       rest.datas,
-      sortByOrder ?? 'id',
-      rowsPerPage ?? 10,
+      sortByOrder,
+      rowsPerPage,
       rest.url,
     );
 

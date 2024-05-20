@@ -1,6 +1,6 @@
 {
   "name": "@vagabond-inc/react-boilerplate-md",
-  "version": "1.1.2d",
+  "version": "1.1.3",
   "description": "Boilerplate Material Design on React with MUI",
   "private": false,
   "scripts": {
@@ -19,21 +19,21 @@
     "prepublishOnly": "npm i && npm run format && npm run test:json && npm run build"
   },
   "dependencies": {
-    "@emotion/react": ">=11.11.4",
+    "@emotion/react": "~11.11.4",
     "@fontsource/roboto": "~5.0.13",
-    "@mui/icons-material": ">=5.15.18",
-    "@mui/material": ">=5.15.18",
-    "@mui/x-date-pickers": ">=7.5.0",
-    "@mui/x-tree-view": ">=7.5.0",
-    "dayjs": ">=1.11.11",
-    "i18next": ">=23.11.4",
-    "i18next-browser-languagedetector": ">=7.2.1",
-    "mui-markdown": ">=1.1.13",
-    "react": ">=18.3.1",
-    "react-dom": ">=18.3.1",
-    "react-i18next": ">=14.1.1",
-    "react-router-dom": ">=6.23.1",
-    "uuid": ">=9.0.1"
+    "@mui/icons-material": "~5.15.18",
+    "@mui/material": "~5.15.18",
+    "@mui/x-date-pickers": "~7.5.0",
+    "@mui/x-tree-view": "~7.5.0",
+    "dayjs": "~1.11.11",
+    "i18next": "~23.11.4",
+    "i18next-browser-languagedetector": "~8.0.0",
+    "mui-markdown": "~1.1.13",
+    "react": "~18.3.1",
+    "react-dom": "~18.3.1",
+    "react-i18next": "~14.1.1",
+    "react-router-dom": "~6.23.1",
+    "uuid": "~9.0.1"
   },
   "devDependencies": {
     "@babel/preset-env": "~7.24.5",
@@ -80,20 +80,20 @@
     "vite-tsconfig-paths": "~4.3.2"
   },
   "peerDependencies": {
-    "@emotion/react": ">=11.11.4",
-    "@mui/icons-material": ">=5.15.17",
-    "@mui/material": ">=5.15.17",
-    "@mui/x-date-pickers": ">=7.4.0",
-    "@mui/x-tree-view": ">=7.4.0",
-    "dayjs": ">=1.11.11",
-    "i18next": ">=23.11.3",
-    "i18next-browser-languagedetector": ">=7.2.1",
-    "mui-markdown": ">=1.1.13",
-    "react": ">=18.3.1",
-    "react-dom": ">=18.3.1",
-    "react-i18next": ">=14.1.0",
-    "react-router-dom": ">=6.23.0",
-    "uuid": ">=9.0.0"
+    "@emotion/react": "~11.11.4",
+    "@mui/icons-material": "~5.15.17",
+    "@mui/material": "~5.15.17",
+    "@mui/x-date-pickers": "~7.5.0",
+    "@mui/x-tree-view": "~7.5.0",
+    "dayjs": "~1.11.11",
+    "i18next": "~23.11.3",
+    "i18next-browser-languagedetector": "~7.2.1",
+    "mui-markdown": "~1.1.13",
+    "react": "~18.3.1",
+    "react-dom": "~18.3.1",
+    "react-i18next": "~14.1.0",
+    "react-router-dom": "~6.23.0",
+    "uuid": "~9.0.0"
   },
   "types": "dist/index.d.ts",
   "files": [

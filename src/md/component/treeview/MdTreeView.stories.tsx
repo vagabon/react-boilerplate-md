@@ -15,7 +15,7 @@ export default meta;
 type Story = StoryObj<typeof MdTreeView>;
 
 const callback = (id: number) => {
-  console.log(id);
+  console.debug(id);
 };
 
 export const Primary: Story = {

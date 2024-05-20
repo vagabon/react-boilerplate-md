@@ -21,14 +21,6 @@ module.exports = {
     'jsx-a11y/anchor-is-valid': 'off',
     'jsx-a11y/anchor-has-content': 'off',
     'react/react-in-jsx-scope': 'off',
-    '@typescript-eslint/no-restricted-imports': [
-      'warn',
-      {
-        name: 'react-redux',
-        importNames: ['useSelector', 'useDispatch'],
-        message: 'Use typed hooks `useAppDispatch` and `useAppSelector` instead.',
-      },
-    ],
   },
   ignorePatterns: [
     'src/index.ts',
