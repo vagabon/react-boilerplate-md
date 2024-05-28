@@ -2,7 +2,7 @@ module.exports = {
   env: { node: true },
   settings: {
     react: {
-      version: '18',
+      version: '19',
     },
   },
   extends: [
@@ -12,8 +12,9 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['react', 'react-hooks', '@typescript-eslint'],
+  plugins: ['react', 'react-hooks', '@typescript-eslint', 'eslint-plugin-react-compiler'],
   rules: {
+    'react-compiler/react-compiler': 'error',
     '@typescript-eslint/no-unused-vars': 'warn',
     'react/display-name': 'off',
     'react/prop-types': 'off',
@@ -29,7 +30,7 @@ module.exports = {
     '**/*.stories.*',
     '**/*Store.*',
     '**/*.test.*',
-    '**/setupTests.*',
+    '**/setupTests*.*',
     'node_modules/**/*.ts?(x)',
   ],
   overrides: [
