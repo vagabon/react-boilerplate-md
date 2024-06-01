@@ -8,10 +8,10 @@ import {
   SelectChangeEvent,
 } from '@mui/material';
 import { memo, useCallback, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { IApiDto, JSONObject } from '../../../../dto/api/ApiDto';
 import { IFormPropsDto } from '../../../../dto/form/FormDto';
 import { useIcon } from '../../../../icon/hook/useIcon';
+import { useTranslate } from '../../../../translate/hook/useTranslate';
 import { useFormError } from '../../../hook/useFormError';
 import { MdFormError } from '../MdFormError';
 
@@ -34,7 +34,7 @@ export interface IMdFormSelectProps extends IFormPropsDto {
 }
 
 export const MdFormSelect: React.FC<IMdFormSelectProps> = memo(({ className = '', defaultValue = true, ...rest }) => {
-  const { t } = useTranslation();
+  const { translate } = useTranslate();
   const { getIcon } = useIcon();
   const { error } = useFormError(rest.name, rest.errors, rest.touched, rest.errorMessage);
 
@@ -48,12 +48,12 @@ export const MdFormSelect: React.FC<IMdFormSelectProps> = memo(({ className = ''
       value.id &&
         values.push({
           value: value.id,
-          name: libelle?.startsWith('http') ? libelle : t(libelle),
+          name: libelle?.startsWith('http') ? libelle : translate(libelle),
           icon: value['icon' as keyof JSONObject],
         });
     });
     setValues(values);
-  }, [t, rest.list, rest.listLibelle]);
+  }, [translate, rest.list, rest.listLibelle]);
 
   const propsValues = rest.values?.[rest.name as keyof JSONObject] ?? '';
   const validationSchema = rest.validationSchema?.[rest.name as keyof JSONObject] ?? {};
@@ -82,7 +82,7 @@ export const MdFormSelect: React.FC<IMdFormSelectProps> = memo(({ className = ''
         sx={{ marginBottom: '8px', marginTop: '16px' }}
         disabled={rest.disabled ?? rest.validationSchema?.[rest.name as keyof JSONObject]?.['disabled']}>
         <InputLabel id={rest.name + '-label'} error={error !== ''}>
-          {t(rest.label)}
+          {translate(rest.label)}
           {validationSchema?.['required' as keyof JSONObject] ? ' *' : ''}
         </InputLabel>
         {values && values.length > 0 && (

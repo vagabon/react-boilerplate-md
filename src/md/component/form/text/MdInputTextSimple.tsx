@@ -1,10 +1,10 @@
 import { IconButton, InputProps, TextField, TextFieldVariants } from '@mui/material';
 import { ClearIcon } from '@mui/x-date-pickers';
 import { memo, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
 import { JSONValue } from '../../../../dto/api/ApiDto';
 import { HandleBlurType, HandleChangeType } from '../../../../dto/form/FormDto';
 import { IconClickable } from '../../../../icon/component/IconClickable';
+import { useTranslate } from '../../../../translate/hook/useTranslate';
 import { useFormValue } from '../../../hook/useFormValue';
 
 const DEFAULT_TEXT = 'text';
@@ -44,7 +44,7 @@ export const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(
     callbackCopy,
     ...rest
   }) => {
-    const { t } = useTranslation();
+    const { translate } = useTranslate();
     const {
       uref,
       key,
@@ -75,9 +75,9 @@ export const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(
           className={className}
           type={type}
           margin='normal'
-          label={t(rest.label)}
+          label={translate(rest.label)}
           variant={rest.variant}
-          placeholder={t(rest.placeholder ?? '')}
+          placeholder={translate(rest.placeholder ?? '')}
           size={rest.size}
           name={rest.name}
           defaultValue={defaultValue}

@@ -12,7 +12,7 @@ export const useButtonCallback = (type: string, url?: string) => {
         if (callback) {
           callback();
         } else if (url) {
-          url.startsWith('http') ? window.open(url) : navigate(url);
+          url.startsWith('http') ? window.open(url) : navigate?.(url);
         }
       }
     },

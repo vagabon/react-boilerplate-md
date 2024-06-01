@@ -12,27 +12,35 @@ export const DEFAULT_THEME: ICustomTheme = {
     },
     secondary: {
       main: '#9c27b0',
+      dark: '',
     },
     error: {
       main: '#d32f2f',
+      dark: '',
     },
     warning: {
       main: '#ed6c02',
+      dark: '',
     },
     info: {
       main: '#0288d1',
+      dark: '',
     },
     success: {
       main: '#2e7d32',
+      dark: '',
     },
     google: {
       main: '',
+      dark: '',
     },
     facebook: {
       main: '',
+      dark: '',
     },
     premium: {
       main: '',
+      dark: '',
     },
     contrastThreshold: 3,
     tonalOffset: 0.2,

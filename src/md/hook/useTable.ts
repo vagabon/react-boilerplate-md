@@ -35,7 +35,7 @@ export const useTable = (
 
   const handleClick = useCallback(
     (id: string) => () => {
-      url && navigate(url + id);
+      url && navigate?.(url + id);
     },
     [navigate, url],
   );

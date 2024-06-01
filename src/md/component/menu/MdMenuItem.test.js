@@ -1,13 +1,16 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import { RouterProvider } from '../../../router/provider/RouterProvider';
 import { MdMenuItem } from './MdMenuItem';
 
 jest.useFakeTimers();
 
 test('renders learn react link', () => {
   render(
-    <MdMenuItem name='name' url='url' childrens={[{ title: 'title', link: 'link' }]}>
-      {' '}
-    </MdMenuItem>,
+    <RouterProvider>
+      <MdMenuItem name='name' url='url' childrens={[{ title: 'title', link: 'link' }]}>
+        {' '}
+      </MdMenuItem>
+    </RouterProvider>,
   );
 
   expect(screen.getAllByRole('button')[0]).toBeDefined();

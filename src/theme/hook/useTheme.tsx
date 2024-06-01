@@ -50,27 +50,35 @@ const getTheme = (palette: JSONObject, mode: 'light' | 'dark'): ITheme => {
       },
       primary: {
         main: ObjectUtils.getDtoString(palette, 'primary' + suffixe),
+        dark: '',
       },
       secondary: {
         main: ObjectUtils.getDtoString(palette, 'secondary' + suffixe),
+        dark: '',
       },
       info: {
         main: ObjectUtils.getDtoString(palette, 'info' + suffixe),
+        dark: '',
       },
       success: {
         main: ObjectUtils.getDtoString(palette, 'success' + suffixe),
+        dark: '',
       },
       error: {
         main: ObjectUtils.getDtoString(palette, 'error' + suffixe),
+        dark: '',
       },
       google: {
         main: ObjectUtils.getDtoString(palette, 'google'),
+        dark: '',
       },
       facebook: {
         main: ObjectUtils.getDtoString(palette, 'facebook'),
+        dark: '',
       },
       premium: {
         main: ObjectUtils.getDtoString(palette, 'premium'),
+        dark: '',
       },
     },
   };

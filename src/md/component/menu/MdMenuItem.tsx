@@ -21,7 +21,7 @@ export const MdMenuItem: React.FC<IMdMenuItemProps> = memo(({ ...rest }) => {
       event.stopPropagation();
       event.preventDefault();
       setAnchorEl(event.currentTarget);
-      !rest.childrens && navigate(rest.url);
+      !rest.childrens && navigate?.(rest.url);
     },
     [navigate, rest.childrens, rest.url],
   );
@@ -33,7 +33,7 @@ export const MdMenuItem: React.FC<IMdMenuItemProps> = memo(({ ...rest }) => {
   const handleCloseWithUrl = useCallback(
     (url: string) => () => {
       setAnchorEl(undefined);
-      navigate(url);
+      navigate?.(url);
     },
     [navigate],
   );

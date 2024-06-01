@@ -24,7 +24,7 @@ export const IconClickable: React.FC<IIconClickableProps> = memo(({ icon, callba
   );
 
   return (
-    <IconButton {...rest} edge='end' onClick={handleClickIcon} sx={{ marginRight: '0', ...rest.sx }}>
+    <IconButton edge='end' onClick={handleClickIcon}>
       {children ?? <>{getIcon(icon, rest.color as ButtonColorType)}</>}
     </IconButton>
   );

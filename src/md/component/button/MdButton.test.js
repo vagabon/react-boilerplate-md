@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import { RouterProvider } from '../../../router/provider/RouterProvider';
 import { MdButton } from './MdButton';
 
 describe('MdButton', () => {
@@ -11,7 +12,11 @@ describe('MdButton', () => {
   });
 
   test('Given MdButton when its mount with url and click then navigate is called', () => {
-    render(<MdButton url='url' />);
+    render(
+      <RouterProvider>
+        <MdButton url='url' />
+      </RouterProvider>,
+    );
     expect(screen.getByTestId('Button')).toBeDefined();
     fireEvent.click(screen.getByTestId('Button'));
     expect(mockNavigate).toBeCalled();

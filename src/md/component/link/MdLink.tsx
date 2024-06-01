@@ -1,7 +1,7 @@
 import { Link, LinkProps } from '@mui/material';
 import { MouseEvent, memo, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useAppRouter } from '../../../router/hook/useAppRouter';
+import { useTranslate } from '../../../translate/hook/useTranslate';
 
 export interface IMdLinkProps extends LinkProps {
   href: string;
@@ -13,7 +13,7 @@ export interface IMdLinkProps extends LinkProps {
 export const MdLink: React.FC<IMdLinkProps> = memo(
   ({ href, color = 'primary', label = '', show = true, children, ...rest }) => {
     const { navigate } = useAppRouter();
-    const { t } = useTranslation();
+    const { translate } = useTranslate();
 
     const onClick = useCallback(
       (event: MouseEvent<HTMLAnchorElement>) => {
@@ -22,7 +22,7 @@ export const MdLink: React.FC<IMdLinkProps> = memo(
         if (href.startsWith('http') || href.startsWith('mailto')) {
           window.open(href, '_blank');
         } else {
-          navigate(href);
+          navigate?.(href);
         }
       },
       [navigate, href],
@@ -33,13 +33,13 @@ export const MdLink: React.FC<IMdLinkProps> = memo(
         {show && (
           <>
             {href ? (
-              <Link {...rest} href={href} title={t(label)} color={color} onClick={onClick}>
-                {t(label)}
+              <Link {...rest} href={href} title={translate(label)} color={color} onClick={onClick}>
+                {translate(label)}
                 {children}
               </Link>
             ) : (
               <>
-                {t(label)}
+                {translate(label)}
                 <>{children}</>
               </>
             )}

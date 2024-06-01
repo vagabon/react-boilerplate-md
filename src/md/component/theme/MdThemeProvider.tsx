@@ -10,11 +10,9 @@ export const MdThemeProvider: React.FC<IMdThemeProviderProps> = memo(({ theme, c
   const muiTheme = useMemo(() => createTheme(theme), [theme]);
 
   return (
-    <>
-      <ThemeProvider theme={muiTheme}>
-        <CssBaseline />
-        {children}
-      </ThemeProvider>
-    </>
+    <ThemeProvider theme={muiTheme}>
+      <CssBaseline />
+      {children}
+    </ThemeProvider>
   );
 });

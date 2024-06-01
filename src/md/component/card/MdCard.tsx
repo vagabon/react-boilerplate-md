@@ -1,11 +1,11 @@
 import { Card, CardActions, CardContent, CardHeader, CardMedia, CardProps } from '@mui/material';
 import { Variant } from '@mui/material/styles/createTypography';
 import React, { ReactNode, memo } from 'react';
-import { useTranslation } from 'react-i18next';
 import { IconClickable } from '../../../icon/component/IconClickable';
 import { useIcon } from '../../../icon/hook/useIcon';
 import { useAppRouter } from '../../../router/hook/useAppRouter';
 import { Translate } from '../../../translate/component/Translate';
+import { useTranslate } from '../../../translate/hook/useTranslate';
 import { DateUtils } from '../../../utils/date/DateUtils';
 import { useId } from '../../hook/useId';
 import { MdAvatar } from '../avatar/MdAvatar';
@@ -55,7 +55,7 @@ export const MdCard: React.FC<IMdCardProps> = memo(
     const { handleNavigate } = useAppRouter();
     const { id } = useId(rest.id as string);
     const { getIcon } = useIcon();
-    const { t } = useTranslation();
+    const { translate } = useTranslate();
 
     return (
       <Card {...rest} id={id}>
@@ -82,7 +82,7 @@ export const MdCard: React.FC<IMdCardProps> = memo(
                   {icon && <>{getIcon(icon, color)}&nbsp;</>}
                   <MdLink href={url ?? ''}>
                     <MdTypo variant={titleVariant ?? 'h1'} color={color} sx={{ flex: '1' }}>
-                      <Translate i18nKey={t(title)} />
+                      <Translate i18nKey={translate(title)} />
                       {titleCount !== undefined && <> ({titleCount})</>}
                     </MdTypo>
                   </MdLink>

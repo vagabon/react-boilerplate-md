@@ -1,6 +1,6 @@
 import { Fragment, memo } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Translate } from '../../../translate/component/Translate';
+import { useTranslate } from '../../../translate/hook/useTranslate';
 
 export interface IListSimpleDto {
   label: string;
@@ -13,14 +13,14 @@ export interface IMdListSimpleProps {
 }
 
 export const MdListSimple: React.FC<IMdListSimpleProps> = memo(({ className, title, items }) => {
-  const { t } = useTranslation();
+  const { translate } = useTranslate();
 
   return (
     <ul className={className}>
       <Translate i18nKey={title} />
       {items?.map((item) => (
         <Fragment key={item.label}>
-          {t(item.label) !== '' && (
+          {translate(item.label) !== '' && (
             <li style={{ marginTop: '10px' }}>
               <Translate i18nKey={item.label} />
             </li>

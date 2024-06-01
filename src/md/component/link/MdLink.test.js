@@ -1,9 +1,14 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import { RouterProvider } from '../../../router/provider/RouterProvider';
 import { MdLink } from './MdLink';
 
 describe('MdLink', () => {
   test('Given MdLink when its mount then Link is shown', () => {
-    render(<MdLink href='url' label='label' />);
+    render(
+      <RouterProvider>
+        <MdLink href='url' label='label' />
+      </RouterProvider>,
+    );
 
     expect(screen.queryAllByTestId('Link').length).toBe(1);
     expect(screen.getByTestId('Link')).toBeDefined();
@@ -12,7 +17,11 @@ describe('MdLink', () => {
   });
 
   test('Given MdLink when its mount then Link is shown', () => {
-    render(<MdLink href='https://google.com' label='label' />);
+    render(
+      <RouterProvider>
+        <MdLink href='https://google.com' label='label' />
+      </RouterProvider>,
+    );
 
     expect(screen.queryAllByTestId('Link').length).toBe(1);
     expect(screen.getByTestId('Link')).toBeDefined();
@@ -21,7 +30,11 @@ describe('MdLink', () => {
   });
 
   test('Given MdLink when its mount without href then Link is not shown', () => {
-    render(<MdLink label='label' color='secondary' />);
+    render(
+      <RouterProvider>
+        <MdLink label='label' color='secondary' />
+      </RouterProvider>,
+    );
 
     expect(screen.queryAllByTestId('Link').length).toBe(0);
   });

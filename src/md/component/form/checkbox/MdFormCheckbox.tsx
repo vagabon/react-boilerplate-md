@@ -1,8 +1,8 @@
 import { Typography } from '@mui/material';
 import { memo, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
 import { JSONObject } from '../../../../dto/api/ApiDto';
 import { HandleChangeType, IFormPropsDto } from '../../../../dto/form/FormDto';
+import { useTranslate } from '../../../../translate/hook/useTranslate';
 import { useFormError } from '../../../hook/useFormError';
 import { MdFormError } from '../MdFormError';
 import { MdFormCheckboxSimple } from './MdFormCheckboxSimple';
@@ -15,7 +15,7 @@ export interface IMdFormCheckboxProps extends IFormPropsDto {
 }
 
 export const MdFormCheckbox: React.FC<IMdFormCheckboxProps> = memo(({ ...rest }) => {
-  const { t } = useTranslation();
+  const { translate } = useTranslate();
   const { error } = useFormError(rest.name, rest.errors, rest.touched, rest.errorMessage);
 
   const handleChange = useCallback(
@@ -39,7 +39,7 @@ export const MdFormCheckbox: React.FC<IMdFormCheckboxProps> = memo(({ ...rest })
   return (
     <div className='flex flex-row align-center' style={{ height: '50px' }}>
       <Typography paragraph={true} style={{ flex: '1', cursor: 'pointer' }} onClick={handleClicklabel}>
-        {rest.label && t(rest.label)}
+        {rest.label && translate(rest.label)}
       </Typography>
       <MdFormCheckboxSimple
         name={rest.name}
