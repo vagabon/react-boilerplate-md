@@ -10,7 +10,7 @@ export const useFormValue = (type: string, value: JSONValue, isFocus?: boolean) 
   const [liveValue, setLiveValue] = useState(value);
 
   const [readonly, setReadonly] = useState(type === 'password');
-  const uref = useRef<HTMLInputElement>();
+  const uref = useRef<HTMLInputElement>(null);
   const isFocusRef = useRef<boolean>(false);
   const [keyDown, setKeyDown] = useState<boolean>(false);
 

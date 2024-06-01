@@ -12,7 +12,13 @@ export const MdBouttonGroup: React.FC<IMdBouttonGroupProps> = memo(({ children, 
           const key = (child as React.JSX.Element).props?.id || UuidUtils.createUUID();
           return (
             <Fragment key={'test-' + key}>
-              {cloneElement(child as ReactElement, { variant: rest.variant, size: rest.size })}
+              {cloneElement(
+                child as ReactElement<{
+                  variant: 'text' | 'outlined' | 'contained';
+                  size: 'small' | 'medium' | 'large';
+                }>,
+                { variant: rest.variant, size: rest.size },
+              )}
             </Fragment>
           );
         })}
