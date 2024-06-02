@@ -35,7 +35,7 @@ export const MdSnackbar: React.FC<IMdSnackbarProps> = memo(({ className = '', me
       autoHideDuration={6000}
       TransitionComponent={transition}
       key={transition ? transition.name : ''}>
-      <Alert onClose={handleClose} severity={type} sx={{ width: '100%' }}>
+      <Alert className='width100' onClose={handleClose} severity={type}>
         <MdTypo content={message} />
       </Alert>
     </Snackbar>

@@ -38,8 +38,8 @@ export const MdModal: React.FC<IModalProps> = memo(({ className = '', callbackCl
 
   return (
     <Modal {...rest} className={className + ' modal'} onClick={handleClick} onClose={handleClose(callbackClose)}>
-      <MdBox sx={{ ...style, position: 'relative' }}>
-        <div style={{ position: 'absolute', top: '11px', right: '11px', zIndex: 3000 }}>
+      <MdBox className='relative' sx={{ style }}>
+        <div className='icon-close'>
           <IconClickable icon='close' callback={callbackClose} />
         </div>
         {rest.children}

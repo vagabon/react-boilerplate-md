@@ -60,7 +60,7 @@ export const MdSearchBar: React.FC<IMdSearchBarProps> = memo(({ className = '', 
         inputProps={{
           startAdornment: (
             <InputAdornment position='start'>
-              <SearchIcon sx={{ fontSize: 20 }} />
+              <SearchIcon />
             </InputAdornment>
           ),
         }}

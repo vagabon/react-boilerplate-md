@@ -35,8 +35,9 @@ export const MdInputDatepicker: React.FC<IMdInputDatepickerProps> = memo(({ clas
   );
 
   return (
-    <div style={{ width: '100%' }} className={className}>
+    <div className={'width100 ' + className}>
       <DateTimePicker
+        className='width100'
         slotProps={{
           textField: {
             variant: 'outlined',
@@ -46,7 +47,6 @@ export const MdInputDatepicker: React.FC<IMdInputDatepickerProps> = memo(({ clas
         }}
         format='DD/MM/YYYY HH:mm:ss'
         ampm={false}
-        sx={{ width: '100%' }}
         label={translate(rest.label)}
         name={rest.name}
         onChange={handleChange?.(rest.handleChange)}

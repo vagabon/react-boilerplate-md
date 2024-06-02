@@ -33,10 +33,7 @@ export const MdFormSwitch: React.FC<IMdFormSwitchProps> = memo(({ className = ''
   return (
     <div className={'flex switch ' + className}>
       <div>
-        <Typography
-          paragraph={true}
-          onClick={handleChange(checked, rest.handleChange)}
-          style={{ cursor: 'pointer', userSelect: 'none' }}>
+        <Typography paragraph={true} onClick={handleChange(checked, rest.handleChange)} className='pointer user-none'>
           <Translate i18nKey={rest.label} />
           {rest.validationSchema?.[rest.name as keyof JSONObject]?.['required'] ? ' *' : ''}
         </Typography>

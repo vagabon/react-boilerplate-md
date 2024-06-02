@@ -35,7 +35,7 @@ export const MdInputText: React.FC<IMdInputTextProps> = memo(
     );
 
     return (
-      <div style={{ width: '100%' }} className={className}>
+      <div className={'width100 ' + className}>
         <MdInputTextSimple
           error={error !== ''}
           type={type}

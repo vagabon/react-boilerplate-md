@@ -1,3 +1,4 @@
+import TuneIcon from '@mui/icons-material/Tune';
 import { useCallback } from 'react';
 import { ButtonColorType } from '../../md/component/button/MdButton';
 
@@ -144,6 +145,7 @@ export const ICONS = {
   fullscreen: { react: (color: ButtonColorType) => <FitScreenIcon color={color} /> },
   expand: { react: (color: ButtonColorType) => <ExpandIcon color={color} /> },
   reducer: { react: (color: ButtonColorType) => <UnfoldLessIcon color={color} /> },
+  tune: { react: (color: ButtonColorType) => <TuneIcon color={color} /> },
 };
 
 export const useIcon = () => {

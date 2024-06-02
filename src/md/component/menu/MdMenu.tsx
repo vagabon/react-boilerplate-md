@@ -1,4 +1,4 @@
-import { Button, Menu, MenuItem, SxProps, Theme } from '@mui/material';
+import { Button, Menu, MenuItem } from '@mui/material';
 import React, { useCallback } from 'react';
 import { ButtonColorType } from '../button/MdButton';
 
@@ -9,10 +9,9 @@ export interface IMdMenuProps {
   size?: 'small' | 'medium' | 'large';
   variant?: 'text' | 'outlined' | 'contained';
   color?: ButtonColorType;
-  sx?: SxProps<Theme>;
 }
 
-export const MdMenu: React.FC<IMdMenuProps> = ({ title, elements, className = '', size, variant, color, sx }) => {
+export const MdMenu: React.FC<IMdMenuProps> = ({ title, elements, className = '', size, variant, color }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -34,8 +33,7 @@ export const MdMenu: React.FC<IMdMenuProps> = ({ title, elements, className = ''
         aria-controls={open ? 'basic-menu' : undefined}
         aria-haspopup='true'
         aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
-        sx={sx}>
+        onClick={handleClick}>
         {title}
       </Button>
       <Menu
@@ -46,7 +44,7 @@ export const MdMenu: React.FC<IMdMenuProps> = ({ title, elements, className = ''
           'aria-labelledby': 'basic-button',
         }}
         transformOrigin={{ horizontal: 'center', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'center', vertical: 'bottom' }}>
+        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}>
         {elements.map((element) => (
           <MenuItem key={element.name} onClick={handleClose}>
             {element.element(handleClose)}

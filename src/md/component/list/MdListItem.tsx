@@ -14,11 +14,10 @@ export const MdListItem: React.FC<IMdListItemProps> = memo(
   ({ className, component, disablePadding, callback, isCursor, children }) => {
     return (
       <ListItem
-        className={className}
+        className={className + (isCursor ? ' pointer' : '')}
         component={component ?? 'div'}
         disablePadding={disablePadding ?? true}
-        onClick={callback}
-        style={isCursor ? { cursor: 'pointer' } : {}}>
+        onClick={callback}>
         {children}
       </ListItem>
     );

@@ -66,7 +66,7 @@ export const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(
     }, [liveValue, callbackCopy]);
 
     return (
-      <div className='relative' style={{ width: '100%' }}>
+      <div className='relative width100'>
         {callbackCopy && liveValue && <IconClickable className='input-copy-button' icon='copy' callback={handleCopy} />}
         <TextField
           error={rest.error}
@@ -91,9 +91,7 @@ export const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(
           InputProps={{
             ...rest.inputProps,
             endAdornment: callbackReset && (
-              <IconButton
-                sx={{ visibility: liveValue !== '' ? 'visible' : 'hidden' }}
-                onMouseDown={handleReset(callbackReset)}>
+              <IconButton className={liveValue !== '' ? '' : 'hidden'} onMouseDown={handleReset(callbackReset)}>
                 <ClearIcon />
               </IconButton>
             ),

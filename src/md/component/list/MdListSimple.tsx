@@ -21,7 +21,7 @@ export const MdListSimple: React.FC<IMdListSimpleProps> = memo(({ className, tit
       {items?.map((item) => (
         <Fragment key={item.label}>
           {translate(item.label) !== '' && (
-            <li style={{ marginTop: '10px' }}>
+            <li className='margin-top10'>
               <Translate i18nKey={item.label} />
             </li>
           )}

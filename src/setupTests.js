@@ -105,6 +105,16 @@ jest.mock('@mui/material', () => ({
   Container: ({ children }) => <div data-testid='Container'>{children}</div>,
   CssBaseline: ({ children }) => <div data-testid='CssBaseline'>{children}</div>,
   Divider: ({ children }) => <div data-testid='Divider'>{children}</div>,
+  ClickAwayListener: ({ onClickAway, children }) => (
+    <div data-testid='ClickAwayListener' onClick={onClickAway}>
+      {children}
+    </div>
+  ),
+  Drawer: ({ onClose, children }) => (
+    <div data-testid='Drawer' onClick={onClose}>
+      {children}
+    </div>
+  ),
   Fab: ({ children, onClick }) => (
     <div data-testid='Fab' onClick={onClick}>
       {children}

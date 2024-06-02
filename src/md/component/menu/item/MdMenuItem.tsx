@@ -2,7 +2,7 @@ import { KeyboardArrowDown as KeyboardArrowDownIcon } from '@mui/icons-material'
 import { Button, Menu, MenuItem } from '@mui/material';
 import { memo, useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAppRouter } from '../../../router/hook/useAppRouter';
+import { useAppRouter } from '../../../../router/hook/useAppRouter';
 
 export interface IMdMenuItemProps {
   name: string;
@@ -52,10 +52,9 @@ export const MdMenuItem: React.FC<IMdMenuItemProps> = memo(({ ...rest }) => {
     <>
       <Button
         variant={isCurrentLocation(rest.url) ? 'outlined' : 'text'}
-        className='selected'
+        className='width100 selected'
         aria-selected={true}
         href={rest.url}
-        sx={{ minWidth: '100px' }}
         id='fade-button'
         aria-controls={open ? 'fade-menu' : undefined}
         aria-haspopup='true'
@@ -69,13 +68,13 @@ export const MdMenuItem: React.FC<IMdMenuItemProps> = memo(({ ...rest }) => {
         <Menu id='fade-menu' anchorEl={anchorEl} open={open} onClose={handleClose}>
           {rest.childrens?.map((child: { title: string; link: string }) => (
             <MenuItem
+              className='width100'
               component={Link}
               to={child.link}
               key={child.title}
               color='secondary'
               onClick={handleCloseWithUrl(child.link)}
-              selected={isCurrentLocation(child.link)}
-              sx={{ width: '100px', color: 'secondary.main' }}>
+              selected={isCurrentLocation(child.link)}>
               {child.title}
             </MenuItem>
           ))}

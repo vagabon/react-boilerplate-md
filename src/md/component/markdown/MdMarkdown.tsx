@@ -95,9 +95,7 @@ export const MdMarkdown: React.FC<IMdMarkdownProps> = memo(
           }}>
           {replaceCode(content)}
         </MuiMarkdown>
-        <div id='copy-button' style={{ display: 'none' }}>
-          {getIcon('copy', 'secondary')}
-        </div>
+        <div id='copy-button hidden'>{getIcon('copy', 'secondary')}</div>
       </div>
     );
   },

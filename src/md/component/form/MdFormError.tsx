@@ -9,7 +9,7 @@ export const MdFormError: React.FC<IMdFormErrorProps> = memo(({ error }) => {
   return (
     <>
       {error && (
-        <FormHelperText style={{ margin: '0.5rem' }} error={true}>
+        <FormHelperText className='margin-05' error={true}>
           {error}
         </FormHelperText>
       )}

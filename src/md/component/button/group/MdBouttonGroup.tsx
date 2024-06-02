@@ -28,7 +28,7 @@ export const MdBouttonGroup: React.FC<IMdBouttonGroupProps> = memo(({ children, 
   );
 
   return (
-    <ButtonGroup {...rest} style={{ gap: '5px' }}>
+    <ButtonGroup {...rest} className={'gap5 ' + (rest.className ?? '')}>
       {showButtons(children)}
     </ButtonGroup>
   );

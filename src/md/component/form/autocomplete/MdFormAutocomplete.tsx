@@ -16,13 +16,13 @@ export const MdFormAutocomplete: React.FC<IMdFormAutocompleteProps> = memo(({ cl
   const { error } = useFormError(rest.name, rest.errors, rest.touched, rest.errorMessage);
 
   return (
-    <div style={{ width: '100%' }}>
-      <FormControl className={className} fullWidth sx={{ marginBottom: '8px', marginTop: '16px' }}>
+    <div className='width100'>
+      <FormControl className={'form-control ' + className} fullWidth>
         <Autocomplete
           id={rest.name}
           value={rest.values?.[rest.name as keyof JSONObject] ?? ''}
           options={rest.list}
-          sx={{ width: '100%' }}
+          className='width100'
           onChange={rest.handleChange}
           onBlur={rest.handleBlur}
           renderInput={(params) => <TextField {...params} label={rest.label} />}

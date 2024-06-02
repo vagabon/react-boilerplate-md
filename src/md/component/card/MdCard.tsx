@@ -34,7 +34,7 @@ export interface IMdCardProps extends CardProps {
 
 export const MdCard: React.FC<IMdCardProps> = memo(
   ({
-    color = 'secondary',
+    color = 'inherit',
     icon,
     title,
     titleVariant,
@@ -77,11 +77,11 @@ export const MdCard: React.FC<IMdCardProps> = memo(
               titleChildren ? (
                 <> {titleChildren}</>
               ) : (
-                <div className='flex flex-row' style={{ alignItems: 'center' }}>
+                <div className='flex flex-row align-center'>
                   {callbackLeft && <IconClickable icon='back' color='secondary' callback={callbackLeft} />}
                   {icon && <>{getIcon(icon, color)}&nbsp;</>}
                   <MdLink href={url ?? ''}>
-                    <MdTypo variant={titleVariant ?? 'h1'} color={color} sx={{ flex: '1' }}>
+                    <MdTypo className='flex1' variant={titleVariant ?? 'h1'} color={color}>
                       <Translate i18nKey={translate(title)} />
                       {titleCount !== undefined && <> ({titleCount})</>}
                     </MdTypo>

@@ -30,13 +30,13 @@ export const Primary: Story = {
         <MdListItem callback={callback}>
           <MdListItemAvatar>avatar</MdListItemAvatar>
           <MdListItemIcon>icon</MdListItemIcon>
-          <MdListItemText label='label' />
+          <MdListItemText primary='label' />
         </MdListItem>
         <MdListItem component='li' disablePadding={true}>
-          <MdListItemText label='label2' />
+          <MdListItemText primary='label2' />
         </MdListItem>
-        <MdListItemButton callback={callback}>
-          <MdListItemText label='label3' />
+        <MdListItemButton onClick={callback}>
+          <MdListItemText primary='label3' />
         </MdListItemButton>
       </>
     ),

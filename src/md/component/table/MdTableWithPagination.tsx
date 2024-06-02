@@ -27,11 +27,11 @@ export const MdTableWithPagination: React.FC<IMdTableWithPaginationProps> = memo
   );
 
   return (
-    <div style={{ display: 'grid' }}>
-      <div style={{ margin: '5px 0px', fontSize: '1.2rem' }}>
+    <div className='grid'>
+      <div className='table-result'>
         <MdTypo content='RESULTAT' after={': ' + rest.count} />
       </div>
-      <div style={{ overflow: 'auto' }}>
+      <div className='overflow'>
         <MdTable {...rest}>
           <TableFooter>
             <TableRow></TableRow>

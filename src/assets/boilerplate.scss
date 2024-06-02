@@ -60,10 +60,9 @@ h5 { font-size: 1.3rem !important; font-weight: 400 !important; }
 .overflow { overflow: auto; }
 .overflow-x-none { overflow-x: hidden; }
 .no-overflow { overflow: hidden; align-self: normal !important; .MuiCardContent-root { overflow: auto; } }
-.hidden { display: none; }
+.hidden { display: none !important; }
 .pointer { cursor: pointer !important; }
 .text-center { text-align: center; .MuiTypography-root { text-align: center; } }
-.margin-top { margin-top: 10px; }
 
 .width33 { width: 33%; }
 .width50 { width: 50%; }

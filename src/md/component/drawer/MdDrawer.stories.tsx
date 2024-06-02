@@ -1,26 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { withProvider, withTest } from '../../../stories/Helpers';
 
-import { MdMenuItem } from './MdMenuItem';
+import { MdDrawer } from './MdDrawer';
 
-const meta: Meta<typeof MdMenuItem> = {
-  title: 'mui/MdMenuItem',
-  component: MdMenuItem,
+const meta: Meta<typeof MdDrawer> = {
+  title: 'mui/MdDrawer',
+  component: MdDrawer,
   tags: ['mui'],
   argTypes: {},
   decorators: [withTest, withProvider],
 };
 
 export default meta;
-type Story = StoryObj<typeof MdMenuItem>;
+type Story = StoryObj<typeof MdDrawer>;
 
 export const Primary: Story = {
   args: {
-    name: 'name',
-    url: 'url',
-    childrens: [{ title: 'title', link: 'link' }],
+    open: true,
   },
 };
 Primary.parameters = {
-  jest: ['MdMenuItem.test'],
+  jest: ['MdDrawer.test'],
 };

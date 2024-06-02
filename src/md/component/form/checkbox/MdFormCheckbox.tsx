@@ -37,18 +37,17 @@ export const MdFormCheckbox: React.FC<IMdFormCheckboxProps> = memo(({ ...rest })
   }, [rest, handleChange]);
 
   return (
-    <div className='flex flex-row align-center' style={{ height: '50px' }}>
-      <Typography paragraph={true} style={{ flex: '1', cursor: 'pointer' }} onClick={handleClicklabel}>
+    <div className='flex flex-row align-center heigth50px'>
+      <Typography className='flex1 pointer' paragraph={true} onClick={handleClicklabel}>
         {rest.label && translate(rest.label)}
       </Typography>
       <MdFormCheckboxSimple
         name={rest.name}
-        className={rest.className}
+        className={'form-checkbox ' + rest.className}
         checked={rest.values?.[rest.name as keyof JSONObject] === true}
         callbackClick={handleChange?.(rest.handleChange)}
         callbackBlur={rest.handleBlur}
         inputProps={{ 'aria-label': 'controlled' }}
-        sx={{ padding: '0px 2px' }}
         disabled={rest.disabled}
       />
 

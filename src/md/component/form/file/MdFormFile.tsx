@@ -1,8 +1,8 @@
-import { Box } from '@mui/material';
 import { ChangeEvent, memo, useCallback } from 'react';
 import { JSONObject } from '../../../../dto/api/ApiDto';
 import { Translate } from '../../../../translate/component/Translate';
 import { useId } from '../../../hook/useId';
+import { MdBox } from '../../box/MdBox';
 
 export interface IMdFormFileProps {
   name: string;
@@ -24,17 +24,14 @@ export const MdFormFile: React.FC<IMdFormFileProps> = memo(({ accept, ...rest })
   );
 
   return (
-    <Box
-      sx={{ width: '100%', margin: '5px 0', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+    <MdBox className='form-file'>
       {rest.label && (
-        <label htmlFor={id} style={{ flex: '1' }}>
+        <label className='flex1' htmlFor={id}>
           <Translate i18nKey={rest.label} />
         </label>
       )}
-      <div className='' style={{ maxWidth: '18%', margin: '0px 5px' }}>
-        <p
-          style={{ textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}
-          title={rest.values?.[rest.name as keyof JSONObject]}>
+      <div className='label'>
+        <p className='ellipsis' title={rest.values?.[rest.name as keyof JSONObject]}>
           {rest.values?.[rest.name as keyof JSONObject]}
         </p>
       </div>
@@ -45,6 +42,6 @@ export const MdFormFile: React.FC<IMdFormFileProps> = memo(({ accept, ...rest })
         onChange={handleCapture(rest.handleChangeFile)}
         type='file'
       />
-    </Box>
+    </MdBox>
   );
 });
