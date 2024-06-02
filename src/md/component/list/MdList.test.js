@@ -15,7 +15,7 @@ describe('MdList', () => {
         <MdListItem>
           <MdListItemAvatar>avatar</MdListItemAvatar>
           <MdListItemIcon>icon</MdListItemIcon>
-          <MdListItemText label='label' />
+          <MdListItemText content='label' />
         </MdListItem>
         <MdListItem component='li' disablePadding={true}></MdListItem>
         <MdListItemButton></MdListItemButton>

@@ -1,8 +1,13 @@
 import { ListItemText, ListItemTextProps } from '@mui/material';
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
+import { Translate } from '../../../translate/component/Translate';
 
 export interface IMdListItemTextProps extends ListItemTextProps {}
 
-export const MdListItemText: React.FC<IMdListItemTextProps> = memo(({ ...rest }) => {
-  return <ListItemText {...rest} />;
+export const MdListItemText: React.FC<IMdListItemTextProps> = memo(({ content = '', primary, ...rest }) => {
+  const showPrimary = useCallback(() => {
+    return primary ? primary : <Translate i18nKey={content} />;
+  }, [primary, content]);
+
+  return <ListItemText {...rest} primary={showPrimary()} />;
 });

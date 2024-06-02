@@ -15,11 +15,7 @@ export default meta;
 type Story = StoryObj<typeof MdMenuItem>;
 
 export const Primary: Story = {
-  args: {
-    name: 'name',
-    url: 'url',
-    childrens: [{ title: 'title', link: 'link' }],
-  },
+  args: {},
 };
 Primary.parameters = {
   jest: ['MdMenuItem.test'],

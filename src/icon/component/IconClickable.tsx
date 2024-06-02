@@ -1,5 +1,5 @@
 import { IconButton, IconButtonProps } from '@mui/material';
-import { MouseEvent, ReactNode, memo, useCallback } from 'react';
+import { MouseEvent, memo, useCallback } from 'react';
 import { ButtonColorType } from '../../md/component/button/MdButton';
 import { useIcon } from '../hook/useIcon';
 
@@ -8,10 +8,9 @@ export type IconType = 'inherit' | 'default' | 'primary' | 'secondary' | 'error'
 export interface IIconClickableProps extends IconButtonProps {
   icon?: string;
   callback?: () => void;
-  children?: ReactNode;
 }
 
-export const IconClickable: React.FC<IIconClickableProps> = memo(({ icon, callback, children, ...rest }) => {
+export const IconClickable: React.FC<IIconClickableProps> = memo(({ icon, callback, children, onClick, ...rest }) => {
   const { getIcon } = useIcon();
 
   const handleClickIcon = useCallback(
@@ -24,8 +23,8 @@ export const IconClickable: React.FC<IIconClickableProps> = memo(({ icon, callba
   );
 
   return (
-    <IconButton edge='end' onClick={handleClickIcon}>
-      {children ?? <>{getIcon(icon, rest.color as ButtonColorType)}</>}
+    <IconButton {...rest} edge='end' onClick={onClick ?? handleClickIcon}>
+      {icon ? <>{getIcon(icon, rest.color as ButtonColorType)}</> : children}
     </IconButton>
   );
 });
