@@ -10,7 +10,7 @@ import { useFormValue } from '../../../hook/useFormValue';
 const DEFAULT_TEXT = 'text';
 
 export interface IMdInputTextSimpleProps {
-  label: string;
+  label?: string;
   value: JSONValue;
   name: string;
   variant?: TextFieldVariants;
@@ -54,7 +54,6 @@ export const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(
       handleFocus,
       handleChange,
       handleBlur,
-      keyDown,
       handleKeyDown,
       handleKeyUp,
       handleReset,
@@ -75,7 +74,7 @@ export const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(
           className={className}
           type={type}
           margin='normal'
-          label={translate(rest.label)}
+          label={rest.label ? translate(rest.label) : ''}
           variant={rest.variant}
           placeholder={translate(rest.placeholder ?? '')}
           size={rest.size}
@@ -87,7 +86,7 @@ export const MdInputTextSimple: React.FC<IMdInputTextSimpleProps> = memo(
           onChange={handleChange(rest.handleChange)}
           onBlur={handleBlur(rest.changeValue, rest.handleChange, rest.handleBlur)}
           onKeyDown={handleKeyDown}
-          onKeyUp={handleKeyUp(textarea > 0, keyDown, rest.handleKeyEnter)}
+          onKeyUp={handleKeyUp(textarea > 0, rest.handleKeyEnter)}
           InputProps={{
             ...rest.inputProps,
             endAdornment: callbackReset && (

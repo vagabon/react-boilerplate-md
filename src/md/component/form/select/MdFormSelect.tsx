@@ -19,6 +19,7 @@ interface IListDto {
   value: string | number;
   name: string;
   icon?: string;
+  image?: string;
 }
 
 export interface IMdFormSelectProps extends IFormPropsDto {
@@ -52,6 +53,7 @@ export const MdFormSelect: React.FC<IMdFormSelectProps> = memo(
             value: value.id,
             name: libelle?.startsWith('http') ? libelle : translate(libelle),
             icon: value['icon' as keyof JSONObject],
+            image: value['image' as keyof JSONObject],
           });
       });
       setValues(values);
@@ -106,6 +108,11 @@ export const MdFormSelect: React.FC<IMdFormSelectProps> = memo(
                 values.map((myValue) => (
                   <MenuItem key={myValue.name + myValue.value} value={myValue.value}>
                     {myValue.icon && <ListItemIcon>{getIcon(myValue.icon)}</ListItemIcon>}
+                    {myValue.image && (
+                      <ListItemIcon>
+                        <img src={myValue.image} alt='logo' width={25} height={25} />
+                      </ListItemIcon>
+                    )}
                     <ListItemText primary={myValue.name} />
                   </MenuItem>
                 ))}

@@ -12,7 +12,7 @@ export const useFormValue = (type: string, value: JSONValue, isFocus?: boolean) 
   const [readonly, setReadonly] = useState(type === 'password');
   const uref = useRef<HTMLInputElement>(null);
   const isFocusRef = useRef<boolean>(false);
-  const [keyDown, setKeyDown] = useState<boolean>(false);
+  const keyDown = useRef<boolean>(false);
 
   useEffect(() => {
     isFocusRef.current = isFocus === true;
@@ -81,21 +81,20 @@ export const useFormValue = (type: string, value: JSONValue, isFocus?: boolean) 
 
   const handleKeyDown = useCallback((event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === 'Control') {
-      setKeyDown(true);
+      keyDown.current = true;
     }
   }, []);
 
   const handleKeyUp = useCallback(
-    (isTextArea: boolean, keyDown: boolean, callbackEnter?: (target: { name: string; value: string }) => void) =>
+    (isTextArea: boolean, callbackEnter?: (target: { name: string; value: string }) => void) =>
       (event: KeyboardEvent<HTMLDivElement>) => {
         if (event.key === 'Enter') {
-          isFocusRef.current = false;
           const target = {
             name: ObjectUtils.getDtoString(event.target as IApiDto, 'name'),
             value: ObjectUtils.getDtoString(event.target as IApiDto, 'value'),
           };
           ((isTextArea && keyDown) || !isTextArea) && callbackEnter?.(target);
-          setKeyDown(false);
+          //keyDown.current = false;
         }
       },
     [],
