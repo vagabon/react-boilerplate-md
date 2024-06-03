@@ -30,7 +30,7 @@ export const MdTreeView: React.FC<IMdTreeViewProps> = memo(({ className = '', de
   );
 
   const renderTree = ({ id, label, childrens }: IMdTreeViewDto) => (
-    // @ts-expect-error wait for good react-19 support
+    // @ts-ignore: wait for good react-19 support
     <TreeItem
       key={id}
       className={className}

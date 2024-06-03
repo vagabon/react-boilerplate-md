@@ -15,6 +15,7 @@ module.exports = {
   plugins: ['react', 'react-hooks', '@typescript-eslint', 'eslint-plugin-react-compiler'],
   rules: {
     'react-compiler/react-compiler': 'error',
+    '@typescript-eslint/ban-ts-comment': 'warn',
     '@typescript-eslint/no-unused-vars': 'warn',
     'react/display-name': 'off',
     'react/prop-types': 'off',

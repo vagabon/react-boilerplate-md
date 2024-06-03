@@ -27,6 +27,7 @@ export type ButtonColorType =
 export interface IMdButtonProps extends ButtonProps {
   show?: boolean;
   label?: string;
+  labelClassName?: string;
   url?: string;
   startIcon?: string | React.JSX.Element;
   icon?: string;
@@ -36,7 +37,17 @@ export interface IMdButtonProps extends ButtonProps {
 }
 
 export const MdButton: React.FC<IMdButtonProps> = memo(
-  ({ show = true, url, label = '', size = 'small', variant = 'contained', type = 'button', callback, ...rest }) => {
+  ({
+    show = true,
+    url,
+    label = '',
+    labelClassName = '',
+    size = 'small',
+    variant = 'contained',
+    type = 'button',
+    callback,
+    ...rest
+  }) => {
     const { getIcon } = useIcon();
     const { handleClick, addHref } = useButtonCallback(type, url);
 
@@ -58,7 +69,7 @@ export const MdButton: React.FC<IMdButtonProps> = memo(
             {icon ? (
               <>{icon}</>
             ) : (
-              <div key={localStorage.getItem('i18nextLng')}>
+              <div className={labelClassName} key={localStorage.getItem('i18nextLng')}>
                 <Translate i18nKey={label} />
               </div>
             )}

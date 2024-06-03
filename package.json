@@ -1,6 +1,6 @@
 {
   "name": "@vagabond-inc/react-boilerplate-md",
-  "version": "1.2.1c",
+  "version": "1.2.1d",
   "description": "Boilerplate Material Design on React with MUI",
   "private": false,
   "scripts": {
@@ -20,19 +20,20 @@
   },
   "dependencies": {
     "@emotion/react": "~11.11.4",
+    "@mui/base": "^5.0.0-beta.40",
     "@mui/icons-material": "~5.15.19",
     "@mui/material": "~5.15.19",
     "@mui/x-date-pickers": "~7.6.1",
     "@mui/x-tree-view": "~7.6.1",
     "dayjs": "~1.11.11",
-    "i18next": "~23.11.5",
+    "i18next": "~23.11.3",
     "i18next-browser-languagedetector": "~8.0.0",
     "mui-markdown": "~1.1.13",
     "react": "^19.0.0-rc-935180c7e0-20240524",
     "react-dom": "^19.0.0-rc-935180c7e0-20240524",
-    "react-i18next": "~14.1.2",
-    "react-router-dom": "~6.23.1",
-    "uuid": "~9.0.1"
+    "react-i18next": "~14.1.0",
+    "react-router-dom": "~6.23.0",
+    "uuid": "~9.0.0"
   },
   "devDependencies": {
     "@babel/preset-env": "~7.24.6",
@@ -87,6 +88,7 @@
     "@emotion/react": "~11.11.4",
     "@mui/icons-material": "~5.15.19",
     "@mui/material": "~5.15.19",
+    "@mui/base": "^5.0.0-beta.40",
     "@mui/x-date-pickers": "~7.6.1",
     "@mui/x-tree-view": "~7.6.1",
     "dayjs": "~1.11.11",
