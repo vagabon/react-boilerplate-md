@@ -1,6 +1,6 @@
 {
   "name": "@vagabond-inc/react-boilerplate-md",
-  "version": "1.2.1d",
+  "version": "1.2.1e",
   "description": "Boilerplate Material Design on React with MUI",
   "private": false,
   "scripts": {
@@ -20,7 +20,6 @@
   },
   "dependencies": {
     "@emotion/react": "~11.11.4",
-    "@mui/base": "^5.0.0-beta.40",
     "@mui/icons-material": "~5.15.19",
     "@mui/material": "~5.15.19",
     "@mui/x-date-pickers": "~7.6.1",
@@ -88,7 +87,6 @@
     "@emotion/react": "~11.11.4",
     "@mui/icons-material": "~5.15.19",
     "@mui/material": "~5.15.19",
-    "@mui/base": "^5.0.0-beta.40",
     "@mui/x-date-pickers": "~7.6.1",
     "@mui/x-tree-view": "~7.6.1",
     "dayjs": "~1.11.11",
