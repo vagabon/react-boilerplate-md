@@ -67,7 +67,6 @@ export const MdSearchBar: React.FC<IMdSearchBarProps> = memo(
                 {<Icon className='heigth20px text-simple' icon={icon} />}
               </InputAdornment>
             ),
-            disableUnderline: true,
           }}
         />
         {order && (
