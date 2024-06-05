@@ -40,19 +40,6 @@ export const DEFAULT_THEME: ICustomTheme = {
   shape: {
     borderRadius: 4,
   },
-  mixins: {
-    toolbar: {
-      minHeight: 46,
-      '@media (min-width:0px)': {
-        '@media (orientation: landscape)': {
-          minHeight: 46,
-        },
-      },
-      '@media (min-width:600px)': {
-        minHeight: 46,
-      },
-    },
-  },
   typography: {
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
     h1: {

@@ -37,7 +37,7 @@ export const MdFormCheckbox: React.FC<IMdFormCheckboxProps> = memo(({ ...rest })
   }, [rest, handleChange]);
 
   return (
-    <div className='flex flex-row align-center heigth50px'>
+    <div className='flex flex-row align-center height50px'>
       <Typography className='flex1 pointer' paragraph={true} onClick={handleClicklabel}>
         {rest.label && translate(rest.label)}
       </Typography>
