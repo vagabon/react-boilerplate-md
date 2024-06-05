@@ -5,6 +5,7 @@ import { ModeType, useTheme } from '../hook/useTheme';
 
 export interface IThemeContextDto {
   mode: ModeType;
+  initTheme: (mode: ModeType) => void;
   switchTheme: (mode: ModeType) => () => void;
 }
 
@@ -19,9 +20,9 @@ interface IThemeContextProviderProps extends PropsWithChildren {
 }
 
 export const ThemeContextProvider: React.FC<IThemeContextProviderProps> = ({ palette, children }) => {
-  const { mode, theme, switchTheme } = useTheme(palette);
+  const { mode, theme, initTheme, switchTheme } = useTheme(palette);
 
-  const value = useMemo(() => ({ mode, switchTheme }), [mode, switchTheme]);
+  const value = useMemo(() => ({ mode, initTheme, switchTheme }), [mode, initTheme, switchTheme]);
 
   useEffect(() => {
     document.body.classList.remove('mode-dark');

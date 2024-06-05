@@ -1,5 +1,5 @@
 import { ChevronRight as ChevronRightIcon, ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
-import { SimpleTreeView, TreeItem } from '@mui/x-tree-view';
+import { SimpleTreeView, TreeItem2 } from '@mui/x-tree-view';
 import { memo, useCallback, useEffect, useState } from 'react';
 
 export interface IMdTreeViewDto {
@@ -30,15 +30,14 @@ export const MdTreeView: React.FC<IMdTreeViewProps> = memo(({ className = '', de
   );
 
   const renderTree = ({ id, label, childrens }: IMdTreeViewDto) => (
-    // @ts-ignore: wait for good react-19 support
-    <TreeItem
+    <TreeItem2
       key={id}
       className={className}
       itemId={id.toString()}
       label={label}
       onClick={handleClick(id, { id, label, childrens }, callback)}>
-      {Array.isArray(childrens) ? childrens.map((node) => renderTree(node)) : <></>}
-    </TreeItem>
+      <>{Array.isArray(childrens) ? childrens.map((node) => renderTree(node)) : <></>}</>
+    </TreeItem2>
   );
 
   return (

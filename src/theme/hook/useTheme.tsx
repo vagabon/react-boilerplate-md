@@ -1,8 +1,7 @@
 import { PaletteColorOptions, PaletteOptions, ThemeOptions } from '@mui/material';
 import { useCallback, useEffect, useState } from 'react';
 import { JSONObject } from '../../dto/api/ApiDto';
-import { DEFAULT_THEME } from '../../md/conf/MdThemeConf';
-import { ObjectUtils } from '../../utils/object/ObjectUtils';
+import { defaultMode, getTheme } from '../utils/ThemeUtils';
 
 export interface ICustomPalette extends PaletteOptions {
   google: PaletteColorOptions;
@@ -29,61 +28,6 @@ export interface IPaletteDto {
 
 export type ModeType = 'light' | 'dark';
 
-const defaultMode = () => {
-  let storageMode = localStorage.getItem('mode_theme');
-  if (storageMode !== 'light' && storageMode !== 'dark') {
-    const darkBrowser = window.matchMedia('(prefers-color-scheme: dark)');
-    storageMode = darkBrowser?.matches ? 'dark' : 'light';
-  }
-  return storageMode as ModeType;
-};
-
-const getTheme = (palette: JSONObject, mode: 'light' | 'dark'): ITheme => {
-  const suffixe = mode === 'dark' ? '-dark' : '';
-  return {
-    ...DEFAULT_THEME,
-    palette: {
-      ...DEFAULT_THEME.palette,
-      mode: mode,
-      background: {
-        default: mode === 'dark' ? '#121212' : '#F2F2F2',
-      },
-      primary: {
-        main: ObjectUtils.getDtoString(palette, 'primary' + suffixe),
-        dark: '',
-      },
-      secondary: {
-        main: ObjectUtils.getDtoString(palette, 'secondary' + suffixe),
-        dark: '',
-      },
-      info: {
-        main: ObjectUtils.getDtoString(palette, 'info' + suffixe),
-        dark: '',
-      },
-      success: {
-        main: ObjectUtils.getDtoString(palette, 'success' + suffixe),
-        dark: '',
-      },
-      error: {
-        main: ObjectUtils.getDtoString(palette, 'error' + suffixe),
-        dark: '',
-      },
-      google: {
-        main: ObjectUtils.getDtoString(palette, 'google'),
-        dark: '',
-      },
-      facebook: {
-        main: ObjectUtils.getDtoString(palette, 'facebook'),
-        dark: '',
-      },
-      premium: {
-        main: ObjectUtils.getDtoString(palette, 'premium'),
-        dark: '',
-      },
-    },
-  };
-};
-
 export const useTheme = (palette: JSONObject) => {
   const [mode, setMode] = useState<ModeType>(defaultMode());
   const [theme, setTheme] = useState<ITheme>(getTheme(palette, mode));
@@ -99,14 +43,17 @@ export const useTheme = (palette: JSONObject) => {
     showTheme(mode);
   }, [showTheme, mode]);
 
+  const initTheme = useCallback((mode: ModeType) => {
+    localStorage.setItem('mode_theme', mode);
+    setMode(mode);
+  }, []);
+
   const switchTheme = useCallback(
-    (newMode: ModeType) => () => {
-      const newModeAsync = newMode === 'light' ? 'dark' : 'light';
-      localStorage.setItem('mode_theme', newModeAsync);
-      setMode(newModeAsync);
+    (mode: ModeType) => () => {
+      initTheme(mode === 'light' ? 'dark' : 'light');
     },
-    [],
+    [initTheme],
   );
 
-  return { mode, theme, switchTheme };
+  return { mode, theme, initTheme, switchTheme };
 };
