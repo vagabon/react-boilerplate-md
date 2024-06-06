@@ -57,6 +57,7 @@ import {
   PhotoCameraFront as PhotoCameraFrontIcon,
   PrecisionManufacturing as PrecisionManufacturingIcon,
   QuestionAnswer as QuestionAnswerIcon,
+  QuestionMark as QuestionMarkIcon,
   ScreenSearchDesktop as ScreenSearchDesktopIcon,
   Search as SearchIcon,
   Send as SendIcon,
@@ -146,6 +147,7 @@ export const ICONS = {
   expand: { react: (color: ButtonColorType) => <ExpandIcon color={color} /> },
   reducer: { react: (color: ButtonColorType) => <UnfoldLessIcon color={color} /> },
   tune: { react: (color: ButtonColorType) => <TuneIcon color={color} /> },
+  question: { react: (color: ButtonColorType) => <QuestionMarkIcon color={color} /> },
 };
 
 export const useIcon = () => {
