@@ -69,7 +69,7 @@ export const MdCard: React.FC<IMdCardProps> = memo(
             avatar={avatar && <MdAvatar name={title} image={avatar} />}
             action={
               <>
-                {urlUpdate && <IconClickable color='primary' icon='settings' callback={handleNavigate(urlUpdate)} />}
+                {urlUpdate && <IconClickable color='secondary' icon='settings' callback={handleNavigate(urlUpdate)} />}
                 {actions && <>{actions}</>}
               </>
             }

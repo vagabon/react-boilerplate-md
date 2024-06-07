@@ -36,7 +36,7 @@ export const MdTreeView: React.FC<IMdTreeViewProps> = memo(({ className = '', de
       itemId={id.toString()}
       label={label}
       onClick={handleClick(id, { id, label, childrens }, callback)}>
-      <>{Array.isArray(childrens) ? childrens.map((node) => renderTree(node)) : <></>}</>
+      {Array.isArray(childrens) ? childrens.map((node) => renderTree(node)) : undefined}
     </TreeItem2>
   );
 

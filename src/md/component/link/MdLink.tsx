@@ -34,12 +34,12 @@ export const MdLink: React.FC<IMdLinkProps> = memo(
           <>
             {href ? (
               <Link {...rest} href={href} title={translate(label)} color={color} onClick={onClick}>
-                {translate(label)}
+                {!label.startsWith('http') ? translate(label) : label}
                 {children}
               </Link>
             ) : (
               <>
-                {translate(label)}
+                {!label.startsWith('http') ? translate(label) : label}
                 <>{children}</>
               </>
             )}
