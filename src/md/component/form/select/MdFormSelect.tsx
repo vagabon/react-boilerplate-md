@@ -106,7 +106,7 @@ export const MdFormSelect: React.FC<IMdFormSelectProps> = memo(
               {values &&
                 values.length > 0 &&
                 values.map((myValue) => (
-                  <MenuItem key={myValue.name + myValue.value} value={myValue.value}>
+                  <MenuItem key={myValue.name + myValue.value} value={myValue.value} className='gap10'>
                     {myValue.icon && <ListItemIcon>{getIcon(myValue.icon)}</ListItemIcon>}
                     {myValue.image && (
                       <ListItemIcon>
