@@ -30,6 +30,7 @@ import {
   Delete as DeleteIcon,
   Download as DownloadIcon,
   Email as EmailIcon,
+  Euro as EuroIcon,
   ExitToApp as ExitToAppIcon,
   Expand as ExpandIcon,
   Facebook as FacebookIcon,
@@ -148,6 +149,7 @@ export const ICONS = {
   reducer: { react: (color: ButtonColorType) => <UnfoldLessIcon color={color} /> },
   tune: { react: (color: ButtonColorType) => <TuneIcon color={color} /> },
   question: { react: (color: ButtonColorType) => <QuestionMarkIcon color={color} /> },
+  euro: { react: (color: ButtonColorType) => <EuroIcon color={color} /> },
 };
 
 export const useIcon = () => {

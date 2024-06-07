@@ -11,5 +11,5 @@ export interface IIconProps {
 export const Icon: React.FC<IIconProps> = memo(({ icon, className, color = 'inherit' }) => {
   const { getIcon } = useIcon();
 
-  return <div className={className}>{getIcon(icon, color)}</div>;
+  return <span className={className}>{getIcon(icon, color)}</span>;
 });
