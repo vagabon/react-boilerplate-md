@@ -1,4 +1,4 @@
-import { ClickAwayListener, Drawer, DrawerProps } from '@mui/material';
+import { Drawer, DrawerProps } from '@mui/material';
 import { PropsWithChildren, memo, useCallback } from 'react';
 
 export interface IMdDrawerProps extends DrawerProps, PropsWithChildren {
@@ -14,10 +14,8 @@ export const MdDrawer: React.FC<IMdDrawerProps> = memo(({ callbackClose, childre
   );
 
   return (
-    <ClickAwayListener onClickAway={handleClickAway(callbackClose)}>
-      <Drawer {...rest} onClose={handleClickAway(callbackClose)}>
-        {children}
-      </Drawer>
-    </ClickAwayListener>
+    <Drawer {...rest} onClose={handleClickAway(callbackClose)}>
+      {children}
+    </Drawer>
   );
 });
