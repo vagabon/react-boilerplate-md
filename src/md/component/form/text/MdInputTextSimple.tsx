@@ -1,5 +1,5 @@
+import { Clear as ClearIcon } from '@mui/icons-material';
 import { IconButton, InputProps, TextField, TextFieldVariants } from '@mui/material';
-import { ClearIcon } from '@mui/x-date-pickers';
 import { memo, useCallback } from 'react';
 import { JSONValue } from '../../../../dto/api/ApiDto';
 import { HandleBlurType, HandleChangeType } from '../../../../dto/form/FormDto';

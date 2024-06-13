@@ -1,4 +1,4 @@
-import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import { DateTimePicker } from '@mui/x-date-pickers';
 import dayjs, { Dayjs } from 'dayjs';
 import { memo, useCallback, useEffect, useState } from 'react';
 import { JSONObject } from '../../../../dto/api/ApiDto';
@@ -19,9 +19,9 @@ export const MdInputDatepicker: React.FC<IMdInputDatepickerProps> = memo(({ clas
   const [value, setValue] = useState<Dayjs | undefined>();
 
   useEffect(() => {
-    const newValue = rest.state?.[rest.name as keyof JSONObject] ?? '';
+    const newValue = rest.values?.[rest.name as keyof JSONObject] ?? '';
     newValue && setValue(dayjs(newValue));
-  }, [rest.state, rest.name]);
+  }, [rest.values, rest.name]);
 
   const handleChange = useCallback(
     (callback?: HandleChangeType) => (newValue?: Dayjs | null) => {
@@ -45,12 +45,13 @@ export const MdInputDatepicker: React.FC<IMdInputDatepickerProps> = memo(({ clas
           },
           field: { clearable: true },
         }}
+        timezone='Europe/Paris'
         format='DD/MM/YYYY HH:mm:ss'
         ampm={false}
         label={translate(rest.label)}
         name={rest.name}
         onChange={handleChange?.(rest.handleChange)}
-        value={value}
+        value={value as null | undefined}
         disabled={rest.disabled ?? false}
       />
     </div>

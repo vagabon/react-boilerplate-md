@@ -3,9 +3,9 @@ import { IApiDto, JSONObject, JSONValue, Target } from '../api/ApiDto';
 
 export type HandleChangeType = {
   (e: ChangeEvent<Target>): void;
-  <T = string | ChangeEvent<Target>>(field: T): T extends ChangeEvent<Target>
-    ? void
-    : (e: string | ChangeEvent<Target>) => void;
+  <T = string | ChangeEvent<Target>>(
+    field: T,
+  ): T extends ChangeEvent<Target> ? void : (e: string | ChangeEvent<Target>) => void;
 };
 
 export type HandleBlurType = {
@@ -23,7 +23,6 @@ export type ValidateFormType = (values?: JSONObject) => Promise<JSONValue>;
 
 export interface IFormPropsDto {
   values?: JSONObject;
-  state?: JSONObject;
   errors?: JSONObject;
   touched?: JSONObject;
   validationSchema?: JSONObject;

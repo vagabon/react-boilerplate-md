@@ -23,7 +23,7 @@ export const Primary: Story = {
     className: 'classname',
     label: 'label',
     name: 'date',
-    state: { date: '2024-01-01T20:30:00' },
+    values: { date: '2024-01-01T20:30:00' },
     handleChange: callBack,
   },
 };

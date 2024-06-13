@@ -129,7 +129,6 @@ jest.mock('@mui/material', () => ({
   ),
   InputLabel: ({ children }) => <div data-testid='InputLabel'>{children}</div>,
   InputAdornment: ({ children }) => <div data-testid='InputAdornment'>{children}</div>,
-  CircularProgress: ({ children }) => <div data-testid='CircularProgress'>{children}</div>,
   LinearProgress: ({ children }) => <div data-testid='LinearProgress'>{children}</div>,
   Link: ({ href, label, onClick }) => (
     <a href={href} data-testid='Link' onClick={onClick}>
