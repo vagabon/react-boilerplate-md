@@ -16,20 +16,21 @@ export interface IMdInputDatepickerProps extends IFormPropsDto {
 export const MdInputDatepicker: React.FC<IMdInputDatepickerProps> = memo(({ className = '', ...rest }) => {
   const { translate } = useTranslate();
   const { error } = useFormError(rest.name, rest.errors, rest.touched, rest.errorMessage);
-  const [value, setValue] = useState<Dayjs | undefined>();
+  const [value, setValue] = useState<Dayjs | null>();
+  const [isChange, setIsChange] = useState(false);
 
   useEffect(() => {
-    const newValue = rest.values?.[rest.name as keyof JSONObject] ?? '';
-    newValue && setValue(dayjs(newValue));
-  }, [rest.values, rest.name]);
+    const newValue = rest.values?.[rest.name as keyof JSONObject];
+    !isChange && newValue && setValue(dayjs(newValue));
+  }, [rest.values, isChange, rest.name]);
 
   const handleChange = useCallback(
     (callback?: HandleChangeType) => (newValue?: Dayjs | null) => {
-      let newValueString: string = '';
-      if (newValue) {
-        newValueString = JSON.stringify(newValue).replaceAll('\\', '').replaceAll('"', '');
-      }
-      callback?.({ target: { name: rest.name, value: newValueString } });
+      setIsChange(true);
+      setValue(newValue);
+      callback?.({
+        target: { name: rest.name, value: dayjs(newValue).add(2, 'hour').toISOString() },
+      });
     },
     [rest.name],
   );
@@ -45,7 +46,6 @@ export const MdInputDatepicker: React.FC<IMdInputDatepickerProps> = memo(({ clas
           },
           field: { clearable: true },
         }}
-        timezone='Europe/Paris'
         format='DD/MM/YYYY HH:mm:ss'
         ampm={false}
         label={translate(rest.label)}
