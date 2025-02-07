@@ -23,9 +23,12 @@ export const MdTreeView: React.FC<IMdTreeViewProps> = memo(({ className = '', de
   }, [defaultExpanded]);
 
   const handleClick = useCallback(
-    (id: number, tool: IMdTreeViewDto, callback: (id: number, tool: IMdTreeViewDto) => void) => () => {
-      callback(id, tool);
-    },
+    (id: number, tool: IMdTreeViewDto, callback: (id: number, tool: IMdTreeViewDto) => void) =>
+      (event: React.MouseEvent) => {
+        event.preventDefault();
+        event.stopPropagation();
+        callback(id, tool);
+      },
     [],
   );
 
@@ -45,8 +48,8 @@ export const MdTreeView: React.FC<IMdTreeViewProps> = memo(({ className = '', de
       className='overflow-auto'
       aria-label='file system navigator'
       slots={{ collapseIcon: ExpandMoreIcon, expandIcon: ChevronRightIcon }}
-      defaultExpandedItems={expendeds}
-      defaultSelectedItems={expendeds[expendeds.length - 1]}>
+      expandedItems={expendeds}
+      selectedItems={expendeds[expendeds.length - 1]}>
       {tree?.map((node) => renderTree(node))}
     </SimpleTreeView>
   );
