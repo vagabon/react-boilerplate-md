@@ -23,6 +23,7 @@ export const MdChip: React.FC<IMdChipProps> = memo(
     return (
       <Chip
         {...rest}
+        color='primary'
         className={rest.className + (callbackDelete ? ' ' : ' reverse')}
         avatar={avatar ? <MdAvatar name={avatar} image={avatar} /> : undefined}
         label={translate(label)}

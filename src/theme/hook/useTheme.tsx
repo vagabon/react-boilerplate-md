@@ -30,6 +30,7 @@ export type ModeType = 'light' | 'dark';
 
 export const useTheme = (palette: JSONObject) => {
   const [mode, setMode] = useState<ModeType>(defaultMode());
+  console.log(getTheme(palette, mode));
   const [theme, setTheme] = useState<ITheme>(getTheme(palette, mode));
 
   const showTheme = useCallback(

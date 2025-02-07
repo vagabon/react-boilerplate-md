@@ -48,8 +48,8 @@ export const MdTreeView: React.FC<IMdTreeViewProps> = memo(({ className = '', de
       className='overflow-auto'
       aria-label='file system navigator'
       slots={{ collapseIcon: ExpandMoreIcon, expandIcon: ChevronRightIcon }}
-      expandedItems={expendeds}
-      selectedItems={expendeds[expendeds.length - 1]}>
+      defaultExpandedItems={expendeds}
+      defaultSelectedItems={expendeds[expendeds.length - 1]}>
       {tree?.map((node) => renderTree(node))}
     </SimpleTreeView>
   );

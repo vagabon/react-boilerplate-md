@@ -14,6 +14,8 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['react', 'react-hooks', '@typescript-eslint', 'eslint-plugin-react-compiler'],
   rules: {
+    '@typescript-eslint/no-unused-expressions': 'off',
+    '@typescript-eslint/no-empty-object-type': 'off',
     'react-compiler/react-compiler': 'error',
     '@typescript-eslint/ban-ts-comment': 'warn',
     '@typescript-eslint/no-unused-vars': 'warn',

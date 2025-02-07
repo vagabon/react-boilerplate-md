@@ -26,13 +26,13 @@ export const DEFAULT_THEME: ICustomTheme = {
       main: '#2e7d32',
     },
     google: {
-      main: '',
+      main: '#2e7d32',
     },
     facebook: {
-      main: '',
+      main: '#2e7d32',
     },
     premium: {
-      main: '',
+      main: '#2e7d32',
     },
     contrastThreshold: 3,
     tonalOffset: 0.2,
